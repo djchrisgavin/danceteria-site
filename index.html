@@ -21,9 +21,9 @@
   <style>
 
     :root {
+
       --bg: #070707;
       --surface: #101010;
-      --surface-2: #151515;
 
       --text: #f4f2ed;
       --muted: #96938d;
@@ -35,6 +35,7 @@
       --yellow: #efb72e;
 
       --max: 1280px;
+
     }
 
 
@@ -44,13 +45,16 @@
 
 
     html {
+
       scroll-behavior: smooth;
 
       background: var(--bg);
+
     }
 
 
     body {
+
       margin: 0;
 
       background: var(--bg);
@@ -63,6 +67,7 @@
         sans-serif;
 
       -webkit-font-smoothing: antialiased;
+
     }
 
 
@@ -89,6 +94,7 @@
 
 
     .site-header {
+
       position: fixed;
 
       z-index: 100;
@@ -118,10 +124,12 @@
 
       -webkit-backdrop-filter:
         blur(8px);
+
     }
 
 
     .brand {
+
       width: 138px;
       height: 42px;
 
@@ -130,30 +138,33 @@
       align-items: center;
 
       text-decoration: none;
+
     }
 
 
     .brand img {
+
       width: 132px;
       height: auto;
 
       object-fit: contain;
 
-      object-position:
-        left center;
     }
 
 
     .main-nav {
+
       display: flex;
 
       align-items: center;
 
       gap: 26px;
+
     }
 
 
     .main-nav a {
+
       text-decoration: none;
 
       text-transform: uppercase;
@@ -166,6 +177,7 @@
 
       transition:
         opacity .2s ease;
+
     }
 
 
@@ -175,6 +187,7 @@
 
 
     .menu-toggle {
+
       display: none;
 
       padding: 0;
@@ -193,6 +206,7 @@
       letter-spacing: .15em;
 
       cursor: pointer;
+
     }
 
 
@@ -203,6 +217,7 @@
 
 
     .hero {
+
       position: relative;
 
       min-height: 100svh;
@@ -217,10 +232,12 @@
         145px
         22px
         58px;
+
     }
 
 
     .hero-video {
+
       position: absolute;
 
       z-index: 0;
@@ -234,10 +251,12 @@
 
       object-position:
         center center;
+
     }
 
 
     .hero-overlay {
+
       position: absolute;
 
       z-index: 1;
@@ -247,6 +266,7 @@
       background:
 
         linear-gradient(
+
           to bottom,
 
           rgba(0,0,0,.02) 0%,
@@ -256,11 +276,14 @@
           rgba(0,0,0,.18) 58%,
 
           rgba(0,0,0,.84) 100%
+
         );
+
     }
 
 
     .hero-overlay::after {
+
       content: "";
 
       position: absolute;
@@ -270,6 +293,7 @@
       background:
 
         linear-gradient(
+
           90deg,
 
           rgba(0,0,0,.43),
@@ -277,7 +301,9 @@
           rgba(0,0,0,.05) 60%,
 
           rgba(0,0,0,.01)
+
         );
+
     }
 
 
@@ -288,6 +314,7 @@
 
 
     .hero-outline-logo {
+
       position: absolute;
 
       z-index: 2;
@@ -304,17 +331,20 @@
       transform:
         translate(-50%, -50%);
 
-      opacity: .9;
+      opacity: .90;
 
       pointer-events: none;
 
       user-select: none;
+
     }
 
 
     .hero-outline-logo img {
+
       width: 100%;
       height: auto;
+
     }
 
 
@@ -325,6 +355,7 @@
 
 
     .hero-content {
+
       position: relative;
 
       z-index: 3;
@@ -337,10 +368,12 @@
 
       margin:
         0 auto;
+
     }
 
 
     .eyebrow {
+
       margin:
         0 0 14px;
 
@@ -351,10 +384,12 @@
       letter-spacing: .19em;
 
       text-transform: uppercase;
+
     }
 
 
     .hero h1 {
+
       max-width: 690px;
 
       margin: 0;
@@ -371,10 +406,12 @@
       font-weight: 900;
 
       letter-spacing: -.065em;
+
     }
 
 
     .hero-copy {
+
       margin:
         22px 0 0;
 
@@ -386,10 +423,12 @@
         );
 
       letter-spacing: -.02em;
+
     }
 
 
     .hero-actions {
+
       margin-top: 28px;
 
       display: flex;
@@ -397,10 +436,12 @@
       flex-wrap: wrap;
 
       gap: 10px;
+
     }
 
 
     .button {
+
       min-height: 48px;
 
       padding:
@@ -427,38 +468,48 @@
       transition:
         background .2s ease,
         color .2s ease;
+
     }
 
 
     .button-primary {
+
       background: white;
 
       color: black;
+
     }
 
 
     .button-primary:hover {
+
       background: transparent;
 
       color: white;
+
     }
 
 
     .button-secondary {
+
       background: transparent;
 
       color: white;
+
     }
 
 
     .button-secondary:hover {
+
       background: white;
 
       color: black;
+
     }
 
 
     .scroll-cue {
+
       position: absolute;
 
       z-index: 4;
@@ -469,6 +520,7 @@
       font-size: 24px;
 
       text-decoration: none;
+
     }
 
 
@@ -479,6 +531,7 @@
 
 
     .section {
+
       width:
         min(
           var(--max),
@@ -490,10 +543,12 @@
 
       padding:
         115px 0;
+
     }
 
 
     .section-head {
+
       display: grid;
 
       grid-template-columns:
@@ -502,10 +557,12 @@
       gap: 50px;
 
       margin-bottom: 50px;
+
     }
 
 
     .kicker {
+
       margin:
         5px 0 0;
 
@@ -516,10 +573,12 @@
       letter-spacing: .18em;
 
       text-transform: uppercase;
+
     }
 
 
     .section h2 {
+
       margin: 0;
 
       font-size:
@@ -532,6 +591,7 @@
       line-height: .93;
 
       letter-spacing: -.06em;
+
     }
 
 
@@ -542,36 +602,45 @@
 
 
     .identity-section {
+
       padding-bottom: 135px;
+
     }
 
 
     .identity-grid {
+
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
       gap: 16px;
+
     }
 
 
     .identity-card {
+
       overflow: hidden;
 
       background: #111;
 
       border:
         1px solid var(--line);
+
     }
 
 
     .identity-image {
+
       overflow: hidden;
+
     }
 
 
     .identity-card img {
+
       width: 100%;
 
       aspect-ratio:
@@ -581,33 +650,41 @@
 
       transition:
         transform .6s ease;
+
     }
 
 
     .identity-card:hover img {
+
       transform:
         scale(1.025);
+
     }
 
 
     .identity-caption {
+
       padding: 18px;
 
       display: flex;
 
       align-items: center;
       justify-content: space-between;
+
     }
 
 
     .identity-caption strong {
+
       font-size: 12px;
 
       letter-spacing: .14em;
+
     }
 
 
     .identity-caption span {
+
       color: var(--muted);
 
       font-size: 9px;
@@ -615,6 +692,7 @@
       letter-spacing: .13em;
 
       text-transform: uppercase;
+
     }
 
 
@@ -625,12 +703,15 @@
 
 
     .week-program {
+
       border-top:
         1px solid var(--line);
+
     }
 
 
     .week-head {
+
       margin-bottom: 48px;
 
       display: flex;
@@ -639,10 +720,12 @@
       align-items: flex-end;
 
       gap: 40px;
+
     }
 
 
     .week-head h2 {
+
       margin: 0;
 
       font-size:
@@ -655,10 +738,12 @@
       line-height: .88;
 
       letter-spacing: -.06em;
+
     }
 
 
     .week-intro {
+
       max-width: 390px;
 
       margin: 0;
@@ -668,6 +753,7 @@
       font-size: 14px;
 
       line-height: 1.55;
+
     }
 
 
@@ -678,16 +764,19 @@
 
 
     .event-grid {
+
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
       gap: 18px;
+
     }
 
 
     .event-card {
+
       overflow: hidden;
 
       background:
@@ -699,26 +788,32 @@
       transition:
         transform .25s ease,
         border-color .25s ease;
+
     }
 
 
     .event-card:hover {
+
       transform:
         translateY(-6px);
 
       border-color:
         rgba(255,255,255,.32);
+
     }
 
 
     .event-image-link {
+
       display: block;
 
       text-decoration: none;
+
     }
 
 
     .event-image {
+
       position: relative;
 
       aspect-ratio:
@@ -726,12 +821,13 @@
 
       overflow: hidden;
 
-      background:
-        #111;
+      background: #111;
+
     }
 
 
     .event-image img {
+
       position: relative;
 
       z-index: 2;
@@ -743,20 +839,25 @@
 
       transition:
         transform .5s ease;
+
     }
 
 
     .event-card:hover
     .event-image img {
+
       transform:
         scale(1.025);
+
     }
 
 
 
-    /* Fallback flyer */
+    /* PLACEHOLDER FLYER */
+
 
     .flyer-placeholder {
+
       position: absolute;
 
       z-index: 1;
@@ -764,6 +865,8 @@
       inset: 0;
 
       display: flex;
+
+      flex-direction: column;
 
       align-items: center;
       justify-content: center;
@@ -774,42 +877,73 @@
 
         linear-gradient(
           145deg,
-
-          #141414,
-
-          #080808
+          #171717,
+          #090909
         );
-
-      color: #777;
 
       text-align: center;
 
-      font-size: 11px;
+    }
+
+
+    .flyer-placeholder span {
+
+      color: #777;
+
+      font-size: 9px;
 
       font-weight: 800;
 
       letter-spacing: .16em;
 
       text-transform: uppercase;
+
+    }
+
+
+    .flyer-placeholder strong {
+
+      margin-top: 15px;
+
+      color: #ddd;
+
+      font-size:
+        clamp(
+          28px,
+          3vw,
+          44px
+        );
+
+      line-height: .92;
+
+      letter-spacing: -.05em;
+
+      text-transform: uppercase;
+
     }
 
 
     .event-info {
+
       padding: 20px;
+
     }
 
 
     .event-meta {
+
       display: flex;
 
       justify-content: space-between;
 
       gap: 15px;
+
     }
 
 
     .event-day,
     .event-date {
+
       font-size: 10px;
 
       font-weight: 800;
@@ -817,15 +951,20 @@
       letter-spacing: .14em;
 
       text-transform: uppercase;
+
     }
 
 
     .event-date {
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
     }
 
 
     .event-title {
+
       margin:
         24px 0
         5px;
@@ -844,14 +983,17 @@
       letter-spacing: -.05em;
 
       text-transform: uppercase;
+
     }
 
 
     .event-type {
+
       margin:
         0 0 25px;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 10px;
 
@@ -860,6 +1002,7 @@
       letter-spacing: .12em;
 
       text-transform: uppercase;
+
     }
 
 
@@ -870,22 +1013,25 @@
 
 
     .lineup {
+
       margin:
         0 0 26px;
 
       border-top:
         1px solid var(--line);
+
     }
 
 
     .lineup-row {
+
       padding:
         13px 0;
 
       display: grid;
 
       grid-template-columns:
-        minmax(100px, 1fr)
+        minmax(100px,1fr)
         auto;
 
       gap: 12px;
@@ -894,30 +1040,37 @@
 
       border-bottom:
         1px solid var(--line);
+
     }
 
 
     .lineup-name {
+
       font-size: 12px;
 
       font-weight: 750;
 
       letter-spacing: .03em;
+
     }
 
 
     .artist-links {
+
       display: flex;
 
       flex-wrap: wrap;
 
       justify-content: flex-end;
 
-      gap: 6px 10px;
+      gap:
+        6px 10px;
+
     }
 
 
     .artist-links a {
+
       color:
         #c7c4be;
 
@@ -933,15 +1086,19 @@
 
       transition:
         color .2s ease;
+
     }
 
 
     .artist-links a:hover {
+
       color: white;
+
     }
 
 
     .event-link {
+
       display: inline-block;
 
       text-decoration: none;
@@ -953,41 +1110,53 @@
       font-weight: 800;
 
       letter-spacing: .13em;
+
     }
 
 
 
-    /* Couleurs */
+    /* COULEURS SOIRS */
+
 
     .event-thursday {
+
       border-bottom:
         3px solid #e8e2d7;
+
     }
 
 
     .event-friday {
+
       border-bottom:
         3px solid var(--red);
+
     }
 
 
     .event-friday
     .event-link {
+
       color:
         #e62b25;
+
     }
 
 
     .event-saturday {
+
       border-bottom:
         3px solid var(--orange);
+
     }
 
 
     .event-saturday
     .event-link {
+
       color:
         var(--orange);
+
     }
 
 
@@ -998,6 +1167,7 @@
 
 
     .club {
+
       display: grid;
 
       grid-template-columns:
@@ -1006,10 +1176,12 @@
       gap: 10vw;
 
       align-items: end;
+
     }
 
 
     .lead {
+
       max-width: 34ch;
 
       margin:
@@ -1026,16 +1198,20 @@
         );
 
       line-height: 1.32;
+
     }
 
 
     .club-points {
+
       border-top:
         1px solid var(--line);
+
     }
 
 
     .club-points > div {
+
       padding:
         20px 0;
 
@@ -1050,18 +1226,22 @@
 
       border-bottom:
         1px solid var(--line);
+
     }
 
 
     .club-points span {
+
       color:
         var(--muted);
 
       font-size: 10px;
+
     }
 
 
     .club-points strong {
+
       font-size:
         clamp(
           24px,
@@ -1070,6 +1250,7 @@
         );
 
       letter-spacing: -.04em;
+
     }
 
 
@@ -1080,6 +1261,7 @@
 
 
     .marquee {
+
       overflow: hidden;
 
       padding:
@@ -1090,10 +1272,12 @@
 
       border-bottom:
         1px solid var(--line);
+
     }
 
 
     .marquee-track {
+
       width: max-content;
 
       display: flex;
@@ -1103,10 +1287,12 @@
         28s
         linear
         infinite;
+
     }
 
 
     .marquee span {
+
       padding-right:
         2rem;
 
@@ -1117,14 +1303,17 @@
       font-weight: 800;
 
       letter-spacing: .16em;
+
     }
 
 
     @keyframes marquee {
 
       to {
+
         transform:
           translateX(-50%);
+
       }
 
     }
@@ -1137,6 +1326,7 @@
 
 
     .info-grid {
+
       display: grid;
 
       grid-template-columns:
@@ -1144,10 +1334,12 @@
 
       border-top:
         1px solid var(--line);
+
     }
 
 
     .info-block {
+
       min-height: 240px;
 
       padding:
@@ -1156,20 +1348,26 @@
 
       border-right:
         1px solid var(--line);
+
     }
 
 
     .info-block + .info-block {
+
       padding-left: 22px;
+
     }
 
 
     .info-block:last-child {
+
       border-right: 0;
+
     }
 
 
     .info-label {
+
       color:
         var(--muted);
 
@@ -1178,20 +1376,24 @@
       letter-spacing: .16em;
 
       text-transform: uppercase;
+
     }
 
 
     .info-block p {
+
       margin:
         38px 0;
 
       font-size: 19px;
 
       line-height: 1.4;
+
     }
 
 
     .info-block a {
+
       padding-bottom:
         4px;
 
@@ -1207,6 +1409,7 @@
       font-weight: 800;
 
       letter-spacing: .12em;
+
     }
 
 
@@ -1217,6 +1420,7 @@
 
 
     .contact {
+
       padding-top:
         135px;
 
@@ -1227,23 +1431,28 @@
         1px solid var(--line);
 
       text-align: center;
+
     }
 
 
     .contact h2 {
+
       max-width: 920px;
 
       margin:
         0 auto;
+
     }
 
 
     .contact-text {
+
       margin:
         27px 0;
 
       color:
         var(--muted);
+
     }
 
 
@@ -1254,6 +1463,7 @@
 
 
     .site-footer {
+
       width:
         min(
           var(--max),
@@ -1283,13 +1493,16 @@
       font-size: 10px;
 
       letter-spacing: .1em;
+
     }
 
 
     .site-footer a {
+
       color: white;
 
       text-decoration: none;
+
     }
 
 
@@ -1299,16 +1512,18 @@
     ================================================== */
 
 
-    @media
-    (max-width:900px) {
+    @media (max-width:900px) {
 
 
       .menu-toggle {
+
         display: block;
+
       }
 
 
       .main-nav {
+
         position: fixed;
 
         top: 66px;
@@ -1326,43 +1541,55 @@
           36px;
 
         background: #000;
+
       }
 
 
       .main-nav.is-open {
+
         display: flex;
+
       }
 
 
       .main-nav a {
+
         font-size: 17px;
+
       }
 
 
       .hero-outline-logo {
+
         top: 37%;
 
         width: 90vw;
+
       }
 
 
       .section-head {
+
         grid-template-columns:
           1fr;
 
         gap: 10px;
+
       }
 
 
       .identity-grid,
       .event-grid {
+
         grid-template-columns:
           repeat(2,1fr);
+
       }
 
 
       .identity-card:last-child,
       .event-card:last-child {
+
         grid-column:
           1 / -1;
 
@@ -1370,30 +1597,39 @@
 
         margin:
           0 auto;
+
       }
 
 
       .week-head {
+
         display: block;
+
       }
 
 
       .week-intro {
+
         margin-top: 25px;
+
       }
 
 
       .club {
+
         grid-template-columns:
           1fr;
 
         gap: 60px;
+
       }
 
 
       .info-grid {
+
         grid-template-columns:
           1fr 1fr;
+
       }
 
     }
@@ -1405,44 +1641,54 @@
     ================================================== */
 
 
-    @media
-    (max-width:600px) {
+    @media (max-width:600px) {
 
 
       .site-header {
+
         padding:
           0 16px;
+
       }
 
 
       .brand {
+
         width: 112px;
+
       }
 
 
       .brand img {
+
         width: 108px;
+
       }
 
 
       .hero {
+
         padding:
           115px
           16px
           38px;
+
       }
 
 
       .hero-outline-logo {
+
         top: 31%;
 
         width: 96vw;
 
         opacity: .86;
+
       }
 
 
       .hero h1 {
+
         max-width: 360px;
 
         font-size:
@@ -1451,60 +1697,76 @@
             15vw,
             72px
           );
+
       }
 
 
       .hero-copy {
+
         font-size: 17px;
+
       }
 
 
       .section {
+
         width:
           calc(100% - 32px);
 
         padding:
           85px 0;
+
       }
 
 
       .identity-grid,
       .event-grid {
+
         grid-template-columns:
           1fr;
+
       }
 
 
       .identity-card:last-child,
       .event-card:last-child {
+
         grid-column: auto;
 
         width: 100%;
 
         margin: 0;
+
       }
 
 
       .lineup-row {
+
         grid-template-columns:
           1fr;
+
       }
 
 
       .artist-links {
+
         justify-content:
           flex-start;
+
       }
 
 
       .info-grid {
+
         grid-template-columns:
           1fr;
+
       }
 
 
       .info-block,
       .info-block + .info-block {
+
         min-height: 195px;
 
         padding:
@@ -1514,21 +1776,26 @@
 
         border-top:
           1px solid var(--line);
+
       }
 
 
       .site-footer {
+
         width:
           calc(100% - 32px);
 
         grid-template-columns:
           1fr auto;
+
       }
 
 
       .site-footer
       span:nth-child(2) {
+
         display: none;
+
       }
 
     }
@@ -1536,26 +1803,33 @@
 
 
     @media
-    (prefers-reduced-motion:reduce) {
+    (prefers-reduced-motion: reduce) {
 
 
       html {
+
         scroll-behavior: auto;
+
       }
 
 
       .marquee-track {
+
         animation: none;
+
       }
 
 
       .identity-card img,
       .event-card,
       .event-image img {
+
         transition: none;
+
       }
 
     }
+
 
   </style>
 
@@ -1664,12 +1938,6 @@
 
 
 
-  <!--
-       GRAND LOGO DANCETERIA
-       CONTOUR UNIQUEMENT
-  -->
-
-
   <div
     class="hero-outline-logo"
     aria-hidden="true"
@@ -1776,9 +2044,6 @@
 
 
 
-    <!-- JEUDI -->
-
-
     <article class="identity-card">
 
 
@@ -1809,9 +2074,6 @@
 
 
 
-    <!-- VENDREDI -->
-
-
     <article class="identity-card">
 
 
@@ -1840,9 +2102,6 @@
 
     </article>
 
-
-
-    <!-- SAMEDI -->
 
 
     <article class="identity-card">
@@ -1882,13 +2141,11 @@
 
 
 <!-- ==================================================
-     PROGRAMMATION DE LA SEMAINE
+     THIS WEEK
 ================================================== -->
 
 
-<section
-  class="section week-program"
->
+<section class="section week-program">
 
 
   <div class="week-head">
@@ -1914,8 +2171,8 @@
     <p class="week-intro">
 
       La programmation change chaque semaine.
-      Retrouvez les artistes, les soirées
-      et les billets sur Shotgun.
+      Découvrez les artistes et les soirées
+      à venir à Danceteria.
 
     </p>
 
@@ -1929,7 +2186,7 @@
 
 
     <!-- ==================================================
-         JEUDI — VERSATYL
+         JEUDI
     ================================================== -->
 
 
@@ -1949,9 +2206,17 @@
         <div class="event-image">
 
 
-          <span class="flyer-placeholder">
-            Flyer jeudi
-          </span>
+          <div class="flyer-placeholder">
+
+            <span>
+              Jeudi 03.09
+            </span>
+
+            <strong>
+              Versatyl
+            </strong>
+
+          </div>
 
 
           <img
@@ -1980,7 +2245,7 @@
 
 
           <span class="event-date">
-            03.09
+            03.09.26
           </span>
 
 
@@ -1994,7 +2259,7 @@
 
 
         <p class="event-type">
-          Multi-room
+          House · Techno · Hard Techno
         </p>
 
 
@@ -2005,16 +2270,14 @@
 
           <div class="lineup-row">
 
-
             <span class="lineup-name">
               DJ Tiger
             </span>
 
-
             <div class="artist-links">
 
               <a
-                href="https://www.instagram.com/theo__djt"
+                href="https://www.instagram.com/theo__djt/"
                 target="_blank"
                 rel="noopener"
               >
@@ -2023,23 +2286,20 @@
 
             </div>
 
-
           </div>
 
 
 
           <div class="lineup-row">
-
 
             <span class="lineup-name">
               Tetris
             </span>
 
-
             <div class="artist-links">
 
               <a
-                href="https://www.instagram.com/t3tr.s"
+                href="https://www.instagram.com/t3tr.s/"
                 target="_blank"
                 rel="noopener"
               >
@@ -2048,30 +2308,25 @@
 
             </div>
 
-
           </div>
 
 
 
           <div class="lineup-row">
 
-
             <span class="lineup-name">
               DJMX
             </span>
 
-
             <div class="artist-links">
 
-
               <a
-                href="https://www.instagram.com/djmx.wav"
+                href="https://www.instagram.com/djmx.wav/"
                 target="_blank"
                 rel="noopener"
               >
                 Instagram ↗
               </a>
-
 
               <a
                 href="https://soundcloud.com/jimmy-berthoud"
@@ -2081,9 +2336,7 @@
                 SoundCloud ↗
               </a>
 
-
             </div>
-
 
           </div>
 
@@ -2091,23 +2344,19 @@
 
           <div class="lineup-row">
 
-
             <span class="lineup-name">
               Eloy.444
             </span>
 
-
             <div class="artist-links">
 
-
               <a
-                href="https://www.instagram.com/elyo.444"
+                href="https://www.instagram.com/elyo.444/"
                 target="_blank"
                 rel="noopener"
               >
                 Instagram ↗
               </a>
-
 
               <a
                 href="https://soundcloud.com/e-l-y-o"
@@ -2117,9 +2366,7 @@
                 SoundCloud ↗
               </a>
 
-
             </div>
-
 
           </div>
 
@@ -2127,23 +2374,19 @@
 
           <div class="lineup-row">
 
-
             <span class="lineup-name">
               Nofame999
             </span>
 
-
             <div class="artist-links">
 
-
               <a
-                href="https://www.instagram.com/nofame999"
+                href="https://www.instagram.com/nofame999/"
                 target="_blank"
                 rel="noopener"
               >
                 Instagram ↗
               </a>
-
 
               <a
                 href="https://soundcloud.com/nofame999"
@@ -2153,9 +2396,7 @@
                 SoundCloud ↗
               </a>
 
-
             </div>
-
 
           </div>
 
@@ -2182,7 +2423,7 @@
 
 
     <!-- ==================================================
-         VENDREDI — CHRIS GAVIN
+         VENDREDI
     ================================================== -->
 
 
@@ -2202,9 +2443,17 @@
         <div class="event-image">
 
 
-          <span class="flyer-placeholder">
-            Flyer vendredi
-          </span>
+          <div class="flyer-placeholder">
+
+            <span>
+              Vendredi 04.09
+            </span>
+
+            <strong>
+              Chris Gavin
+            </strong>
+
+          </div>
 
 
           <img
@@ -2233,7 +2482,7 @@
 
 
           <span class="event-date">
-            04.09
+            04.09.26
           </span>
 
 
@@ -2321,7 +2570,7 @@
 
 
     <!-- ==================================================
-         SAMEDI — JACK DE MARSEILLE
+         SAMEDI
     ================================================== -->
 
 
@@ -2341,9 +2590,17 @@
         <div class="event-image">
 
 
-          <span class="flyer-placeholder">
-            Flyer samedi
-          </span>
+          <div class="flyer-placeholder">
+
+            <span>
+              Samedi 05.09
+            </span>
+
+            <strong>
+              Jack de Marseille
+            </strong>
+
+          </div>
 
 
           <img
@@ -2372,7 +2629,7 @@
 
 
           <span class="event-date">
-            05.09
+            05.09.26
           </span>
 
 
