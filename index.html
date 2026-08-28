@@ -853,7 +853,9 @@
 
 
 
-    /* PLACEHOLDER FLYER */
+    /* ==================================================
+       PLACEHOLDER FLYER
+    ================================================== */
 
 
     .flyer-placeholder {
@@ -1097,25 +1099,65 @@
     }
 
 
-    .event-link {
 
-      display: inline-block;
+    /* ==================================================
+       BOUTON SHOTGUN
+    ================================================== */
+
+
+    .shotgun-button {
+
+      min-height: 42px;
+
+      padding:
+        0 17px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: white;
+
+      color: black;
+
+      border:
+        1px solid white;
 
       text-decoration: none;
 
       text-transform: uppercase;
 
-      font-size: 10px;
+      font-size: 9px;
 
-      font-weight: 800;
+      font-weight: 850;
 
-      letter-spacing: .13em;
+      letter-spacing: .14em;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+    }
+
+
+    .shotgun-button:hover {
+
+      background: transparent;
+
+      color: white;
+
+      transform:
+        translateY(-2px);
 
     }
 
 
 
-    /* COULEURS SOIRS */
+    /* ==================================================
+       COULEURS SOIRS
+    ================================================== */
 
 
     .event-thursday {
@@ -1134,28 +1176,10 @@
     }
 
 
-    .event-friday
-    .event-link {
-
-      color:
-        #e62b25;
-
-    }
-
-
     .event-saturday {
 
       border-bottom:
         3px solid var(--orange);
-
-    }
-
-
-    .event-saturday
-    .event-link {
-
-      color:
-        var(--orange);
 
     }
 
@@ -1752,6 +1776,15 @@
 
         justify-content:
           flex-start;
+
+      }
+
+
+      .shotgun-button {
+
+        width: 100%;
+
+        min-height: 46px;
 
       }
 
@@ -2406,12 +2439,12 @@
 
 
         <a
-          class="event-link"
+          class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
           rel="noopener"
         >
-          Voir la soirée ↗
+          SHOTGUN ↗
         </a>
 
 
@@ -2553,12 +2586,12 @@
 
 
         <a
-          class="event-link"
+          class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
           rel="noopener"
         >
-          Voir la soirée ↗
+          SHOTGUN ↗
         </a>
 
 
@@ -2700,12 +2733,12 @@
 
 
         <a
-          class="event-link"
+          class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
           rel="noopener"
         >
-          Voir la soirée ↗
+          SHOTGUN ↗
         </a>
 
 
