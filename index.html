@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="Danceteria Marseille — club, bar et lieu de nuit au 18 rue Saint-Saëns, Marseille." />
+  <title>Danceteria — Marseille</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Danceteria — retour en haut">
+      <!-- Remplacer ce texte par <img src="assets/logo.png" alt="Danceteria"> lorsque le logo est ajouté. -->
+      <span>DANCETERIA</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">MENU</button>
+    <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+      <a href="#agenda">Agenda</a>
+      <a href="#club">Le club</a>
+      <a href="#infos">Infos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true">
+        <span class="day day-thu"></span>
+        <span class="day day-fri"></span>
+        <span class="day day-sat"></span>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">MARSEILLE — 18 RUE SAINT-SAËNS</p>
+        <h1 id="hero-title">More than a Bar.</h1>
+        <p class="hero-copy">Dancing. Speaking. Chilling. Drinking.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#agenda">Voir la programmation</a>
+          <a class="button button-ghost" href="#infos">Infos pratiques</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#agenda" aria-label="Descendre vers l'agenda">↓</a>
+    </section>
+
+    <section class="section agenda" id="agenda" aria-labelledby="agenda-title">
+      <div class="section-head">
+        <p class="kicker">PROGRAMMATION</p>
+        <h2 id="agenda-title">Three nights. Three identities.</h2>
+      </div>
+
+      <div class="night-grid">
+        <article class="night night-thu">
+          <div class="night-number">01</div>
+          <div>
+            <p class="night-label">JEUDI</p>
+            <h3>THURSDAY</h3>
+            <p>Une nuit plus libre, hybride et imprévisible.</p>
+          </div>
+          <a href="#contact" class="night-link">PROGRAMMATION ↗</a>
+        </article>
+
+        <article class="night night-fri">
+          <div class="night-number">02</div>
+          <div>
+            <p class="night-label">VENDREDI</p>
+            <h3>FRIDAY</h3>
+            <p>Guests, collectifs et résidents dans l’énergie Danceteria.</p>
+          </div>
+          <a href="#contact" class="night-link">PROGRAMMATION ↗</a>
+        </article>
+
+        <article class="night night-sat">
+          <div class="night-number">03</div>
+          <div>
+            <p class="night-label">SAMEDI</p>
+            <h3>SATURDAY</h3>
+            <p>Le week-end monte d’un cran jusqu’au bout de la nuit.</p>
+          </div>
+          <a href="#contact" class="night-link">PROGRAMMATION ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section club" id="club" aria-labelledby="club-title">
+      <div class="club-statement">
+        <p class="kicker">DANCETERIA</p>
+        <h2 id="club-title">Un lieu de nuit au cœur de Marseille.</h2>
+        <p class="lead">Un espace pensé pour circuler entre la musique, le bar, les rencontres et les respirations — sans séparer les usages.</p>
+      </div>
+
+      <div class="club-points" role="list" aria-label="Les quatre espaces Danceteria">
+        <div role="listitem"><span>01</span><strong>DANCING</strong></div>
+        <div role="listitem"><span>02</span><strong>SPEAKING</strong></div>
+        <div role="listitem"><span>03</span><strong>CHILLING</strong></div>
+        <div role="listitem"><span>04</span><strong>DRINKING</strong></div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Ambiance Danceteria">
+      <div class="marquee-track">
+        <span>MARSEILLE · MUSIC · NIGHTLIFE · DANCETERIA · MARSEILLE · MUSIC · NIGHTLIFE · DANCETERIA ·</span>
+        <span aria-hidden="true">MARSEILLE · MUSIC · NIGHTLIFE · DANCETERIA · MARSEILLE · MUSIC · NIGHTLIFE · DANCETERIA ·</span>
+      </div>
+    </section>
+
+    <section class="section infos" id="infos" aria-labelledby="infos-title">
+      <div class="section-head">
+        <p class="kicker">INFOS PRATIQUES</p>
+        <h2 id="infos-title">Find us after dark.</h2>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-block">
+          <span class="info-label">ADRESSE</span>
+          <p>18 rue Saint-Saëns<br>13001 Marseille</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=18+Rue+Saint-Saens+13001+Marseille" target="_blank" rel="noreferrer">OUVRIR DANS MAPS ↗</a>
+        </div>
+        <div class="info-block">
+          <span class="info-label">NUITS</span>
+          <p>Jeudi<br>Vendredi<br>Samedi</p>
+        </div>
+        <div class="info-block">
+          <span class="info-label">BILLETS</span>
+          <p>Programmation et préventes en ligne.</p>
+          <!-- Remplacer # par l'URL Shotgun officielle. -->
+          <a href="#" data-placeholder-link>SHOTGUN ↗</a>
+        </div>
+        <div class="info-block">
+          <span class="info-label">SOCIAL</span>
+          <p>Line-ups, stories, dernières infos.</p>
+          <!-- Remplacer # par l'URL Instagram officielle. -->
+          <a href="#" data-placeholder-link>INSTAGRAM ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <p class="kicker">CONTACT</p>
+      <h2 id="contact-title">See you downstairs.</h2>
+      <p>Booking, programmation, privatisation, partenariats.</p>
+      <a class="button button-primary" href="mailto:contact@danceteria.fr">CONTACTER DANCETERIA</a>
+      <p class="microcopy">Adresse email à confirmer avant mise en ligne.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> DANCETERIA</span>
+    <span>18 RUE SAINT-SAËNS — MARSEILLE</span>
+    <a href="#top">TOP ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
