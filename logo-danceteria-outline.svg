@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 2172 724"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Danceteria outline</title>
+  <desc id="desc">Contour blanc du logo Danceteria, intérieur transparent.</desc>
+
+  <defs>
+    <filter id="outline"
+            x="-10%" y="-20%"
+            width="120%" height="140%"
+            color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha"
+                    operator="dilate"
+                    radius="5"
+                    result="outer"/>
+      <feMorphology in="SourceAlpha"
+                    operator="erode"
+                    radius="5"
+                    result="inner"/>
+      <feComposite in="outer"
+                   in2="inner"
+                   operator="out"
+                   result="ring"/>
+      <feFlood flood-color="#ffffff"
+               flood-opacity="0.86"
+               result="white"/>
+      <feComposite in="white"
+                   in2="ring"
+                   operator="in"
+                   result="stroke"/>
+    </filter>
+  </defs>
+
+  <image href="logo-danceteria-transparent.png"
+         x="0" y="0"
+         width="2172" height="724"
+         preserveAspectRatio="xMidYMid meet"
+         filter="url(#outline)"/>
+</svg>
