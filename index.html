@@ -23,8 +23,10 @@
     :root {
       --bg: #070707;
       --surface: #111111;
+
       --text: #f4f2ed;
       --muted: #99958f;
+
       --line: rgba(255,255,255,.14);
 
       --red: #c82019;
@@ -79,10 +81,13 @@
 
 
 
-    /* HEADER */
+    /* ==================================================
+       HEADER
+    ================================================== */
 
     .site-header {
       position: fixed;
+
       z-index: 100;
 
       top: 0;
@@ -130,16 +135,19 @@
     .main-nav {
       display: flex;
       align-items: center;
+
       gap: 26px;
     }
 
 
     .main-nav a {
       text-decoration: none;
+
       text-transform: uppercase;
 
       font-size: 10px;
       font-weight: 700;
+
       letter-spacing: .15em;
 
       transition: opacity .2s ease;
@@ -155,14 +163,17 @@
       display: none;
 
       padding: 0;
+
       border: 0;
 
       background: transparent;
       color: white;
 
       font-family: inherit;
+
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .15em;
 
       cursor: pointer;
@@ -170,7 +181,9 @@
 
 
 
-    /* HERO */
+    /* ==================================================
+       HERO
+    ================================================== */
 
     .hero {
       position: relative;
@@ -191,6 +204,7 @@
 
     .hero-video {
       position: absolute;
+
       z-index: 0;
 
       inset: 0;
@@ -205,6 +219,7 @@
 
     .hero-overlay {
       position: absolute;
+
       z-index: 1;
 
       inset: 0;
@@ -224,6 +239,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -238,6 +254,7 @@
 
     .hero-content {
       position: relative;
+
       z-index: 2;
 
       width: min(var(--max), 100%);
@@ -251,6 +268,7 @@
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .19em;
 
       text-transform: uppercase;
@@ -272,6 +290,7 @@
       line-height: .81;
 
       font-weight: 900;
+
       letter-spacing: -.075em;
     }
 
@@ -312,10 +331,12 @@
       border: 1px solid white;
 
       text-decoration: none;
+
       text-transform: uppercase;
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .13em;
 
       transition:
@@ -350,6 +371,7 @@
 
     .scroll-cue {
       position: absolute;
+
       z-index: 3;
 
       right: 24px;
@@ -362,7 +384,9 @@
 
 
 
-    /* GENERAL */
+    /* ==================================================
+       GENERAL
+    ================================================== */
 
     .section {
       width:
@@ -385,7 +409,7 @@
 
       gap: 50px;
 
-      margin-bottom: 44px;
+      margin-bottom: 52px;
     }
 
 
@@ -394,6 +418,7 @@
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .18em;
 
       text-transform: uppercase;
@@ -417,123 +442,194 @@
 
 
 
-    /* PROGRAMMATION */
+    /* ==================================================
+       PROGRAMMATION
+    ================================================== */
 
-    .night-grid {
+    .program-grid {
       display: grid;
 
       grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      gap: 18px;
     }
 
 
-    .night {
-      min-height: 455px;
+    .program-card {
+      position: relative;
 
-      padding: 20px;
+      overflow: hidden;
+
+      background: #0c0c0c;
+
+      border:
+        1px solid var(--line);
+
+      text-decoration: none;
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease;
+    }
+
+
+    .program-card:hover {
+      transform:
+        translateY(-7px);
+
+      border-color:
+        rgba(255,255,255,.42);
+    }
+
+
+    .poster {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 4 / 5;
+    }
+
+
+    .poster img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .55s ease,
+        filter .55s ease;
+    }
+
+
+    .program-card:hover .poster img {
+      transform:
+        scale(1.025);
+
+      filter:
+        brightness(1.06);
+    }
+
+
+    .program-info {
+      min-height: 180px;
+
+      padding: 22px;
 
       display: grid;
 
       grid-template-rows:
         auto 1fr auto;
-
-      border-right:
-        1px solid var(--line);
-
-      transition:
-        transform .25s ease;
     }
 
 
-    .night:last-child {
-      border-right: 0;
+    .program-top {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
     }
 
 
-    .night:hover {
-      transform: translateY(-5px);
-    }
-
-
-    .night-thu {
-      background: #111;
-    }
-
-
-    .night-fri {
-      background: var(--red);
-    }
-
-
-    .night-sat {
-      background:
-        linear-gradient(
-          145deg,
-          var(--orange),
-          var(--yellow)
-        );
-
-      color: #070707;
-    }
-
-
-    .night-number {
-      opacity: .65;
-
+    .program-day,
+    .program-date {
       font-size: 10px;
-      letter-spacing: .14em;
-    }
 
-
-    .night-label {
-      margin: 7px 0 0;
-
-      font-size: 11px;
       font-weight: 800;
-      letter-spacing: .13em;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
     }
 
 
-    .night h3 {
-      margin: 8px 0 17px;
+    .program-date {
+      color: var(--muted);
+    }
+
+
+    .program-artist {
+      margin: 0;
 
       font-size:
         clamp(
-          37px,
-          4vw,
-          62px
+          27px,
+          3.4vw,
+          48px
         );
 
-      line-height: .9;
+      line-height: .92;
 
-      letter-spacing: -.06em;
-    }
+      font-weight: 800;
 
+      letter-spacing: -.045em;
 
-    .night p:not(.night-label) {
-      max-width: 30ch;
-
-      line-height: 1.5;
-
-      opacity: .78;
-    }
-
-
-    .night-link {
-      text-decoration: none;
       text-transform: uppercase;
+    }
+
+
+    .program-link {
+      margin-top: 28px;
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .13em;
+
+      text-transform: uppercase;
+    }
+
+
+    .program-card.thursday .program-link {
+      color: #eee8dd;
+    }
+
+
+    .program-card.friday {
+      border-bottom:
+        3px solid var(--red);
+    }
+
+
+    .program-card.friday .program-link {
+      color: #e62a25;
+    }
+
+
+    .program-card.saturday {
+      border-bottom:
+        3px solid var(--orange);
+    }
+
+
+    .program-card.saturday .program-link {
+      color: #f39324;
+    }
+
+
+    .program-note {
+      max-width: 680px;
+
+      margin:
+        35px 0 0 auto;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.55;
     }
 
 
 
-    /* CLUB */
+    /* ==================================================
+       CLUB
+    ================================================== */
 
     .club {
       display: grid;
@@ -566,7 +662,8 @@
 
 
     .club-points {
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid var(--line);
     }
 
 
@@ -607,15 +704,20 @@
 
 
 
-    /* MARQUEE */
+    /* ==================================================
+       MARQUEE
+    ================================================== */
 
     .marquee {
       overflow: hidden;
 
       padding: 15px 0;
 
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
 
@@ -636,27 +738,32 @@
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .16em;
     }
 
 
     @keyframes marquee {
       to {
-        transform: translateX(-50%);
+        transform:
+          translateX(-50%);
       }
     }
 
 
 
-    /* INFOS */
+    /* ==================================================
+       INFOS
+    ================================================== */
 
     .info-grid {
       display: grid;
 
       grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid var(--line);
     }
 
 
@@ -686,6 +793,7 @@
       color: var(--muted);
 
       font-size: 10px;
+
       letter-spacing: .16em;
 
       text-transform: uppercase;
@@ -708,16 +816,20 @@
         1px solid currentColor;
 
       text-decoration: none;
+
       text-transform: uppercase;
 
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: .12em;
     }
 
 
 
-    /* CONTACT */
+    /* ==================================================
+       CONTACT
+    ================================================== */
 
     .contact {
       border-top:
@@ -745,7 +857,9 @@
 
 
 
-    /* FOOTER */
+    /* ==================================================
+       FOOTER
+    ================================================== */
 
     .site-footer {
       width:
@@ -773,6 +887,7 @@
       color: var(--muted);
 
       font-size: 10px;
+
       letter-spacing: .1em;
     }
 
@@ -785,9 +900,11 @@
 
 
 
-    /* TABLET */
+    /* ==================================================
+       TABLET
+    ================================================== */
 
-    @media (max-width:900px) {
+    @media (max-width: 900px) {
 
       .site-header {
         height: 64px;
@@ -849,18 +966,20 @@
       }
 
 
-      .night-grid {
-        grid-template-columns: 1fr;
+      .program-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
 
-      .night {
-        min-height: 400px;
+      .program-card.saturday {
+        grid-column:
+          1 / -1;
 
-        border-right: 0;
+        width: 50%;
 
-        border-bottom:
-          1px solid rgba(255,255,255,.17);
+        margin:
+          0 auto;
       }
 
 
@@ -892,9 +1011,11 @@
 
 
 
-    /* MOBILE */
+    /* ==================================================
+       MOBILE
+    ================================================== */
 
-    @media (max-width:560px) {
+    @media (max-width: 600px) {
 
       .site-header {
         padding:
@@ -920,12 +1041,6 @@
       }
 
 
-      .hero-video {
-        object-position:
-          center center;
-      }
-
-
       .hero h1 {
         font-size:
           clamp(
@@ -941,17 +1056,46 @@
       }
 
 
-      .hero-actions {
-        gap: 8px;
-      }
-
-
       .section {
         width:
           calc(100% - 32px);
 
         padding:
           86px 0;
+      }
+
+
+      .program-grid {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+      }
+
+
+      .program-card.saturday {
+        grid-column: auto;
+
+        width: 100%;
+
+        margin: 0;
+      }
+
+
+      .poster {
+        aspect-ratio:
+          4 / 5;
+      }
+
+
+      .program-info {
+        min-height: 165px;
+
+        padding: 18px;
+      }
+
+
+      .program-artist {
+        font-size: 36px;
       }
 
 
@@ -995,6 +1139,7 @@
     }
 
 
+
     @media (prefers-reduced-motion: reduce) {
 
       html {
@@ -1006,6 +1151,12 @@
         animation: none;
       }
 
+
+      .poster img,
+      .program-card {
+        transition: none;
+      }
+
     }
 
 
@@ -1014,22 +1165,27 @@
 </head>
 
 
+
 <body>
 
 
 
 <header class="site-header">
 
+
   <a
     class="brand"
     href="#top"
     aria-label="Danceteria"
   >
+
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
+
   </a>
+
 
 
   <button
@@ -1042,10 +1198,12 @@
   </button>
 
 
+
   <nav
     class="main-nav"
     id="main-nav"
   >
+
     <a href="#agenda">
       Agenda
     </a>
@@ -1061,7 +1219,9 @@
     <a href="#contact">
       Contact
     </a>
+
   </nav>
+
 
 </header>
 
@@ -1072,12 +1232,15 @@
 
 
 
-  <!-- HERO -->
+  <!-- ==================================================
+       HERO
+  ================================================== -->
 
   <section
     class="hero"
     id="top"
   >
+
 
     <video
       class="hero-video"
@@ -1087,20 +1250,26 @@
       playsinline
       preload="auto"
     >
+
       <source
         src="hero.mp4.mov"
       >
+
     </video>
+
 
 
     <div class="hero-overlay"></div>
 
 
+
     <div class="hero-content">
+
 
       <p class="eyebrow">
         Marseille — 18 rue Saint-Saëns
       </p>
+
 
 
       <h1>
@@ -1109,12 +1278,15 @@
       </h1>
 
 
+
       <p class="hero-copy">
         Dancing. Speaking. Chilling. Drinking.
       </p>
 
 
+
       <div class="hero-actions">
+
 
         <a
           class="button button-primary"
@@ -1124,6 +1296,7 @@
         </a>
 
 
+
         <a
           class="button button-secondary"
           href="#infos"
@@ -1131,9 +1304,12 @@
           Infos pratiques
         </a>
 
+
       </div>
 
+
     </div>
+
 
 
     <a
@@ -1144,23 +1320,29 @@
       ↓
     </a>
 
+
   </section>
 
 
 
 
-  <!-- PROGRAMMATION -->
+  <!-- ==================================================
+       PROGRAMMATION
+  ================================================== -->
 
   <section
     class="section"
     id="agenda"
   >
 
+
     <div class="section-head">
+
 
       <p class="kicker">
         Programmation
       </p>
+
 
 
       <h2>
@@ -1168,158 +1350,217 @@
         Three identities.
       </h2>
 
+
+    </div>
+
+
+
+    <div class="program-grid">
+
+
+
+
+      <!-- JEUDI -->
+
+      <a
+        class="program-card thursday"
+        href="https://shotgun.live/fr/venues/danceteria"
+        target="_blank"
+        rel="noopener"
+      >
+
+
+        <div class="poster">
+
+          <img
+            src="jeudi.png"
+            alt="Danceteria Jeudi Thursday"
+          >
+
+        </div>
+
+
+
+        <div class="program-info">
+
+
+          <div class="program-top">
+
+            <span class="program-day">
+              JEUDI
+            </span>
+
+            <span class="program-date">
+              03.09
+            </span>
+
+          </div>
+
+
+
+          <h3 class="program-artist">
+            Versatyl
+          </h3>
+
+
+
+          <span class="program-link">
+            Programmation ↗
+          </span>
+
+
+        </div>
+
+
+      </a>
+
+
+
+
+      <!-- VENDREDI -->
+
+      <a
+        class="program-card friday"
+        href="https://shotgun.live/fr/venues/danceteria"
+        target="_blank"
+        rel="noopener"
+      >
+
+
+        <div class="poster">
+
+          <img
+            src="vendredi.png"
+            alt="Danceteria Vendredi Friday"
+          >
+
+        </div>
+
+
+
+        <div class="program-info">
+
+
+          <div class="program-top">
+
+            <span class="program-day">
+              VENDREDI
+            </span>
+
+            <span class="program-date">
+              04.09
+            </span>
+
+          </div>
+
+
+
+          <h3 class="program-artist">
+            Chris Gavin
+          </h3>
+
+
+
+          <span class="program-link">
+            Programmation ↗
+          </span>
+
+
+        </div>
+
+
+      </a>
+
+
+
+
+      <!-- SAMEDI -->
+
+      <a
+        class="program-card saturday"
+        href="https://shotgun.live/fr/venues/danceteria"
+        target="_blank"
+        rel="noopener"
+      >
+
+
+        <div class="poster">
+
+          <img
+            src="samedi.png"
+            alt="Danceteria Samedi Saturday"
+          >
+
+        </div>
+
+
+
+        <div class="program-info">
+
+
+          <div class="program-top">
+
+            <span class="program-day">
+              SAMEDI
+            </span>
+
+            <span class="program-date">
+              05.09
+            </span>
+
+          </div>
+
+
+
+          <h3 class="program-artist">
+            Jack de Marseille
+          </h3>
+
+
+
+          <span class="program-link">
+            Programmation ↗
+          </span>
+
+
+        </div>
+
+
+      </a>
+
+
     </div>
 
 
-    <div class="night-grid">
+    <p class="program-note">
+      Trois nuits, trois identités visuelles et musicales.
+      Retrouvez chaque semaine la programmation Danceteria
+      et les billets sur Shotgun.
+    </p>
 
-
-      <article
-        class="night night-thu"
-      >
-
-        <div>
-
-          <span class="night-number">
-            01
-          </span>
-
-          <p class="night-label">
-            JEUDI
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3>
-            THURSDAY
-          </h3>
-
-          <p>
-            Une nuit plus libre,
-            hybride et imprévisible.
-          </p>
-
-        </div>
-
-
-        <a
-          class="night-link"
-          href="#"
-        >
-          Programmation ↗
-        </a>
-
-      </article>
-
-
-
-      <article
-        class="night night-fri"
-      >
-
-        <div>
-
-          <span class="night-number">
-            02
-          </span>
-
-          <p class="night-label">
-            VENDREDI
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3>
-            FRIDAY
-          </h3>
-
-          <p>
-            Guests, collectifs
-            et résidents dans
-            l'énergie Danceteria.
-          </p>
-
-        </div>
-
-
-        <a
-          class="night-link"
-          href="#"
-        >
-          Programmation ↗
-        </a>
-
-      </article>
-
-
-
-      <article
-        class="night night-sat"
-      >
-
-        <div>
-
-          <span class="night-number">
-            03
-          </span>
-
-          <p class="night-label">
-            SAMEDI
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3>
-            SATURDAY
-          </h3>
-
-          <p>
-            Le week-end monte
-            d'un cran jusqu'au
-            bout de la nuit.
-          </p>
-
-        </div>
-
-
-        <a
-          class="night-link"
-          href="#"
-        >
-          Programmation ↗
-        </a>
-
-      </article>
-
-
-    </div>
 
   </section>
 
 
 
 
-  <!-- CLUB -->
+  <!-- ==================================================
+       CLUB
+  ================================================== -->
 
   <section
     class="section club"
     id="club"
   >
 
+
     <div>
+
 
       <p class="kicker">
         Danceteria
       </p>
+
 
 
       <h2>
@@ -1329,86 +1570,145 @@
       </h2>
 
 
+
       <p class="lead">
+
         Club, bar et lieu de rencontres.
+
         Danceteria défend une culture
+
         de la nuit ouverte,
+
         indépendante et musicale.
+
       </p>
 
+
     </div>
+
 
 
     <div class="club-points">
 
-      <div>
-        <span>01</span>
-        <strong>DANCING</strong>
-      </div>
 
       <div>
-        <span>02</span>
-        <strong>SPEAKING</strong>
+
+        <span>
+          01
+        </span>
+
+        <strong>
+          DANCING
+        </strong>
+
       </div>
 
-      <div>
-        <span>03</span>
-        <strong>CHILLING</strong>
-      </div>
+
 
       <div>
-        <span>04</span>
-        <strong>DRINKING</strong>
+
+        <span>
+          02
+        </span>
+
+        <strong>
+          SPEAKING
+        </strong>
+
       </div>
+
+
+
+      <div>
+
+        <span>
+          03
+        </span>
+
+        <strong>
+          CHILLING
+        </strong>
+
+      </div>
+
+
+
+      <div>
+
+        <span>
+          04
+        </span>
+
+        <strong>
+          DRINKING
+        </strong>
+
+      </div>
+
 
     </div>
+
 
   </section>
 
 
 
 
-  <!-- BANDEAU -->
+  <!-- ==================================================
+       MARQUEE
+  ================================================== -->
 
   <div class="marquee">
 
+
     <div class="marquee-track">
 
-      <span>
-        DANCETERIA — MORE THAN A CLUB — MARSEILLE —
-      </span>
 
       <span>
         DANCETERIA — MORE THAN A CLUB — MARSEILLE —
       </span>
 
-      <span>
-        DANCETERIA — MORE THAN A CLUB — MARSEILLE —
-      </span>
 
       <span>
         DANCETERIA — MORE THAN A CLUB — MARSEILLE —
       </span>
+
+
+      <span>
+        DANCETERIA — MORE THAN A CLUB — MARSEILLE —
+      </span>
+
+
+      <span>
+        DANCETERIA — MORE THAN A CLUB — MARSEILLE —
+      </span>
+
 
     </div>
+
 
   </div>
 
 
 
 
-  <!-- INFOS -->
+  <!-- ==================================================
+       INFOS
+  ================================================== -->
 
   <section
     class="section"
     id="infos"
   >
 
+
     <div class="section-head">
+
 
       <p class="kicker">
         Infos pratiques
       </p>
+
 
 
       <h2>
@@ -1416,23 +1716,30 @@
         tonight.
       </h2>
 
+
     </div>
+
 
 
     <div class="info-grid">
 
 
+
+
       <div class="info-block">
+
 
         <span class="info-label">
           Adresse
         </span>
 
 
+
         <p>
           18 rue Saint-Saëns<br>
           13001 Marseille
         </p>
+
 
 
         <a
@@ -1443,15 +1750,19 @@
           Google Maps ↗
         </a>
 
+
       </div>
+
 
 
 
       <div class="info-block">
 
+
         <span class="info-label">
           Horaires
         </span>
+
 
 
         <p>
@@ -1459,15 +1770,19 @@
           00:00 — 06:00
         </p>
 
+
       </div>
+
 
 
 
       <div class="info-block">
 
+
         <span class="info-label">
           Billetterie
         </span>
+
 
 
         <p>
@@ -1476,19 +1791,28 @@
         </p>
 
 
-        <a href="#">
+
+        <a
+          href="https://shotgun.live/fr/venues/danceteria"
+          target="_blank"
+          rel="noopener"
+        >
           Shotgun ↗
         </a>
+
 
       </div>
 
 
 
+
       <div class="info-block">
+
 
         <span class="info-label">
           Social
         </span>
+
 
 
         <p>
@@ -1497,30 +1821,41 @@
         </p>
 
 
-        <a href="#">
+
+        <a
+          href="https://www.instagram.com/danceteria_marseille/"
+          target="_blank"
+          rel="noopener"
+        >
           Instagram ↗
         </a>
+
 
       </div>
 
 
     </div>
 
+
   </section>
 
 
 
 
-  <!-- CONTACT -->
+  <!-- ==================================================
+       CONTACT
+  ================================================== -->
 
   <section
     class="section contact"
     id="contact"
   >
 
+
     <p class="kicker">
       Contact
     </p>
+
 
 
     <h2>
@@ -1530,10 +1865,12 @@
     </h2>
 
 
+
     <p class="contact-text">
       Pour toute demande professionnelle,
       artistique ou événementielle.
     </p>
+
 
 
     <a
@@ -1542,6 +1879,7 @@
     >
       Nous contacter
     </a>
+
 
   </section>
 
@@ -1554,9 +1892,11 @@
 
 <footer class="site-footer">
 
+
   <span>
     © 2026 DANCETERIA
   </span>
+
 
 
   <span>
@@ -1564,9 +1904,11 @@
   </span>
 
 
+
   <a href="#top">
     ↑ TOP
   </a>
+
 
 </footer>
 
@@ -1575,66 +1917,125 @@
 
 <script>
 
+
   const menuButton =
-    document.querySelector('.menu-toggle');
-
-  const nav =
-    document.querySelector('.main-nav');
-
-
-  if (menuButton && nav) {
-
-    menuButton.addEventListener(
-      'click',
-      () => {
-
-        const isOpen =
-          nav.classList.toggle('is-open');
-
-        menuButton.setAttribute(
-          'aria-expanded',
-          isOpen ? 'true' : 'false'
-        );
-
-        menuButton.textContent =
-          isOpen ? 'FERMER' : 'MENU';
-
-        document.body.classList.toggle(
-          'menu-open',
-          isOpen
-        );
-
-      }
+    document.querySelector(
+      '.menu-toggle'
     );
 
 
-    nav.querySelectorAll('a')
-      .forEach(link => {
+  const nav =
+    document.querySelector(
+      '.main-nav'
+    );
 
-        link.addEventListener(
-          'click',
-          () => {
 
-            nav.classList.remove('is-open');
 
-            menuButton.setAttribute(
-              'aria-expanded',
-              'false'
-            );
+  if (
+    menuButton &&
+    nav
+  ) {
 
-            menuButton.textContent =
-              'MENU';
 
-            document.body.classList.remove(
-              'menu-open'
-            );
+    menuButton.addEventListener(
 
-          }
+      'click',
+
+      () => {
+
+
+        const isOpen =
+          nav.classList.toggle(
+            'is-open'
+          );
+
+
+        menuButton.setAttribute(
+
+          'aria-expanded',
+
+          isOpen
+            ? 'true'
+            : 'false'
+
         );
 
-      });
+
+        menuButton.textContent =
+
+          isOpen
+            ? 'FERMER'
+            : 'MENU';
+
+
+        document.body
+          .classList
+          .toggle(
+
+            'menu-open',
+
+            isOpen
+
+          );
+
+
+      }
+
+    );
+
+
+
+    nav
+      .querySelectorAll('a')
+      .forEach(
+
+        link => {
+
+
+          link.addEventListener(
+
+            'click',
+
+            () => {
+
+
+              nav.classList.remove(
+                'is-open'
+              );
+
+
+              menuButton.setAttribute(
+
+                'aria-expanded',
+
+                'false'
+
+              );
+
+
+              menuButton.textContent =
+                'MENU';
+
+
+              document.body
+                .classList
+                .remove(
+                  'menu-open'
+                );
+
+
+            }
+
+          );
+
+
+        }
+
+      );
+
 
   }
+
 
 </script>
 
