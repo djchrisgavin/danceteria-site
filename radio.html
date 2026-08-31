@@ -43,18 +43,9 @@
     href="logo-danceteria.png"
   >
 
-
   <meta property="og:type" content="website">
-
-  <meta
-    property="og:site_name"
-    content="Danceteria"
-  >
-
-  <meta
-    property="og:title"
-    content="Danceteria Radio"
-  >
+  <meta property="og:site_name" content="Danceteria">
+  <meta property="og:title" content="Danceteria Radio">
 
   <meta
     property="og:description"
@@ -85,1037 +76,551 @@
       color-scheme: dark;
     }
 
-
     * {
       box-sizing: border-box;
     }
-
 
     html {
       background: var(--bg);
       scroll-behavior: smooth;
     }
 
-
     body {
       margin: 0;
       min-height: 100vh;
       background: var(--bg);
       color: var(--text);
-
-      font-family:
-        "Helvetica Neue",
-        Helvetica,
-        Arial,
-        sans-serif;
-
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-
 
     body.menu-open {
       overflow: hidden;
     }
-
 
     a {
       color: inherit;
     }
 
 
-
     /* HEADER */
 
-
     .site-header {
-
       position: fixed;
-
       z-index: 100;
-
       top: 0;
       left: 0;
       right: 0;
-
       height: 66px;
-
       padding: 0 20px;
-
       display: flex;
-
       align-items: center;
       justify-content: space-between;
-
       background: rgba(0,0,0,.94);
-
-      border-bottom:
-        1px solid rgba(255,255,255,.12);
-
-      backdrop-filter:
-        blur(8px);
-
-      -webkit-backdrop-filter:
-        blur(8px);
-
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-
 
     .brand {
-
       width: 138px;
       height: 42px;
-
       display: flex;
-
       align-items: center;
-
       text-decoration: none;
-
     }
-
 
     .brand img {
-
       display: block;
-
       width: 132px;
       height: auto;
-
       object-fit: contain;
-
     }
-
 
     .main-nav {
-
       display: flex;
-
       align-items: center;
-
-      gap: 24px;
-
+      gap: 22px;
     }
-
 
     .main-nav a {
-
       text-decoration: none;
-
       text-transform: uppercase;
-
       font-size: 10px;
-
       font-weight: 700;
-
       letter-spacing: .15em;
-
-      transition:
-        opacity .2s ease;
-
+      transition: opacity .2s ease;
     }
-
 
     .main-nav a:hover {
       opacity: .55;
     }
 
-
     .main-nav .active {
-
-      padding:
-        9px 12px;
-
-      border:
-        1px solid rgba(255,255,255,.6);
-
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,.6);
     }
-
 
     .menu-toggle {
-
       display: none;
-
       padding: 0;
-
       border: 0;
-
       background: transparent;
-
       color: white;
-
       font: inherit;
-
       font-size: 10px;
-
       font-weight: 800;
-
       letter-spacing: .15em;
-
       cursor: pointer;
-
     }
-
 
 
     /* PAGE */
 
-
     .page {
-
-      width:
-        min(
-          var(--max),
-          calc(100% - 44px)
-        );
-
-      margin:
-        0 auto;
-
-      padding:
-        145px 0
-        120px;
-
+      width: min(var(--max),calc(100% - 44px));
+      margin: 0 auto;
+      padding: 145px 0 120px;
     }
-
 
 
     /* INTRO */
 
-
     .radio-intro {
-
       min-height: 58vh;
-
       display: flex;
-
       flex-direction: column;
-
       justify-content: flex-end;
-
       padding-bottom: 70px;
-
     }
-
 
     .eyebrow {
-
-      margin:
-        0 0 18px;
-
+      margin: 0 0 18px;
       color: var(--muted);
-
       font-size: 10px;
-
       font-weight: 800;
-
       letter-spacing: .18em;
-
       text-transform: uppercase;
-
     }
-
 
     h1 {
-
       margin: 0;
-
       max-width: 1000px;
-
-      font-size:
-        clamp(
-          66px,
-          10.8vw,
-          154px
-        );
-
+      font-size: clamp(66px,10.8vw,154px);
       line-height: .78;
-
       font-weight: 900;
-
       letter-spacing: -.08em;
-
       text-transform: uppercase;
-
     }
-
 
     .radio-tagline {
-
-      margin:
-        40px 0 0;
-
+      margin: 40px 0 0;
       max-width: 650px;
-
       color: #cbc8c2;
-
-      font-size:
-        clamp(
-          19px,
-          2vw,
-          28px
-        );
-
+      font-size: clamp(19px,2vw,28px);
       line-height: 1.25;
-
       letter-spacing: -.025em;
-
     }
-
 
 
     /* PLAYER */
 
-
     .radio-player {
-
       display: grid;
-
-      grid-template-columns:
-        .35fr 1fr;
-
+      grid-template-columns: .35fr 1fr;
       gap: 70px;
-
-      padding:
-        55px 0;
-
-      border-top:
-        1px solid var(--line);
-
-      border-bottom:
-        1px solid var(--line);
-
+      padding: 55px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
-
 
     .radio-status {
       align-self: start;
     }
 
-
     .on-air {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 9px;
-
       font-size: 10px;
-
       font-weight: 800;
-
       letter-spacing: .17em;
-
       text-transform: uppercase;
-
     }
-
 
     .on-air-dot {
-
       width: 8px;
       height: 8px;
-
       border-radius: 50%;
-
       background: var(--red);
-
-      box-shadow:
-        0 0 0 0
-        rgba(200,32,25,.5);
-
-      animation:
-        pulse
-        1.7s
-        infinite;
-
+      box-shadow: 0 0 0 0 rgba(200,32,25,.5);
+      animation: pulse 1.7s infinite;
     }
-
 
     @keyframes pulse {
 
       70% {
-
-        box-shadow:
-          0 0 0 9px
-          rgba(200,32,25,0);
-
+        box-shadow: 0 0 0 9px rgba(200,32,25,0);
       }
 
       100% {
-
-        box-shadow:
-          0 0 0 0
-          rgba(200,32,25,0);
-
+        box-shadow: 0 0 0 0 rgba(200,32,25,0);
       }
-
     }
-
 
 
     /* NOW PLAYING */
 
-
     .now-playing-label {
-
       display: block;
-
       margin-bottom: 17px;
-
       color: var(--muted);
-
       font-size: 9px;
-
       font-weight: 800;
-
       letter-spacing: .17em;
-
       text-transform: uppercase;
-
     }
-
 
     .now-artist {
-
       margin: 0;
-
-      font-size:
-        clamp(
-          34px,
-          5vw,
-          74px
-        );
-
+      font-size: clamp(34px,5vw,74px);
       line-height: .88;
-
       letter-spacing: -.06em;
-
       text-transform: uppercase;
-
     }
-
 
     .now-title {
-
-      margin:
-        14px 0 0;
-
+      margin: 14px 0 0;
       color: #a9a69f;
-
-      font-size:
-        clamp(
-          15px,
-          1.7vw,
-          22px
-        );
-
+      font-size: clamp(15px,1.7vw,22px);
       line-height: 1.3;
-
     }
-
 
     .soundcloud-link {
-
       display: inline-block;
-
       margin-top: 18px;
-
       color: var(--muted);
-
       font-size: 9px;
-
       font-weight: 700;
-
       letter-spacing: .13em;
-
       text-decoration: none;
-
       text-transform: uppercase;
-
     }
-
 
     .soundcloud-link:hover {
       color: white;
     }
 
 
-
     /* CONTROLS */
 
-
     .controls {
-
       margin-top: 36px;
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 10px;
-
     }
 
-
     .control-button {
-
       min-height: 52px;
-
-      padding:
-        0 20px;
-
-      border:
-        1px solid rgba(255,255,255,.55);
-
+      padding: 0 20px;
+      border: 1px solid rgba(255,255,255,.55);
       background: transparent;
-
       color: white;
-
       font: inherit;
-
       font-size: 9px;
-
       font-weight: 850;
-
       letter-spacing: .14em;
-
       text-transform: uppercase;
-
       cursor: pointer;
-
       transition:
         background .2s ease,
         color .2s ease,
         opacity .2s ease;
-
     }
-
 
     .control-button:hover {
-
       background: white;
-
       color: black;
-
     }
-
 
     .control-button.primary {
-
       min-width: 155px;
-
       background: white;
-
       color: black;
-
       border-color: white;
-
     }
-
 
     .control-button.primary:hover {
-
       background: transparent;
-
       color: white;
-
     }
-
 
     .control-button:disabled {
-
       opacity: .3;
-
       cursor: default;
-
     }
-
 
 
     /* PROGRESS */
-
 
     .progress-wrap {
       margin-top: 34px;
     }
 
-
     .progress {
-
       position: relative;
-
       height: 2px;
-
       overflow: hidden;
-
-      background:
-        rgba(255,255,255,.15);
-
+      background: rgba(255,255,255,.15);
     }
 
-
     .progress-bar {
-
       position: absolute;
-
       left: 0;
       top: 0;
       bottom: 0;
-
       width: 0;
-
       background: white;
-
     }
-
 
     .time-row {
-
       margin-top: 9px;
-
       display: flex;
-
       justify-content: space-between;
-
       color: #676767;
-
       font-size: 9px;
-
       letter-spacing: .1em;
-
     }
 
 
-
-    /* HELP / ERROR */
-
+    /* HELP */
 
     .radio-help,
     .radio-error {
-
       display: none;
-
       margin-top: 26px;
-
       padding: 20px;
-
       font-size: 12px;
-
       line-height: 1.55;
-
     }
-
 
     .radio-help {
-
-      border:
-        1px solid rgba(255,255,255,.25);
-
+      border: 1px solid rgba(255,255,255,.25);
       color: #b7b4ae;
-
     }
-
 
     .radio-error {
-
-      border:
-        1px solid rgba(200,32,25,.5);
-
+      border: 1px solid rgba(200,32,25,.5);
       color: var(--muted);
-
     }
-
 
     .radio-help.is-visible,
     .radio-error.is-visible {
-
       display: block;
-
     }
-
 
     .radio-help strong {
-
       display: block;
-
       margin-bottom: 6px;
-
       color: white;
-
       font-size: 11px;
-
       letter-spacing: .08em;
-
       text-transform: uppercase;
-
     }
-
 
 
     /* QUEUE */
 
-
     .queue-section {
-
-      padding:
-        100px 0;
-
+      padding: 100px 0;
     }
-
 
     .section-label {
-
-      margin:
-        0 0 36px;
-
+      margin: 0 0 36px;
       color: var(--muted);
-
       font-size: 10px;
-
       font-weight: 800;
-
       letter-spacing: .17em;
-
       text-transform: uppercase;
-
     }
-
 
     .queue {
-
-      border-top:
-        1px solid var(--line);
-
+      border-top: 1px solid var(--line);
     }
-
 
     .queue-item {
-
-      padding:
-        18px 0;
-
+      padding: 18px 0;
       display: grid;
-
-      grid-template-columns:
-        65px 1fr 1fr;
-
+      grid-template-columns: 65px 1fr 1fr;
       gap: 25px;
-
-      border-bottom:
-        1px solid var(--line);
-
+      border-bottom: 1px solid var(--line);
       align-items: center;
-
     }
-
 
     .queue-number {
-
       color: #666;
-
       font-size: 10px;
-
     }
-
 
     .queue-artist {
-
       font-size: 15px;
-
       font-weight: 700;
-
     }
-
 
     .queue-title {
-
       color: var(--muted);
-
       font-size: 13px;
-
     }
-
 
 
     /* SOUNDCLOUD */
 
-
     .source-section {
-
-      padding:
-        0 0 90px;
-
+      padding: 0 0 90px;
     }
-
 
     .source-note {
-
-      margin:
-        0 0 18px;
-
+      margin: 0 0 18px;
       max-width: 600px;
-
       color: var(--muted);
-
       font-size: 11px;
-
       line-height: 1.5;
-
     }
-
 
     .soundcloud-frame {
-
       width: 100%;
-
       height: 166px;
-
       display: block;
-
       border: 0;
-
       background: #111;
-
     }
-
 
 
     /* FOOTER */
 
-
     .site-footer {
-
-      width:
-        min(
-          var(--max),
-          calc(100% - 44px)
-        );
-
-      margin:
-        0 auto;
-
-      padding:
-        24px 0
-        36px;
-
+      width: min(var(--max),calc(100% - 44px));
+      margin: 0 auto;
+      padding: 24px 0 36px;
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr auto;
-
+      grid-template-columns: 1fr 1fr auto;
       gap: 20px;
-
-      border-top:
-        1px solid var(--line);
-
+      border-top: 1px solid var(--line);
       color: var(--muted);
-
       font-size: 10px;
-
       letter-spacing: .1em;
-
     }
-
 
     .site-footer a {
-
       color: white;
-
       text-decoration: none;
-
     }
-
-
-
-    /* TABLET */
 
 
     @media (max-width:900px) {
-
 
       .menu-toggle {
         display: block;
       }
 
-
       .main-nav {
-
         position: fixed;
-
         top: 66px;
         left: 0;
         right: 0;
-
         display: none;
-
         flex-direction: column;
-
         align-items: flex-start;
-
-        padding:
-          28px 20px
-          36px;
-
+        padding: 28px 20px 36px;
         background: #000;
-
       }
-
 
       .main-nav.is-open {
         display: flex;
       }
 
-
       .main-nav a {
         font-size: 17px;
       }
 
-
       .main-nav .active {
-
-        padding:
-          12px 15px;
-
+        padding: 12px 15px;
       }
-
 
       .radio-player {
-
-        grid-template-columns:
-          1fr;
-
+        grid-template-columns: 1fr;
         gap: 40px;
-
       }
-
     }
 
 
-
-    /* MOBILE */
-
-
     @media (max-width:600px) {
-
 
       .site-header {
         padding: 0 16px;
       }
 
-
       .brand {
         width: 112px;
       }
-
 
       .brand img {
         width: 108px;
       }
 
-
       .page {
-
-        width:
-          calc(100% - 32px);
-
-        padding:
-          118px 0
-          75px;
-
+        width: calc(100% - 32px);
+        padding: 118px 0 75px;
       }
-
 
       .radio-intro {
-
         min-height: 48vh;
-
         padding-bottom: 55px;
-
       }
-
 
       h1 {
-
-        font-size:
-          clamp(
-            54px,
-            19vw,
-            86px
-          );
-
+        font-size: clamp(54px,19vw,86px);
       }
-
 
       .radio-player {
-
-        padding:
-          42px 0;
-
+        padding: 42px 0;
       }
-
 
       .controls {
-
         display: grid;
-
-        grid-template-columns:
-          1fr 1fr;
-
+        grid-template-columns: 1fr 1fr;
       }
-
 
       .control-button.primary {
-
-        grid-column:
-          1 / -1;
-
+        grid-column: 1 / -1;
       }
-
 
       .queue-item {
-
-        grid-template-columns:
-          40px 1fr;
-
+        grid-template-columns: 40px 1fr;
         gap: 10px;
-
       }
-
 
       .queue-title {
         grid-column: 2;
       }
 
-
       .site-footer {
-
-        width:
-          calc(100% - 32px);
-
-        grid-template-columns:
-          1fr auto;
-
+        width: calc(100% - 32px);
+        grid-template-columns: 1fr auto;
       }
-
 
       .site-footer span:nth-child(2) {
         display: none;
       }
-
     }
 
 
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
+    @media (prefers-reduced-motion: reduce) {
 
       .on-air-dot {
         animation: none;
       }
-
-
     }
 
   </style>
@@ -1126,23 +631,18 @@
 <body>
 
 
-
 <header class="site-header">
-
 
   <a
     class="brand"
     href="index.html"
     aria-label="Danceteria — accueil"
   >
-
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
-
   </a>
-
 
   <button
     class="menu-toggle"
@@ -1153,20 +653,14 @@
     MENU
   </button>
 
-
   <nav
     class="main-nav"
     id="main-nav"
     aria-label="Navigation principale"
   >
 
-    <a href="index.html#agenda">
-      Agenda
-    </a>
-
-    <a href="index.html#club">
-      Le club
-    </a>
+    <a href="index.html#agenda">Agenda</a>
+    <a href="index.html#club">Le club</a>
 
     <a
       class="active"
@@ -1175,17 +669,9 @@
       Radio
     </a>
 
-    <a href="index.html#infos">
-      Infos
-    </a>
-
-    <a href="candidature.html">
-      Candidater
-    </a>
-
-    <a href="index.html#contact">
-      Contact
-    </a>
+    <a href="index.html#infos">Infos</a>
+    <a href="candidature.html">Candidater</a>
+    <a href="index.html#contact">Contact</a>
 
   </nav>
 
@@ -1196,231 +682,212 @@
 <main class="page">
 
 
+<section class="radio-intro">
 
-  <section class="radio-intro">
+  <p class="eyebrow">
+    Marseille · Continuous music
+  </p>
 
-    <p class="eyebrow">
-      Marseille · Continuous music
-    </p>
+  <h1>
+    Danceteria<br>
+    Radio.
+  </h1>
 
-    <h1>
-      Danceteria<br>
-      Radio.
-    </h1>
+  <p class="radio-tagline">
+    Music from the artists who played here.
+  </p>
 
-    <p class="radio-tagline">
-      Music from the artists who played here.
-    </p>
+</section>
 
-  </section>
 
 
+<section class="radio-player">
 
-  <section class="radio-player">
 
+<div class="radio-status">
 
-    <div class="radio-status">
+  <div class="on-air">
 
-      <div class="on-air">
+    <span class="on-air-dot"></span>
 
-        <span class="on-air-dot"></span>
+    <span>
+      ON AIR
+    </span>
 
-        <span>
-          ON AIR
-        </span>
+  </div>
 
-      </div>
+</div>
 
-    </div>
 
 
+<div class="player-main">
 
-    <div class="player-main">
 
+<span class="now-playing-label">
+  Now playing
+</span>
 
-      <span class="now-playing-label">
-        Now playing
-      </span>
 
+<h2
+  class="now-artist"
+  id="now-artist"
+>
+  Danceteria Radio
+</h2>
 
-      <h2
-        class="now-artist"
-        id="now-artist"
-      >
-        Danceteria Radio
-      </h2>
 
+<p
+  class="now-title"
+  id="now-title"
+>
+  Loading...
+</p>
 
-      <p
-        class="now-title"
-        id="now-title"
-      >
-        Loading...
-      </p>
 
+<a
+  class="soundcloud-link"
+  id="soundcloud-link"
+  href="#"
+  target="_blank"
+  rel="noopener"
+>
+  Listen on SoundCloud ↗
+</a>
 
-      <a
-        class="soundcloud-link"
-        id="soundcloud-link"
-        href="#"
-        target="_blank"
-        rel="noopener"
-      >
-        Listen on SoundCloud ↗
-      </a>
 
 
+<div class="controls">
 
-      <div class="controls">
+  <button
+    class="control-button"
+    id="previous-button"
+    type="button"
+    disabled
+  >
+    ← Previous
+  </button>
 
+  <button
+    class="control-button primary"
+    id="play-button"
+    type="button"
+    disabled
+  >
+    PLAY
+  </button>
 
-        <button
-          class="control-button"
-          id="previous-button"
-          type="button"
-          disabled
-        >
-          ← Previous
-        </button>
+  <button
+    class="control-button"
+    id="next-button"
+    type="button"
+    disabled
+  >
+    Next →
+  </button>
 
+</div>
 
-        <button
-          class="control-button primary"
-          id="play-button"
-          type="button"
-          disabled
-        >
-          PLAY
-        </button>
 
 
-        <button
-          class="control-button"
-          id="next-button"
-          type="button"
-          disabled
-        >
-          Next →
-        </button>
+<div class="progress-wrap">
 
-
-      </div>
-
-
-
-      <div class="progress-wrap">
-
-
-        <div class="progress">
-
-          <div
-            class="progress-bar"
-            id="progress-bar"
-          ></div>
-
-        </div>
-
-
-        <div class="time-row">
-
-          <span id="current-time">
-            00:00
-          </span>
-
-          <span id="duration">
-            00:00
-          </span>
-
-        </div>
-
-
-      </div>
-
-
-
-      <div
-        class="radio-help"
-        id="radio-help"
-      >
-
-        <strong>
-          Safari bloque le premier démarrage
-        </strong>
-
-        Clique une seule fois sur le bouton orange
-        du lecteur SoundCloud situé plus bas.
-        Ensuite Danceteria Radio continuera automatiquement.
-
-      </div>
-
-
-
-      <div
-        class="radio-error"
-        id="radio-error"
-      >
-
-        Ce contenu SoundCloud est momentanément
-        indisponible. Passage automatique au suivant.
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <section class="queue-section">
-
-
-    <p class="section-label">
-      Coming next
-    </p>
-
+  <div class="progress">
 
     <div
-      class="queue"
-      id="queue"
+      class="progress-bar"
+      id="progress-bar"
     ></div>
 
+  </div>
 
-  </section>
+  <div class="time-row">
 
+    <span id="current-time">
+      00:00
+    </span>
 
+    <span id="duration">
+      00:00
+    </span>
 
-  <section
-    class="source-section"
-    id="source-section"
-  >
+  </div>
 
-
-    <p class="section-label">
-      SoundCloud
-    </p>
-
-
-    <p class="source-note">
-      Audio streamed directly from SoundCloud.
-      The official player provides artist and
-      platform attribution.
-    </p>
+</div>
 
 
-    <iframe
-      id="soundcloud-player"
-      class="soundcloud-frame"
-      title="SoundCloud player"
-      scrolling="no"
-      frameborder="no"
-      allow="autoplay; encrypted-media"
-      src="about:blank"
-    ></iframe>
+
+<div
+  class="radio-help"
+  id="radio-help"
+>
+
+  <strong>
+    Safari bloque le premier démarrage
+  </strong>
+
+  Clique une seule fois sur le bouton orange
+  du lecteur SoundCloud situé plus bas.
+  Ensuite Danceteria Radio continuera automatiquement.
+
+</div>
 
 
-  </section>
+
+<div
+  class="radio-error"
+  id="radio-error"
+>
+
+  Ce contenu SoundCloud est momentanément indisponible.
+  Passage automatique au suivant.
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<section class="queue-section">
+
+  <p class="section-label">
+    Coming next
+  </p>
+
+  <div
+    class="queue"
+    id="queue"
+  ></div>
+
+</section>
+
+
+
+<section class="source-section">
+
+  <p class="section-label">
+    SoundCloud
+  </p>
+
+  <p class="source-note">
+    Audio streamed directly from SoundCloud.
+    The official player provides artist and platform attribution.
+  </p>
+
+  <iframe
+    id="soundcloud-player"
+    class="soundcloud-frame"
+    title="SoundCloud player"
+    scrolling="no"
+    frameborder="no"
+    allow="autoplay; encrypted-media"
+    src="about:blank"
+  ></iframe>
+
+</section>
 
 
 </main>
@@ -1445,328 +912,213 @@
 
 
 
-<script
-  src="https://w.soundcloud.com/player/api.js"
-></script>
+<script src="https://w.soundcloud.com/player/api.js"></script>
 
 
 <script>
 
 
-  /*
-  ============================================================
-  PLAYLIST DANCETERIA RADIO
-  ============================================================
-  */
+const rawRadioPlaylist = [
 
+  {
+    artist: "JACK DE MARSEILLE",
+    title: "Ellipsia",
+    url: "https://soundcloud.com/jack-de-marseille/ellipsia"
+  },
 
-  const rawRadioPlaylist = [
+  {
+    artist: "CHRIS GAVIN",
+    title: "Udessia (Original Mix)",
+    url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original"
+  },
 
+  {
+    artist: "MILA DIETRICH",
+    title: "When I Look Into Your Eyes",
+    url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes"
+  },
 
-    {
-      artist: "JACK DE MARSEILLE",
-      title: "Ellipsia",
-      url: "https://soundcloud.com/jack-de-marseille/ellipsia"
-    },
+  {
+    artist: "YAN WAGNER",
+    title: "Changed (Original Mix)",
+    url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix"
+  },
 
+  {
+    artist: "SEIUN",
+    title: "Toy Tonics × Bordello a Parigi @ OXI — Italomania",
+    url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania"
+  },
 
-    {
-      artist: "CHRIS GAVIN",
-      title: "Udessia (Original Mix)",
-      url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original"
-    },
+  {
+    artist: "PHRED NOIR",
+    title: "Selección Dura",
+    url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir"
+  },
 
+  {
+    artist: "FRED BERTHET / DJ STEEF",
+    title: "Fred Berthet Mix 02/26",
+    url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26"
+  },
 
-    {
-      artist: "MILA DIETRICH",
-      title: "When I Look Into Your Eyes",
-      url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes"
-    },
+  {
+    artist: "INORGANICA",
+    title: "Underside / Psyche Resolved",
+    url: "https://soundcloud.com/inorganicasound/rec074"
+  },
 
+  {
+    artist: "SCAN X",
+    title: "FCom 25 Remastered EP2",
+    url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2"
+  },
 
-    {
-      artist: "YAN WAGNER",
-      title: "Changed (Original Mix)",
-      url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix"
-    },
+  {
+    artist: "JOE LEWANDOWSKI",
+    title: "Long (Original Mix)",
+    url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix"
+  }
 
-
-    {
-      artist: "SEIUN",
-      title: "Toy Tonics × Bordello a Parigi @ OXI — Italomania",
-      url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania"
-    },
-
-
-    {
-      artist: "PHRED NOIR",
-      title: "Selección Dura",
-      url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir"
-    },
-
-
-    {
-      artist: "FRED BERTHET / DJ STEEF",
-      title: "Fred Berthet Mix 02/26",
-      url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26"
-    },
-
-
-    {
-      artist: "INORGANICA",
-      title: "Underside / Psyche Resolved",
-      url: "https://soundcloud.com/inorganicasound/rec074"
-    },
-
-
-    {
-      artist: "SCAN X",
-      title: "FCom 25 Remastered EP2",
-      url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2"
-    },
-
-
-    {
-      artist: "JOE LEWANDOWSKI",
-      title: "Long (Original Mix)",
-      url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix"
-    }
-
-
-  ];
+];
 
 
 
-  /*
-  ============================================================
-  RANDOM
-  ============================================================
-  */
+function shufflePlaylist(array) {
 
+  const shuffled =
+    [...array];
 
-  function shufflePlaylist(array) {
+  for (
+    let i = shuffled.length - 1;
+    i > 0;
+    i--
+  ) {
 
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
 
-    const shuffled =
-      [...array];
-
-
-    for (
-      let i = shuffled.length - 1;
-      i > 0;
-      i--
-    ) {
-
-
-      const j =
-        Math.floor(
-          Math.random() * (i + 1)
-        );
-
-
-      [
-        shuffled[i],
-        shuffled[j]
-      ]
-      =
-      [
-        shuffled[j],
-        shuffled[i]
-      ];
-
-
-    }
-
-
-    return shuffled;
+    [
+      shuffled[i],
+      shuffled[j]
+    ]
+    =
+    [
+      shuffled[j],
+      shuffled[i]
+    ];
 
   }
 
+  return shuffled;
+
+}
 
 
-  const radioPlaylist =
-    shufflePlaylist(
-      rawRadioPlaylist
+
+const radioPlaylist =
+  shufflePlaylist(
+    rawRadioPlaylist
+  );
+
+
+
+const playButton =
+  document.querySelector('#play-button');
+
+const previousButton =
+  document.querySelector('#previous-button');
+
+const nextButton =
+  document.querySelector('#next-button');
+
+const nowArtist =
+  document.querySelector('#now-artist');
+
+const nowTitle =
+  document.querySelector('#now-title');
+
+const soundcloudLink =
+  document.querySelector('#soundcloud-link');
+
+const progressBar =
+  document.querySelector('#progress-bar');
+
+const currentTime =
+  document.querySelector('#current-time');
+
+const durationLabel =
+  document.querySelector('#duration');
+
+const queue =
+  document.querySelector('#queue');
+
+const iframe =
+  document.querySelector('#soundcloud-player');
+
+const radioHelp =
+  document.querySelector('#radio-help');
+
+const radioError =
+  document.querySelector('#radio-error');
+
+
+
+let currentIndex = 0;
+
+let widget = null;
+
+let widgetReady = false;
+
+let isPlaying = false;
+
+let hasStarted = false;
+
+let duration = 0;
+
+let consecutiveErrors = 0;
+
+let playAttempt = 0;
+
+
+
+function formatTime(milliseconds) {
+
+  if (
+    !milliseconds
+    ||
+    milliseconds < 0
+  ) {
+    return '00:00';
+  }
+
+  const totalSeconds =
+    Math.floor(
+      milliseconds / 1000
     );
 
-
-
-  /*
-  ============================================================
-  ELEMENTS
-  ============================================================
-  */
-
-
-  const playButton =
-    document.querySelector(
-      '#play-button'
+  const hours =
+    Math.floor(
+      totalSeconds / 3600
     );
 
-
-  const previousButton =
-    document.querySelector(
-      '#previous-button'
+  const minutes =
+    Math.floor(
+      (totalSeconds % 3600) / 60
     );
 
+  const seconds =
+    totalSeconds % 60;
 
-  const nextButton =
-    document.querySelector(
-      '#next-button'
-    );
-
-
-  const nowArtist =
-    document.querySelector(
-      '#now-artist'
-    );
-
-
-  const nowTitle =
-    document.querySelector(
-      '#now-title'
-    );
-
-
-  const soundcloudLink =
-    document.querySelector(
-      '#soundcloud-link'
-    );
-
-
-  const progressBar =
-    document.querySelector(
-      '#progress-bar'
-    );
-
-
-  const currentTime =
-    document.querySelector(
-      '#current-time'
-    );
-
-
-  const durationLabel =
-    document.querySelector(
-      '#duration'
-    );
-
-
-  const queue =
-    document.querySelector(
-      '#queue'
-    );
-
-
-  const iframe =
-    document.querySelector(
-      '#soundcloud-player'
-    );
-
-
-  const radioHelp =
-    document.querySelector(
-      '#radio-help'
-    );
-
-
-  const radioError =
-    document.querySelector(
-      '#radio-error'
-    );
-
-
-
-  /*
-  ============================================================
-  STATE
-  ============================================================
-  */
-
-
-  let currentIndex = 0;
-
-  let widget = null;
-
-  let widgetReady = false;
-
-  let isPlaying = false;
-
-  let hasStarted = false;
-
-  let duration = 0;
-
-  let consecutiveErrors = 0;
-
-  let playAttempt = 0;
-
-
-
-  /*
-  ============================================================
-  UTILS
-  ============================================================
-  */
-
-
-  function formatTime(milliseconds) {
-
-
-    if (
-      !milliseconds
-      ||
-      milliseconds < 0
-    ) {
-
-      return '00:00';
-
-    }
-
-
-    const totalSeconds =
-      Math.floor(
-        milliseconds / 1000
-      );
-
-
-    const hours =
-      Math.floor(
-        totalSeconds / 3600
-      );
-
-
-    const minutes =
-      Math.floor(
-        (
-          totalSeconds % 3600
-        )
-        /
-        60
-      );
-
-
-    const seconds =
-      totalSeconds % 60;
-
-
-    if (hours > 0) {
-
-      return (
-        String(hours).padStart(2,'0')
-        +
-        ':'
-        +
-        String(minutes).padStart(2,'0')
-        +
-        ':'
-        +
-        String(seconds).padStart(2,'0')
-      );
-
-    }
-
+  if (hours > 0) {
 
     return (
+      String(hours).padStart(2,'0')
+      +
+      ':'
+      +
       String(minutes).padStart(2,'0')
       +
       ':'
@@ -1776,984 +1128,688 @@
 
   }
 
+  return (
+    String(minutes).padStart(2,'0')
+    +
+    ':'
+    +
+    String(seconds).padStart(2,'0')
+  );
+
+}
 
 
-  function getCurrentItem() {
 
-    return radioPlaylist[
-      currentIndex
-    ];
+function getCurrentItem() {
 
+  return radioPlaylist[
+    currentIndex
+  ];
+
+}
+
+
+
+function updateNowPlaying() {
+
+  const item =
+    getCurrentItem();
+
+  if (!item) {
+    return;
   }
 
+  nowArtist.textContent =
+    item.artist;
 
+  nowTitle.textContent =
+    item.title;
 
-  /*
-  ============================================================
-  DISPLAY
-  ============================================================
-  */
+  soundcloudLink.href =
+    item.url;
 
-
-  function updateNowPlaying() {
-
-
-    const item =
-      getCurrentItem();
-
-
-    if (!item) {
-      return;
-    }
-
-
-    nowArtist.textContent =
-      item.artist;
-
-
-    nowTitle.textContent =
-      item.title;
-
-
-    soundcloudLink.href =
-      item.url;
-
-  }
+}
 
 
 
-  function renderQueue() {
+function renderQueue() {
 
+  queue.innerHTML = '';
 
-    queue.innerHTML = '';
+  const maxItems =
+    Math.min(
+      radioPlaylist.length - 1,
+      5
+    );
 
-
-    const maxItems =
-      Math.min(
-        radioPlaylist.length - 1,
-        5
-      );
-
-
-    for (
-      let offset = 1;
-      offset <= maxItems;
-      offset++
-    ) {
-
-
-      const index =
-        (
-          currentIndex + offset
-        )
-        %
-        radioPlaylist.length;
-
-
-      const item =
-        radioPlaylist[index];
-
-
-      const row =
-        document.createElement(
-          'div'
-        );
-
-
-      row.className =
-        'queue-item';
-
-
-      row.innerHTML = `
-
-        <span class="queue-number">
-          ${String(offset).padStart(2,'0')}
-        </span>
-
-        <span class="queue-artist">
-          ${item.artist}
-        </span>
-
-        <span class="queue-title">
-          ${item.title}
-        </span>
-
-      `;
-
-
-      queue.appendChild(
-        row
-      );
-
-    }
-
-  }
-
-
-
-  function resetProgress() {
-
-
-    duration = 0;
-
-
-    progressBar.style.width =
-      '0%';
-
-
-    currentTime.textContent =
-      '00:00';
-
-
-    durationLabel.textContent =
-      '00:00';
-
-  }
-
-
-
-  /*
-  ============================================================
-  PLAYER OPTIONS
-  ============================================================
-  */
-
-
-  function playerOptions(
-    autoplay
+  for (
+    let offset = 1;
+    offset <= maxItems;
+    offset++
   ) {
 
-
-    return {
-
-      auto_play: autoplay,
-
-      show_artwork: true,
-
-      show_user: true,
-
-      show_playcount: false,
-
-      show_comments: false,
-
-      sharing: false,
-
-      buying: false,
-
-      download: false,
-
-      single_active: false
-
-    };
-
-  }
-
-
-
-  /*
-  ============================================================
-  LOAD TRACK
-  ============================================================
-  */
-
-
-  function loadCurrentTrack(
-    autoplay = false
-  ) {
-
-
-    if (
-      !widget
-      ||
-      !radioPlaylist.length
-    ) {
-
-      return;
-
-    }
-
-
-    const item =
-      getCurrentItem();
-
-
-    updateNowPlaying();
-
-    renderQueue();
-
-    resetProgress();
-
-
-    radioError.classList.remove(
-      'is-visible'
-    );
-
-
-    widget.load(
-
-      item.url,
-
-      {
-
-        ...playerOptions(
-          autoplay
-        ),
-
-
-        callback: function () {
-
-
-          widget.getDuration(
-            value => {
-
-
-              duration =
-                value || 0;
-
-
-              durationLabel.textContent =
-                formatTime(
-                  duration
-                );
-
-
-            }
-          );
-
-
-        }
-
-
-      }
-
-    );
-
-  }
-
-
-
-  /*
-  ============================================================
-  PREMIER PLAY
-  ============================================================
-  */
-
-
-  function startRadio() {
-
-
-    if (
-      !widget
-      ||
-      !widgetReady
-    ) {
-
-      return;
-
-    }
-
-
-    playAttempt++;
-
-
-    const attempt =
-      playAttempt;
-
-
-    radioHelp.classList.remove(
-      'is-visible'
-    );
-
-
-    radioError.classList.remove(
-      'is-visible'
-    );
-
-
-    /*
-    IMPORTANT :
-
-    Sur le premier clic on ne fait pas
-    simplement widget.play().
-
-    On recharge le contenu avec
-    auto_play:true depuis le clic
-    utilisateur.
-    */
-
-
-    loadCurrentTrack(
-      true
-    );
-
-
-    /*
-    Deuxième tentative courte si
-    SoundCloud n'a pas commencé.
-    */
-
-
-    setTimeout(
-      function () {
-
-
-        if (
-          attempt === playAttempt
-          &&
-          !isPlaying
-        ) {
-
-
-          widget.play();
-
-
-        }
-
-
-      },
-      900
-    );
-
-
-    /*
-    Safari / SoundCloud fallback.
-
-    Si après 2.5 secondes aucun PLAY
-    n'a été reçu, on indique au visiteur
-    d'autoriser le lecteur SoundCloud
-    une seule fois.
-    */
-
-
-    setTimeout(
-      function () {
-
-
-        if (
-          attempt === playAttempt
-          &&
-          !isPlaying
-        ) {
-
-
-          radioHelp.classList.add(
-            'is-visible'
-          );
-
-
-        }
-
-
-      },
-      2500
-    );
-
-
-  }
-
-
-
-  /*
-  ============================================================
-  NEXT
-  ============================================================
-  */
-
-
-  function nextTrack() {
-
-
-    if (!radioPlaylist.length) {
-      return;
-    }
-
-
-    currentIndex =
+    const index =
       (
-        currentIndex + 1
+        currentIndex + offset
       )
       %
       radioPlaylist.length;
 
+    const item =
+      radioPlaylist[index];
 
-    loadCurrentTrack(
-      hasStarted
+    const row =
+      document.createElement('div');
+
+    row.className =
+      'queue-item';
+
+    row.innerHTML = `
+
+      <span class="queue-number">
+        ${String(offset).padStart(2,'0')}
+      </span>
+
+      <span class="queue-artist">
+        ${item.artist}
+      </span>
+
+      <span class="queue-title">
+        ${item.title}
+      </span>
+
+    `;
+
+    queue.appendChild(
+      row
     );
 
   }
 
+}
 
 
-  /*
-  ============================================================
-  PREVIOUS
-  ============================================================
-  */
+
+function resetProgress() {
+
+  duration = 0;
+
+  progressBar.style.width =
+    '0%';
+
+  currentTime.textContent =
+    '00:00';
+
+  durationLabel.textContent =
+    '00:00';
+
+}
 
 
-  function previousTrack() {
+
+function playerOptions(autoplay) {
+
+  return {
+
+    auto_play: autoplay,
+
+    show_artwork: true,
+
+    show_user: true,
+
+    show_playcount: false,
+
+    show_comments: false,
+
+    sharing: false,
+
+    buying: false,
+
+    download: false,
+
+    single_active: false
+
+  };
+
+}
 
 
-    if (!radioPlaylist.length) {
-      return;
-    }
 
+function loadCurrentTrack(
+  autoplay = false
+) {
 
-    currentIndex =
-      (
-        currentIndex
-        -
-        1
-        +
-        radioPlaylist.length
-      )
-      %
-      radioPlaylist.length;
-
-
-    loadCurrentTrack(
-      hasStarted
-    );
-
+  if (
+    !widget
+    ||
+    !radioPlaylist.length
+  ) {
+    return;
   }
 
+  const item =
+    getCurrentItem();
 
+  updateNowPlaying();
 
-  /*
-  ============================================================
-  INITIALISATION
-  ============================================================
-  */
+  renderQueue();
 
+  resetProgress();
 
-  function initialiseRadio() {
+  radioError.classList.remove(
+    'is-visible'
+  );
 
+  widget.load(
+    item.url,
+    {
+      ...playerOptions(
+        autoplay
+      ),
 
-    if (!radioPlaylist.length) {
-      return;
-    }
-
-
-    const firstTrack =
-      radioPlaylist[0];
-
-
-    updateNowPlaying();
-
-    renderQueue();
-
-
-    iframe.src =
-      'https://w.soundcloud.com/player/?url='
-      +
-      encodeURIComponent(
-        firstTrack.url
-      )
-      +
-      '&auto_play=false'
-      +
-      '&show_artwork=true'
-      +
-      '&show_user=true'
-      +
-      '&show_comments=false'
-      +
-      '&show_playcount=false'
-      +
-      '&sharing=false'
-      +
-      '&buying=false'
-      +
-      '&download=false'
-      +
-      '&single_active=false';
-
-
-    widget =
-      SC.Widget(
-        iframe
-      );
-
-
-
-    /*
-    READY
-    */
-
-
-    widget.bind(
-      SC.Widget.Events.READY,
-      function () {
-
-
-        widgetReady =
-          true;
-
-
-        playButton.disabled =
-          false;
-
-
-        previousButton.disabled =
-          false;
-
-
-        nextButton.disabled =
-          false;
-
-
-        updateNowPlaying();
-
-        renderQueue();
-
+      callback: function () {
 
         widget.getDuration(
           value => {
 
-
             duration =
               value || 0;
-
 
             durationLabel.textContent =
               formatTime(
                 duration
               );
 
-
           }
         );
 
-
       }
-    );
+    }
+  );
 
+}
 
 
-    /*
-    PLAY
-    */
 
+function startRadio() {
 
-    widget.bind(
-      SC.Widget.Events.PLAY,
-      function () {
-
-
-        consecutiveErrors = 0;
-
-
-        isPlaying =
-          true;
-
-
-        hasStarted =
-          true;
-
-
-        playAttempt++;
-
-
-        playButton.textContent =
-          'PAUSE';
-
-
-        radioHelp.classList.remove(
-          'is-visible'
-        );
-
-
-        radioError.classList.remove(
-          'is-visible'
-        );
-
-
-      }
-    );
-
-
-
-    /*
-    PAUSE
-    */
-
-
-    widget.bind(
-      SC.Widget.Events.PAUSE,
-      function () {
-
-
-        isPlaying =
-          false;
-
-
-        playButton.textContent =
-          'PLAY';
-
-
-      }
-    );
-
-
-
-    /*
-    FINISH
-    */
-
-
-    widget.bind(
-      SC.Widget.Events.FINISH,
-      function () {
-
-
-        nextTrack();
-
-
-      }
-    );
-
-
-
-    /*
-    PROGRESS
-    */
-
-
-    widget.bind(
-      SC.Widget.Events.PLAY_PROGRESS,
-      function (event) {
-
-
-        if (!event) {
-          return;
-        }
-
-
-        const position =
-          event.currentPosition || 0;
-
-
-        currentTime.textContent =
-          formatTime(
-            position
-          );
-
-
-        if (
-          duration > 0
-        ) {
-
-
-          const percentage =
-            Math.min(
-              100,
-              (
-                position
-                /
-                duration
-              )
-              *
-              100
-            );
-
-
-          progressBar.style.width =
-            percentage
-            +
-            '%';
-
-
-        }
-
-
-      }
-    );
-
-
-
-    /*
-    ERROR
-    */
-
-
-    widget.bind(
-      SC.Widget.Events.ERROR,
-      function () {
-
-
-        consecutiveErrors++;
-
-
-        radioError.classList.add(
-          'is-visible'
-        );
-
-
-        if (
-          consecutiveErrors
-          <
-          radioPlaylist.length
-        ) {
-
-
-          setTimeout(
-            function () {
-
-
-              nextTrack();
-
-
-            },
-            1400
-          );
-
-
-        }
-
-        else {
-
-
-          isPlaying =
-            false;
-
-
-          playButton.textContent =
-            'PLAY';
-
-
-        }
-
-
-      }
-    );
-
-
+  if (
+    !widget
+    ||
+    !widgetReady
+  ) {
+    return;
   }
 
+  playAttempt++;
+
+  const attempt =
+    playAttempt;
+
+  radioHelp.classList.remove(
+    'is-visible'
+  );
+
+  radioError.classList.remove(
+    'is-visible'
+  );
+
+  loadCurrentTrack(
+    true
+  );
 
 
-  /*
-  ============================================================
-  PLAY / PAUSE
-  ============================================================
-  */
-
-
-  playButton.addEventListener(
-    'click',
+  setTimeout(
     function () {
 
-
       if (
-        !widget
-        ||
-        !widgetReady
+        attempt === playAttempt
+        &&
+        !isPlaying
       ) {
 
-        return;
+        widget.play();
 
       }
 
-
-      /*
-      Premier démarrage :
-      procédure spéciale Safari.
-      */
+    },
+    900
+  );
 
 
-      if (!hasStarted) {
+  setTimeout(
+    function () {
 
+      if (
+        attempt === playAttempt
+        &&
+        !isPlaying
+      ) {
 
-        startRadio();
-
-
-        return;
-
+        radioHelp.classList.add(
+          'is-visible'
+        );
 
       }
 
+    },
+    2500
+  );
 
-      /*
-      Une fois la lecture autorisée,
-      les commandes classiques
-      fonctionnent.
-      */
-
-
-      if (isPlaying) {
+}
 
 
-        widget.pause();
 
+function nextTrack() {
+
+  if (!radioPlaylist.length) {
+    return;
+  }
+
+  currentIndex =
+    (
+      currentIndex + 1
+    )
+    %
+    radioPlaylist.length;
+
+  loadCurrentTrack(
+    hasStarted
+  );
+
+}
+
+
+
+function previousTrack() {
+
+  if (!radioPlaylist.length) {
+    return;
+  }
+
+  currentIndex =
+    (
+      currentIndex
+      -
+      1
+      +
+      radioPlaylist.length
+    )
+    %
+    radioPlaylist.length;
+
+  loadCurrentTrack(
+    hasStarted
+  );
+
+}
+
+
+
+function initialiseRadio() {
+
+  if (!radioPlaylist.length) {
+    return;
+  }
+
+  const firstTrack =
+    radioPlaylist[0];
+
+  updateNowPlaying();
+
+  renderQueue();
+
+
+  iframe.src =
+    'https://w.soundcloud.com/player/?url='
+    +
+    encodeURIComponent(
+      firstTrack.url
+    )
+    +
+    '&auto_play=false'
+    +
+    '&show_artwork=true'
+    +
+    '&show_user=true'
+    +
+    '&show_comments=false'
+    +
+    '&show_playcount=false'
+    +
+    '&sharing=false'
+    +
+    '&buying=false'
+    +
+    '&download=false'
+    +
+    '&single_active=false';
+
+
+  widget =
+    SC.Widget(
+      iframe
+    );
+
+
+  widget.bind(
+    SC.Widget.Events.READY,
+    function () {
+
+      widgetReady =
+        true;
+
+      playButton.disabled =
+        false;
+
+      previousButton.disabled =
+        false;
+
+      nextButton.disabled =
+        false;
+
+      updateNowPlaying();
+
+      renderQueue();
+
+      widget.getDuration(
+        value => {
+
+          duration =
+            value || 0;
+
+          durationLabel.textContent =
+            formatTime(
+              duration
+            );
+
+        }
+      );
+
+    }
+  );
+
+
+  widget.bind(
+    SC.Widget.Events.PLAY,
+    function () {
+
+      consecutiveErrors = 0;
+
+      isPlaying =
+        true;
+
+      hasStarted =
+        true;
+
+      playAttempt++;
+
+      playButton.textContent =
+        'PAUSE';
+
+      radioHelp.classList.remove(
+        'is-visible'
+      );
+
+      radioError.classList.remove(
+        'is-visible'
+      );
+
+    }
+  );
+
+
+  widget.bind(
+    SC.Widget.Events.PAUSE,
+    function () {
+
+      isPlaying =
+        false;
+
+      playButton.textContent =
+        'PLAY';
+
+    }
+  );
+
+
+  widget.bind(
+    SC.Widget.Events.FINISH,
+    function () {
+
+      nextTrack();
+
+    }
+  );
+
+
+  widget.bind(
+    SC.Widget.Events.PLAY_PROGRESS,
+    function (event) {
+
+      if (!event) {
+        return;
+      }
+
+      const position =
+        event.currentPosition || 0;
+
+      currentTime.textContent =
+        formatTime(
+          position
+        );
+
+      if (
+        duration > 0
+      ) {
+
+        const percentage =
+          Math.min(
+            100,
+            (
+              position
+              /
+              duration
+            )
+            *
+            100
+          );
+
+        progressBar.style.width =
+          percentage
+          +
+          '%';
+
+      }
+
+    }
+  );
+
+
+  widget.bind(
+    SC.Widget.Events.ERROR,
+    function () {
+
+      consecutiveErrors++;
+
+      radioError.classList.add(
+        'is-visible'
+      );
+
+      if (
+        consecutiveErrors
+        <
+        radioPlaylist.length
+      ) {
+
+        setTimeout(
+          function () {
+
+            nextTrack();
+
+          },
+          1400
+        );
 
       }
 
       else {
 
+        isPlaying =
+          false;
 
-        widget.play();
-
-
-      }
-
-
-    }
-  );
-
-
-
-  /*
-  ============================================================
-  NEXT
-  ============================================================
-  */
-
-
-  nextButton.addEventListener(
-    'click',
-    function () {
-
-
-      nextTrack();
-
-
-    }
-  );
-
-
-
-  /*
-  ============================================================
-  PREVIOUS
-  ============================================================
-  */
-
-
-  previousButton.addEventListener(
-    'click',
-    function () {
-
-
-      previousTrack();
-
-
-    }
-  );
-
-
-
-  /*
-  ============================================================
-  MENU MOBILE
-  ============================================================
-  */
-
-
-  const menuButton =
-    document.querySelector(
-      '.menu-toggle'
-    );
-
-
-  const nav =
-    document.querySelector(
-      '.main-nav'
-    );
-
-
-  if (
-    menuButton
-    &&
-    nav
-  ) {
-
-
-    menuButton.addEventListener(
-      'click',
-      () => {
-
-
-        const isOpen =
-          nav.classList.toggle(
-            'is-open'
-          );
-
-
-        menuButton.setAttribute(
-          'aria-expanded',
-          isOpen
-            ? 'true'
-            : 'false'
-        );
-
-
-        menuButton.textContent =
-          isOpen
-            ? 'FERMER'
-            : 'MENU';
-
-
-        document.body.classList.toggle(
-          'menu-open',
-          isOpen
-        );
-
+        playButton.textContent =
+          'PLAY';
 
       }
-    );
+
+    }
+  );
+
+}
 
 
-    nav
-      .querySelectorAll('a')
-      .forEach(
-        link => {
 
+playButton.addEventListener(
+  'click',
+  function () {
 
-          link.addEventListener(
-            'click',
-            () => {
+    if (
+      !widget
+      ||
+      !widgetReady
+    ) {
+      return;
+    }
 
+    if (!hasStarted) {
 
-              nav.classList.remove(
-                'is-open'
-              );
+      startRadio();
 
+      return;
 
-              menuButton.setAttribute(
-                'aria-expanded',
-                'false'
-              );
+    }
 
+    if (isPlaying) {
 
-              menuButton.textContent =
-                'MENU';
+      widget.pause();
 
+    }
 
-              document.body.classList.remove(
-                'menu-open'
-              );
+    else {
 
+      widget.play();
 
-            }
-          );
-
-
-        }
-      );
-
+    }
 
   }
+);
 
 
 
-  /*
-  ============================================================
-  START
-  ============================================================
-  */
+nextButton.addEventListener(
+  'click',
+  function () {
+
+    nextTrack();
+
+  }
+);
 
 
-  initialiseRadio();
+
+previousButton.addEventListener(
+  'click',
+  function () {
+
+    previousTrack();
+
+  }
+);
+
+
+
+const menuButton =
+  document.querySelector(
+    '.menu-toggle'
+  );
+
+const nav =
+  document.querySelector(
+    '.main-nav'
+  );
+
+
+if (
+  menuButton
+  &&
+  nav
+) {
+
+  menuButton.addEventListener(
+    'click',
+    () => {
+
+      const isOpen =
+        nav.classList.toggle(
+          'is-open'
+        );
+
+      menuButton.setAttribute(
+        'aria-expanded',
+        isOpen ? 'true' : 'false'
+      );
+
+      menuButton.textContent =
+        isOpen
+          ? 'FERMER'
+          : 'MENU';
+
+      document.body.classList.toggle(
+        'menu-open',
+        isOpen
+      );
+
+    }
+  );
+
+
+  nav
+    .querySelectorAll('a')
+    .forEach(
+      link => {
+
+        link.addEventListener(
+          'click',
+          () => {
+
+            nav.classList.remove(
+              'is-open'
+            );
+
+            menuButton.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+
+            menuButton.textContent =
+              'MENU';
+
+            document.body.classList.remove(
+              'menu-open'
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+
+initialiseRadio();
 
 
 </script>
