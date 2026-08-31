@@ -45,8 +45,16 @@
 
 
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Danceteria">
-  <meta property="og:title" content="Danceteria Radio">
+
+  <meta
+    property="og:site_name"
+    content="Danceteria"
+  >
+
+  <meta
+    property="og:title"
+    content="Danceteria Radio"
+  >
 
   <meta
     property="og:description"
@@ -94,7 +102,13 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--text);
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+
       -webkit-font-smoothing: antialiased;
     }
 
@@ -114,54 +128,90 @@
 
 
     .site-header {
+
       position: fixed;
+
       z-index: 100;
+
       top: 0;
       left: 0;
       right: 0;
+
       height: 66px;
+
       padding: 0 20px;
+
       display: flex;
+
       align-items: center;
       justify-content: space-between;
+
       background: rgba(0,0,0,.94);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.12);
+
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+
     }
 
 
     .brand {
+
       width: 138px;
       height: 42px;
+
       display: flex;
+
       align-items: center;
+
       text-decoration: none;
+
     }
 
 
     .brand img {
+
       display: block;
+
       width: 132px;
       height: auto;
+
       object-fit: contain;
+
     }
 
 
     .main-nav {
+
       display: flex;
+
       align-items: center;
+
       gap: 24px;
+
     }
 
 
     .main-nav a {
+
       text-decoration: none;
+
       text-transform: uppercase;
+
       font-size: 10px;
+
       font-weight: 700;
+
       letter-spacing: .15em;
-      transition: opacity .2s ease;
+
+      transition:
+        opacity .2s ease;
+
     }
 
 
@@ -171,22 +221,38 @@
 
 
     .main-nav .active {
-      padding: 9px 12px;
-      border: 1px solid rgba(255,255,255,.6);
+
+      padding:
+        9px 12px;
+
+      border:
+        1px solid rgba(255,255,255,.6);
+
     }
 
 
     .menu-toggle {
+
       display: none;
+
       padding: 0;
+
       border: 0;
+
       background: transparent;
+
       color: white;
+
       font: inherit;
+
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .15em;
+
       cursor: pointer;
+
     }
 
 
@@ -195,9 +261,20 @@
 
 
     .page {
-      width: min(var(--max), calc(100% - 44px));
-      margin: 0 auto;
-      padding: 145px 0 120px;
+
+      width:
+        min(
+          var(--max),
+          calc(100% - 44px)
+        );
+
+      margin:
+        0 auto;
+
+      padding:
+        145px 0
+        120px;
+
     }
 
 
@@ -206,42 +283,82 @@
 
 
     .radio-intro {
+
       min-height: 58vh;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: flex-end;
+
       padding-bottom: 70px;
+
     }
 
 
     .eyebrow {
-      margin: 0 0 18px;
+
+      margin:
+        0 0 18px;
+
       color: var(--muted);
+
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .18em;
+
       text-transform: uppercase;
+
     }
 
 
     h1 {
+
       margin: 0;
+
       max-width: 1000px;
-      font-size: clamp(66px, 10.8vw, 154px);
+
+      font-size:
+        clamp(
+          66px,
+          10.8vw,
+          154px
+        );
+
       line-height: .78;
+
       font-weight: 900;
+
       letter-spacing: -.08em;
+
       text-transform: uppercase;
+
     }
 
 
     .radio-tagline {
-      margin: 40px 0 0;
+
+      margin:
+        40px 0 0;
+
       max-width: 650px;
+
       color: #cbc8c2;
-      font-size: clamp(19px, 2vw, 28px);
+
+      font-size:
+        clamp(
+          19px,
+          2vw,
+          28px
+        );
+
       line-height: 1.25;
+
       letter-spacing: -.025em;
+
     }
 
 
@@ -250,12 +367,23 @@
 
 
     .radio-player {
+
       display: grid;
-      grid-template-columns: .35fr 1fr;
+
+      grid-template-columns:
+        .35fr 1fr;
+
       gap: 70px;
-      padding: 55px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+
+      padding:
+        55px 0;
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
     }
 
 
@@ -265,34 +393,61 @@
 
 
     .on-air {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 9px;
+
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .17em;
+
       text-transform: uppercase;
+
     }
 
 
     .on-air-dot {
+
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: var(--red);
-      box-shadow: 0 0 0 0 rgba(200,32,25,.5);
-      animation: pulse 1.7s infinite;
+
+      box-shadow:
+        0 0 0 0
+        rgba(200,32,25,.5);
+
+      animation:
+        pulse
+        1.7s
+        infinite;
+
     }
 
 
     @keyframes pulse {
 
       70% {
-        box-shadow: 0 0 0 9px rgba(200,32,25,0);
+
+        box-shadow:
+          0 0 0 9px
+          rgba(200,32,25,0);
+
       }
 
       100% {
-        box-shadow: 0 0 0 0 rgba(200,32,25,0);
+
+        box-shadow:
+          0 0 0 0
+          rgba(200,32,25,0);
+
       }
 
     }
@@ -303,42 +458,81 @@
 
 
     .now-playing-label {
+
       display: block;
+
       margin-bottom: 17px;
+
       color: var(--muted);
+
       font-size: 9px;
+
       font-weight: 800;
+
       letter-spacing: .17em;
+
       text-transform: uppercase;
+
     }
 
 
     .now-artist {
+
       margin: 0;
-      font-size: clamp(34px, 5vw, 74px);
+
+      font-size:
+        clamp(
+          34px,
+          5vw,
+          74px
+        );
+
       line-height: .88;
+
       letter-spacing: -.06em;
+
       text-transform: uppercase;
+
     }
 
 
     .now-title {
-      margin: 14px 0 0;
+
+      margin:
+        14px 0 0;
+
       color: #a9a69f;
-      font-size: clamp(15px,1.7vw,22px);
+
+      font-size:
+        clamp(
+          15px,
+          1.7vw,
+          22px
+        );
+
       line-height: 1.3;
+
     }
 
 
     .soundcloud-link {
+
       display: inline-block;
+
       margin-top: 18px;
+
       color: var(--muted);
+
       font-size: 9px;
+
       font-weight: 700;
+
       letter-spacing: .13em;
+
       text-decoration: none;
+
       text-transform: uppercase;
+
     }
 
 
@@ -352,55 +546,89 @@
 
 
     .controls {
+
       margin-top: 36px;
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 10px;
+
     }
 
 
     .control-button {
+
       min-height: 52px;
-      padding: 0 20px;
-      border: 1px solid rgba(255,255,255,.55);
+
+      padding:
+        0 20px;
+
+      border:
+        1px solid rgba(255,255,255,.55);
+
       background: transparent;
+
       color: white;
+
       font: inherit;
+
       font-size: 9px;
+
       font-weight: 850;
+
       letter-spacing: .14em;
+
       text-transform: uppercase;
+
       cursor: pointer;
+
       transition:
         background .2s ease,
         color .2s ease,
         opacity .2s ease;
+
     }
 
 
     .control-button:hover {
+
       background: white;
+
       color: black;
+
     }
 
 
     .control-button.primary {
+
       min-width: 155px;
+
       background: white;
+
       color: black;
+
       border-color: white;
+
     }
 
 
     .control-button.primary:hover {
+
       background: transparent;
+
       color: white;
+
     }
 
 
     .control-button:disabled {
+
       opacity: .3;
+
       cursor: default;
+
     }
 
 
@@ -414,50 +642,113 @@
 
 
     .progress {
+
       position: relative;
+
       height: 2px;
+
       overflow: hidden;
-      background: rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.15);
+
     }
 
 
     .progress-bar {
+
       position: absolute;
+
       left: 0;
       top: 0;
       bottom: 0;
+
       width: 0;
+
       background: white;
+
     }
 
 
     .time-row {
+
       margin-top: 9px;
+
       display: flex;
+
       justify-content: space-between;
+
       color: #676767;
+
       font-size: 9px;
+
       letter-spacing: .1em;
+
     }
 
 
 
-    /* ERROR */
+    /* HELP / ERROR */
+
+
+    .radio-help,
+    .radio-error {
+
+      display: none;
+
+      margin-top: 26px;
+
+      padding: 20px;
+
+      font-size: 12px;
+
+      line-height: 1.55;
+
+    }
+
+
+    .radio-help {
+
+      border:
+        1px solid rgba(255,255,255,.25);
+
+      color: #b7b4ae;
+
+    }
 
 
     .radio-error {
-      display: none;
-      margin-top: 28px;
-      padding: 20px;
-      border: 1px solid rgba(200,32,25,.5);
+
+      border:
+        1px solid rgba(200,32,25,.5);
+
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
+
     }
 
 
+    .radio-help.is-visible,
     .radio-error.is-visible {
+
       display: block;
+
+    }
+
+
+    .radio-help strong {
+
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: white;
+
+      font-size: 11px;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+
     }
 
 
@@ -466,77 +757,126 @@
 
 
     .queue-section {
-      padding: 100px 0;
+
+      padding:
+        100px 0;
+
     }
 
 
     .section-label {
-      margin: 0 0 36px;
+
+      margin:
+        0 0 36px;
+
       color: var(--muted);
+
       font-size: 10px;
+
       font-weight: 800;
+
       letter-spacing: .17em;
+
       text-transform: uppercase;
+
     }
 
 
     .queue {
-      border-top: 1px solid var(--line);
+
+      border-top:
+        1px solid var(--line);
+
     }
 
 
     .queue-item {
-      padding: 18px 0;
+
+      padding:
+        18px 0;
+
       display: grid;
-      grid-template-columns: 65px 1fr 1fr;
+
+      grid-template-columns:
+        65px 1fr 1fr;
+
       gap: 25px;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
       align-items: center;
+
     }
 
 
     .queue-number {
+
       color: #666;
+
       font-size: 10px;
+
     }
 
 
     .queue-artist {
+
       font-size: 15px;
+
       font-weight: 700;
+
     }
 
 
     .queue-title {
+
       color: var(--muted);
+
       font-size: 13px;
+
     }
 
 
 
-    /* SOURCE */
+    /* SOUNDCLOUD */
 
 
     .source-section {
-      padding: 0 0 90px;
+
+      padding:
+        0 0 90px;
+
     }
 
 
     .source-note {
-      margin: 0 0 18px;
+
+      margin:
+        0 0 18px;
+
       max-width: 600px;
+
       color: var(--muted);
+
       font-size: 11px;
+
       line-height: 1.5;
+
     }
 
 
     .soundcloud-frame {
+
       width: 100%;
+
       height: 166px;
+
       display: block;
+
       border: 0;
+
       background: #111;
+
     }
 
 
@@ -545,22 +885,45 @@
 
 
     .site-footer {
-      width: min(var(--max), calc(100% - 44px));
-      margin: 0 auto;
-      padding: 24px 0 36px;
+
+      width:
+        min(
+          var(--max),
+          calc(100% - 44px)
+        );
+
+      margin:
+        0 auto;
+
+      padding:
+        24px 0
+        36px;
+
       display: grid;
-      grid-template-columns: 1fr 1fr auto;
+
+      grid-template-columns:
+        1fr 1fr auto;
+
       gap: 20px;
-      border-top: 1px solid var(--line);
+
+      border-top:
+        1px solid var(--line);
+
       color: var(--muted);
+
       font-size: 10px;
+
       letter-spacing: .1em;
+
     }
 
 
     .site-footer a {
+
       color: white;
+
       text-decoration: none;
+
     }
 
 
@@ -570,21 +933,32 @@
 
     @media (max-width:900px) {
 
+
       .menu-toggle {
         display: block;
       }
 
 
       .main-nav {
+
         position: fixed;
+
         top: 66px;
         left: 0;
         right: 0;
+
         display: none;
+
         flex-direction: column;
+
         align-items: flex-start;
-        padding: 28px 20px 36px;
+
+        padding:
+          28px 20px
+          36px;
+
         background: #000;
+
       }
 
 
@@ -599,13 +973,20 @@
 
 
       .main-nav .active {
-        padding: 12px 15px;
+
+        padding:
+          12px 15px;
+
       }
 
 
       .radio-player {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
         gap: 40px;
+
       }
 
     }
@@ -616,6 +997,7 @@
 
 
     @media (max-width:600px) {
+
 
       .site-header {
         padding: 0 16px;
@@ -633,41 +1015,71 @@
 
 
       .page {
-        width: calc(100% - 32px);
-        padding: 118px 0 75px;
+
+        width:
+          calc(100% - 32px);
+
+        padding:
+          118px 0
+          75px;
+
       }
 
 
       .radio-intro {
+
         min-height: 48vh;
+
         padding-bottom: 55px;
+
       }
 
 
       h1 {
-        font-size: clamp(54px, 19vw, 86px);
+
+        font-size:
+          clamp(
+            54px,
+            19vw,
+            86px
+          );
+
       }
 
 
       .radio-player {
-        padding: 42px 0;
+
+        padding:
+          42px 0;
+
       }
 
 
       .controls {
+
         display: grid;
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+          1fr 1fr;
+
       }
 
 
       .control-button.primary {
-        grid-column: 1 / -1;
+
+        grid-column:
+          1 / -1;
+
       }
 
 
       .queue-item {
-        grid-template-columns: 40px 1fr;
+
+        grid-template-columns:
+          40px 1fr;
+
         gap: 10px;
+
       }
 
 
@@ -677,8 +1089,13 @@
 
 
       .site-footer {
-        width: calc(100% - 32px);
-        grid-template-columns: 1fr auto;
+
+        width:
+          calc(100% - 32px);
+
+        grid-template-columns:
+          1fr auto;
+
       }
 
 
@@ -690,11 +1107,14 @@
 
 
 
-    @media (prefers-reduced-motion: reduce) {
+    @media
+    (prefers-reduced-motion: reduce) {
+
 
       .on-air-dot {
         animation: none;
       }
+
 
     }
 
@@ -919,11 +1339,30 @@
 
 
       <div
+        class="radio-help"
+        id="radio-help"
+      >
+
+        <strong>
+          Safari bloque le premier démarrage
+        </strong>
+
+        Clique une seule fois sur le bouton orange
+        du lecteur SoundCloud situé plus bas.
+        Ensuite Danceteria Radio continuera automatiquement.
+
+      </div>
+
+
+
+      <div
         class="radio-error"
         id="radio-error"
       >
-        Ce contenu SoundCloud est momentanément indisponible.
-        Passage automatique au suivant.
+
+        Ce contenu SoundCloud est momentanément
+        indisponible. Passage automatique au suivant.
+
       </div>
 
 
@@ -965,7 +1404,8 @@
 
     <p class="source-note">
       Audio streamed directly from SoundCloud.
-      The official player provides artist and platform attribution.
+      The official player provides artist and
+      platform attribution.
     </p>
 
 
@@ -975,7 +1415,7 @@
       title="SoundCloud player"
       scrolling="no"
       frameborder="no"
-      allow="autoplay"
+      allow="autoplay; encrypted-media"
       src="about:blank"
     ></iframe>
 
@@ -1005,7 +1445,9 @@
 
 
 
-<script src="https://w.soundcloud.com/player/api.js"></script>
+<script
+  src="https://w.soundcloud.com/player/api.js"
+></script>
 
 
 <script>
@@ -1013,20 +1455,9 @@
 
   /*
   ============================================================
-  DANCETERIA RADIO
-  ============================================================
-
-  La playlist est mélangée à chaque ouverture de la page.
-
-  Après le premier clic sur PLAY :
-  les contenus s'enchaînent automatiquement.
-
-  Après le dernier :
-  la radio repart au premier.
-
+  PLAYLIST DANCETERIA RADIO
   ============================================================
   */
-
 
 
   const rawRadioPlaylist = [
@@ -1083,15 +1514,15 @@
 
     {
       artist: "INORGANICA",
-      title: "Magnetic Conjunction · Underside",
-      url: "https://soundcloud.com/inorganicasound/magnetic-conjunction-underside"
+      title: "Underside / Psyche Resolved",
+      url: "https://soundcloud.com/inorganicasound/rec074"
     },
 
 
     {
       artist: "SCAN X",
-      title: "Higher (2020 Remastered Version)",
-      url: "https://soundcloud.com/scanxofficial/higher-2020-remastered-version"
+      title: "FCom 25 Remastered EP2",
+      url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2"
     },
 
 
@@ -1108,12 +1539,13 @@
 
   /*
   ============================================================
-  MELANGE ALEATOIRE
+  RANDOM
   ============================================================
   */
 
 
   function shufflePlaylist(array) {
+
 
     const shuffled =
       [...array];
@@ -1124,6 +1556,7 @@
       i > 0;
       i--
     ) {
+
 
       const j =
         Math.floor(
@@ -1140,6 +1573,7 @@
         shuffled[j],
         shuffled[i]
       ];
+
 
     }
 
@@ -1230,6 +1664,12 @@
     );
 
 
+  const radioHelp =
+    document.querySelector(
+      '#radio-help'
+    );
+
+
   const radioError =
     document.querySelector(
       '#radio-error'
@@ -1248,11 +1688,17 @@
 
   let widget = null;
 
+  let widgetReady = false;
+
   let isPlaying = false;
+
+  let hasStarted = false;
 
   let duration = 0;
 
   let consecutiveErrors = 0;
+
+  let playAttempt = 0;
 
 
 
@@ -1344,7 +1790,7 @@
 
   /*
   ============================================================
-  NOW PLAYING
+  DISPLAY
   ============================================================
   */
 
@@ -1376,27 +1822,10 @@
 
 
 
-  /*
-  ============================================================
-  COMING NEXT
-  ============================================================
-  */
-
-
   function renderQueue() {
 
 
-    queue.innerHTML =
-      '';
-
-
-    if (
-      radioPlaylist.length <= 1
-    ) {
-
-      return;
-
-    }
+    queue.innerHTML = '';
 
 
     const maxItems =
@@ -1422,9 +1851,7 @@
 
 
       const item =
-        radioPlaylist[
-          index
-        ];
+        radioPlaylist[index];
 
 
       const row =
@@ -1464,13 +1891,6 @@
 
 
 
-  /*
-  ============================================================
-  RESET PROGRESS
-  ============================================================
-  */
-
-
   function resetProgress() {
 
 
@@ -1494,7 +1914,45 @@
 
   /*
   ============================================================
-  LOAD CURRENT TRACK
+  PLAYER OPTIONS
+  ============================================================
+  */
+
+
+  function playerOptions(
+    autoplay
+  ) {
+
+
+    return {
+
+      auto_play: autoplay,
+
+      show_artwork: true,
+
+      show_user: true,
+
+      show_playcount: false,
+
+      show_comments: false,
+
+      sharing: false,
+
+      buying: false,
+
+      download: false,
+
+      single_active: false
+
+    };
+
+  }
+
+
+
+  /*
+  ============================================================
+  LOAD TRACK
   ============================================================
   */
 
@@ -1532,22 +1990,14 @@
 
 
     widget.load(
+
       item.url,
+
       {
 
-        auto_play: autoplay,
-
-        show_artwork: true,
-
-        show_user: true,
-
-        show_playcount: false,
-
-        sharing: false,
-
-        buying: false,
-
-        download: false,
+        ...playerOptions(
+          autoplay
+        ),
 
 
         callback: function () {
@@ -1571,25 +2021,133 @@
           );
 
 
-          /*
-          Certains navigateurs peuvent
-          avoir besoin d'un play explicite
-          après le chargement.
-          */
-
-
-          if (autoplay) {
-
-            widget.play();
-
-          }
-
-
         }
+
 
       }
 
     );
+
+  }
+
+
+
+  /*
+  ============================================================
+  PREMIER PLAY
+  ============================================================
+  */
+
+
+  function startRadio() {
+
+
+    if (
+      !widget
+      ||
+      !widgetReady
+    ) {
+
+      return;
+
+    }
+
+
+    playAttempt++;
+
+
+    const attempt =
+      playAttempt;
+
+
+    radioHelp.classList.remove(
+      'is-visible'
+    );
+
+
+    radioError.classList.remove(
+      'is-visible'
+    );
+
+
+    /*
+    IMPORTANT :
+
+    Sur le premier clic on ne fait pas
+    simplement widget.play().
+
+    On recharge le contenu avec
+    auto_play:true depuis le clic
+    utilisateur.
+    */
+
+
+    loadCurrentTrack(
+      true
+    );
+
+
+    /*
+    Deuxième tentative courte si
+    SoundCloud n'a pas commencé.
+    */
+
+
+    setTimeout(
+      function () {
+
+
+        if (
+          attempt === playAttempt
+          &&
+          !isPlaying
+        ) {
+
+
+          widget.play();
+
+
+        }
+
+
+      },
+      900
+    );
+
+
+    /*
+    Safari / SoundCloud fallback.
+
+    Si après 2.5 secondes aucun PLAY
+    n'a été reçu, on indique au visiteur
+    d'autoriser le lecteur SoundCloud
+    une seule fois.
+    */
+
+
+    setTimeout(
+      function () {
+
+
+        if (
+          attempt === playAttempt
+          &&
+          !isPlaying
+        ) {
+
+
+          radioHelp.classList.add(
+            'is-visible'
+          );
+
+
+        }
+
+
+      },
+      2500
+    );
+
 
   }
 
@@ -1602,17 +2160,11 @@
   */
 
 
-  function nextTrack(
-    autoplay = true
-  ) {
+  function nextTrack() {
 
 
-    if (
-      !radioPlaylist.length
-    ) {
-
+    if (!radioPlaylist.length) {
       return;
-
     }
 
 
@@ -1625,7 +2177,7 @@
 
 
     loadCurrentTrack(
-      autoplay
+      hasStarted
     );
 
   }
@@ -1642,12 +2194,8 @@
   function previousTrack() {
 
 
-    if (
-      !radioPlaylist.length
-    ) {
-
+    if (!radioPlaylist.length) {
       return;
-
     }
 
 
@@ -1664,7 +2212,7 @@
 
 
     loadCurrentTrack(
-      true
+      hasStarted
     );
 
   }
@@ -1681,12 +2229,8 @@
   function initialiseRadio() {
 
 
-    if (
-      !radioPlaylist.length
-    ) {
-
+    if (!radioPlaylist.length) {
       return;
-
     }
 
 
@@ -1712,13 +2256,17 @@
       +
       '&show_user=true'
       +
+      '&show_comments=false'
+      +
       '&show_playcount=false'
       +
       '&sharing=false'
       +
       '&buying=false'
       +
-      '&download=false';
+      '&download=false'
+      +
+      '&single_active=false';
 
 
     widget =
@@ -1736,6 +2284,10 @@
     widget.bind(
       SC.Widget.Events.READY,
       function () {
+
+
+        widgetReady =
+          true;
 
 
         playButton.disabled =
@@ -1795,8 +2347,20 @@
           true;
 
 
+        hasStarted =
+          true;
+
+
+        playAttempt++;
+
+
         playButton.textContent =
           'PAUSE';
+
+
+        radioHelp.classList.remove(
+          'is-visible'
+        );
 
 
         radioError.classList.remove(
@@ -1833,7 +2397,7 @@
 
 
     /*
-    FIN DU TITRE
+    FINISH
     */
 
 
@@ -1842,18 +2406,7 @@
       function () {
 
 
-        /*
-        Dès que le contenu se termine,
-        le suivant démarre.
-
-        Après le dernier,
-        retour automatique au premier.
-        */
-
-
-        nextTrack(
-          true
-        );
+        nextTrack();
 
 
       }
@@ -1862,7 +2415,7 @@
 
 
     /*
-    PROGRESSION
+    PROGRESS
     */
 
 
@@ -1905,7 +2458,9 @@
 
 
           progressBar.style.width =
-            percentage + '%';
+            percentage
+            +
+            '%';
 
 
         }
@@ -1917,7 +2472,7 @@
 
 
     /*
-    ERREUR SOUNDCLOUD
+    ERROR
     */
 
 
@@ -1934,14 +2489,6 @@
         );
 
 
-        /*
-        Si un morceau a été supprimé,
-        rendu privé ou interdit
-        à l'intégration, on passe
-        automatiquement au suivant.
-        */
-
-
         if (
           consecutiveErrors
           <
@@ -1950,14 +2497,14 @@
 
 
           setTimeout(
-            () => {
+            function () {
 
-              nextTrack(
-                true
-              );
+
+              nextTrack();
+
 
             },
-            1500
+            1400
           );
 
 
@@ -1966,12 +2513,12 @@
         else {
 
 
-          playButton.textContent =
-            'PLAY';
-
-
           isPlaying =
             false;
+
+
+          playButton.textContent =
+            'PLAY';
 
 
         }
@@ -1997,9 +2544,40 @@
     function () {
 
 
-      if (!widget) {
+      if (
+        !widget
+        ||
+        !widgetReady
+      ) {
+
         return;
+
       }
+
+
+      /*
+      Premier démarrage :
+      procédure spéciale Safari.
+      */
+
+
+      if (!hasStarted) {
+
+
+        startRadio();
+
+
+        return;
+
+
+      }
+
+
+      /*
+      Une fois la lecture autorisée,
+      les commandes classiques
+      fonctionnent.
+      */
 
 
       if (isPlaying) {
@@ -2011,15 +2589,6 @@
       }
 
       else {
-
-
-        /*
-        Le premier démarrage nécessite
-        un clic de l'utilisateur.
-
-        Après cela, la radio continue
-        automatiquement.
-        */
 
 
         widget.play();
@@ -2045,9 +2614,7 @@
     function () {
 
 
-      nextTrack(
-        true
-      );
+      nextTrack();
 
 
     }
@@ -2181,7 +2748,7 @@
 
   /*
   ============================================================
-  START RADIO
+  START
   ============================================================
   */
 
