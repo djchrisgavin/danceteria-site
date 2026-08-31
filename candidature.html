@@ -43,6 +43,7 @@
     href="logo-danceteria.png"
   >
 
+
   <meta
     property="og:title"
     content="Play at Danceteria"
@@ -83,13 +84,16 @@
       color-scheme: dark;
     }
 
+
     * {
       box-sizing: border-box;
     }
 
+
     html {
       background: var(--bg);
     }
+
 
     body {
       margin: 0;
@@ -100,16 +104,20 @@
       -webkit-font-smoothing: antialiased;
     }
 
+
     body.menu-open {
       overflow: hidden;
     }
+
 
     a {
       color: inherit;
     }
 
 
+
     /* HEADER */
+
 
     .site-header {
       position: fixed;
@@ -128,6 +136,7 @@
       -webkit-backdrop-filter: blur(8px);
     }
 
+
     .brand {
       width: 138px;
       height: 42px;
@@ -136,6 +145,7 @@
       text-decoration: none;
     }
 
+
     .brand img {
       display: block;
       width: 132px;
@@ -143,11 +153,13 @@
       object-fit: contain;
     }
 
+
     .main-nav {
       display: flex;
       align-items: center;
       gap: 24px;
     }
+
 
     .main-nav a {
       text-decoration: none;
@@ -158,14 +170,17 @@
       transition: opacity .2s ease;
     }
 
+
     .main-nav a:hover {
       opacity: .55;
     }
+
 
     .main-nav .active {
       padding: 9px 12px;
       border: 1px solid rgba(255,255,255,.6);
     }
+
 
     .menu-toggle {
       display: none;
@@ -181,7 +196,9 @@
     }
 
 
+
     /* PAGE */
+
 
     .page {
       width: min(var(--max), calc(100% - 44px));
@@ -189,10 +206,12 @@
       padding: 160px 0 120px;
     }
 
+
     .page-intro {
       max-width: 900px;
       margin-bottom: 90px;
     }
+
 
     .eyebrow {
       margin: 0 0 20px;
@@ -202,6 +221,7 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+
 
     h1 {
       margin: 0;
@@ -213,6 +233,7 @@
       text-transform: uppercase;
     }
 
+
     .intro-fr {
       max-width: 650px;
       margin: 42px 0 0;
@@ -220,6 +241,7 @@
       line-height: 1.3;
       letter-spacing: -.025em;
     }
+
 
     .intro-en {
       max-width: 650px;
@@ -230,7 +252,9 @@
     }
 
 
+
     /* FORM LAYOUT */
+
 
     .form-layout {
       display: grid;
@@ -241,10 +265,12 @@
       border-top: 1px solid var(--line);
     }
 
+
     .form-aside {
       position: sticky;
       top: 110px;
     }
+
 
     .form-number {
       display: block;
@@ -254,12 +280,14 @@
       letter-spacing: .15em;
     }
 
+
     .form-aside h2 {
       margin: 0;
       font-size: clamp(32px,4vw,52px);
       line-height: .92;
       letter-spacing: -.05em;
     }
+
 
     .form-aside p {
       max-width: 300px;
@@ -270,21 +298,26 @@
     }
 
 
+
     /* FORM */
+
 
     .application-form {
       width: 100%;
     }
 
+
     .field {
       margin-bottom: 34px;
     }
+
 
     .field-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
     }
+
 
     label {
       display: block;
@@ -295,9 +328,11 @@
       text-transform: uppercase;
     }
 
+
     .required {
       color: var(--red);
     }
+
 
     input,
     select,
@@ -315,16 +350,19 @@
       transition: border-color .2s ease;
     }
 
+
     input:focus,
     select:focus,
     textarea:focus {
       border-bottom-color: white;
     }
 
+
     input::placeholder,
     textarea::placeholder {
       color: #5e5e5e;
     }
+
 
     select {
       appearance: none;
@@ -332,16 +370,19 @@
       cursor: pointer;
     }
 
+
     select option {
       background: #111;
       color: white;
     }
+
 
     textarea {
       min-height: 130px;
       resize: vertical;
       line-height: 1.5;
     }
+
 
     .field-help {
       display: block;
@@ -350,6 +391,7 @@
       font-size: 10px;
       line-height: 1.45;
     }
+
 
     .char-counter {
       margin-top: 7px;
@@ -360,7 +402,9 @@
     }
 
 
-    /* INPUT AVEC PREFIXE */
+
+    /* PREFIXES INSTAGRAM / SOUNDCLOUD */
+
 
     .prefixed-input {
       display: flex;
@@ -370,9 +414,11 @@
       transition: border-color .2s ease;
     }
 
+
     .prefixed-input:focus-within {
       border-bottom-color: white;
     }
+
 
     .input-prefix {
       flex-shrink: 0;
@@ -382,19 +428,23 @@
       white-space: nowrap;
     }
 
+
     .prefixed-input input {
       min-width: 0;
       padding: 15px 0;
-      border: 0;
       margin: 0;
+      border: 0;
     }
+
 
     .prefixed-input input:focus {
       border: 0;
     }
 
 
+
     /* CHECKBOX */
+
 
     .consent {
       margin: 45px 0 30px;
@@ -403,6 +453,7 @@
       align-items: flex-start;
     }
 
+
     .consent input {
       width: 16px;
       height: 16px;
@@ -410,6 +461,7 @@
       accent-color: white;
       flex-shrink: 0;
     }
+
 
     .consent label {
       margin: 0;
@@ -422,7 +474,9 @@
     }
 
 
+
     /* BUTTON */
+
 
     .submit-button {
       width: 100%;
@@ -440,10 +494,12 @@
       transition: background .2s ease,color .2s ease;
     }
 
+
     .submit-button:hover {
       background: transparent;
       color: white;
     }
+
 
     .submit-button:disabled {
       opacity: .45;
@@ -451,7 +507,9 @@
     }
 
 
+
     /* MESSAGES */
+
 
     .form-message {
       display: none;
@@ -460,9 +518,11 @@
       border: 1px solid var(--line);
     }
 
+
     .form-message.is-visible {
       display: block;
     }
+
 
     .form-message strong {
       display: block;
@@ -471,6 +531,7 @@
       letter-spacing: -.03em;
     }
 
+
     .form-message p {
       margin: 0;
       color: var(--muted);
@@ -478,12 +539,15 @@
       font-size: 13px;
     }
 
+
     .form-error {
       border-color: rgba(200,32,25,.7);
     }
 
 
+
     /* FOOTER */
+
 
     .site-footer {
       width: min(var(--max), calc(100% - 44px));
@@ -498,19 +562,24 @@
       letter-spacing: .1em;
     }
 
+
     .site-footer a {
       color: white;
       text-decoration: none;
     }
 
 
+
     /* TABLET */
 
+
     @media (max-width:900px) {
+
 
       .menu-toggle {
         display: block;
       }
+
 
       .main-nav {
         position: fixed;
@@ -524,26 +593,32 @@
         background: #000;
       }
 
+
       .main-nav.is-open {
         display: flex;
       }
+
 
       .main-nav a {
         font-size: 17px;
       }
 
+
       .main-nav .active {
         padding: 12px 15px;
       }
+
 
       .form-layout {
         grid-template-columns: 1fr;
         gap: 50px;
       }
 
+
       .form-aside {
         position: static;
       }
+
 
       .form-aside p {
         max-width: 500px;
@@ -552,57 +627,71 @@
     }
 
 
+
     /* MOBILE */
 
+
     @media (max-width:600px) {
+
 
       .site-header {
         padding: 0 16px;
       }
 
+
       .brand {
         width: 112px;
       }
 
+
       .brand img {
         width: 108px;
       }
+
 
       .page {
         width: calc(100% - 32px);
         padding: 125px 0 80px;
       }
 
+
       .page-intro {
         margin-bottom: 65px;
       }
 
+
       h1 {
         font-size: clamp(50px,17vw,78px);
       }
+
 
       .intro-fr {
         margin-top: 32px;
         font-size: 19px;
       }
 
+
       .field-row {
         grid-template-columns: 1fr;
         gap: 0;
       }
 
+
       .input-prefix {
         font-size: 15px;
       }
+
 
       .prefixed-input input {
         font-size: 15px;
       }
 
+
       .site-footer {
         width: calc(100% - 32px);
         grid-template-columns: 1fr auto;
       }
+
 
       .site-footer span:nth-child(2) {
         display: none;
@@ -618,6 +707,7 @@
 <body>
 
 
+
 <header class="site-header">
 
   <a
@@ -625,10 +715,12 @@
     href="index.html"
     aria-label="Danceteria — accueil"
   >
+
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
+
   </a>
 
 
@@ -755,7 +847,10 @@
       >
 
 
-      <!-- URLs reconstruites automatiquement -->
+      <!--
+        Ces deux champs sont les seuls envoyés à Formspree
+        pour Instagram et SoundCloud.
+      -->
 
       <input
         type="hidden"
@@ -784,7 +879,11 @@
           required
         >
 
-          <option value="" selected disabled>
+          <option
+            value=""
+            selected
+            disabled
+          >
             Sélectionner
           </option>
 
@@ -885,10 +984,11 @@
 
             <input
               id="instagram-handle"
-              name="Instagram username"
               type="text"
               required
               autocomplete="off"
+              autocapitalize="none"
+              spellcheck="false"
               placeholder="nomduprofil"
             >
 
@@ -916,10 +1016,11 @@
 
           <input
             id="soundcloud-handle"
-            name="SoundCloud username"
             type="text"
             required
             autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
             placeholder="nomduprofil"
           >
 
@@ -1077,6 +1178,7 @@
 
   /* MENU MOBILE */
 
+
   const menuButton =
     document.querySelector('.menu-toggle');
 
@@ -1112,6 +1214,7 @@
 
   /* COMPTEUR DE CARACTERES */
 
+
   const messageField =
     document.querySelector('#message');
 
@@ -1137,6 +1240,7 @@
 
   /* PROFILS SOCIAUX */
 
+
   const instagramHandle =
     document.querySelector('#instagram-handle');
 
@@ -1154,7 +1258,10 @@
 
     return value
       .trim()
-      .replace(/^https?:\/\/(www\.)?instagram\.com\//i, '')
+      .replace(
+        /^https?:\/\/(www\.)?instagram\.com\//i,
+        ''
+      )
       .replace(/^@/, '')
       .replace(/^\/+|\/+$/g, '');
 
@@ -1165,7 +1272,10 @@
 
     return value
       .trim()
-      .replace(/^https?:\/\/(www\.)?soundcloud\.com\//i, '')
+      .replace(
+        /^https?:\/\/(www\.)?soundcloud\.com\//i,
+        ''
+      )
       .replace(/^@/, '')
       .replace(/^\/+|\/+$/g, '');
 
@@ -1174,6 +1284,7 @@
 
 
   /* ENVOI FORMSPREE */
+
 
   const form =
     document.querySelector('#application-form');
@@ -1198,11 +1309,20 @@
 
 
         const instagram =
-          cleanInstagram(instagramHandle.value);
+          cleanInstagram(
+            instagramHandle.value
+          );
 
         const soundcloud =
-          cleanSoundCloud(soundcloudHandle.value);
+          cleanSoundCloud(
+            soundcloudHandle.value
+          );
 
+
+        /*
+          On normalise ce qui est affiché
+          dans les champs.
+        */
 
         instagramHandle.value =
           instagram;
@@ -1210,6 +1330,11 @@
         soundcloudHandle.value =
           soundcloud;
 
+
+        /*
+          Et Formspree ne reçoit que
+          les URLs complètes.
+        */
 
         instagramUrl.value =
           `https://www.instagram.com/${instagram}`;
@@ -1251,30 +1376,38 @@
 
           if (response.ok) {
 
+
             form.reset();
+
 
             instagramUrl.value = '';
             soundcloudUrl.value = '';
 
+
             charCounter.textContent =
               '0 / 500';
+
 
             successMessage.classList.add(
               'is-visible'
             );
+
 
             successMessage.scrollIntoView({
               behavior: 'smooth',
               block: 'center'
             });
 
+
           }
 
           else {
 
+
             throw new Error(
               'Form submission failed'
             );
+
 
           }
 
@@ -1283,18 +1416,23 @@
 
         catch (error) {
 
+
           errorMessage.classList.add(
             'is-visible'
           );
+
 
         }
 
         finally {
 
+
           submitButton.disabled = false;
+
 
           submitButton.textContent =
             'ENVOYER MA CANDIDATURE / APPLY';
+
 
         }
 
