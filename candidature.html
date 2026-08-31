@@ -157,7 +157,7 @@
     .main-nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
     }
 
 
@@ -403,7 +403,7 @@
 
 
 
-    /* PREFIXES INSTAGRAM / SOUNDCLOUD */
+    /* PREFIXES */
 
 
     .prefixed-input {
@@ -748,6 +748,10 @@
       Le club
     </a>
 
+    <a href="radio.html">
+      Radio
+    </a>
+
     <a href="index.html#infos">
       Infos
     </a>
@@ -847,16 +851,12 @@
       >
 
 
-      <!--
-        Ces deux champs sont les seuls envoyés à Formspree
-        pour Instagram et SoundCloud.
-      -->
-
       <input
         type="hidden"
         id="instagram-url"
         name="Instagram"
       >
+
 
       <input
         type="hidden"
@@ -1176,9 +1176,6 @@
 <script>
 
 
-  /* MENU MOBILE */
-
-
   const menuButton =
     document.querySelector('.menu-toggle');
 
@@ -1212,9 +1209,6 @@
 
 
 
-  /* COMPTEUR DE CARACTERES */
-
-
   const messageField =
     document.querySelector('#message');
 
@@ -1236,9 +1230,6 @@
 
   }
 
-
-
-  /* PROFILS SOCIAUX */
 
 
   const instagramHandle =
@@ -1283,9 +1274,6 @@
 
 
 
-  /* ENVOI FORMSPREE */
-
-
   const form =
     document.querySelector('#application-form');
 
@@ -1319,22 +1307,12 @@
           );
 
 
-        /*
-          On normalise ce qui est affiché
-          dans les champs.
-        */
-
         instagramHandle.value =
           instagram;
 
         soundcloudHandle.value =
           soundcloud;
 
-
-        /*
-          Et Formspree ne reçoit que
-          les URLs complètes.
-        */
 
         instagramUrl.value =
           `https://www.instagram.com/${instagram}`;
@@ -1379,14 +1357,12 @@
 
             form.reset();
 
-
             instagramUrl.value = '';
-            soundcloudUrl.value = '';
 
+            soundcloudUrl.value = '';
 
             charCounter.textContent =
               '0 / 500';
-
 
             successMessage.classList.add(
               'is-visible'
@@ -1428,7 +1404,6 @@
 
 
           submitButton.disabled = false;
-
 
           submitButton.textContent =
             'ENVOYER MA CANDIDATURE / APPLY';
