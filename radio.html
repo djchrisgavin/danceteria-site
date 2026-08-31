@@ -47,14 +47,17 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Danceteria">
   <meta property="og:title" content="Danceteria Radio">
+
   <meta
     property="og:description"
     content="Music from the artists who played here."
   >
+
   <meta
     property="og:url"
     content="https://danceteria.fr/radio.html"
   >
+
   <meta
     property="og:image"
     content="https://danceteria.fr/logo-danceteria.png"
@@ -74,13 +77,17 @@
       color-scheme: dark;
     }
 
+
     * {
       box-sizing: border-box;
     }
 
+
     html {
       background: var(--bg);
+      scroll-behavior: smooth;
     }
+
 
     body {
       margin: 0;
@@ -91,16 +98,20 @@
       -webkit-font-smoothing: antialiased;
     }
 
+
     body.menu-open {
       overflow: hidden;
     }
+
 
     a {
       color: inherit;
     }
 
 
+
     /* HEADER */
+
 
     .site-header {
       position: fixed;
@@ -119,6 +130,7 @@
       -webkit-backdrop-filter: blur(8px);
     }
 
+
     .brand {
       width: 138px;
       height: 42px;
@@ -127,6 +139,7 @@
       text-decoration: none;
     }
 
+
     .brand img {
       display: block;
       width: 132px;
@@ -134,11 +147,13 @@
       object-fit: contain;
     }
 
+
     .main-nav {
       display: flex;
       align-items: center;
       gap: 24px;
     }
+
 
     .main-nav a {
       text-decoration: none;
@@ -149,14 +164,17 @@
       transition: opacity .2s ease;
     }
 
+
     .main-nav a:hover {
       opacity: .55;
     }
+
 
     .main-nav .active {
       padding: 9px 12px;
       border: 1px solid rgba(255,255,255,.6);
     }
+
 
     .menu-toggle {
       display: none;
@@ -172,7 +190,9 @@
     }
 
 
+
     /* PAGE */
+
 
     .page {
       width: min(var(--max), calc(100% - 44px));
@@ -181,7 +201,9 @@
     }
 
 
+
     /* INTRO */
+
 
     .radio-intro {
       min-height: 58vh;
@@ -191,6 +213,7 @@
       padding-bottom: 70px;
     }
 
+
     .eyebrow {
       margin: 0 0 18px;
       color: var(--muted);
@@ -199,6 +222,7 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
+
 
     h1 {
       margin: 0;
@@ -210,6 +234,7 @@
       text-transform: uppercase;
     }
 
+
     .radio-tagline {
       margin: 40px 0 0;
       max-width: 650px;
@@ -220,7 +245,9 @@
     }
 
 
+
     /* PLAYER */
+
 
     .radio-player {
       display: grid;
@@ -231,9 +258,11 @@
       border-bottom: 1px solid var(--line);
     }
 
+
     .radio-status {
       align-self: start;
     }
+
 
     .on-air {
       display: inline-flex;
@@ -245,6 +274,7 @@
       text-transform: uppercase;
     }
 
+
     .on-air-dot {
       width: 8px;
       height: 8px;
@@ -253,6 +283,7 @@
       box-shadow: 0 0 0 0 rgba(200,32,25,.5);
       animation: pulse 1.7s infinite;
     }
+
 
     @keyframes pulse {
 
@@ -267,7 +298,9 @@
     }
 
 
+
     /* NOW PLAYING */
+
 
     .now-playing-label {
       display: block;
@@ -279,6 +312,7 @@
       text-transform: uppercase;
     }
 
+
     .now-artist {
       margin: 0;
       font-size: clamp(34px, 5vw, 74px);
@@ -286,6 +320,7 @@
       letter-spacing: -.06em;
       text-transform: uppercase;
     }
+
 
     .now-title {
       margin: 14px 0 0;
@@ -295,7 +330,26 @@
     }
 
 
+    .soundcloud-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+
+    .soundcloud-link:hover {
+      color: white;
+    }
+
+
+
     /* CONTROLS */
+
 
     .controls {
       margin-top: 36px;
@@ -303,6 +357,7 @@
       flex-wrap: wrap;
       gap: 10px;
     }
+
 
     .control-button {
       min-height: 52px;
@@ -322,10 +377,12 @@
         opacity .2s ease;
     }
 
+
     .control-button:hover {
       background: white;
       color: black;
     }
+
 
     .control-button.primary {
       min-width: 155px;
@@ -334,10 +391,12 @@
       border-color: white;
     }
 
+
     .control-button.primary:hover {
       background: transparent;
       color: white;
     }
+
 
     .control-button:disabled {
       opacity: .3;
@@ -345,11 +404,14 @@
     }
 
 
+
     /* PROGRESS */
+
 
     .progress-wrap {
       margin-top: 34px;
     }
+
 
     .progress {
       position: relative;
@@ -357,6 +419,7 @@
       overflow: hidden;
       background: rgba(255,255,255,.15);
     }
+
 
     .progress-bar {
       position: absolute;
@@ -366,6 +429,7 @@
       width: 0;
       background: white;
     }
+
 
     .time-row {
       margin-top: 9px;
@@ -377,28 +441,34 @@
     }
 
 
-    /* EMPTY */
 
-    .empty-message {
+    /* ERROR */
+
+
+    .radio-error {
       display: none;
-      margin-top: 35px;
-      padding: 25px;
-      border: 1px solid var(--line);
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid rgba(200,32,25,.5);
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
-    .empty-message.is-visible {
+
+    .radio-error.is-visible {
       display: block;
     }
 
 
+
     /* QUEUE */
+
 
     .queue-section {
       padding: 100px 0;
     }
+
 
     .section-label {
       margin: 0 0 36px;
@@ -409,9 +479,11 @@
       text-transform: uppercase;
     }
 
+
     .queue {
       border-top: 1px solid var(--line);
     }
+
 
     .queue-item {
       padding: 18px 0;
@@ -422,34 +494,33 @@
       align-items: center;
     }
 
+
     .queue-number {
       color: #666;
       font-size: 10px;
     }
+
 
     .queue-artist {
       font-size: 15px;
       font-weight: 700;
     }
 
+
     .queue-title {
       color: var(--muted);
       font-size: 13px;
     }
 
-    .queue-empty {
-      padding: 22px 0;
-      color: var(--muted);
-      font-size: 13px;
-      border-bottom: 1px solid var(--line);
-    }
 
 
-    /* SOURCE PLAYER */
+    /* SOURCE */
+
 
     .source-section {
       padding: 0 0 90px;
     }
+
 
     .source-note {
       margin: 0 0 18px;
@@ -458,6 +529,7 @@
       font-size: 11px;
       line-height: 1.5;
     }
+
 
     .soundcloud-frame {
       width: 100%;
@@ -468,7 +540,9 @@
     }
 
 
+
     /* FOOTER */
+
 
     .site-footer {
       width: min(var(--max), calc(100% - 44px));
@@ -483,19 +557,23 @@
       letter-spacing: .1em;
     }
 
+
     .site-footer a {
       color: white;
       text-decoration: none;
     }
 
 
+
     /* TABLET */
+
 
     @media (max-width:900px) {
 
       .menu-toggle {
         display: block;
       }
+
 
       .main-nav {
         position: fixed;
@@ -509,17 +587,21 @@
         background: #000;
       }
 
+
       .main-nav.is-open {
         display: flex;
       }
+
 
       .main-nav a {
         font-size: 17px;
       }
 
+
       .main-nav .active {
         padding: 12px 15px;
       }
+
 
       .radio-player {
         grid-template-columns: 1fr;
@@ -529,7 +611,9 @@
     }
 
 
+
     /* MOBILE */
+
 
     @media (max-width:600px) {
 
@@ -537,60 +621,73 @@
         padding: 0 16px;
       }
 
+
       .brand {
         width: 112px;
       }
 
+
       .brand img {
         width: 108px;
       }
+
 
       .page {
         width: calc(100% - 32px);
         padding: 118px 0 75px;
       }
 
+
       .radio-intro {
         min-height: 48vh;
         padding-bottom: 55px;
       }
 
+
       h1 {
         font-size: clamp(54px, 19vw, 86px);
       }
 
+
       .radio-player {
         padding: 42px 0;
       }
+
 
       .controls {
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
 
+
       .control-button.primary {
         grid-column: 1 / -1;
       }
+
 
       .queue-item {
         grid-template-columns: 40px 1fr;
         gap: 10px;
       }
 
+
       .queue-title {
         grid-column: 2;
       }
+
 
       .site-footer {
         width: calc(100% - 32px);
         grid-template-columns: 1fr auto;
       }
 
+
       .site-footer span:nth-child(2) {
         display: none;
       }
 
     }
+
 
 
     @media (prefers-reduced-motion: reduce) {
@@ -612,15 +709,18 @@
 
 <header class="site-header">
 
+
   <a
     class="brand"
     href="index.html"
     aria-label="Danceteria — accueil"
   >
+
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
+
   </a>
 
 
@@ -676,10 +776,11 @@
 <main class="page">
 
 
+
   <section class="radio-intro">
 
     <p class="eyebrow">
-      Marseille · 24/7
+      Marseille · Continuous music
     </p>
 
     <h1>
@@ -734,8 +835,19 @@
         class="now-title"
         id="now-title"
       >
-        Playlist en préparation
+        Loading...
       </p>
+
+
+      <a
+        class="soundcloud-link"
+        id="soundcloud-link"
+        href="#"
+        target="_blank"
+        rel="noopener"
+      >
+        Listen on SoundCloud ↗
+      </a>
 
 
 
@@ -778,6 +890,7 @@
 
       <div class="progress-wrap">
 
+
         <div class="progress">
 
           <div
@@ -800,17 +913,17 @@
 
         </div>
 
+
       </div>
 
 
 
       <div
-        class="empty-message"
-        id="empty-message"
+        class="radio-error"
+        id="radio-error"
       >
-        La programmation de Danceteria Radio est en cours de création.
-        Ajoutez les premiers liens SoundCloud dans la playlist du fichier
-        <strong>radio.html</strong> pour lancer la radio.
+        Ce contenu SoundCloud est momentanément indisponible.
+        Passage automatique au suivant.
       </div>
 
 
@@ -842,18 +955,17 @@
   <section
     class="source-section"
     id="source-section"
-    hidden
   >
 
 
     <p class="section-label">
-      Source
+      SoundCloud
     </p>
 
 
     <p class="source-note">
-      Audio streamed from SoundCloud.
-      Artist and platform attribution are provided by the official SoundCloud player.
+      Audio streamed directly from SoundCloud.
+      The official player provides artist and platform attribution.
     </p>
 
 
@@ -901,88 +1013,235 @@
 
   /*
   ============================================================
-  DANCETERIA RADIO PLAYLIST
+  DANCETERIA RADIO
   ============================================================
 
-  Pour ajouter un morceau :
+  La playlist est mélangée à chaque ouverture de la page.
 
-  {
-    artist: "NOM ARTISTE",
-    title: "NOM DU MORCEAU OU DU SET",
-    url: "https://soundcloud.com/artiste/morceau"
-  }
+  Après le premier clic sur PLAY :
+  les contenus s'enchaînent automatiquement.
 
-  Utiliser uniquement des liens SoundCloud précis vers
-  un morceau, un set ou une playlist.
+  Après le dernier :
+  la radio repart au premier.
 
   ============================================================
   */
 
 
-  const radioPlaylist = [
 
-    /*
-    EXEMPLE :
+  const rawRadioPlaylist = [
 
-    {
-      artist: "CHRIS GAVIN",
-      title: "Nom du morceau",
-      url: "https://soundcloud.com/..."
-    },
 
     {
       artist: "JACK DE MARSEILLE",
-      title: "Nom du morceau",
-      url: "https://soundcloud.com/..."
+      title: "Ellipsia",
+      url: "https://soundcloud.com/jack-de-marseille/ellipsia"
+    },
+
+
+    {
+      artist: "CHRIS GAVIN",
+      title: "Udessia (Original Mix)",
+      url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original"
+    },
+
+
+    {
+      artist: "MILA DIETRICH",
+      title: "When I Look Into Your Eyes",
+      url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes"
+    },
+
+
+    {
+      artist: "YAN WAGNER",
+      title: "Changed (Original Mix)",
+      url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix"
+    },
+
+
+    {
+      artist: "SEIUN",
+      title: "Toy Tonics × Bordello a Parigi @ OXI — Italomania",
+      url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania"
+    },
+
+
+    {
+      artist: "PHRED NOIR",
+      title: "Selección Dura",
+      url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir"
+    },
+
+
+    {
+      artist: "FRED BERTHET / DJ STEEF",
+      title: "Fred Berthet Mix 02/26",
+      url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26"
+    },
+
+
+    {
+      artist: "INORGANICA",
+      title: "Magnetic Conjunction · Underside",
+      url: "https://soundcloud.com/inorganicasound/magnetic-conjunction-underside"
+    },
+
+
+    {
+      artist: "SCAN X",
+      title: "Higher (2020 Remastered Version)",
+      url: "https://soundcloud.com/scanxofficial/higher-2020-remastered-version"
+    },
+
+
+    {
+      artist: "JOE LEWANDOWSKI",
+      title: "Long (Original Mix)",
+      url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix"
     }
-    */
+
 
   ];
 
 
 
-  /* ELEMENTS */
+  /*
+  ============================================================
+  MELANGE ALEATOIRE
+  ============================================================
+  */
+
+
+  function shufflePlaylist(array) {
+
+    const shuffled =
+      [...array];
+
+
+    for (
+      let i = shuffled.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(
+          Math.random() * (i + 1)
+        );
+
+
+      [
+        shuffled[i],
+        shuffled[j]
+      ]
+      =
+      [
+        shuffled[j],
+        shuffled[i]
+      ];
+
+    }
+
+
+    return shuffled;
+
+  }
+
+
+
+  const radioPlaylist =
+    shufflePlaylist(
+      rawRadioPlaylist
+    );
+
+
+
+  /*
+  ============================================================
+  ELEMENTS
+  ============================================================
+  */
 
 
   const playButton =
-    document.querySelector('#play-button');
+    document.querySelector(
+      '#play-button'
+    );
+
 
   const previousButton =
-    document.querySelector('#previous-button');
+    document.querySelector(
+      '#previous-button'
+    );
+
 
   const nextButton =
-    document.querySelector('#next-button');
+    document.querySelector(
+      '#next-button'
+    );
+
 
   const nowArtist =
-    document.querySelector('#now-artist');
+    document.querySelector(
+      '#now-artist'
+    );
+
 
   const nowTitle =
-    document.querySelector('#now-title');
+    document.querySelector(
+      '#now-title'
+    );
+
+
+  const soundcloudLink =
+    document.querySelector(
+      '#soundcloud-link'
+    );
+
 
   const progressBar =
-    document.querySelector('#progress-bar');
+    document.querySelector(
+      '#progress-bar'
+    );
+
 
   const currentTime =
-    document.querySelector('#current-time');
+    document.querySelector(
+      '#current-time'
+    );
+
 
   const durationLabel =
-    document.querySelector('#duration');
+    document.querySelector(
+      '#duration'
+    );
 
-  const emptyMessage =
-    document.querySelector('#empty-message');
 
   const queue =
-    document.querySelector('#queue');
+    document.querySelector(
+      '#queue'
+    );
 
-  const sourceSection =
-    document.querySelector('#source-section');
 
   const iframe =
-    document.querySelector('#soundcloud-player');
+    document.querySelector(
+      '#soundcloud-player'
+    );
+
+
+  const radioError =
+    document.querySelector(
+      '#radio-error'
+    );
 
 
 
-  /* STATE */
+  /*
+  ============================================================
+  STATE
+  ============================================================
+  */
 
 
   let currentIndex = 0;
@@ -993,63 +1252,147 @@
 
   let duration = 0;
 
+  let consecutiveErrors = 0;
 
 
-  /* UTILS */
+
+  /*
+  ============================================================
+  UTILS
+  ============================================================
+  */
 
 
   function formatTime(milliseconds) {
 
-    if (!milliseconds) {
+
+    if (
+      !milliseconds
+      ||
+      milliseconds < 0
+    ) {
+
       return '00:00';
+
     }
 
+
     const totalSeconds =
-      Math.floor(milliseconds / 1000);
+      Math.floor(
+        milliseconds / 1000
+      );
+
+
+    const hours =
+      Math.floor(
+        totalSeconds / 3600
+      );
+
 
     const minutes =
-      Math.floor(totalSeconds / 60);
+      Math.floor(
+        (
+          totalSeconds % 3600
+        )
+        /
+        60
+      );
+
 
     const seconds =
       totalSeconds % 60;
 
+
+    if (hours > 0) {
+
+      return (
+        String(hours).padStart(2,'0')
+        +
+        ':'
+        +
+        String(minutes).padStart(2,'0')
+        +
+        ':'
+        +
+        String(seconds).padStart(2,'0')
+      );
+
+    }
+
+
     return (
-      String(minutes).padStart(2, '0') +
-      ':' +
-      String(seconds).padStart(2, '0')
+      String(minutes).padStart(2,'0')
+      +
+      ':'
+      +
+      String(seconds).padStart(2,'0')
     );
 
   }
 
 
 
-  function updateNowPlaying() {
+  function getCurrentItem() {
 
-    const item =
-      radioPlaylist[currentIndex];
-
-    if (!item) {
-      return;
-    }
-
-    nowArtist.textContent =
-      item.artist;
-
-    nowTitle.textContent =
-      item.title;
+    return radioPlaylist[
+      currentIndex
+    ];
 
   }
 
 
 
+  /*
+  ============================================================
+  NOW PLAYING
+  ============================================================
+  */
+
+
+  function updateNowPlaying() {
+
+
+    const item =
+      getCurrentItem();
+
+
+    if (!item) {
+      return;
+    }
+
+
+    nowArtist.textContent =
+      item.artist;
+
+
+    nowTitle.textContent =
+      item.title;
+
+
+    soundcloudLink.href =
+      item.url;
+
+  }
+
+
+
+  /*
+  ============================================================
+  COMING NEXT
+  ============================================================
+  */
+
+
   function renderQueue() {
 
-    queue.innerHTML = '';
 
-    if (!radioPlaylist.length) {
+    queue.innerHTML =
+      '';
 
-      queue.innerHTML =
-        '<div class="queue-empty">Playlist en préparation.</div>';
+
+    if (
+      radioPlaylist.length <= 1
+    ) {
 
       return;
 
@@ -1058,7 +1401,7 @@
 
     const maxItems =
       Math.min(
-        radioPlaylist.length,
+        radioPlaylist.length - 1,
         5
       );
 
@@ -1069,6 +1412,7 @@
       offset++
     ) {
 
+
       const index =
         (
           currentIndex + offset
@@ -1078,11 +1422,15 @@
 
 
       const item =
-        radioPlaylist[index];
+        radioPlaylist[
+          index
+        ];
 
 
       const row =
-        document.createElement('div');
+        document.createElement(
+          'div'
+        );
 
 
       row.className =
@@ -1106,7 +1454,9 @@
       `;
 
 
-      queue.appendChild(row);
+      queue.appendChild(
+        row
+      );
 
     }
 
@@ -1114,81 +1464,155 @@
 
 
 
-  /* LOAD TRACK */
+  /*
+  ============================================================
+  RESET PROGRESS
+  ============================================================
+  */
+
+
+  function resetProgress() {
+
+
+    duration = 0;
+
+
+    progressBar.style.width =
+      '0%';
+
+
+    currentTime.textContent =
+      '00:00';
+
+
+    durationLabel.textContent =
+      '00:00';
+
+  }
+
+
+
+  /*
+  ============================================================
+  LOAD CURRENT TRACK
+  ============================================================
+  */
 
 
   function loadCurrentTrack(
     autoplay = false
   ) {
 
-    if (!radioPlaylist.length) {
+
+    if (
+      !widget
+      ||
+      !radioPlaylist.length
+    ) {
+
       return;
+
     }
 
 
     const item =
-      radioPlaylist[currentIndex];
+      getCurrentItem();
 
 
     updateNowPlaying();
 
     renderQueue();
 
+    resetProgress();
 
-    progressBar.style.width =
-      '0%';
 
-    currentTime.textContent =
-      '00:00';
-
-    durationLabel.textContent =
-      '00:00';
+    radioError.classList.remove(
+      'is-visible'
+    );
 
 
     widget.load(
       item.url,
       {
+
         auto_play: autoplay,
+
         show_artwork: true,
+
         show_user: true,
+
+        show_playcount: false,
+
         sharing: false,
+
         buying: false,
+
         download: false,
 
+
         callback: function () {
+
 
           widget.getDuration(
             value => {
 
-              duration = value || 0;
+
+              duration =
+                value || 0;
+
 
               durationLabel.textContent =
-                formatTime(duration);
+                formatTime(
+                  duration
+                );
+
 
             }
           );
 
+
+          /*
+          Certains navigateurs peuvent
+          avoir besoin d'un play explicite
+          après le chargement.
+          */
+
+
           if (autoplay) {
+
             widget.play();
+
           }
 
+
         }
+
       }
+
     );
 
   }
 
 
 
-  /* NEXT */
+  /*
+  ============================================================
+  NEXT
+  ============================================================
+  */
 
 
   function nextTrack(
     autoplay = true
   ) {
 
-    if (!radioPlaylist.length) {
+
+    if (
+      !radioPlaylist.length
+    ) {
+
       return;
+
     }
 
 
@@ -1208,21 +1632,32 @@
 
 
 
-  /* PREVIOUS */
+  /*
+  ============================================================
+  PREVIOUS
+  ============================================================
+  */
 
 
   function previousTrack() {
 
-    if (!radioPlaylist.length) {
+
+    if (
+      !radioPlaylist.length
+    ) {
+
       return;
+
     }
 
 
     currentIndex =
       (
         currentIndex
-        - 1
-        + radioPlaylist.length
+        -
+        1
+        +
+        radioPlaylist.length
       )
       %
       radioPlaylist.length;
@@ -1236,31 +1671,32 @@
 
 
 
-  /* INITIALISATION */
+  /*
+  ============================================================
+  INITIALISATION
+  ============================================================
+  */
 
 
   function initialiseRadio() {
 
 
-    if (!radioPlaylist.length) {
-
-      emptyMessage.classList.add(
-        'is-visible'
-      );
-
-      renderQueue();
+    if (
+      !radioPlaylist.length
+    ) {
 
       return;
 
     }
 
 
-    sourceSection.hidden =
-      false;
-
-
     const firstTrack =
       radioPlaylist[0];
+
+
+    updateNowPlaying();
+
+    renderQueue();
 
 
     iframe.src =
@@ -1276,6 +1712,8 @@
       +
       '&show_user=true'
       +
+      '&show_playcount=false'
+      +
       '&sharing=false'
       +
       '&buying=false'
@@ -1289,15 +1727,24 @@
       );
 
 
+
+    /*
+    READY
+    */
+
+
     widget.bind(
       SC.Widget.Events.READY,
       function () {
 
+
         playButton.disabled =
           false;
 
+
         previousButton.disabled =
           false;
+
 
         nextButton.disabled =
           false;
@@ -1311,71 +1758,118 @@
         widget.getDuration(
           value => {
 
+
             duration =
               value || 0;
 
+
             durationLabel.textContent =
-              formatTime(duration);
+              formatTime(
+                duration
+              );
+
 
           }
         );
 
+
       }
     );
+
+
+
+    /*
+    PLAY
+    */
 
 
     widget.bind(
       SC.Widget.Events.PLAY,
       function () {
 
+
+        consecutiveErrors = 0;
+
+
         isPlaying =
           true;
+
 
         playButton.textContent =
           'PAUSE';
 
+
+        radioError.classList.remove(
+          'is-visible'
+        );
+
+
       }
     );
+
+
+
+    /*
+    PAUSE
+    */
 
 
     widget.bind(
       SC.Widget.Events.PAUSE,
       function () {
 
+
         isPlaying =
           false;
+
 
         playButton.textContent =
           'PLAY';
 
+
       }
     );
+
+
+
+    /*
+    FIN DU TITRE
+    */
 
 
     widget.bind(
       SC.Widget.Events.FINISH,
       function () {
 
-        /*
-        Quand un morceau finit,
-        on charge automatiquement
-        le suivant.
 
-        Après le dernier morceau,
-        on revient au premier.
+        /*
+        Dès que le contenu se termine,
+        le suivant démarre.
+
+        Après le dernier,
+        retour automatique au premier.
         */
+
 
         nextTrack(
           true
         );
 
+
       }
     );
+
+
+
+    /*
+    PROGRESSION
+    */
 
 
     widget.bind(
       SC.Widget.Events.PLAY_PROGRESS,
       function (event) {
+
 
         if (!event) {
           return;
@@ -1387,10 +1881,15 @@
 
 
         currentTime.textContent =
-          formatTime(position);
+          formatTime(
+            position
+          );
 
 
-        if (duration > 0) {
+        if (
+          duration > 0
+        ) {
+
 
           const percentage =
             Math.min(
@@ -1408,39 +1907,95 @@
           progressBar.style.width =
             percentage + '%';
 
+
         }
+
 
       }
     );
+
+
+
+    /*
+    ERREUR SOUNDCLOUD
+    */
 
 
     widget.bind(
       SC.Widget.Events.ERROR,
       function () {
 
+
+        consecutiveErrors++;
+
+
+        radioError.classList.add(
+          'is-visible'
+        );
+
+
         /*
-        Si un morceau est indisponible
-        ou non intégrable, on passe
+        Si un morceau a été supprimé,
+        rendu privé ou interdit
+        à l'intégration, on passe
         automatiquement au suivant.
         */
 
-        nextTrack(
-          true
-        );
+
+        if (
+          consecutiveErrors
+          <
+          radioPlaylist.length
+        ) {
+
+
+          setTimeout(
+            () => {
+
+              nextTrack(
+                true
+              );
+
+            },
+            1500
+          );
+
+
+        }
+
+        else {
+
+
+          playButton.textContent =
+            'PLAY';
+
+
+          isPlaying =
+            false;
+
+
+        }
+
 
       }
     );
+
 
   }
 
 
 
-  /* CONTROLS */
+  /*
+  ============================================================
+  PLAY / PAUSE
+  ============================================================
+  */
 
 
   playButton.addEventListener(
     'click',
     function () {
+
 
       if (!widget) {
         return;
@@ -1449,61 +2004,94 @@
 
       if (isPlaying) {
 
+
         widget.pause();
+
 
       }
 
       else {
 
-        /*
-        Le premier PLAY est volontairement
-        déclenché par l'utilisateur.
 
-        Ensuite les titres peuvent
-        s'enchaîner automatiquement.
+        /*
+        Le premier démarrage nécessite
+        un clic de l'utilisateur.
+
+        Après cela, la radio continue
+        automatiquement.
         */
+
 
         widget.play();
 
+
       }
+
 
     }
   );
 
+
+
+  /*
+  ============================================================
+  NEXT
+  ============================================================
+  */
 
 
   nextButton.addEventListener(
     'click',
     function () {
 
+
       nextTrack(
         true
       );
 
+
     }
   );
 
+
+
+  /*
+  ============================================================
+  PREVIOUS
+  ============================================================
+  */
 
 
   previousButton.addEventListener(
     'click',
     function () {
 
+
       previousTrack();
+
 
     }
   );
 
 
 
-  /* MENU MOBILE */
+  /*
+  ============================================================
+  MENU MOBILE
+  ============================================================
+  */
 
 
   const menuButton =
-    document.querySelector('.menu-toggle');
+    document.querySelector(
+      '.menu-toggle'
+    );
+
 
   const nav =
-    document.querySelector('.main-nav');
+    document.querySelector(
+      '.main-nav'
+    );
 
 
   if (
@@ -1512,38 +2100,90 @@
     nav
   ) {
 
+
     menuButton.addEventListener(
       'click',
       () => {
+
 
         const isOpen =
           nav.classList.toggle(
             'is-open'
           );
 
+
         menuButton.setAttribute(
           'aria-expanded',
-          isOpen ? 'true' : 'false'
+          isOpen
+            ? 'true'
+            : 'false'
         );
+
 
         menuButton.textContent =
           isOpen
             ? 'FERMER'
             : 'MENU';
 
+
         document.body.classList.toggle(
           'menu-open',
           isOpen
         );
 
+
       }
     );
+
+
+    nav
+      .querySelectorAll('a')
+      .forEach(
+        link => {
+
+
+          link.addEventListener(
+            'click',
+            () => {
+
+
+              nav.classList.remove(
+                'is-open'
+              );
+
+
+              menuButton.setAttribute(
+                'aria-expanded',
+                'false'
+              );
+
+
+              menuButton.textContent =
+                'MENU';
+
+
+              document.body.classList.remove(
+                'menu-open'
+              );
+
+
+            }
+          );
+
+
+        }
+      );
+
 
   }
 
 
 
-  /* START */
+  /*
+  ============================================================
+  START RADIO
+  ============================================================
+  */
 
 
   initialiseRadio();
