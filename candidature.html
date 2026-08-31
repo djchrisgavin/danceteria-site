@@ -360,6 +360,40 @@
     }
 
 
+    /* INPUT AVEC PREFIXE */
+
+    .prefixed-input {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,.33);
+      transition: border-color .2s ease;
+    }
+
+    .prefixed-input:focus-within {
+      border-bottom-color: white;
+    }
+
+    .input-prefix {
+      flex-shrink: 0;
+      padding: 15px 0;
+      color: var(--muted);
+      font-size: 17px;
+      white-space: nowrap;
+    }
+
+    .prefixed-input input {
+      min-width: 0;
+      padding: 15px 0;
+      border: 0;
+      margin: 0;
+    }
+
+    .prefixed-input input:focus {
+      border: 0;
+    }
+
+
     /* CHECKBOX */
 
     .consent {
@@ -557,6 +591,14 @@
         gap: 0;
       }
 
+      .input-prefix {
+        font-size: 15px;
+      }
+
+      .prefixed-input input {
+        font-size: 15px;
+      }
+
       .site-footer {
         width: calc(100% - 32px);
         grid-template-columns: 1fr auto;
@@ -574,7 +616,6 @@
 
 
 <body>
-
 
 
 <header class="site-header">
@@ -714,6 +755,21 @@
       >
 
 
+      <!-- URLs reconstruites automatiquement -->
+
+      <input
+        type="hidden"
+        id="instagram-url"
+        name="Instagram"
+      >
+
+      <input
+        type="hidden"
+        id="soundcloud-url"
+        name="SoundCloud / DJ Set"
+      >
+
+
 
       <div class="field">
 
@@ -816,19 +872,27 @@
 
         <div class="field">
 
-          <label for="instagram">
+          <label for="instagram-handle">
             Instagram
             <span class="required">*</span>
           </label>
 
-          <input
-            id="instagram"
-            name="Instagram"
-            type="url"
-            required
-            inputmode="url"
-            placeholder="https://instagram.com/..."
-          >
+          <div class="prefixed-input">
+
+            <span class="input-prefix">
+              instagram.com/
+            </span>
+
+            <input
+              id="instagram-handle"
+              name="Instagram username"
+              type="text"
+              required
+              autocomplete="off"
+              placeholder="nomduprofil"
+            >
+
+          </div>
 
         </div>
 
@@ -839,22 +903,30 @@
 
       <div class="field">
 
-        <label for="mix">
-          DJ Set / SoundCloud / Mixcloud
+        <label for="soundcloud-handle">
+          SoundCloud / DJ Set
           <span class="required">*</span>
         </label>
 
-        <input
-          id="mix"
-          name="Lien DJ set"
-          type="url"
-          required
-          inputmode="url"
-          placeholder="https://soundcloud.com/..."
-        >
+        <div class="prefixed-input">
+
+          <span class="input-prefix">
+            soundcloud.com/
+          </span>
+
+          <input
+            id="soundcloud-handle"
+            name="SoundCloud username"
+            type="text"
+            required
+            autocomplete="off"
+            placeholder="nomduprofil"
+          >
+
+        </div>
 
         <span class="field-help">
-          Un lien direct vers un set représentatif de votre univers.
+          Indiquez le profil SoundCloud contenant un set représentatif de votre univers.
         </span>
 
       </div>
@@ -1063,6 +1135,44 @@
 
 
 
+  /* PROFILS SOCIAUX */
+
+  const instagramHandle =
+    document.querySelector('#instagram-handle');
+
+  const soundcloudHandle =
+    document.querySelector('#soundcloud-handle');
+
+  const instagramUrl =
+    document.querySelector('#instagram-url');
+
+  const soundcloudUrl =
+    document.querySelector('#soundcloud-url');
+
+
+  function cleanInstagram(value) {
+
+    return value
+      .trim()
+      .replace(/^https?:\/\/(www\.)?instagram\.com\//i, '')
+      .replace(/^@/, '')
+      .replace(/^\/+|\/+$/g, '');
+
+  }
+
+
+  function cleanSoundCloud(value) {
+
+    return value
+      .trim()
+      .replace(/^https?:\/\/(www\.)?soundcloud\.com\//i, '')
+      .replace(/^@/, '')
+      .replace(/^\/+|\/+$/g, '');
+
+  }
+
+
+
   /* ENVOI FORMSPREE */
 
   const form =
@@ -1085,6 +1195,27 @@
       async event => {
 
         event.preventDefault();
+
+
+        const instagram =
+          cleanInstagram(instagramHandle.value);
+
+        const soundcloud =
+          cleanSoundCloud(soundcloudHandle.value);
+
+
+        instagramHandle.value =
+          instagram;
+
+        soundcloudHandle.value =
+          soundcloud;
+
+
+        instagramUrl.value =
+          `https://www.instagram.com/${instagram}`;
+
+        soundcloudUrl.value =
+          `https://soundcloud.com/${soundcloud}`;
 
 
         successMessage.classList.remove(
@@ -1121,6 +1252,9 @@
           if (response.ok) {
 
             form.reset();
+
+            instagramUrl.value = '';
+            soundcloudUrl.value = '';
 
             charCounter.textContent =
               '0 / 500';
