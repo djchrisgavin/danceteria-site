@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -13,7 +14,7 @@
 
   <meta
     name="description"
-    content="Danceteria, club électronique indépendant au cœur de Marseille. DJ sets, artistes locaux et internationaux, jeudi, vendredi et samedi de 00:00 à 06:00."
+    content="Danceteria, club électronique indépendant au cœur de Marseille. DJ sets, artistes locaux et internationaux."
   >
 
   <meta
@@ -42,62 +43,14 @@
     href="logo-danceteria.png"
   >
 
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Danceteria">
   <meta property="og:title" content="Danceteria Marseille — More than a Club">
-  <meta property="og:description" content="Club électronique indépendant au cœur de Marseille. Dancing. Speaking. Chilling. Drinking.">
+  <meta property="og:description" content="Club électronique indépendant au cœur de Marseille.">
   <meta property="og:url" content="https://danceteria.fr/">
   <meta property="og:image" content="https://danceteria.fr/logo-danceteria.png">
-  <meta property="og:image:alt" content="Danceteria Marseille">
-  <meta property="og:locale" content="fr_FR">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Danceteria Marseille — More than a Club">
-  <meta name="twitter:description" content="Club électronique indépendant au cœur de Marseille.">
-  <meta name="twitter:image" content="https://danceteria.fr/logo-danceteria.png">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NightClub",
-    "name": "Danceteria",
-    "url": "https://danceteria.fr/",
-    "image": "https://danceteria.fr/logo-danceteria.png",
-    "description": "Club électronique indépendant au cœur de Marseille.",
-    "email": "info@danceteria.fr",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "18 rue Saint-Saëns",
-      "postalCode": "13001",
-      "addressLocality": "Marseille",
-      "addressCountry": "FR"
-    },
-    "sameAs": [
-      "https://www.instagram.com/danceteria_marseille/",
-      "https://shotgun.live/fr/venues/danceteria"
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Thursday",
-        "opens": "00:00",
-        "closes": "06:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Friday",
-        "opens": "00:00",
-        "closes": "06:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "00:00",
-        "closes": "06:00"
-      }
-    ]
-  }
-  </script>
 
   <style>
 
@@ -109,7 +62,6 @@
       --line: rgba(255,255,255,.14);
       --red: #c82019;
       --orange: #ef851d;
-      --yellow: #efb72e;
       --max: 1280px;
       color-scheme: dark;
     }
@@ -175,7 +127,6 @@
     .brand img {
       width: 132px;
       height: auto;
-      object-fit: contain;
     }
 
     .main-nav {
@@ -190,22 +141,15 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .15em;
-      transition: opacity .2s ease;
     }
 
     .main-nav a:hover {
       opacity: .55;
     }
 
-    .main-nav .apply-link {
+    .apply-link {
       border: 1px solid rgba(255,255,255,.5);
       padding: 9px 12px;
-    }
-
-    .main-nav .apply-link:hover {
-      opacity: 1;
-      background: white;
-      color: black;
     }
 
     .menu-toggle {
@@ -214,11 +158,9 @@
       border: 0;
       background: transparent;
       color: white;
-      font: inherit;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .15em;
-      cursor: pointer;
     }
 
 
@@ -235,44 +177,26 @@
 
     .hero-video {
       position: absolute;
-      z-index: 0;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
     }
 
     .hero-overlay {
       position: absolute;
-      z-index: 1;
       inset: 0;
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,.02) 0%,
-          rgba(0,0,0,.04) 30%,
-          rgba(0,0,0,.18) 58%,
-          rgba(0,0,0,.84) 100%
-        );
-    }
-
-    .hero-overlay::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,.43),
-          rgba(0,0,0,.05) 60%,
-          rgba(0,0,0,.01)
+          rgba(0,0,0,.02),
+          rgba(0,0,0,.08) 40%,
+          rgba(0,0,0,.88)
         );
     }
 
     .hero-content {
       position: relative;
-      z-index: 3;
       width: min(var(--max),100%);
       margin: 0 auto;
     }
@@ -286,8 +210,8 @@
     }
 
     .hero h1 {
-      max-width: 690px;
       margin: 0;
+      max-width: 690px;
       font-size: clamp(48px,6.1vw,90px);
       line-height: .86;
       font-weight: 900;
@@ -297,15 +221,17 @@
     .hero-copy {
       margin: 22px 0 0;
       font-size: clamp(17px,1.55vw,23px);
-      letter-spacing: -.02em;
     }
 
     .hero-actions {
       margin-top: 28px;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
     }
+
+
+    /* BUTTONS */
 
     .button {
       min-height: 48px;
@@ -319,7 +245,6 @@
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .13em;
-      transition: background .2s ease,color .2s ease;
     }
 
     .button-primary {
@@ -327,32 +252,13 @@
       color: black;
     }
 
-    .button-primary:hover {
-      background: transparent;
-      color: white;
-    }
-
     .button-secondary {
       background: transparent;
       color: white;
     }
 
-    .button-secondary:hover {
-      background: white;
-      color: black;
-    }
 
-    .scroll-cue {
-      position: absolute;
-      z-index: 4;
-      right: 24px;
-      bottom: 24px;
-      font-size: 24px;
-      text-decoration: none;
-    }
-
-
-    /* GENERAL */
+    /* SECTIONS */
 
     .section {
       width: min(var(--max),calc(100% - 44px));
@@ -383,11 +289,7 @@
     }
 
 
-    /* IDENTITES */
-
-    .identity-section {
-      padding-bottom: 135px;
-    }
+    /* IDENTITIES */
 
     .identity-grid {
       display: grid;
@@ -396,12 +298,8 @@
     }
 
     .identity-card {
-      overflow: hidden;
       background: #111;
       border: 1px solid var(--line);
-    }
-
-    .identity-image {
       overflow: hidden;
     }
 
@@ -409,17 +307,11 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      transition: transform .6s ease;
-    }
-
-    .identity-card:hover img {
-      transform: scale(1.025);
     }
 
     .identity-caption {
       padding: 18px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
     }
 
@@ -436,7 +328,7 @@
     }
 
 
-    /* WEEK */
+    /* PROGRAM */
 
     .week-program {
       border-top: 1px solid var(--line);
@@ -459,14 +351,10 @@
 
     .week-intro {
       max-width: 390px;
-      margin: 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.55;
     }
-
-
-    /* EVENTS */
 
     .event-grid {
       display: grid;
@@ -478,17 +366,6 @@
       overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--line);
-      transition: transform .25s ease,border-color .25s ease;
-    }
-
-    .event-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255,255,255,.32);
-    }
-
-    .event-image-link {
-      display: block;
-      text-decoration: none;
     }
 
     .event-image {
@@ -504,40 +381,31 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .5s ease;
-    }
-
-    .event-card:hover .event-image img {
-      transform: scale(1.025);
     }
 
     .flyer-placeholder {
       position: absolute;
-      z-index: 1;
       inset: 0;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 30px;
-      background: linear-gradient(145deg,#171717,#090909);
       text-align: center;
     }
 
     .flyer-placeholder span {
       color: #777;
       font-size: 9px;
-      font-weight: 800;
       letter-spacing: .16em;
       text-transform: uppercase;
     }
 
     .flyer-placeholder strong {
       margin-top: 15px;
-      color: #ddd;
       font-size: clamp(28px,3vw,44px);
       line-height: .92;
-      letter-spacing: -.05em;
       text-transform: uppercase;
     }
 
@@ -548,7 +416,6 @@
     .event-meta {
       display: flex;
       justify-content: space-between;
-      gap: 15px;
     }
 
     .event-day,
@@ -556,7 +423,6 @@
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .14em;
-      text-transform: uppercase;
     }
 
     .event-date {
@@ -567,7 +433,6 @@
       margin: 24px 0 5px;
       font-size: clamp(27px,3vw,44px);
       line-height: .91;
-      font-weight: 850;
       letter-spacing: -.05em;
       text-transform: uppercase;
     }
@@ -576,8 +441,7 @@
       margin: 0 0 25px;
       color: var(--muted);
       font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .12em;
+      line-height: 1.5;
       text-transform: uppercase;
     }
 
@@ -592,23 +456,21 @@
     .lineup-row {
       padding: 13px 0;
       display: grid;
-      grid-template-columns: minmax(100px,1fr) auto;
+      grid-template-columns: 1fr auto;
       gap: 12px;
-      align-items: center;
       border-bottom: 1px solid var(--line);
     }
 
     .lineup-name {
       font-size: 12px;
       font-weight: 750;
-      letter-spacing: .03em;
     }
 
     .artist-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 6px 10px;
+      gap: 8px;
     }
 
     .artist-links a {
@@ -617,12 +479,7 @@
       text-transform: uppercase;
       font-size: 8px;
       font-weight: 800;
-      letter-spacing: .12em;
-      transition: color .2s ease;
-    }
-
-    .artist-links a:hover {
-      color: white;
+      letter-spacing: .1em;
     }
 
 
@@ -633,22 +490,12 @@
       padding: 0 17px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       background: white;
       color: black;
-      border: 1px solid white;
       text-decoration: none;
-      text-transform: uppercase;
       font-size: 9px;
       font-weight: 850;
       letter-spacing: .14em;
-      transition: background .2s ease,color .2s ease,transform .2s ease;
-    }
-
-    .shotgun-button:hover {
-      background: transparent;
-      color: white;
-      transform: translateY(-2px);
     }
 
     .event-thursday {
@@ -689,8 +536,6 @@
       padding: 20px 0;
       display: grid;
       grid-template-columns: 60px 1fr;
-      gap: 16px;
-      align-items: center;
       border-bottom: 1px solid var(--line);
     }
 
@@ -701,37 +546,6 @@
 
     .club-points strong {
       font-size: clamp(24px,3vw,42px);
-      letter-spacing: -.04em;
-    }
-
-
-    /* MARQUEE */
-
-    .marquee {
-      overflow: hidden;
-      padding: 15px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .marquee-track {
-      width: max-content;
-      display: flex;
-      animation: marquee 28s linear infinite;
-    }
-
-    .marquee span {
-      padding-right: 2rem;
-      white-space: nowrap;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .16em;
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%);
-      }
     }
 
 
@@ -744,17 +558,17 @@
     }
 
     .info-block {
-      min-height: 240px;
-      padding: 22px 22px 22px 0;
+      padding: 25px;
+      min-height: 220px;
       border-right: 1px solid var(--line);
     }
 
-    .info-block + .info-block {
-      padding-left: 22px;
+    .info-block:first-child {
+      padding-left: 0;
     }
 
     .info-block:last-child {
-      border-right: 0;
+      border: 0;
     }
 
     .info-label {
@@ -766,57 +580,22 @@
 
     .info-block p {
       margin: 38px 0;
-      font-size: 19px;
-      line-height: 1.4;
-    }
-
-    .opening-hours {
-      margin: 32px 0 0;
-    }
-
-    .opening-row {
-      padding: 11px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .opening-row:first-child {
-      border-top: 1px solid var(--line);
-    }
-
-    .opening-day {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .opening-time {
-      display: block;
-      color: var(--text);
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -.02em;
+      line-height: 1.5;
     }
 
     .info-block a {
-      padding-bottom: 4px;
-      border-bottom: 1px solid currentColor;
       text-decoration: none;
-      text-transform: uppercase;
+      border-bottom: 1px solid white;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
 
     /* CONTACT */
 
     .contact {
-      padding-top: 135px;
-      padding-bottom: 135px;
       border-top: 1px solid var(--line);
       text-align: center;
     }
@@ -827,15 +606,15 @@
     }
 
     .contact-text {
-      margin: 27px 0;
       color: var(--muted);
+      margin: 27px 0;
     }
 
     .contact-actions {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
 
@@ -855,14 +634,13 @@
     }
 
     .site-footer a {
-      color: white;
       text-decoration: none;
     }
 
 
-    /* TABLET */
+    /* MOBILE */
 
-    @media (max-width:900px) {
+    @media(max-width:900px) {
 
       .menu-toggle {
         display: block;
@@ -876,8 +654,8 @@
         display: none;
         flex-direction: column;
         align-items: flex-start;
-        padding: 28px 20px 36px;
         background: #000;
+        padding: 30px 20px;
       }
 
       .main-nav.is-open {
@@ -888,91 +666,44 @@
         font-size: 17px;
       }
 
-      .main-nav .apply-link {
-        margin-top: 8px;
-        padding: 12px 15px;
-      }
-
-      .section-head {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .identity-grid,
-      .event-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .identity-card:last-child,
-      .event-card:last-child {
-        grid-column: 1 / -1;
-        width: 50%;
-        margin: 0 auto;
-      }
-
-      .week-head {
-        display: block;
-      }
-
-      .week-intro {
-        margin-top: 25px;
-      }
-
+      .section-head,
       .club {
         grid-template-columns: 1fr;
-        gap: 60px;
+      }
+
+      .event-grid,
+      .identity-grid {
+        grid-template-columns: 1fr;
       }
 
       .info-grid {
         grid-template-columns: 1fr 1fr;
       }
+
     }
 
 
-    /* MOBILE */
+    @media(max-width:600px) {
 
-    @media (max-width:600px) {
-
-      .site-header {
-        padding: 0 16px;
-      }
-
-      .brand {
-        width: 112px;
-      }
-
-      .brand img {
-        width: 108px;
+      .page,
+      .section {
+        width: calc(100% - 32px);
       }
 
       .hero {
         padding: 115px 16px 38px;
       }
 
-      .hero h1 {
-        max-width: 360px;
-        font-size: clamp(47px,15vw,72px);
-      }
-
-      .hero-copy {
-        font-size: 17px;
-      }
-
-      .section {
-        width: calc(100% - 32px);
-        padding: 85px 0;
-      }
-
+      .event-grid,
       .identity-grid,
-      .event-grid {
+      .info-grid {
         grid-template-columns: 1fr;
       }
 
-      .identity-card:last-child,
-      .event-card:last-child {
-        grid-column: auto;
-        width: 100%;
-        margin: 0;
+      .info-block {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-left: 0;
       }
 
       .lineup-row {
@@ -983,53 +714,6 @@
         justify-content: flex-start;
       }
 
-      .shotgun-button {
-        width: 100%;
-        min-height: 46px;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .info-block,
-      .info-block + .info-block {
-        min-height: 195px;
-        padding: 20px 0;
-        border-right: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .contact-actions .button {
-        width: 100%;
-      }
-
-      .site-footer {
-        width: calc(100% - 32px);
-        grid-template-columns: 1fr auto;
-      }
-
-      .site-footer span:nth-child(2) {
-        display: none;
-      }
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      .marquee-track {
-        animation: none;
-      }
-
-      .identity-card img,
-      .event-card,
-      .event-image img {
-        transition: none;
-      }
     }
 
   </style>
@@ -1042,40 +726,57 @@
 
 <header class="site-header">
 
-  <a
-    class="brand"
-    href="#top"
-    aria-label="Danceteria — retour en haut"
-  >
+  <a class="brand" href="#top">
+
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
+
   </a>
+
 
   <button
     class="menu-toggle"
     type="button"
-    aria-expanded="false"
-    aria-controls="main-nav"
   >
     MENU
   </button>
 
-  <nav
-    class="main-nav"
-    id="main-nav"
-    aria-label="Navigation principale"
-  >
-    <a href="#agenda">Agenda</a>
-    <a href="#club">Le club</a>
-    <a href="radio.html">Radio</a>
-    <a href="#infos">Infos</a>
-    <a class="apply-link" href="candidature.html">Candidater</a>
-    <a href="#contact">Contact</a>
+
+  <nav class="main-nav">
+
+    <a href="#agenda">
+      Agenda
+    </a>
+
+    <a href="#club">
+      Le club
+    </a>
+
+    <a href="radio.html">
+      Radio
+    </a>
+
+    <a href="#infos">
+      Infos
+    </a>
+
+    <a
+      class="apply-link"
+      href="candidature.html"
+    >
+      Candidater
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
   </nav>
 
 </header>
+
 
 
 <main>
@@ -1092,13 +793,16 @@
     muted
     loop
     playsinline
-    preload="auto"
-    aria-hidden="true"
   >
-    <source src="hero.mp4.mov">
+
+    <source
+      src="hero.mp4.mov"
+    >
+
   </video>
 
   <div class="hero-overlay"></div>
+
 
   <div class="hero-content">
 
@@ -1135,20 +839,12 @@
 
   </div>
 
-  <a
-    class="scroll-cue"
-    href="#agenda"
-    aria-label="Voir la programmation"
-  >
-    ↓
-  </a>
-
 </section>
 
 
 
 <section
-  class="section identity-section"
+  class="section"
   id="agenda"
 >
 
@@ -1170,14 +866,10 @@
 
     <article class="identity-card">
 
-      <div class="identity-image">
-        <img
-          src="jeudi.png"
-          alt="Identité visuelle Danceteria du jeudi"
-          loading="lazy"
-          decoding="async"
-        >
-      </div>
+      <img
+        src="jeudi.png"
+        alt="Jeudi Danceteria"
+      >
 
       <div class="identity-caption">
         <strong>JEUDI</strong>
@@ -1189,14 +881,10 @@
 
     <article class="identity-card">
 
-      <div class="identity-image">
-        <img
-          src="vendredi.png"
-          alt="Identité visuelle Danceteria du vendredi"
-          loading="lazy"
-          decoding="async"
-        >
-      </div>
+      <img
+        src="vendredi.png"
+        alt="Vendredi Danceteria"
+      >
 
       <div class="identity-caption">
         <strong>VENDREDI</strong>
@@ -1208,14 +896,10 @@
 
     <article class="identity-card">
 
-      <div class="identity-image">
-        <img
-          src="samedi.png"
-          alt="Identité visuelle Danceteria du samedi"
-          loading="lazy"
-          decoding="async"
-        >
-      </div>
+      <img
+        src="samedi.png"
+        alt="Samedi Danceteria"
+      >
 
       <div class="identity-caption">
         <strong>SAMEDI</strong>
@@ -1248,9 +932,8 @@
     </div>
 
     <p class="week-intro">
-      La programmation change chaque semaine.
-      Découvrez les artistes et les soirées
-      à venir à Danceteria.
+      Programmation mise à jour automatiquement
+      depuis Danceteria OS.
     </p>
 
   </div>
@@ -1259,168 +942,65 @@
   <div class="event-grid">
 
 
-    <!-- JEUDI -->
+    <!-- THURSDAY -->
 
-    <article class="event-card event-thursday">
+    <article
+      class="event-card event-thursday"
+      id="card-thursday"
+    >
 
-      <a
-        class="event-image-link"
-        href="https://shotgun.live/fr/venues/danceteria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Versatyl — billetterie Shotgun"
-      >
+      <div class="event-image">
 
-        <div class="event-image">
+        <div class="flyer-placeholder">
 
-          <div class="flyer-placeholder">
-            <span>Jeudi 03.09</span>
-            <strong>Versatyl</strong>
-          </div>
+          <span class="placeholder-date">
+            JEUDI
+          </span>
 
-          <img
-            src="flyer-jeudi.png"
-            alt="Versatyl à Danceteria le 3 septembre"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.display='none';"
-          >
+          <strong class="placeholder-title">
+            PROGRAMME À VENIR
+          </strong>
 
         </div>
 
-      </a>
+        <img
+          class="event-flyer"
+          alt=""
+          hidden
+        >
+
+      </div>
 
 
       <div class="event-info">
 
         <div class="event-meta">
-          <span class="event-day">JEUDI</span>
-          <span class="event-date">03.09.26</span>
+
+          <span class="event-day">
+            JEUDI
+          </span>
+
+          <span class="event-date">
+            —
+          </span>
+
         </div>
 
         <h3 class="event-title">
-          Versatyl
+          Programme à venir
         </h3>
 
         <p class="event-type">
-          House · Techno · Hard Techno
+          —
         </p>
 
-
-        <div class="lineup">
-
-          <div class="lineup-row">
-            <span class="lineup-name">DJ Tiger</span>
-
-            <div class="artist-links">
-              <a
-                href="https://www.instagram.com/theo__djt/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-            </div>
-          </div>
-
-
-          <div class="lineup-row">
-            <span class="lineup-name">Tetris</span>
-
-            <div class="artist-links">
-              <a
-                href="https://www.instagram.com/t3tr.s/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-            </div>
-          </div>
-
-
-          <div class="lineup-row">
-            <span class="lineup-name">DJMX</span>
-
-            <div class="artist-links">
-
-              <a
-                href="https://www.instagram.com/djmx.wav/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                href="https://soundcloud.com/jimmy-berthoud"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SoundCloud ↗
-              </a>
-
-            </div>
-          </div>
-
-
-          <div class="lineup-row">
-            <span class="lineup-name">Eloy.444</span>
-
-            <div class="artist-links">
-
-              <a
-                href="https://www.instagram.com/elyo.444/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                href="https://soundcloud.com/e-l-y-o"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SoundCloud ↗
-              </a>
-
-            </div>
-          </div>
-
-
-          <div class="lineup-row">
-            <span class="lineup-name">Nofame999</span>
-
-            <div class="artist-links">
-
-              <a
-                href="https://www.instagram.com/nofame999/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                href="https://soundcloud.com/nofame999"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SoundCloud ↗
-              </a>
-
-            </div>
-          </div>
-
-        </div>
-
+        <div class="lineup"></div>
 
         <a
           class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           SHOTGUN ↗
         </a>
@@ -1431,100 +1011,65 @@
 
 
 
-    <!-- VENDREDI -->
+    <!-- FRIDAY -->
 
-    <article class="event-card event-friday">
+    <article
+      class="event-card event-friday"
+      id="card-friday"
+    >
 
-      <a
-        class="event-image-link"
-        href="https://shotgun.live/fr/venues/danceteria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chris Gavin — billetterie Shotgun"
-      >
+      <div class="event-image">
 
-        <div class="event-image">
+        <div class="flyer-placeholder">
 
-          <div class="flyer-placeholder">
-            <span>Vendredi 04.09</span>
-            <strong>Chris Gavin</strong>
-          </div>
+          <span class="placeholder-date">
+            VENDREDI
+          </span>
 
-          <img
-            src="flyer-vendredi.png"
-            alt="Chris Gavin à Danceteria le 4 septembre"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.display='none';"
-          >
+          <strong class="placeholder-title">
+            LOADING
+          </strong>
 
         </div>
 
-      </a>
+        <img
+          class="event-flyer"
+          alt=""
+          hidden
+        >
+
+      </div>
 
 
       <div class="event-info">
 
         <div class="event-meta">
-          <span class="event-day">VENDREDI</span>
-          <span class="event-date">04.09.26</span>
+
+          <span class="event-day">
+            VENDREDI
+          </span>
+
+          <span class="event-date">
+            —
+          </span>
+
         </div>
 
         <h3 class="event-title">
-          Chris Gavin
+          Loading
         </h3>
 
         <p class="event-type">
-          DJ Set
+          —
         </p>
 
-
-        <div class="lineup">
-
-          <div class="lineup-row">
-
-            <span class="lineup-name">
-              Chris Gavin
-            </span>
-
-            <div class="artist-links">
-
-              <a
-                href="https://www.instagram.com/djchrisgavin/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                href="https://soundcloud.com/djchrisgavin"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SoundCloud ↗
-              </a>
-
-              <a
-                href="https://open.spotify.com/artist/0cxpVsCbSCmNmcxor8VX6I"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Spotify ↗
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
+        <div class="lineup"></div>
 
         <a
           class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           SHOTGUN ↗
         </a>
@@ -1535,100 +1080,65 @@
 
 
 
-    <!-- SAMEDI -->
+    <!-- SATURDAY -->
 
-    <article class="event-card event-saturday">
+    <article
+      class="event-card event-saturday"
+      id="card-saturday"
+    >
 
-      <a
-        class="event-image-link"
-        href="https://shotgun.live/fr/venues/danceteria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Jack de Marseille — billetterie Shotgun"
-      >
+      <div class="event-image">
 
-        <div class="event-image">
+        <div class="flyer-placeholder">
 
-          <div class="flyer-placeholder">
-            <span>Samedi 05.09</span>
-            <strong>Jack de Marseille</strong>
-          </div>
+          <span class="placeholder-date">
+            SAMEDI
+          </span>
 
-          <img
-            src="flyer-samedi.png"
-            alt="Jack de Marseille à Danceteria le 5 septembre"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.display='none';"
-          >
+          <strong class="placeholder-title">
+            LOADING
+          </strong>
 
         </div>
 
-      </a>
+        <img
+          class="event-flyer"
+          alt=""
+          hidden
+        >
+
+      </div>
 
 
       <div class="event-info">
 
         <div class="event-meta">
-          <span class="event-day">SAMEDI</span>
-          <span class="event-date">05.09.26</span>
+
+          <span class="event-day">
+            SAMEDI
+          </span>
+
+          <span class="event-date">
+            —
+          </span>
+
         </div>
 
         <h3 class="event-title">
-          Jack de Marseille
+          Loading
         </h3>
 
         <p class="event-type">
-          Resid(a)nce
+          —
         </p>
 
-
-        <div class="lineup">
-
-          <div class="lineup-row">
-
-            <span class="lineup-name">
-              Jack de Marseille
-            </span>
-
-            <div class="artist-links">
-
-              <a
-                href="https://www.instagram.com/jackdemarseille/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                href="https://soundcloud.com/jack-de-marseille"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SoundCloud ↗
-              </a>
-
-              <a
-                href="https://open.spotify.com/artist/7JNHz7PFOGvP7mldEuaRKm"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Spotify ↗
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
+        <div class="lineup"></div>
 
         <a
           class="shotgun-button"
           href="https://shotgun.live/fr/venues/danceteria"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           SHOTGUN ↗
         </a>
@@ -1663,9 +1173,8 @@
 
     <p class="lead">
       Club, bar et lieu de rencontres.
-      Danceteria défend une culture
-      de la nuit ouverte,
-      indépendante et musicale.
+      Danceteria défend une culture de la nuit
+      ouverte, indépendante et musicale.
     </p>
 
   </div>
@@ -1699,21 +1208,6 @@
 
 
 
-<div class="marquee">
-
-  <div class="marquee-track">
-
-    <span>DANCETERIA — MORE THAN A CLUB — MARSEILLE —</span>
-    <span>DANCETERIA — MORE THAN A CLUB — MARSEILLE —</span>
-    <span>DANCETERIA — MORE THAN A CLUB — MARSEILLE —</span>
-    <span>DANCETERIA — MORE THAN A CLUB — MARSEILLE —</span>
-
-  </div>
-
-</div>
-
-
-
 <section
   class="section"
   id="infos"
@@ -1735,7 +1229,6 @@
 
   <div class="info-grid">
 
-
     <div class="info-block">
 
       <span class="info-label">
@@ -1747,53 +1240,20 @@
         13001 Marseille
       </p>
 
-      <a
-        href="https://maps.google.com/?q=18+rue+Saint-Saens+13001+Marseille"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Google Maps ↗
-      </a>
-
     </div>
 
 
     <div class="info-block">
 
       <span class="info-label">
-        Horaires / Opening hours
+        Horaires
       </span>
 
-      <div class="opening-hours">
-
-        <div class="opening-row">
-          <span class="opening-day">
-            Jeudi / Thursday
-          </span>
-          <span class="opening-time">
-            00:00 — 06:00
-          </span>
-        </div>
-
-        <div class="opening-row">
-          <span class="opening-day">
-            Vendredi / Friday
-          </span>
-          <span class="opening-time">
-            00:00 — 06:00
-          </span>
-        </div>
-
-        <div class="opening-row">
-          <span class="opening-day">
-            Samedi / Saturday
-          </span>
-          <span class="opening-time">
-            00:00 — 06:00
-          </span>
-        </div>
-
-      </div>
+      <p>
+        Jeudi 00:00—06:00<br>
+        Vendredi 00:00—06:00<br>
+        Samedi 00:00—06:00
+      </p>
 
     </div>
 
@@ -1801,7 +1261,7 @@
     <div class="info-block">
 
       <span class="info-label">
-        Billetterie / Tickets
+        Tickets
       </span>
 
       <p>
@@ -1812,7 +1272,6 @@
       <a
         href="https://shotgun.live/fr/venues/danceteria"
         target="_blank"
-        rel="noopener noreferrer"
       >
         Shotgun ↗
       </a>
@@ -1834,7 +1293,6 @@
       <a
         href="https://www.instagram.com/danceteria_marseille/"
         target="_blank"
-        rel="noopener noreferrer"
       >
         Instagram ↗
       </a>
@@ -1866,7 +1324,6 @@
     Pour toute demande professionnelle,
     artistique ou événementielle.
   </p>
-
 
   <div class="contact-actions">
 
@@ -1913,62 +1370,1097 @@
 
 <script>
 
-  const menuButton =
-    document.querySelector('.menu-toggle');
 
-  const nav =
-    document.querySelector('.main-nav');
-
-
-  if (menuButton && nav) {
-
-    menuButton.addEventListener('click', () => {
-
-      const isOpen =
-        nav.classList.toggle('is-open');
-
-      menuButton.setAttribute(
-        'aria-expanded',
-        isOpen ? 'true' : 'false'
-      );
-
-      menuButton.textContent =
-        isOpen ? 'FERMER' : 'MENU';
-
-      document.body.classList.toggle(
-        'menu-open',
-        isOpen
-      );
-
-    });
+/*
+============================================================
+GOOGLE SHEETS — PUBLIC SITE SOURCE
+============================================================
+*/
 
 
-    nav.querySelectorAll('a').forEach(link => {
+const SITE_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWtN0q_uI69iuWSoDrEJ3auxocK5C5i7HBgr1fVwOtBso3gPv4ZsrMpWm-bLwfp2cxailFKvxFSRBt/pub?gid=289963765&single=true&output=csv';
 
-      link.addEventListener('click', () => {
 
-        nav.classList.remove('is-open');
+const SITE_PUB_ID =
+  '2PACX-1vSWtN0q_uI69iuWSoDrEJ3auxocK5C5i7HBgr1fVwOtBso3gPv4ZsrMpWm-bLwfp2cxailFKvxFSRBt';
 
-        menuButton.setAttribute(
-          'aria-expanded',
-          'false'
-        );
 
-        menuButton.textContent = 'MENU';
+const SITE_GID =
+  '289963765';
 
-        document.body.classList.remove(
-          'menu-open'
-        );
 
-      });
 
-    });
+/*
+============================================================
+CSV PARSER
+============================================================
+*/
+
+
+function parseCSV(text) {
+
+  const rows = [];
+
+  let row = [];
+  let value = '';
+  let quoted = false;
+
+
+  for (
+    let i = 0;
+    i < text.length;
+    i++
+  ) {
+
+    const char =
+      text[i];
+
+
+    if (char === '"') {
+
+      if (
+        quoted
+        &&
+        text[i + 1] === '"'
+      ) {
+
+        value += '"';
+        i++;
+
+      }
+
+      else {
+
+        quoted =
+          !quoted;
+
+      }
+
+    }
+
+    else if (
+      char === ','
+      &&
+      !quoted
+    ) {
+
+      row.push(value);
+      value = '';
+
+    }
+
+    else if (
+      (
+        char === '\n'
+        ||
+        char === '\r'
+      )
+      &&
+      !quoted
+    ) {
+
+      if (
+        char === '\r'
+        &&
+        text[i + 1] === '\n'
+      ) {
+        i++;
+      }
+
+      row.push(value);
+
+      if (
+        row.some(
+          cell =>
+            String(cell).trim() !== ''
+        )
+      ) {
+        rows.push(row);
+      }
+
+      row = [];
+      value = '';
+
+    }
+
+    else {
+
+      value += char;
+
+    }
 
   }
+
+
+  if (
+    value.length
+    ||
+    row.length
+  ) {
+
+    row.push(value);
+
+    rows.push(row);
+
+  }
+
+
+  return rows;
+
+}
+
+
+
+function rowsToObjects(rows) {
+
+  if (!rows.length) {
+    return [];
+  }
+
+
+  const headers =
+    rows[0].map(
+      item =>
+        String(item).trim()
+    );
+
+
+  return rows
+    .slice(1)
+    .map(
+      row => {
+
+        const object = {};
+
+        headers.forEach(
+          (header,index) => {
+
+            object[header] =
+              String(
+                row[index] ?? ''
+              ).trim();
+
+          }
+        );
+
+        return object;
+
+      }
+    );
+
+}
+
+
+
+/*
+============================================================
+GVIZ FALLBACK
+============================================================
+*/
+
+
+function loadViaGoogleVisualization() {
+
+  return new Promise(
+    (resolve,reject) => {
+
+
+      window.google =
+        window.google || {};
+
+
+      google.visualization =
+        google.visualization || {};
+
+
+      google.visualization.Query =
+        google.visualization.Query || {};
+
+
+      const oldCallback =
+        google.visualization.Query.setResponse;
+
+
+      google.visualization.Query.setResponse =
+        function (response) {
+
+
+          try {
+
+
+            if (
+              response.status !== 'ok'
+            ) {
+
+              throw new Error(
+                'Google Visualization error'
+              );
+
+            }
+
+
+            const headers =
+              response.table.cols.map(
+                column =>
+                  String(
+                    column.label || ''
+                  ).trim()
+              );
+
+
+            const objects =
+              response.table.rows.map(
+                row => {
+
+
+                  const object = {};
+
+
+                  headers.forEach(
+                    (header,index) => {
+
+
+                      const cell =
+                        row.c[index];
+
+
+                      object[header] =
+                        cell
+                          ?
+                          String(
+                            cell.f ??
+                            cell.v ??
+                            ''
+                          ).trim()
+                          :
+                          '';
+
+
+                    }
+                  );
+
+
+                  return object;
+
+
+                }
+              );
+
+
+            resolve(objects);
+
+
+          }
+
+          catch(error) {
+
+
+            reject(error);
+
+
+          }
+
+          finally {
+
+
+            if (oldCallback) {
+
+              google.visualization.Query.setResponse =
+                oldCallback;
+
+            }
+
+
+            script.remove();
+
+
+          }
+
+
+        };
+
+
+      const script =
+        document.createElement(
+          'script'
+        );
+
+
+      script.onerror =
+        () => reject(
+          new Error(
+            'Google Sheets unavailable'
+          )
+        );
+
+
+      script.src =
+        `https://docs.google.com/spreadsheets/d/e/${SITE_PUB_ID}/gviz/tq?tqx=out:json&gid=${SITE_GID}&t=${Date.now()}`;
+
+
+      document.head.appendChild(
+        script
+      );
+
+
+    }
+  );
+
+}
+
+
+
+/*
+============================================================
+LOAD DATA
+============================================================
+*/
+
+
+async function loadSiteData() {
+
+
+  try {
+
+
+    const response =
+      await fetch(
+        SITE_CSV_URL,
+        {
+          cache: 'no-store'
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        'CSV unavailable'
+      );
+
+    }
+
+
+    const text =
+      await response.text();
+
+
+    return rowsToObjects(
+      parseCSV(text)
+    );
+
+
+  }
+
+  catch(error) {
+
+
+    console.warn(
+      'CSV direct impossible, utilisation du fallback Google.',
+      error
+    );
+
+
+    return await loadViaGoogleVisualization();
+
+
+  }
+
+
+}
+
+
+
+/*
+============================================================
+DATES
+============================================================
+*/
+
+
+function parseFrenchDate(value) {
+
+
+  const parts =
+    String(value)
+      .split('/');
+
+
+  if (
+    parts.length !== 3
+  ) {
+
+    return null;
+
+  }
+
+
+  const day =
+    Number(parts[0]);
+
+
+  const month =
+    Number(parts[1]);
+
+
+  const year =
+    Number(parts[2]);
+
+
+  return new Date(
+    year,
+    month - 1,
+    day,
+    12,
+    0,
+    0
+  );
+
+}
+
+
+
+function sameDate(
+  first,
+  second
+) {
+
+
+  return (
+    first
+    &&
+    second
+    &&
+    first.getFullYear() === second.getFullYear()
+    &&
+    first.getMonth() === second.getMonth()
+    &&
+    first.getDate() === second.getDate()
+  );
+
+}
+
+
+
+function formatShortDate(date) {
+
+
+  return (
+    String(
+      date.getDate()
+    ).padStart(2,'0')
+    +
+    '.'
+    +
+    String(
+      date.getMonth() + 1
+    ).padStart(2,'0')
+    +
+    '.'
+    +
+    String(
+      date.getFullYear()
+    ).slice(-2)
+  );
+
+}
+
+
+
+/*
+============================================================
+UPCOMING DATE BY DAY
+============================================================
+*/
+
+
+function getUpcomingEntries(
+  rows,
+  dayName
+) {
+
+
+  const today =
+    new Date();
+
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+
+  const candidates =
+    rows
+      .filter(
+        row => {
+
+
+          const date =
+            parseFrenchDate(
+              row.DATE
+            );
+
+
+          return (
+            String(
+              row.STATUT
+            ).toUpperCase()
+              ===
+              'CONFIRMÉ'
+            &&
+            String(
+              row.JOUR
+            ).toUpperCase()
+              ===
+              dayName
+            &&
+            date
+            &&
+            date >= today
+          );
+
+
+        }
+      )
+      .sort(
+        (a,b) =>
+          parseFrenchDate(a.DATE)
+          -
+          parseFrenchDate(b.DATE)
+      );
+
+
+  if (!candidates.length) {
+
+    return [];
+
+  }
+
+
+  const nextDate =
+    parseFrenchDate(
+      candidates[0].DATE
+    );
+
+
+  return candidates.filter(
+    row =>
+      sameDate(
+        parseFrenchDate(
+          row.DATE
+        ),
+        nextDate
+      )
+  );
+
+}
+
+
+
+/*
+============================================================
+DRIVE IMAGE
+============================================================
+*/
+
+
+function driveImageURL(url) {
+
+
+  if (!url) {
+    return '';
+  }
+
+
+  const match =
+    url.match(
+      /\/d\/([^/]+)/
+    )
+    ||
+    url.match(
+      /[?&]id=([^&]+)/
+    );
+
+
+  if (!match) {
+    return url;
+  }
+
+
+  return (
+    'https://drive.google.com/thumbnail?id='
+    +
+    match[1]
+    +
+    '&sz=w1600'
+  );
+
+}
+
+
+
+/*
+============================================================
+STYLE
+============================================================
+*/
+
+
+function cleanStyle(value) {
+
+
+  if (!value) {
+    return 'DJ SET';
+  }
+
+
+  const firstPart =
+    value.split(';')[0];
+
+
+  return firstPart
+    .replaceAll(
+      ' / ',
+      ' · '
+    )
+    .trim();
+
+}
+
+
+
+/*
+============================================================
+LINKS
+============================================================
+*/
+
+
+function artistLinks(row) {
+
+
+  const links = [];
+
+
+  if (row.INSTAGRAM) {
+
+    links.push(
+      `<a href="${row.INSTAGRAM}" target="_blank" rel="noopener">Instagram ↗</a>`
+    );
+
+  }
+
+
+  if (row.SOUNDCLOUD) {
+
+    links.push(
+      `<a href="${row.SOUNDCLOUD}" target="_blank" rel="noopener">SoundCloud ↗</a>`
+    );
+
+  }
+
+
+  if (row.SPOTIFY) {
+
+    links.push(
+      `<a href="${row.SPOTIFY}" target="_blank" rel="noopener">Spotify ↗</a>`
+    );
+
+  }
+
+
+  return links.join('');
+
+}
+
+
+
+/*
+============================================================
+RENDER CARD
+============================================================
+*/
+
+
+function renderCard(
+  card,
+  entries,
+  dayName
+) {
+
+
+  const dateElement =
+    card.querySelector(
+      '.event-date'
+    );
+
+
+  const titleElement =
+    card.querySelector(
+      '.event-title'
+    );
+
+
+  const typeElement =
+    card.querySelector(
+      '.event-type'
+    );
+
+
+  const lineup =
+    card.querySelector(
+      '.lineup'
+    );
+
+
+  const placeholderDate =
+    card.querySelector(
+      '.placeholder-date'
+    );
+
+
+  const placeholderTitle =
+    card.querySelector(
+      '.placeholder-title'
+    );
+
+
+  const flyer =
+    card.querySelector(
+      '.event-flyer'
+    );
+
+
+  if (!entries.length) {
+
+
+    dateElement.textContent =
+      '—';
+
+
+    titleElement.textContent =
+      'Programme à venir';
+
+
+    typeElement.textContent =
+      'À annoncer';
+
+
+    placeholderTitle.textContent =
+      'PROGRAMME À VENIR';
+
+
+    lineup.innerHTML =
+      '';
+
+
+    flyer.hidden =
+      true;
+
+
+    return;
+
+
+  }
+
+
+  const first =
+    entries[0];
+
+
+  const date =
+    parseFrenchDate(
+      first.DATE
+    );
+
+
+  const artists =
+    entries.map(
+      item =>
+        item.ARTISTE
+    );
+
+
+  const title =
+    artists.length === 1
+      ?
+      artists[0]
+      :
+      artists.join(' + ');
+
+
+  dateElement.textContent =
+    formatShortDate(date);
+
+
+  titleElement.textContent =
+    title;
+
+
+  placeholderDate.textContent =
+    dayName
+    +
+    ' '
+    +
+    formatShortDate(date);
+
+
+  placeholderTitle.textContent =
+    title;
+
+
+  typeElement.textContent =
+    cleanStyle(
+      first.STYLE
+    );
+
+
+  lineup.innerHTML =
+    entries
+      .map(
+        row => `
+
+          <div class="lineup-row">
+
+            <span class="lineup-name">
+              ${row.ARTISTE}
+            </span>
+
+            <div class="artist-links">
+              ${artistLinks(row)}
+            </div>
+
+          </div>
+
+        `
+      )
+      .join('');
+
+
+  const visual =
+    entries.find(
+      item =>
+        item['VISUEL FEED']
+    );
+
+
+  if (
+    visual
+    &&
+    visual['VISUEL FEED']
+  ) {
+
+
+    flyer.src =
+      driveImageURL(
+        visual['VISUEL FEED']
+      );
+
+
+    flyer.alt =
+      `${title} — Danceteria`;
+
+
+    flyer.hidden =
+      false;
+
+
+    flyer.onerror =
+      function () {
+
+
+        this.hidden =
+          true;
+
+
+      };
+
+
+  }
+
+  else {
+
+
+    flyer.hidden =
+      true;
+
+
+  }
+
+
+}
+
+
+
+/*
+============================================================
+INITIALISE PROGRAM
+============================================================
+*/
+
+
+async function initialiseProgramme() {
+
+
+  try {
+
+
+    const rows =
+      await loadSiteData();
+
+
+    renderCard(
+      document.querySelector(
+        '#card-thursday'
+      ),
+      getUpcomingEntries(
+        rows,
+        'JEUDI'
+      ),
+      'JEUDI'
+    );
+
+
+    renderCard(
+      document.querySelector(
+        '#card-friday'
+      ),
+      getUpcomingEntries(
+        rows,
+        'VENDREDI'
+      ),
+      'VENDREDI'
+    );
+
+
+    renderCard(
+      document.querySelector(
+        '#card-saturday'
+      ),
+      getUpcomingEntries(
+        rows,
+        'SAMEDI'
+      ),
+      'SAMEDI'
+    );
+
+
+  }
+
+  catch(error) {
+
+
+    console.error(
+      'Impossible de charger la programmation.',
+      error
+    );
+
+
+  }
+
+
+}
+
+
+
+/*
+============================================================
+MENU MOBILE
+============================================================
+*/
+
+
+const menuButton =
+  document.querySelector(
+    '.menu-toggle'
+  );
+
+
+const nav =
+  document.querySelector(
+    '.main-nav'
+  );
+
+
+menuButton.addEventListener(
+  'click',
+  () => {
+
+
+    const opened =
+      nav.classList.toggle(
+        'is-open'
+      );
+
+
+    document.body.classList.toggle(
+      'menu-open',
+      opened
+    );
+
+
+    menuButton.textContent =
+      opened
+        ?
+        'FERMER'
+        :
+        'MENU';
+
+
+  }
+);
+
+
+nav
+  .querySelectorAll('a')
+  .forEach(
+    link => {
+
+
+      link.addEventListener(
+        'click',
+        () => {
+
+
+          nav.classList.remove(
+            'is-open'
+          );
+
+
+          document.body.classList.remove(
+            'menu-open'
+          );
+
+
+          menuButton.textContent =
+            'MENU';
+
+
+        }
+      );
+
+
+    }
+  );
+
+
+
+/*
+============================================================
+GO
+============================================================
+*/
+
+
+initialiseProgramme();
+
 
 </script>
 
 
 </body>
-
 </html>
