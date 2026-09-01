@@ -14,12 +14,7 @@
 
   <meta
     name="description"
-    content="Danceteria Radio — musique en continu par les artistes passés et programmés à Danceteria Marseille."
-  >
-
-  <meta
-    name="robots"
-    content="index, follow"
+    content="Danceteria Radio — musique des artistes passés et programmés à Danceteria Marseille."
   >
 
   <meta
@@ -28,38 +23,9 @@
   >
 
   <link
-    rel="canonical"
-    href="https://danceteria.fr/radio.html"
-  >
-
-  <link
     rel="icon"
     type="image/png"
     href="logo-danceteria-transparent.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="logo-danceteria.png"
-  >
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Danceteria">
-  <meta property="og:title" content="Danceteria Radio">
-
-  <meta
-    property="og:description"
-    content="Music from the artists who played here."
-  >
-
-  <meta
-    property="og:url"
-    content="https://danceteria.fr/radio.html"
-  >
-
-  <meta
-    property="og:image"
-    content="https://danceteria.fr/logo-danceteria.png"
   >
 
 
@@ -67,7 +33,6 @@
 
     :root {
       --bg: #070707;
-      --surface: #101010;
       --text: #f4f2ed;
       --muted: #96938d;
       --line: rgba(255,255,255,.14);
@@ -82,7 +47,6 @@
 
     html {
       background: var(--bg);
-      scroll-behavior: smooth;
     }
 
     body {
@@ -92,10 +56,6 @@
       color: var(--text);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
-    }
-
-    body.menu-open {
-      overflow: hidden;
     }
 
     a {
@@ -117,24 +77,11 @@
       align-items: center;
       justify-content: space-between;
       background: rgba(0,0,0,.94);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .brand {
-      width: 138px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+      border-bottom: 1px solid var(--line);
     }
 
     .brand img {
-      display: block;
       width: 132px;
-      height: auto;
-      object-fit: contain;
     }
 
     .main-nav {
@@ -149,11 +96,6 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .15em;
-      transition: opacity .2s ease;
-    }
-
-    .main-nav a:hover {
-      opacity: .55;
     }
 
     .main-nav .active {
@@ -163,15 +105,12 @@
 
     .menu-toggle {
       display: none;
-      padding: 0;
-      border: 0;
       background: transparent;
       color: white;
-      font: inherit;
+      border: 0;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .15em;
-      cursor: pointer;
     }
 
 
@@ -182,9 +121,6 @@
       margin: 0 auto;
       padding: 145px 0 120px;
     }
-
-
-    /* INTRO */
 
     .radio-intro {
       min-height: 58vh;
@@ -205,7 +141,6 @@
 
     h1 {
       margin: 0;
-      max-width: 1000px;
       font-size: clamp(66px,10.8vw,154px);
       line-height: .78;
       font-weight: 900;
@@ -215,18 +150,15 @@
 
     .radio-tagline {
       margin: 40px 0 0;
-      max-width: 650px;
       color: #cbc8c2;
       font-size: clamp(19px,2vw,28px);
-      line-height: 1.25;
-      letter-spacing: -.025em;
     }
 
-    .radio-library-info {
+    .library-info {
       margin: 16px 0 0;
       color: var(--muted);
       font-size: 9px;
-      font-weight: 750;
+      font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
     }
@@ -243,18 +175,13 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .radio-status {
-      align-self: start;
-    }
-
     .on-air {
-      display: inline-flex;
-      align-items: center;
+      display: flex;
       gap: 9px;
+      align-items: center;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .17em;
-      text-transform: uppercase;
     }
 
     .on-air-dot {
@@ -262,28 +189,9 @@
       height: 8px;
       border-radius: 50%;
       background: var(--red);
-      box-shadow: 0 0 0 0 rgba(200,32,25,.5);
-      animation: pulse 1.7s infinite;
     }
-
-    @keyframes pulse {
-
-      70% {
-        box-shadow: 0 0 0 9px rgba(200,32,25,0);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(200,32,25,0);
-      }
-
-    }
-
-
-    /* NOW PLAYING */
 
     .now-playing-label {
-      display: block;
-      margin-bottom: 17px;
       color: var(--muted);
       font-size: 9px;
       font-weight: 800;
@@ -292,7 +200,7 @@
     }
 
     .now-artist {
-      margin: 0;
+      margin: 17px 0 0;
       font-size: clamp(34px,5vw,74px);
       line-height: .88;
       letter-spacing: -.06em;
@@ -300,23 +208,20 @@
     }
 
     .now-title {
+      color: var(--muted);
       margin: 14px 0 0;
-      color: #a9a69f;
-      font-size: clamp(15px,1.7vw,22px);
-      line-height: 1.3;
     }
 
-    .priority-label {
+    .priority {
       display: none;
-      margin-top: 12px;
-      color: #e8e5df;
+      margin-top: 10px;
       font-size: 8px;
-      font-weight: 850;
+      font-weight: 800;
       letter-spacing: .14em;
       text-transform: uppercase;
     }
 
-    .priority-label.is-visible {
+    .priority.visible {
       display: block;
     }
 
@@ -325,14 +230,10 @@
       margin-top: 18px;
       color: var(--muted);
       font-size: 9px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .13em;
       text-decoration: none;
       text-transform: uppercase;
-    }
-
-    .soundcloud-link:hover {
-      color: white;
     }
 
 
@@ -341,7 +242,6 @@
     .controls {
       margin-top: 36px;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
     }
 
@@ -351,38 +251,19 @@
       border: 1px solid rgba(255,255,255,.55);
       background: transparent;
       color: white;
-      font: inherit;
       font-size: 9px;
       font-weight: 850;
       letter-spacing: .14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition:
-        background .2s ease,
-        color .2s ease,
-        opacity .2s ease;
-    }
-
-    .control-button:hover {
-      background: white;
-      color: black;
     }
 
     .control-button.primary {
       min-width: 155px;
       background: white;
       color: black;
-      border-color: white;
-    }
-
-    .control-button.primary:hover {
-      background: transparent;
-      color: white;
     }
 
     .control-button:disabled {
       opacity: .3;
-      cursor: default;
     }
 
 
@@ -393,17 +274,12 @@
     }
 
     .progress {
-      position: relative;
       height: 2px;
-      overflow: hidden;
       background: rgba(255,255,255,.15);
     }
 
     .progress-bar {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+      height: 100%;
       width: 0;
       background: white;
     }
@@ -412,45 +288,8 @@
       margin-top: 9px;
       display: flex;
       justify-content: space-between;
-      color: #676767;
+      color: #666;
       font-size: 9px;
-      letter-spacing: .1em;
-    }
-
-
-    /* HELP */
-
-    .radio-help,
-    .radio-error {
-      display: none;
-      margin-top: 26px;
-      padding: 20px;
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .radio-help {
-      border: 1px solid rgba(255,255,255,.25);
-      color: #b7b4ae;
-    }
-
-    .radio-error {
-      border: 1px solid rgba(200,32,25,.5);
-      color: var(--muted);
-    }
-
-    .radio-help.is-visible,
-    .radio-error.is-visible {
-      display: block;
-    }
-
-    .radio-help strong {
-      display: block;
-      margin-bottom: 6px;
-      color: white;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
     }
 
 
@@ -461,7 +300,7 @@
     }
 
     .section-label {
-      margin: 0 0 36px;
+      margin-bottom: 36px;
       color: var(--muted);
       font-size: 10px;
       font-weight: 800;
@@ -474,12 +313,11 @@
     }
 
     .queue-item {
-      padding: 18px 0;
       display: grid;
-      grid-template-columns: 65px 1fr 1fr auto;
-      gap: 25px;
+      grid-template-columns: 60px 1fr 1fr auto;
+      gap: 20px;
+      padding: 18px 0;
       border-bottom: 1px solid var(--line);
-      align-items: center;
     }
 
     .queue-number {
@@ -488,7 +326,6 @@
     }
 
     .queue-artist {
-      font-size: 15px;
       font-weight: 700;
     }
 
@@ -500,32 +337,20 @@
     .queue-priority {
       color: #777;
       font-size: 8px;
-      font-weight: 800;
       letter-spacing: .12em;
-      text-transform: uppercase;
     }
 
 
     /* SOUNDCLOUD */
 
-    .source-section {
-      padding: 0 0 90px;
-    }
-
-    .source-note {
-      margin: 0 0 18px;
-      max-width: 600px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
     .soundcloud-frame {
       width: 100%;
       height: 166px;
-      display: block;
       border: 0;
-      background: #111;
+    }
+
+    .source-section {
+      padding-bottom: 90px;
     }
 
 
@@ -537,22 +362,13 @@
       padding: 24px 0 36px;
       display: grid;
       grid-template-columns: 1fr 1fr auto;
-      gap: 20px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 10px;
-      letter-spacing: .1em;
-    }
-
-    .site-footer a {
-      color: white;
-      text-decoration: none;
     }
 
 
-    /* TABLET */
-
-    @media (max-width:900px) {
+    @media(max-width:900px) {
 
       .menu-toggle {
         display: block;
@@ -566,7 +382,7 @@
         display: none;
         flex-direction: column;
         align-items: flex-start;
-        padding: 28px 20px 36px;
+        padding: 30px 20px;
         background: #000;
       }
 
@@ -574,54 +390,17 @@
         display: flex;
       }
 
-      .main-nav a {
-        font-size: 17px;
-      }
-
-      .main-nav .active {
-        padding: 12px 15px;
-      }
-
       .radio-player {
         grid-template-columns: 1fr;
-        gap: 40px;
       }
 
     }
 
 
-    /* MOBILE */
-
-    @media (max-width:600px) {
-
-      .site-header {
-        padding: 0 16px;
-      }
-
-      .brand {
-        width: 112px;
-      }
-
-      .brand img {
-        width: 108px;
-      }
+    @media(max-width:600px) {
 
       .page {
         width: calc(100% - 32px);
-        padding: 118px 0 75px;
-      }
-
-      .radio-intro {
-        min-height: 48vh;
-        padding-bottom: 55px;
-      }
-
-      h1 {
-        font-size: clamp(54px,19vw,86px);
-      }
-
-      .radio-player {
-        padding: 42px 0;
       }
 
       .controls {
@@ -635,30 +414,11 @@
 
       .queue-item {
         grid-template-columns: 40px 1fr;
-        gap: 10px;
       }
 
       .queue-title,
       .queue-priority {
         grid-column: 2;
-      }
-
-      .site-footer {
-        width: calc(100% - 32px);
-        grid-template-columns: 1fr auto;
-      }
-
-      .site-footer span:nth-child(2) {
-        display: none;
-      }
-
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      .on-air-dot {
-        animation: none;
       }
 
     }
@@ -676,30 +436,22 @@
   <a
     class="brand"
     href="index.html"
-    aria-label="Danceteria — accueil"
   >
+
     <img
       src="logo-danceteria-transparent.png"
       alt="Danceteria"
     >
+
   </a>
 
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="main-nav"
-  >
+  <button class="menu-toggle">
     MENU
   </button>
 
 
-  <nav
-    class="main-nav"
-    id="main-nav"
-    aria-label="Navigation principale"
-  >
+  <nav class="main-nav">
 
     <a href="index.html#agenda">
       Agenda
@@ -753,8 +505,8 @@
   </p>
 
   <p
-    class="radio-library-info"
-    id="radio-library-info"
+    class="library-info"
+    id="library-info"
   >
     Loading rotation...
   </p>
@@ -766,7 +518,7 @@
 <section class="radio-player">
 
 
-<div class="radio-status">
+<div>
 
   <div class="on-air">
 
@@ -782,135 +534,93 @@
 
 
 
-<div class="player-main">
+<div>
 
+  <span class="now-playing-label">
+    Now playing
+  </span>
 
-<span class="now-playing-label">
-  Now playing
-</span>
-
-
-<h2
-  class="now-artist"
-  id="now-artist"
->
-  Danceteria Radio
-</h2>
-
-
-<p
-  class="now-title"
-  id="now-title"
->
-  Loading...
-</p>
-
-
-<span
-  class="priority-label"
-  id="priority-label"
-></span>
-
-
-<a
-  class="soundcloud-link"
-  id="soundcloud-link"
-  href="#"
-  target="_blank"
-  rel="noopener"
->
-  Listen on SoundCloud ↗
-</a>
-
-
-
-<div class="controls">
-
-  <button
-    class="control-button"
-    id="previous-button"
-    type="button"
-    disabled
+  <h2
+    class="now-artist"
+    id="now-artist"
   >
-    ← Previous
-  </button>
+    Danceteria Radio
+  </h2>
 
-  <button
-    class="control-button primary"
-    id="play-button"
-    type="button"
-    disabled
+  <p
+    class="now-title"
+    id="now-title"
   >
-    PLAY
-  </button>
+    Loading...
+  </p>
 
-  <button
-    class="control-button"
-    id="next-button"
-    type="button"
-    disabled
+  <span
+    class="priority"
+    id="priority"
+  ></span>
+
+  <a
+    class="soundcloud-link"
+    id="soundcloud-link"
+    target="_blank"
   >
-    Next →
-  </button>
-
-</div>
+    Listen on SoundCloud ↗
+  </a>
 
 
+  <div class="controls">
 
-<div class="progress-wrap">
+    <button
+      class="control-button"
+      id="previous"
+      disabled
+    >
+      ← PREVIOUS
+    </button>
 
-  <div class="progress">
+    <button
+      class="control-button primary"
+      id="play"
+      disabled
+    >
+      PLAY
+    </button>
 
-    <div
-      class="progress-bar"
-      id="progress-bar"
-    ></div>
+    <button
+      class="control-button"
+      id="next"
+      disabled
+    >
+      NEXT →
+    </button>
 
   </div>
 
-  <div class="time-row">
 
-    <span id="current-time">
-      00:00
-    </span>
+  <div class="progress-wrap">
 
-    <span id="duration">
-      00:00
-    </span>
+    <div class="progress">
+
+      <div
+        class="progress-bar"
+        id="progress-bar"
+      ></div>
+
+    </div>
+
+    <div class="time-row">
+
+      <span id="current-time">
+        00:00
+      </span>
+
+      <span id="duration">
+        00:00
+      </span>
+
+    </div>
 
   </div>
-
-</div>
-
-
-
-<div
-  class="radio-help"
-  id="radio-help"
->
-
-  <strong>
-    Safari bloque le premier démarrage
-  </strong>
-
-  Clique une seule fois sur le bouton orange
-  du lecteur SoundCloud situé plus bas.
-  Ensuite Danceteria Radio continuera automatiquement.
-
-</div>
-
-
-
-<div
-  class="radio-error"
-  id="radio-error"
->
-
-  Ce contenu SoundCloud est momentanément indisponible.
-  Passage automatique au suivant.
-
-</div>
-
 
 </div>
 
@@ -940,19 +650,10 @@
     SoundCloud
   </p>
 
-  <p class="source-note">
-    Audio streamed directly from SoundCloud.
-    The official player provides artist and platform attribution.
-  </p>
-
   <iframe
     id="soundcloud-player"
     class="soundcloud-frame"
-    title="SoundCloud player"
-    scrolling="no"
-    frameborder="no"
     allow="autoplay; encrypted-media"
-    src="about:blank"
   ></iframe>
 
 </section>
@@ -988,7 +689,19 @@
 
 /*
 ============================================================
-BIBLIOTHEQUE PERMANENTE DANCETERIA RADIO
+GOOGLE SHEETS
+============================================================
+*/
+
+
+const SITE_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWtN0q_uI69iuWSoDrEJ3auxocK5C5i7HBgr1fVwOtBso3gPv4ZsrMpWm-bLwfp2cxailFKvxFSRBt/pub?gid=289963765&single=true&output=csv';
+
+
+
+/*
+============================================================
+PERMANENT RADIO LIBRARY
 ============================================================
 */
 
@@ -997,114 +710,114 @@ const permanentLibrary = [
 
 
   {
-    artist: "JACK DE MARSEILLE",
-    title: "Ellipsia",
-    kind: "track",
-    url: "https://soundcloud.com/jack-de-marseille/ellipsia"
+    artist: "CHRIS GAVIN",
+    title: "Udessia (Original Mix)",
+    url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original",
+    kind: "track"
   },
 
 
   {
-    artist: "CHRIS GAVIN",
-    title: "Udessia (Original Mix)",
-    kind: "track",
-    url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original"
+    artist: "JACK DE MARSEILLE",
+    title: "Ellipsia",
+    url: "https://soundcloud.com/jack-de-marseille/ellipsia",
+    kind: "track"
   },
 
 
   {
     artist: "MILA DIETRICH",
     title: "When I Look Into Your Eyes",
-    kind: "track",
-    url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes"
+    url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes",
+    kind: "track"
   },
 
 
   {
     artist: "YAN WAGNER",
     title: "Changed (Original Mix)",
-    kind: "track",
-    url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix"
+    url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix",
+    kind: "track"
   },
 
 
   {
     artist: "SEIUN",
-    title: "Toy Tonics × Bordello a Parigi @ OXI — Italomania",
-    kind: "set",
-    url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania"
+    title: "Italomania",
+    url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania",
+    kind: "set"
   },
 
 
   {
     artist: "PHRED NOIR",
     title: "Selección Dura",
-    kind: "set",
-    url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir"
+    url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir",
+    kind: "set"
   },
 
 
   {
     artist: "FRED BERTHET / DJ STEEF",
     title: "Fred Berthet Mix 02/26",
-    kind: "set",
-    url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26"
+    url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26",
+    kind: "set"
   },
 
 
   {
     artist: "INORGANICA",
     title: "Underside / Psyche Resolved",
-    kind: "track",
-    url: "https://soundcloud.com/inorganicasound/rec074"
+    url: "https://soundcloud.com/inorganicasound/rec074",
+    kind: "track"
   },
 
 
   {
     artist: "SCAN X",
     title: "FCom 25 Remastered EP2",
-    kind: "set",
-    url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2"
+    url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2",
+    kind: "set"
   },
 
 
   {
     artist: "JOE LEWANDOWSKI",
     title: "Long (Original Mix)",
-    kind: "track",
-    url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix"
+    url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix",
+    kind: "track"
   },
 
 
   {
     artist: "DJ OIL",
     title: "A Day",
-    kind: "track",
-    url: "https://soundcloud.com/bbemusic/dj-oil-a-day"
+    url: "https://soundcloud.com/bbemusic/dj-oil-a-day",
+    kind: "track"
   },
 
 
   {
     artist: "POLE FOLDER",
     title: "Infinite Love",
-    kind: "track",
-    url: "https://soundcloud.com/pole-folder/infinite-love"
+    url: "https://soundcloud.com/pole-folder/infinite-love",
+    kind: "track"
   },
 
 
   {
     artist: "BONNIE SPACEY",
     title: "Walking The Distance",
-    kind: "track",
-    url: "https://soundcloud.com/criticalmondayrecords/bonnie-spacey-walking-the-distance"
+    url: "https://soundcloud.com/criticalmondayrecords/bonnie-spacey-walking-the-distance",
+    kind: "track"
   },
 
 
   {
     artist: "STELIOS VASSILOUDIS",
     title: "Everybody Is Here",
-    kind: "track",
-    url: "https://soundcloud.com/stelios-vassiloudis/everybody-is-here-1"
+    url: "https://soundcloud.com/stelios-vassiloudis/everybody-is-here-1",
+    kind: "track"
   }
 
 
@@ -1114,54 +827,394 @@ const permanentLibrary = [
 
 /*
 ============================================================
-OUTILS
+CSV
 ============================================================
 */
 
 
-function normalizeArtistName(name) {
+function parseCSV(text) {
 
-  return String(name || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim();
+
+  const rows = [];
+
+  let row = [];
+  let value = '';
+  let quote = false;
+
+
+  for (
+    let i = 0;
+    i < text.length;
+    i++
+  ) {
+
+
+    const c =
+      text[i];
+
+
+    if (c === '"') {
+
+
+      if (
+        quote
+        &&
+        text[i + 1] === '"'
+      ) {
+
+        value += '"';
+        i++;
+
+      }
+
+      else {
+
+        quote =
+          !quote;
+
+      }
+
+
+    }
+
+    else if (
+      c === ','
+      &&
+      !quote
+    ) {
+
+
+      row.push(value);
+
+      value = '';
+
+
+    }
+
+    else if (
+      (
+        c === '\n'
+        ||
+        c === '\r'
+      )
+      &&
+      !quote
+    ) {
+
+
+      if (
+        c === '\r'
+        &&
+        text[i + 1] === '\n'
+      ) {
+        i++;
+      }
+
+
+      row.push(value);
+
+
+      if (
+        row.some(
+          cell =>
+            String(cell).trim()
+        )
+      ) {
+
+        rows.push(row);
+
+      }
+
+
+      row = [];
+      value = '';
+
+
+    }
+
+    else {
+
+
+      value += c;
+
+
+    }
+
+
+  }
+
+
+  if (
+    value
+    ||
+    row.length
+  ) {
+
+    row.push(value);
+
+    rows.push(row);
+
+  }
+
+
+  return rows;
 
 }
 
 
 
-function artistMatches(
-  first,
-  second
-) {
-
-  const a =
-    normalizeArtistName(first);
-
-  const b =
-    normalizeArtistName(second);
+function rowsToObjects(rows) {
 
 
-  if (!a || !b) {
-    return false;
+  const headers =
+    rows[0].map(
+      value =>
+        String(value).trim()
+    );
+
+
+  return rows
+    .slice(1)
+    .map(
+      row => {
+
+
+        const object = {};
+
+
+        headers.forEach(
+          (header,index) => {
+
+
+            object[header] =
+              String(
+                row[index] ?? ''
+              ).trim();
+
+
+          }
+        );
+
+
+        return object;
+
+
+      }
+    );
+
+}
+
+
+
+async function loadSiteRows() {
+
+
+  const response =
+    await fetch(
+      SITE_CSV_URL,
+      {
+        cache: 'no-store'
+      }
+    );
+
+
+  if (!response.ok) {
+
+    throw new Error(
+      'Google Sheets unavailable'
+    );
+
   }
 
 
-  return (
-    a === b
-    ||
-    a.includes(b)
-    ||
-    b.includes(a)
+  return rowsToObjects(
+    parseCSV(
+      await response.text()
+    )
   );
 
 }
 
 
 
+/*
+============================================================
+DATES
+============================================================
+*/
+
+
+function parseDate(value) {
+
+
+  const [
+    day,
+    month,
+    year
+  ] =
+    String(value)
+      .split('/')
+      .map(Number);
+
+
+  if (
+    !day
+    ||
+    !month
+    ||
+    !year
+  ) {
+    return null;
+  }
+
+
+  return new Date(
+    year,
+    month - 1,
+    day,
+    12
+  );
+
+}
+
+
+
+function nextDayEntries(
+  rows,
+  dayName
+) {
+
+
+  const today =
+    new Date();
+
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+
+  const matches =
+    rows
+      .filter(
+        row => {
+
+
+          const date =
+            parseDate(
+              row.DATE
+            );
+
+
+          return (
+            row.STATUT
+              .toUpperCase()
+              ===
+              'CONFIRMÉ'
+            &&
+            row.JOUR
+              .toUpperCase()
+              ===
+              dayName
+            &&
+            date
+            &&
+            date >= today
+          );
+
+
+        }
+      )
+      .sort(
+        (a,b) =>
+          parseDate(a.DATE)
+          -
+          parseDate(b.DATE)
+      );
+
+
+  if (!matches.length) {
+
+    return [];
+
+  }
+
+
+  const date =
+    matches[0].DATE;
+
+
+  return matches.filter(
+    row =>
+      row.DATE === date
+  );
+
+}
+
+
+
+/*
+============================================================
+NAME MATCH
+============================================================
+*/
+
+
+function normalise(name) {
+
+
+  return String(name)
+    .normalize('NFD')
+    .replace(
+      /[\u0300-\u036f]/g,
+      ''
+    )
+    .toLowerCase()
+    .replace(
+      /[^a-z0-9]+/g,
+      ' '
+    )
+    .trim();
+
+}
+
+
+
+function sameArtist(a,b) {
+
+
+  const first =
+    normalise(a);
+
+
+  const second =
+    normalise(b);
+
+
+  return (
+    first === second
+    ||
+    first.includes(second)
+    ||
+    second.includes(first)
+  );
+
+}
+
+
+
+/*
+============================================================
+BUILD RADIO
+============================================================
+*/
+
+
 function shuffle(array) {
+
 
   const result =
     [...array];
@@ -1173,9 +1226,12 @@ function shuffle(array) {
     i--
   ) {
 
+
     const j =
       Math.floor(
-        Math.random() * (i + 1)
+        Math.random()
+        *
+        (i + 1)
       );
 
 
@@ -1189,498 +1245,6 @@ function shuffle(array) {
       result[i]
     ];
 
-  }
-
-
-  return result;
-
-}
-
-
-
-/*
-============================================================
-RECUPERATION AUTOMATIQUE DU PROGRAMME
-============================================================
-*/
-
-
-function findSoundCloudForArtist(
-  card,
-  artistName
-) {
-
-
-  if (!card) {
-    return '';
-  }
-
-
-  const rows =
-    [
-      ...card.querySelectorAll(
-        '.lineup-row'
-      )
-    ];
-
-
-  /*
-  D'abord le lien SoundCloud
-  correspondant exactement à l'artiste.
-  */
-
-
-  for (const row of rows) {
-
-
-    const nameElement =
-      row.querySelector(
-        '.lineup-name'
-      );
-
-
-    const link =
-      row.querySelector(
-        'a[href*="soundcloud.com"]'
-      );
-
-
-    if (
-      nameElement
-      &&
-      link
-      &&
-      artistMatches(
-        nameElement.textContent,
-        artistName
-      )
-    ) {
-
-      return link.href;
-
-    }
-
-  }
-
-
-  /*
-  Sinon premier lien SoundCloud
-  présent dans la carte.
-  */
-
-
-  const fallback =
-    card.querySelector(
-      'a[href*="soundcloud.com"]'
-    );
-
-
-  return fallback
-    ?
-    fallback.href
-    :
-    '';
-
-}
-
-
-
-async function readCurrentProgramme() {
-
-
-  try {
-
-
-    const response =
-      await fetch(
-        'index.html',
-        {
-          cache: 'no-store'
-        }
-      );
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        'index.html unavailable'
-      );
-
-    }
-
-
-    const html =
-      await response.text();
-
-
-    const parser =
-      new DOMParser();
-
-
-    const home =
-      parser.parseFromString(
-        html,
-        'text/html'
-      );
-
-
-    const fridayCard =
-      home.querySelector(
-        '.event-friday'
-      );
-
-
-    const saturdayCard =
-      home.querySelector(
-        '.event-saturday'
-      );
-
-
-    const fridayName =
-      fridayCard
-        ?.querySelector(
-          '.event-title'
-        )
-        ?.textContent
-        ?.trim()
-        ||
-        '';
-
-
-    const saturdayName =
-      saturdayCard
-        ?.querySelector(
-          '.event-title'
-        )
-        ?.textContent
-        ?.trim()
-        ||
-        '';
-
-
-    const fridaySoundCloud =
-      findSoundCloudForArtist(
-        fridayCard,
-        fridayName
-      );
-
-
-    const saturdaySoundCloud =
-      findSoundCloudForArtist(
-        saturdayCard,
-        saturdayName
-      );
-
-
-    /*
-    On récupère EN PLUS tous les artistes
-    du programme ayant un SoundCloud.
-    */
-
-
-    const programmeArtists =
-      [];
-
-
-    const lineupRows =
-      home.querySelectorAll(
-        '.event-card .lineup-row'
-      );
-
-
-    lineupRows.forEach(
-      row => {
-
-
-        const name =
-          row
-            .querySelector(
-              '.lineup-name'
-            )
-            ?.textContent
-            ?.trim();
-
-
-        const soundcloud =
-          row
-            .querySelector(
-              'a[href*="soundcloud.com"]'
-            )
-            ?.href;
-
-
-        if (
-          !name
-          ||
-          !soundcloud
-        ) {
-
-          return;
-
-        }
-
-
-        const alreadyAdded =
-          programmeArtists.some(
-            item =>
-              artistMatches(
-                item.artist,
-                name
-              )
-          );
-
-
-        if (!alreadyAdded) {
-
-
-          programmeArtists.push({
-
-            artist:
-              name.toUpperCase(),
-
-            title:
-              "SoundCloud selection",
-
-            kind:
-              "set",
-
-            url:
-              soundcloud,
-
-            source:
-              "programme"
-
-          });
-
-
-        }
-
-
-      }
-    );
-
-
-    return {
-
-      friday: {
-        artist: fridayName,
-        url: fridaySoundCloud
-      },
-
-      saturday: {
-        artist: saturdayName,
-        url: saturdaySoundCloud
-      },
-
-      programmeArtists
-
-    };
-
-
-  }
-
-  catch (error) {
-
-
-    console.warn(
-      'Danceteria Radio — programme non récupéré',
-      error
-    );
-
-
-    return {
-
-      friday: {
-        artist: '',
-        url: ''
-      },
-
-      saturday: {
-        artist: '',
-        url: ''
-      },
-
-      programmeArtists: []
-
-    };
-
-
-  }
-
-
-}
-
-
-
-/*
-============================================================
-ENRICHISSEMENT AUTOMATIQUE
-============================================================
-*/
-
-
-function mergeProgrammeIntoLibrary(
-  programme
-) {
-
-
-  const library =
-    permanentLibrary.map(
-      item => ({
-        ...item,
-        source:
-          'library'
-      })
-    );
-
-
-  programme.programmeArtists
-    .forEach(
-      newcomer => {
-
-
-        const exists =
-          library.some(
-            item =>
-              artistMatches(
-                item.artist,
-                newcomer.artist
-              )
-          );
-
-
-        /*
-        Si l'artiste n'est pas encore
-        dans la bibliothèque permanente,
-        son profil SoundCloud du programme
-        devient une source temporaire.
-        */
-
-
-        if (!exists) {
-
-          library.push(
-            newcomer
-          );
-
-        }
-
-
-      }
-    );
-
-
-  return library;
-
-}
-
-
-
-/*
-============================================================
-SMART ROTATION
-============================================================
-*/
-
-
-function buildSmartRotation(items) {
-
-
-  const tracks =
-    shuffle(
-      items.filter(
-        item =>
-          item.kind !== 'set'
-      )
-    );
-
-
-  const sets =
-    shuffle(
-      items.filter(
-        item =>
-          item.kind === 'set'
-      )
-    );
-
-
-  const result = [];
-
-
-  while (
-    tracks.length
-    ||
-    sets.length
-  ) {
-
-
-    const previous =
-      result[
-        result.length - 1
-      ];
-
-
-    /*
-    Pas deux longs sets à la suite
-    si on peut l'éviter.
-    */
-
-
-    if (
-      previous
-      &&
-      previous.kind === 'set'
-      &&
-      tracks.length
-    ) {
-
-
-      result.push(
-        tracks.shift()
-      );
-
-
-      continue;
-
-    }
-
-
-    if (
-      sets.length
-      &&
-      Math.random() < .33
-    ) {
-
-
-      result.push(
-        sets.shift()
-      );
-
-
-    }
-
-    else if (
-      tracks.length
-    ) {
-
-
-      result.push(
-        tracks.shift()
-      );
-
-
-    }
-
-    else {
-
-
-      result.push(
-        sets.shift()
-      );
-
-
-    }
-
 
   }
 
@@ -1691,71 +1255,54 @@ function buildSmartRotation(items) {
 
 
 
-/*
-============================================================
-PRIORITES VENDREDI + SAMEDI
-============================================================
-*/
-
-
-function findLibraryEntry(
-  library,
-  artistName,
-  fallbackUrl
+function findRadioItem(
+  artist,
+  soundcloud,
+  label
 ) {
-
-
-  if (!artistName) {
-    return null;
-  }
 
 
   const existing =
-    library.find(
+    permanentLibrary.find(
       item =>
-        artistMatches(
+        sameArtist(
           item.artist,
-          artistName
+          artist
         )
     );
 
 
   if (existing) {
 
+
     return {
-      ...existing
+      ...existing,
+      priority: label
     };
+
 
   }
 
 
-  /*
-  Nouvel artiste :
-  s'il possède un lien SoundCloud
-  dans index.html, il peut déjà
-  entrer dans Radio.
-  */
-
-
-  if (fallbackUrl) {
+  if (soundcloud) {
 
 
     return {
 
       artist:
-        artistName.toUpperCase(),
+        artist.toUpperCase(),
 
       title:
         'SoundCloud selection',
 
+      url:
+        soundcloud,
+
       kind:
         'set',
 
-      url:
-        fallbackUrl,
-
-      source:
-        'programme'
+      priority:
+        label
 
     };
 
@@ -1769,109 +1316,170 @@ function findLibraryEntry(
 
 
 
-async function buildFinalRadioPlaylist() {
+async function buildRadioPlaylist() {
 
 
-  const programme =
-    await readCurrentProgramme();
+  const rows =
+    await loadSiteRows();
 
 
-  const enrichedLibrary =
-    mergeProgrammeIntoLibrary(
-      programme
+  const fridayEntries =
+    nextDayEntries(
+      rows,
+      'VENDREDI'
     );
 
 
-  const friday =
-    findLibraryEntry(
-      enrichedLibrary,
-      programme.friday.artist,
-      programme.friday.url
-    );
-
-
-  const saturday =
-    findLibraryEntry(
-      enrichedLibrary,
-      programme.saturday.artist,
-      programme.saturday.url
+  const saturdayEntries =
+    nextDayEntries(
+      rows,
+      'SAMEDI'
     );
 
 
   const priorities = [];
 
 
-  if (friday) {
+  if (
+    fridayEntries.length
+  ) {
 
 
-    priorities.push({
+    const friday =
+      fridayEntries[0];
 
-      ...friday,
 
-      priority:
+    const item =
+      findRadioItem(
+        friday.ARTISTE,
+        friday.SOUNDCLOUD,
         'Friday guest'
+      );
 
-    });
+
+    if (item) {
+
+      priorities.push(item);
+
+    }
 
 
   }
 
 
   if (
-    saturday
-    &&
-    !priorities.some(
-      item =>
-        artistMatches(
-          item.artist,
-          saturday.artist
-        )
-    )
+    saturdayEntries.length
   ) {
 
 
-    priorities.push({
+    const saturday =
+      saturdayEntries[0];
 
-      ...saturday,
 
-      priority:
+    const item =
+      findRadioItem(
+        saturday.ARTISTE,
+        saturday.SOUNDCLOUD,
         'Saturday guest'
+      );
 
-    });
+
+    if (
+      item
+      &&
+      !priorities.some(
+        existing =>
+          sameArtist(
+            existing.artist,
+            item.artist
+          )
+      )
+    ) {
+
+      priorities.push(item);
+
+    }
 
 
   }
 
 
   /*
-  On enlève vendredi et samedi
-  de la rotation générale pour
-  ne pas les avoir deux fois.
+  Add artists from SITE
+  when they have SoundCloud.
   */
 
 
-  const remaining =
-    enrichedLibrary.filter(
-      item =>
-        !priorities.some(
-          priority =>
-            artistMatches(
+  const enriched =
+    [...permanentLibrary];
+
+
+  rows.forEach(
+    row => {
+
+
+      if (
+        !row.SOUNDCLOUD
+      ) {
+        return;
+      }
+
+
+      const exists =
+        enriched.some(
+          item =>
+            sameArtist(
               item.artist,
-              priority.artist
+              row.ARTISTE
             )
-        )
-    );
+        );
 
 
-  const rest =
-    buildSmartRotation(
-      remaining
+      if (!exists) {
+
+
+        enriched.push({
+
+          artist:
+            row.ARTISTE.toUpperCase(),
+
+          title:
+            'SoundCloud selection',
+
+          url:
+            row.SOUNDCLOUD,
+
+          kind:
+            'set'
+
+        });
+
+
+      }
+
+
+    }
+  );
+
+
+  const remaining =
+    shuffle(
+      enriched.filter(
+        item =>
+          !priorities.some(
+            priority =>
+              sameArtist(
+                priority.artist,
+                item.artist
+              )
+          )
+      )
     );
 
 
   return [
     ...priorities,
-    ...rest
+    ...remaining
   ];
 
 }
@@ -1880,179 +1488,116 @@ async function buildFinalRadioPlaylist() {
 
 /*
 ============================================================
-ELEMENTS
+PLAYER
 ============================================================
 */
 
 
 const playButton =
   document.querySelector(
-    '#play-button'
+    '#play'
   );
+
 
 const previousButton =
   document.querySelector(
-    '#previous-button'
+    '#previous'
   );
+
 
 const nextButton =
   document.querySelector(
-    '#next-button'
+    '#next'
   );
 
-const nowArtist =
-  document.querySelector(
-    '#now-artist'
-  );
-
-const nowTitle =
-  document.querySelector(
-    '#now-title'
-  );
-
-const priorityLabel =
-  document.querySelector(
-    '#priority-label'
-  );
-
-const soundcloudLink =
-  document.querySelector(
-    '#soundcloud-link'
-  );
-
-const progressBar =
-  document.querySelector(
-    '#progress-bar'
-  );
-
-const currentTime =
-  document.querySelector(
-    '#current-time'
-  );
-
-const durationLabel =
-  document.querySelector(
-    '#duration'
-  );
-
-const queue =
-  document.querySelector(
-    '#queue'
-  );
 
 const iframe =
   document.querySelector(
     '#soundcloud-player'
   );
 
-const radioHelp =
-  document.querySelector(
-    '#radio-help'
-  );
 
-const radioError =
+const nowArtist =
   document.querySelector(
-    '#radio-error'
-  );
-
-const radioLibraryInfo =
-  document.querySelector(
-    '#radio-library-info'
+    '#now-artist'
   );
 
 
-
-/*
-============================================================
-STATE
-============================================================
-*/
+const nowTitle =
+  document.querySelector(
+    '#now-title'
+  );
 
 
-let radioPlaylist = [];
+const soundcloudLink =
+  document.querySelector(
+    '#soundcloud-link'
+  );
+
+
+const priorityElement =
+  document.querySelector(
+    '#priority'
+  );
+
+
+const progressBar =
+  document.querySelector(
+    '#progress-bar'
+  );
+
+
+const currentTime =
+  document.querySelector(
+    '#current-time'
+  );
+
+
+const durationElement =
+  document.querySelector(
+    '#duration'
+  );
+
+
+const queue =
+  document.querySelector(
+    '#queue'
+  );
+
+
+const libraryInfo =
+  document.querySelector(
+    '#library-info'
+  );
+
+
+let playlist = [];
 
 let currentIndex = 0;
 
 let widget = null;
 
-let widgetReady = false;
+let playing = false;
 
-let isPlaying = false;
-
-let hasStarted = false;
+let started = false;
 
 let duration = 0;
 
-let consecutiveErrors = 0;
-
-let playAttempt = 0;
 
 
-
-/*
-============================================================
-TIME
-============================================================
-*/
+function formatTime(ms) {
 
 
-function formatTime(milliseconds) {
-
-
-  if (
-    !milliseconds
-    ||
-    milliseconds < 0
-  ) {
-
-    return '00:00';
-
-  }
-
-
-  const totalSeconds =
+  const seconds =
     Math.floor(
-      milliseconds / 1000
-    );
-
-
-  const hours =
-    Math.floor(
-      totalSeconds / 3600
+      (ms || 0) / 1000
     );
 
 
   const minutes =
     Math.floor(
-      (
-        totalSeconds % 3600
-      )
-      /
-      60
+      seconds / 60
     );
-
-
-  const seconds =
-    totalSeconds % 60;
-
-
-  if (hours > 0) {
-
-
-    return (
-      String(hours).padStart(2,'0')
-      +
-      ':'
-      +
-      String(minutes).padStart(2,'0')
-      +
-      ':'
-      +
-      String(seconds).padStart(2,'0')
-    );
-
-
-  }
 
 
   return (
@@ -2060,42 +1605,30 @@ function formatTime(milliseconds) {
     +
     ':'
     +
-    String(seconds).padStart(2,'0')
+    String(
+      seconds % 60
+    ).padStart(2,'0')
   );
 
 }
 
 
 
-function getCurrentItem() {
+function currentItem() {
 
-
-  return radioPlaylist[
+  return playlist[
     currentIndex
   ];
-
 
 }
 
 
 
-/*
-============================================================
-DISPLAY
-============================================================
-*/
-
-
-function updateNowPlaying() {
+function renderCurrent() {
 
 
   const item =
-    getCurrentItem();
-
-
-  if (!item) {
-    return;
-  }
+    currentItem();
 
 
   nowArtist.textContent =
@@ -2113,12 +1646,12 @@ function updateNowPlaying() {
   if (item.priority) {
 
 
-    priorityLabel.textContent =
+    priorityElement.textContent =
       item.priority;
 
 
-    priorityLabel.classList.add(
-      'is-visible'
+    priorityElement.classList.add(
+      'visible'
     );
 
 
@@ -2127,12 +1660,8 @@ function updateNowPlaying() {
   else {
 
 
-    priorityLabel.textContent =
-      '';
-
-
-    priorityLabel.classList.remove(
-      'is-visible'
+    priorityElement.classList.remove(
+      'visible'
     );
 
 
@@ -2143,53 +1672,30 @@ function updateNowPlaying() {
 
 
 
-/*
-============================================================
-QUEUE
-============================================================
-*/
-
-
 function renderQueue() {
 
 
-  queue.innerHTML =
-    '';
-
-
-  if (
-    radioPlaylist.length <= 1
-  ) {
-
-    return;
-
-  }
-
-
-  const maxItems =
-    Math.min(
-      radioPlaylist.length - 1,
-      5
-    );
+  queue.innerHTML = '';
 
 
   for (
-    let offset = 1;
-    offset <= maxItems;
-    offset++
+    let i = 1;
+    i <= Math.min(
+      5,
+      playlist.length - 1
+    );
+    i++
   ) {
 
 
-    const index =
-      (
-        currentIndex + offset
-      )
-      %
-      radioPlaylist.length;
-
-
     const item =
-      radioPlaylist[index];
+      playlist[
+        (
+          currentIndex + i
+        )
+        %
+        playlist.length
+      ];
 
 
     const row =
@@ -2205,7 +1711,7 @@ function renderQueue() {
     row.innerHTML = `
 
       <span class="queue-number">
-        ${String(offset).padStart(2,'0')}
+        ${String(i).padStart(2,'0')}
       </span>
 
       <span class="queue-artist">
@@ -2235,116 +1741,231 @@ function renderQueue() {
 
 
 
-/*
-============================================================
-PROGRESS
-============================================================
-*/
-
-
-function resetProgress() {
-
-
-  duration = 0;
-
-
-  progressBar.style.width =
-    '0%';
-
-
-  currentTime.textContent =
-    '00:00';
-
-
-  durationLabel.textContent =
-    '00:00';
-
-}
-
-
-
-/*
-============================================================
-PLAYER
-============================================================
-*/
-
-
-function playerOptions(
-  autoplay
-) {
-
-
-  return {
-
-    auto_play: autoplay,
-
-    show_artwork: true,
-
-    show_user: true,
-
-    show_playcount: false,
-
-    show_comments: false,
-
-    sharing: false,
-
-    buying: false,
-
-    download: false,
-
-    single_active: false
-
-  };
-
-}
-
-
-
-function loadCurrentTrack(
+function loadCurrent(
   autoplay = false
 ) {
 
 
-  if (
-    !widget
-    ||
-    !radioPlaylist.length
-  ) {
-
-    return;
-
-  }
-
-
   const item =
-    getCurrentItem();
+    currentItem();
 
 
-  updateNowPlaying();
+  renderCurrent();
 
   renderQueue();
 
-  resetProgress();
-
-
-  radioError.classList.remove(
-    'is-visible'
-  );
-
 
   widget.load(
-
     item.url,
-
     {
+      auto_play:
+        autoplay,
+      show_artwork:
+        true,
+      show_user:
+        true,
+      show_comments:
+        false,
+      sharing:
+        false,
+      buying:
+        false
+    }
+  );
 
-      ...playerOptions(
-        autoplay
-      ),
+}
 
 
-      callback: function () {
+
+function nextTrack() {
+
+
+  currentIndex =
+    (
+      currentIndex + 1
+    )
+    %
+    playlist.length;
+
+
+  loadCurrent(
+    started
+  );
+
+}
+
+
+
+function previousTrack() {
+
+
+  currentIndex =
+    (
+      currentIndex - 1 + playlist.length
+    )
+    %
+    playlist.length;
+
+
+  loadCurrent(
+    started
+  );
+
+}
+
+
+
+/*
+============================================================
+INITIALISE
+============================================================
+*/
+
+
+async function initialise() {
+
+
+  try {
+
+
+    playlist =
+      await buildRadioPlaylist();
+
+
+    libraryInfo.textContent =
+      `${playlist.length} artists · continuous rotation`;
+
+
+    renderCurrent();
+
+    renderQueue();
+
+
+    iframe.src =
+      'https://w.soundcloud.com/player/?url='
+      +
+      encodeURIComponent(
+        playlist[0].url
+      )
+      +
+      '&auto_play=false';
+
+
+    widget =
+      SC.Widget(
+        iframe
+      );
+
+
+    widget.bind(
+      SC.Widget.Events.READY,
+      () => {
+
+
+        playButton.disabled =
+          false;
+
+
+        previousButton.disabled =
+          false;
+
+
+        nextButton.disabled =
+          false;
+
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.PLAY,
+      () => {
+
+
+        playing =
+          true;
+
+
+        started =
+          true;
+
+
+        playButton.textContent =
+          'PAUSE';
+
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.PAUSE,
+      () => {
+
+
+        playing =
+          false;
+
+
+        playButton.textContent =
+          'PLAY';
+
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.FINISH,
+      () => {
+
+
+        nextTrack();
+
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.PLAY_PROGRESS,
+      event => {
+
+
+        currentTime.textContent =
+          formatTime(
+            event.currentPosition
+          );
+
+
+        if (
+          duration
+        ) {
+
+
+          progressBar.style.width =
+            (
+              event.currentPosition
+              /
+              duration
+              *
+              100
+            )
+            +
+            '%';
+
+
+        }
+
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.LOAD_PROGRESS,
+      () => {
 
 
         widget.getDuration(
@@ -2355,7 +1976,7 @@ function loadCurrentTrack(
               value || 0;
 
 
-            durationLabel.textContent =
+            durationElement.textContent =
               formatTime(
                 duration
               );
@@ -2366,472 +1987,24 @@ function loadCurrentTrack(
 
 
       }
-
-
-    }
-
-  );
-
-}
-
-
-
-/*
-============================================================
-START
-============================================================
-*/
-
-
-function startRadio() {
-
-
-  if (
-    !widget
-    ||
-    !widgetReady
-  ) {
-
-    return;
-
-  }
-
-
-  playAttempt++;
-
-
-  const attempt =
-    playAttempt;
-
-
-  radioHelp.classList.remove(
-    'is-visible'
-  );
-
-
-  radioError.classList.remove(
-    'is-visible'
-  );
-
-
-  loadCurrentTrack(
-    true
-  );
-
-
-  setTimeout(
-    function () {
-
-
-      if (
-        attempt === playAttempt
-        &&
-        !isPlaying
-      ) {
-
-
-        widget.play();
-
-
-      }
-
-
-    },
-    900
-  );
-
-
-  setTimeout(
-    function () {
-
-
-      if (
-        attempt === playAttempt
-        &&
-        !isPlaying
-      ) {
-
-
-        radioHelp.classList.add(
-          'is-visible'
-        );
-
-
-      }
-
-
-    },
-    2500
-  );
-
-}
-
-
-
-/*
-============================================================
-NEXT / PREVIOUS
-============================================================
-*/
-
-
-function nextTrack() {
-
-
-  if (!radioPlaylist.length) {
-    return;
-  }
-
-
-  currentIndex =
-    (
-      currentIndex + 1
-    )
-    %
-    radioPlaylist.length;
-
-
-  loadCurrentTrack(
-    hasStarted
-  );
-
-}
-
-
-
-function previousTrack() {
-
-
-  if (!radioPlaylist.length) {
-    return;
-  }
-
-
-  currentIndex =
-    (
-      currentIndex
-      -
-      1
-      +
-      radioPlaylist.length
-    )
-    %
-    radioPlaylist.length;
-
-
-  loadCurrentTrack(
-    hasStarted
-  );
-
-}
-
-
-
-/*
-============================================================
-INITIALISATION
-============================================================
-*/
-
-
-async function initialiseRadio() {
-
-
-  radioPlaylist =
-    await buildFinalRadioPlaylist();
-
-
-  if (!radioPlaylist.length) {
-
-
-    nowArtist.textContent =
-      'Danceteria Radio';
-
-
-    nowTitle.textContent =
-      'Playlist unavailable';
-
-
-    return;
-
-  }
-
-
-  const automaticArtists =
-    radioPlaylist.filter(
-      item =>
-        item.source === 'programme'
-    ).length;
-
-
-  radioLibraryInfo.textContent =
-    `${radioPlaylist.length} artists · continuous rotation`
-    +
-    (
-      automaticArtists
-        ?
-        ` · ${automaticArtists} added from this week`
-        :
-        ''
     );
 
 
-  const firstTrack =
-    radioPlaylist[0];
+  }
+
+  catch(error) {
 
 
-  updateNowPlaying();
-
-  renderQueue();
-
-
-  iframe.src =
-    'https://w.soundcloud.com/player/?url='
-    +
-    encodeURIComponent(
-      firstTrack.url
-    )
-    +
-    '&auto_play=false'
-    +
-    '&show_artwork=true'
-    +
-    '&show_user=true'
-    +
-    '&show_comments=false'
-    +
-    '&show_playcount=false'
-    +
-    '&sharing=false'
-    +
-    '&buying=false'
-    +
-    '&download=false'
-    +
-    '&single_active=false';
-
-
-  widget =
-    SC.Widget(
-      iframe
+    console.error(
+      error
     );
 
 
-  widget.bind(
-    SC.Widget.Events.READY,
-    function () {
+    libraryInfo.textContent =
+      'Radio temporarily unavailable';
 
 
-      widgetReady =
-        true;
-
-
-      playButton.disabled =
-        false;
-
-
-      previousButton.disabled =
-        false;
-
-
-      nextButton.disabled =
-        false;
-
-
-      updateNowPlaying();
-
-      renderQueue();
-
-
-      widget.getDuration(
-        value => {
-
-
-          duration =
-            value || 0;
-
-
-          durationLabel.textContent =
-            formatTime(
-              duration
-            );
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-  widget.bind(
-    SC.Widget.Events.PLAY,
-    function () {
-
-
-      consecutiveErrors = 0;
-
-
-      isPlaying =
-        true;
-
-
-      hasStarted =
-        true;
-
-
-      playAttempt++;
-
-
-      playButton.textContent =
-        'PAUSE';
-
-
-      radioHelp.classList.remove(
-        'is-visible'
-      );
-
-
-      radioError.classList.remove(
-        'is-visible'
-      );
-
-
-    }
-  );
-
-
-  widget.bind(
-    SC.Widget.Events.PAUSE,
-    function () {
-
-
-      isPlaying =
-        false;
-
-
-      playButton.textContent =
-        'PLAY';
-
-
-    }
-  );
-
-
-  widget.bind(
-    SC.Widget.Events.FINISH,
-    function () {
-
-
-      nextTrack();
-
-
-    }
-  );
-
-
-  widget.bind(
-    SC.Widget.Events.PLAY_PROGRESS,
-    function (event) {
-
-
-      if (!event) {
-        return;
-      }
-
-
-      const position =
-        event.currentPosition || 0;
-
-
-      currentTime.textContent =
-        formatTime(
-          position
-        );
-
-
-      if (
-        duration > 0
-      ) {
-
-
-        const percentage =
-          Math.min(
-            100,
-            (
-              position
-              /
-              duration
-            )
-            *
-            100
-          );
-
-
-        progressBar.style.width =
-          percentage
-          +
-          '%';
-
-
-      }
-
-
-    }
-  );
-
-
-  widget.bind(
-    SC.Widget.Events.ERROR,
-    function () {
-
-
-      consecutiveErrors++;
-
-
-      radioError.classList.add(
-        'is-visible'
-      );
-
-
-      if (
-        consecutiveErrors
-        <
-        radioPlaylist.length
-      ) {
-
-
-        setTimeout(
-          function () {
-
-
-            nextTrack();
-
-
-          },
-          1400
-        );
-
-
-      }
-
-      else {
-
-
-        isPlaying =
-          false;
-
-
-        playButton.textContent =
-          'PLAY';
-
-
-      }
-
-
-    }
-  );
+  }
 
 
 }
@@ -2847,45 +2020,43 @@ CONTROLS
 
 playButton.addEventListener(
   'click',
-  function () {
+  () => {
 
 
-    if (
-      !widget
-      ||
-      !widgetReady
-    ) {
+    if (!started) {
+
+
+      /*
+      This is the Safari-compatible
+      first start behaviour that worked.
+      */
+
+
+      loadCurrent(true);
+
+
+      setTimeout(
+        () =>
+          widget.play(),
+        800
+      );
+
 
       return;
+
 
     }
 
 
-    if (!hasStarted) {
-
-
-      startRadio();
-
-
-      return;
-
-
-    }
-
-
-    if (isPlaying) {
-
+    if (playing) {
 
       widget.pause();
-
 
     }
 
     else {
 
-
       widget.play();
-
 
     }
 
@@ -2897,38 +2068,26 @@ playButton.addEventListener(
 
 nextButton.addEventListener(
   'click',
-  function () {
-
-
-    nextTrack();
-
-
-  }
+  nextTrack
 );
 
 
 
 previousButton.addEventListener(
   'click',
-  function () {
-
-
-    previousTrack();
-
-
-  }
+  previousTrack
 );
 
 
 
 /*
 ============================================================
-MOBILE MENU
+MENU
 ============================================================
 */
 
 
-const menuButton =
+const menu =
   document.querySelector(
     '.menu-toggle'
   );
@@ -2940,108 +2099,26 @@ const nav =
   );
 
 
-if (
-  menuButton
-  &&
-  nav
-) {
+menu.addEventListener(
+  'click',
+  () => {
 
 
-  menuButton.addEventListener(
-    'click',
-    () => {
-
-
-      const isOpen =
-        nav.classList.toggle(
-          'is-open'
-        );
-
-
-      menuButton.setAttribute(
-        'aria-expanded',
-        isOpen
-          ?
-          'true'
-          :
-          'false'
-      );
-
-
-      menuButton.textContent =
-        isOpen
-          ?
-          'FERMER'
-          :
-          'MENU';
-
-
-      document.body.classList.toggle(
-        'menu-open',
-        isOpen
-      );
-
-
-    }
-  );
-
-
-  nav
-    .querySelectorAll('a')
-    .forEach(
-      link => {
-
-
-        link.addEventListener(
-          'click',
-          () => {
-
-
-            nav.classList.remove(
-              'is-open'
-            );
-
-
-            menuButton.setAttribute(
-              'aria-expanded',
-              'false'
-            );
-
-
-            menuButton.textContent =
-              'MENU';
-
-
-            document.body.classList.remove(
-              'menu-open'
-            );
-
-
-          }
-        );
-
-
-      }
+    nav.classList.toggle(
+      'is-open'
     );
 
 
-}
+  }
+);
 
 
 
-/*
-============================================================
-GO
-============================================================
-*/
-
-
-initialiseRadio();
+initialise();
 
 
 </script>
 
 
 </body>
-
 </html>
