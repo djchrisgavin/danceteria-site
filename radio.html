@@ -1427,6 +1427,50 @@ function findRadioItem(
 async function buildRadioPlaylist() {
 
 
+  /*
+  The homepage hero skips Google Sheets
+  and starts with one short track.
+  This keeps the full dynamic priority
+  logic on the Radio page only.
+  */
+
+
+  if (embedMode) {
+
+
+    const lightweightTracks =
+      permanentLibrary.filter(
+        item =>
+          item.kind === 'track'
+      );
+
+
+    const firstTrack =
+      lightweightTracks.find(
+        item =>
+          sameArtist(
+            item.artist,
+            'CHRIS GAVIN'
+          )
+      )
+      ||
+      lightweightTracks[0];
+
+
+    return [
+      firstTrack,
+      ...shuffle(
+        lightweightTracks.filter(
+          item =>
+            item !== firstTrack
+        )
+      )
+    ];
+
+
+  }
+
+
   const rows =
     await loadSiteRows();
 
@@ -1869,9 +1913,9 @@ function loadCurrent(
       auto_play:
         autoplay,
       show_artwork:
-        true,
+        !embedMode,
       show_user:
-        true,
+        !embedMode,
       show_comments:
         false,
       sharing:
@@ -1960,7 +2004,19 @@ async function initialise() {
         autoplayRequested
           ? '&auto_play=true'
           : '&auto_play=false'
-      );
+      )
+      +
+      '&visual=false'
+      +
+      '&show_artwork=false'
+      +
+      '&show_user=false'
+      +
+      '&show_comments=false'
+      +
+      '&sharing=false'
+      +
+      '&buying=false';
 
 
     widget =
