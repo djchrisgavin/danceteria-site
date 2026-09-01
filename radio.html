@@ -423,6 +423,96 @@
 
     }
 
+    /* COMPACT PLAYER FOR THE HOMEPAGE HERO */
+
+    body.embed-mode {
+      min-width: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body.embed-mode .site-header,
+    body.embed-mode .radio-intro,
+    body.embed-mode .queue-section,
+    body.embed-mode .site-footer {
+      display: none;
+    }
+
+    body.embed-mode .page {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.embed-mode .radio-player {
+      min-height: 150px;
+      grid-template-columns: auto minmax(0,1fr);
+      gap: 15px;
+      padding: 15px 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(0,0,0,.84);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    body.embed-mode .on-air {
+      margin-top: 2px;
+      font-size: 8px;
+    }
+
+    body.embed-mode .now-playing-label,
+    body.embed-mode .soundcloud-link,
+    body.embed-mode .progress-wrap,
+    body.embed-mode #previous,
+    body.embed-mode #next,
+    body.embed-mode .priority {
+      display: none;
+    }
+
+    body.embed-mode .now-artist {
+      max-width: 100%;
+      margin: 2px 0 0;
+      overflow: hidden;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -.03em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    body.embed-mode .now-title {
+      max-width: 100%;
+      margin: 6px 0 0;
+      overflow: hidden;
+      font-size: 11px;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    body.embed-mode .controls {
+      margin-top: 13px;
+    }
+
+    body.embed-mode .control-button.primary {
+      width: 100%;
+      min-width: 0;
+      min-height: 38px;
+    }
+
+    body.embed-mode .source-section {
+      position: fixed;
+      left: -9999px;
+      top: 0;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+
   </style>
 
 </head>
@@ -685,6 +775,24 @@
 
 
 <script>
+
+
+const radioParams =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const embedMode =
+  radioParams.get('embed') === '1';
+
+const autoplayRequested =
+  radioParams.get('autoplay') === '1';
+
+if (embedMode) {
+  document.body.classList.add(
+    'embed-mode'
+  );
+}
 
 
 /*
@@ -1848,7 +1956,11 @@ async function initialise() {
         playlist[0].url
       )
       +
-      '&auto_play=false';
+      (
+        autoplayRequested
+          ? '&auto_play=true'
+          : '&auto_play=false'
+      );
 
 
     widget =
@@ -1872,6 +1984,33 @@ async function initialise() {
 
         nextButton.disabled =
           false;
+
+
+        if (
+          autoplayRequested
+          && !started
+        ) {
+
+
+          playButton.textContent =
+            'START RADIO';
+
+
+          setTimeout(
+            () => {
+
+
+              if (!playing) {
+                widget.play();
+              }
+
+
+            },
+            700
+          );
+
+
+        }
 
 
       }
