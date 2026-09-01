@@ -266,6 +266,7 @@
       100% {
         box-shadow: 0 0 0 0 rgba(200,32,25,0);
       }
+
     }
 
 
@@ -518,6 +519,8 @@
     }
 
 
+    /* TABLET */
+
     @media (max-width:900px) {
 
       .menu-toggle {
@@ -552,8 +555,11 @@
         grid-template-columns: 1fr;
         gap: 40px;
       }
+
     }
 
+
+    /* MOBILE */
 
     @media (max-width:600px) {
 
@@ -613,6 +619,7 @@
       .site-footer span:nth-child(2) {
         display: none;
       }
+
     }
 
 
@@ -621,6 +628,7 @@
       .on-air-dot {
         animation: none;
       }
+
     }
 
   </style>
@@ -659,8 +667,13 @@
     aria-label="Navigation principale"
   >
 
-    <a href="index.html#agenda">Agenda</a>
-    <a href="index.html#club">Le club</a>
+    <a href="index.html#agenda">
+      Agenda
+    </a>
+
+    <a href="index.html#club">
+      Le club
+    </a>
 
     <a
       class="active"
@@ -669,9 +682,17 @@
       Radio
     </a>
 
-    <a href="index.html#infos">Infos</a>
-    <a href="candidature.html">Candidater</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="index.html#infos">
+      Infos
+    </a>
+
+    <a href="candidature.html">
+      Candidater
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
 
   </nav>
 
@@ -918,79 +939,147 @@
 <script>
 
 
+/*
+============================================================
+DANCETERIA RADIO LIBRARY
+============================================================
+*/
+
+
 const rawRadioPlaylist = [
+
 
   {
     artist: "JACK DE MARSEILLE",
     title: "Ellipsia",
+    kind: "track",
     url: "https://soundcloud.com/jack-de-marseille/ellipsia"
   },
+
 
   {
     artist: "CHRIS GAVIN",
     title: "Udessia (Original Mix)",
+    kind: "track",
     url: "https://soundcloud.com/djchrisgavin/chris-gavin-udessia-original"
   },
+
 
   {
     artist: "MILA DIETRICH",
     title: "When I Look Into Your Eyes",
+    kind: "track",
     url: "https://soundcloud.com/mila-dietrich/when-i-look-into-your-eyes"
   },
+
 
   {
     artist: "YAN WAGNER",
     title: "Changed (Original Mix)",
+    kind: "track",
     url: "https://soundcloud.com/yanwagnersyrup/changed-original-mix"
   },
+
 
   {
     artist: "SEIUN",
     title: "Toy Tonics × Bordello a Parigi @ OXI — Italomania",
+    kind: "set",
     url: "https://soundcloud.com/seiunmusic/toy-tonics-x-bordello-a-parigi-oxi-180725-italomania"
   },
+
 
   {
     artist: "PHRED NOIR",
     title: "Selección Dura",
+    kind: "set",
     url: "https://soundcloud.com/durolabel/seleccion-dura-phred-noir"
   },
+
 
   {
     artist: "FRED BERTHET / DJ STEEF",
     title: "Fred Berthet Mix 02/26",
+    kind: "set",
     url: "https://soundcloud.com/fredberthet/fred-berthet-mix-02-26"
   },
+
 
   {
     artist: "INORGANICA",
     title: "Underside / Psyche Resolved",
+    kind: "track",
     url: "https://soundcloud.com/inorganicasound/rec074"
   },
+
 
   {
     artist: "SCAN X",
     title: "FCom 25 Remastered EP2",
+    kind: "set",
     url: "https://soundcloud.com/scanxofficial/sets/fcom-25-remastered-ep2"
   },
+
 
   {
     artist: "JOE LEWANDOWSKI",
     title: "Long (Original Mix)",
+    kind: "track",
     url: "https://soundcloud.com/sweetmusicofc/free-dl-joe-lewandowski-long-original-mix"
+  },
+
+
+  {
+    artist: "DJ OIL",
+    title: "A Day",
+    kind: "track",
+    url: "https://soundcloud.com/bbemusic/dj-oil-a-day"
+  },
+
+
+  {
+    artist: "POLE FOLDER",
+    title: "Infinite Love",
+    kind: "track",
+    url: "https://soundcloud.com/pole-folder/infinite-love"
+  },
+
+
+  {
+    artist: "BONNIE SPACEY",
+    title: "Walking The Distance",
+    kind: "track",
+    url: "https://soundcloud.com/criticalmondayrecords/bonnie-spacey-walking-the-distance"
+  },
+
+
+  {
+    artist: "STELIOS VASSILOUDIS",
+    title: "Everybody Is Here",
+    kind: "track",
+    url: "https://soundcloud.com/stelios-vassiloudis/everybody-is-here-1"
   }
+
 
 ];
 
 
 
-function shufflePlaylist(array) {
+/*
+============================================================
+SHUFFLE
+============================================================
+*/
 
-  const shuffled =
+
+function shuffle(array) {
+
+  const result =
     [...array];
 
+
   for (
-    let i = shuffled.length - 1;
+    let i = result.length - 1;
     i > 0;
     i--
   ) {
@@ -1000,71 +1089,540 @@ function shufflePlaylist(array) {
         Math.random() * (i + 1)
       );
 
+
     [
-      shuffled[i],
-      shuffled[j]
+      result[i],
+      result[j]
     ]
     =
     [
-      shuffled[j],
-      shuffled[i]
+      result[j],
+      result[i]
     ];
 
   }
 
-  return shuffled;
+
+  return result;
 
 }
 
 
 
-const radioPlaylist =
-  shufflePlaylist(
-    rawRadioPlaylist
+/*
+============================================================
+NORMALISATION DES NOMS
+============================================================
+*/
+
+
+function normalizeArtistName(name) {
+
+  return String(name || '')
+    .normalize('NFD')
+    .replace(
+      /[\u0300-\u036f]/g,
+      ''
+    )
+    .toLowerCase()
+    .replace(
+      /[^a-z0-9]+/g,
+      ' '
+    )
+    .trim();
+
+}
+
+
+
+function artistMatches(
+  libraryName,
+  programmedName
+) {
+
+  const a =
+    normalizeArtistName(
+      libraryName
+    );
+
+
+  const b =
+    normalizeArtistName(
+      programmedName
+    );
+
+
+  if (
+    !a
+    ||
+    !b
+  ) {
+
+    return false;
+
+  }
+
+
+  return (
+    a === b
+    ||
+    a.includes(b)
+    ||
+    b.includes(a)
+  );
+
+}
+
+
+
+/*
+============================================================
+SMART ROTATION
+============================================================
+*/
+
+
+function buildSmartPlaylist(items) {
+
+
+  const tracks =
+    shuffle(
+      items.filter(
+        item => item.kind !== "set"
+      )
+    );
+
+
+  const sets =
+    shuffle(
+      items.filter(
+        item => item.kind === "set"
+      )
+    );
+
+
+  const result = [];
+
+
+  while (
+    tracks.length
+    ||
+    sets.length
+  ) {
+
+
+    const previous =
+      result[
+        result.length - 1
+      ];
+
+
+    /*
+    On évite deux sets longs
+    à la suite.
+    */
+
+
+    if (
+      previous
+      &&
+      previous.kind === "set"
+      &&
+      tracks.length
+    ) {
+
+      result.push(
+        tracks.shift()
+      );
+
+      continue;
+
+    }
+
+
+    if (
+      sets.length
+      &&
+      Math.random() < .34
+    ) {
+
+      result.push(
+        sets.shift()
+      );
+
+    }
+
+    else if (
+      tracks.length
+    ) {
+
+      result.push(
+        tracks.shift()
+      );
+
+    }
+
+    else {
+
+      result.push(
+        sets.shift()
+      );
+
+    }
+
+
+  }
+
+
+  return result;
+
+}
+
+
+
+/*
+============================================================
+LECTURE AUTOMATIQUE DU PROGRAMME DE LA HOME
+============================================================
+
+On lit automatiquement :
+
+.event-friday .event-title
+.event-saturday .event-title
+
+dans index.html.
+
+Donc modifier la programmation du site
+modifie automatiquement les priorités RADIO.
+
+============================================================
+*/
+
+
+async function getUpcomingWeekendArtists() {
+
+
+  try {
+
+
+    const response =
+      await fetch(
+        'index.html',
+        {
+          cache: 'no-store'
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        'Impossible de lire index.html'
+      );
+
+    }
+
+
+    const html =
+      await response.text();
+
+
+    const parser =
+      new DOMParser();
+
+
+    const documentHome =
+      parser.parseFromString(
+        html,
+        'text/html'
+      );
+
+
+    const fridayElement =
+      documentHome.querySelector(
+        '.event-friday .event-title'
+      );
+
+
+    const saturdayElement =
+      documentHome.querySelector(
+        '.event-saturday .event-title'
+      );
+
+
+    return {
+
+      friday:
+        fridayElement
+          ?
+          fridayElement.textContent.trim()
+          :
+          '',
+
+
+      saturday:
+        saturdayElement
+          ?
+          saturdayElement.textContent.trim()
+          :
+          ''
+
+    };
+
+
+  }
+
+  catch (error) {
+
+
+    console.warn(
+      'Danceteria Radio : programmation non récupérée.',
+      error
+    );
+
+
+    return {
+      friday: '',
+      saturday: ''
+    };
+
+
+  }
+
+
+}
+
+
+
+/*
+============================================================
+CONSTRUCTION DE LA PLAYLIST FINALE
+============================================================
+
+ORDRE :
+
+1 — artiste du vendredi
+2 — artiste du samedi
+3 — reste de la radio
+
+============================================================
+*/
+
+
+async function buildRadioPlaylist() {
+
+
+  const programmed =
+    await getUpcomingWeekendArtists();
+
+
+  const available =
+    [...rawRadioPlaylist];
+
+
+  const priority = [];
+
+
+  /*
+  VENDREDI
+  */
+
+
+  if (programmed.friday) {
+
+
+    const fridayIndex =
+      available.findIndex(
+        item =>
+          artistMatches(
+            item.artist,
+            programmed.friday
+          )
+      );
+
+
+    if (
+      fridayIndex !== -1
+    ) {
+
+
+      priority.push(
+        available[
+          fridayIndex
+        ]
+      );
+
+
+      available.splice(
+        fridayIndex,
+        1
+      );
+
+
+    }
+
+
+  }
+
+
+
+  /*
+  SAMEDI
+  */
+
+
+  if (programmed.saturday) {
+
+
+    const saturdayIndex =
+      available.findIndex(
+        item =>
+          artistMatches(
+            item.artist,
+            programmed.saturday
+          )
+      );
+
+
+    if (
+      saturdayIndex !== -1
+    ) {
+
+
+      priority.push(
+        available[
+          saturdayIndex
+        ]
+      );
+
+
+      available.splice(
+        saturdayIndex,
+        1
+      );
+
+
+    }
+
+
+  }
+
+
+
+  /*
+  LE RESTE
+  */
+
+
+  const rest =
+    buildSmartPlaylist(
+      available
+    );
+
+
+  return [
+    ...priority,
+    ...rest
+  ];
+
+}
+
+
+
+/*
+============================================================
+ELEMENTS
+============================================================
+*/
+
+
+const playButton =
+  document.querySelector(
+    '#play-button'
+  );
+
+
+const previousButton =
+  document.querySelector(
+    '#previous-button'
+  );
+
+
+const nextButton =
+  document.querySelector(
+    '#next-button'
+  );
+
+
+const nowArtist =
+  document.querySelector(
+    '#now-artist'
+  );
+
+
+const nowTitle =
+  document.querySelector(
+    '#now-title'
+  );
+
+
+const soundcloudLink =
+  document.querySelector(
+    '#soundcloud-link'
+  );
+
+
+const progressBar =
+  document.querySelector(
+    '#progress-bar'
+  );
+
+
+const currentTime =
+  document.querySelector(
+    '#current-time'
+  );
+
+
+const durationLabel =
+  document.querySelector(
+    '#duration'
+  );
+
+
+const queue =
+  document.querySelector(
+    '#queue'
+  );
+
+
+const iframe =
+  document.querySelector(
+    '#soundcloud-player'
+  );
+
+
+const radioHelp =
+  document.querySelector(
+    '#radio-help'
+  );
+
+
+const radioError =
+  document.querySelector(
+    '#radio-error'
   );
 
 
 
-const playButton =
-  document.querySelector('#play-button');
-
-const previousButton =
-  document.querySelector('#previous-button');
-
-const nextButton =
-  document.querySelector('#next-button');
-
-const nowArtist =
-  document.querySelector('#now-artist');
-
-const nowTitle =
-  document.querySelector('#now-title');
-
-const soundcloudLink =
-  document.querySelector('#soundcloud-link');
-
-const progressBar =
-  document.querySelector('#progress-bar');
-
-const currentTime =
-  document.querySelector('#current-time');
-
-const durationLabel =
-  document.querySelector('#duration');
-
-const queue =
-  document.querySelector('#queue');
-
-const iframe =
-  document.querySelector('#soundcloud-player');
-
-const radioHelp =
-  document.querySelector('#radio-help');
-
-const radioError =
-  document.querySelector('#radio-error');
+/*
+============================================================
+STATE
+============================================================
+*/
 
 
+let radioPlaylist = [];
 
 let currentIndex = 0;
 
@@ -1084,35 +1642,55 @@ let playAttempt = 0;
 
 
 
+/*
+============================================================
+TIME
+============================================================
+*/
+
+
 function formatTime(milliseconds) {
+
 
   if (
     !milliseconds
     ||
     milliseconds < 0
   ) {
+
     return '00:00';
+
   }
+
 
   const totalSeconds =
     Math.floor(
       milliseconds / 1000
     );
 
+
   const hours =
     Math.floor(
       totalSeconds / 3600
     );
 
+
   const minutes =
     Math.floor(
-      (totalSeconds % 3600) / 60
+      (
+        totalSeconds % 3600
+      )
+      /
+      60
     );
+
 
   const seconds =
     totalSeconds % 60;
 
+
   if (hours > 0) {
+
 
     return (
       String(hours).padStart(2,'0')
@@ -1126,7 +1704,9 @@ function formatTime(milliseconds) {
       String(seconds).padStart(2,'0')
     );
 
+
   }
+
 
   return (
     String(minutes).padStart(2,'0')
@@ -1140,30 +1720,53 @@ function formatTime(milliseconds) {
 
 
 
+/*
+============================================================
+CURRENT
+============================================================
+*/
+
+
 function getCurrentItem() {
+
 
   return radioPlaylist[
     currentIndex
   ];
 
+
 }
 
 
 
+/*
+============================================================
+DISPLAY
+============================================================
+*/
+
+
 function updateNowPlaying() {
+
 
   const item =
     getCurrentItem();
 
+
   if (!item) {
+
     return;
+
   }
+
 
   nowArtist.textContent =
     item.artist;
 
+
   nowTitle.textContent =
     item.title;
+
 
   soundcloudLink.href =
     item.url;
@@ -1172,9 +1775,28 @@ function updateNowPlaying() {
 
 
 
+/*
+============================================================
+COMING NEXT
+============================================================
+*/
+
+
 function renderQueue() {
 
-  queue.innerHTML = '';
+
+  queue.innerHTML =
+    '';
+
+
+  if (
+    radioPlaylist.length <= 1
+  ) {
+
+    return;
+
+  }
+
 
   const maxItems =
     Math.min(
@@ -1182,11 +1804,13 @@ function renderQueue() {
       5
     );
 
+
   for (
     let offset = 1;
     offset <= maxItems;
     offset++
   ) {
+
 
     const index =
       (
@@ -1195,14 +1819,22 @@ function renderQueue() {
       %
       radioPlaylist.length;
 
+
     const item =
-      radioPlaylist[index];
+      radioPlaylist[
+        index
+      ];
+
 
     const row =
-      document.createElement('div');
+      document.createElement(
+        'div'
+      );
+
 
     row.className =
       'queue-item';
+
 
     row.innerHTML = `
 
@@ -1220,9 +1852,11 @@ function renderQueue() {
 
     `;
 
+
     queue.appendChild(
       row
     );
+
 
   }
 
@@ -1230,15 +1864,26 @@ function renderQueue() {
 
 
 
+/*
+============================================================
+PROGRESS
+============================================================
+*/
+
+
 function resetProgress() {
 
+
   duration = 0;
+
 
   progressBar.style.width =
     '0%';
 
+
   currentTime.textContent =
     '00:00';
+
 
   durationLabel.textContent =
     '00:00';
@@ -1247,7 +1892,17 @@ function resetProgress() {
 
 
 
-function playerOptions(autoplay) {
+/*
+============================================================
+OPTIONS SOUNDCLOUD
+============================================================
+*/
+
+
+function playerOptions(
+  autoplay
+) {
+
 
   return {
 
@@ -1275,20 +1930,32 @@ function playerOptions(autoplay) {
 
 
 
+/*
+============================================================
+LOAD CURRENT
+============================================================
+*/
+
+
 function loadCurrentTrack(
   autoplay = false
 ) {
+
 
   if (
     !widget
     ||
     !radioPlaylist.length
   ) {
+
     return;
+
   }
+
 
   const item =
     getCurrentItem();
+
 
   updateNowPlaying();
 
@@ -1296,63 +1963,92 @@ function loadCurrentTrack(
 
   resetProgress();
 
+
   radioError.classList.remove(
     'is-visible'
   );
 
+
   widget.load(
+
     item.url,
+
     {
+
       ...playerOptions(
         autoplay
       ),
 
+
       callback: function () {
+
 
         widget.getDuration(
           value => {
 
+
             duration =
               value || 0;
+
 
             durationLabel.textContent =
               formatTime(
                 duration
               );
 
+
           }
         );
 
+
       }
+
+
     }
+
   );
 
 }
 
 
 
+/*
+============================================================
+FIRST PLAY
+============================================================
+*/
+
+
 function startRadio() {
+
 
   if (
     !widget
     ||
     !widgetReady
   ) {
+
     return;
+
   }
+
 
   playAttempt++;
 
+
   const attempt =
     playAttempt;
+
 
   radioHelp.classList.remove(
     'is-visible'
   );
 
+
   radioError.classList.remove(
     'is-visible'
   );
+
 
   loadCurrentTrack(
     true
@@ -1362,15 +2058,19 @@ function startRadio() {
   setTimeout(
     function () {
 
+
       if (
         attempt === playAttempt
         &&
         !isPlaying
       ) {
 
+
         widget.play();
 
+
       }
+
 
     },
     900
@@ -1380,17 +2080,21 @@ function startRadio() {
   setTimeout(
     function () {
 
+
       if (
         attempt === playAttempt
         &&
         !isPlaying
       ) {
 
+
         radioHelp.classList.add(
           'is-visible'
         );
 
+
       }
+
 
     },
     2500
@@ -1400,11 +2104,22 @@ function startRadio() {
 
 
 
+/*
+============================================================
+NEXT
+============================================================
+*/
+
+
 function nextTrack() {
 
+
   if (!radioPlaylist.length) {
+
     return;
+
   }
+
 
   currentIndex =
     (
@@ -1412,6 +2127,7 @@ function nextTrack() {
     )
     %
     radioPlaylist.length;
+
 
   loadCurrentTrack(
     hasStarted
@@ -1421,11 +2137,22 @@ function nextTrack() {
 
 
 
+/*
+============================================================
+PREVIOUS
+============================================================
+*/
+
+
 function previousTrack() {
 
+
   if (!radioPlaylist.length) {
+
     return;
+
   }
+
 
   currentIndex =
     (
@@ -1438,6 +2165,7 @@ function previousTrack() {
     %
     radioPlaylist.length;
 
+
   loadCurrentTrack(
     hasStarted
   );
@@ -1446,14 +2174,45 @@ function previousTrack() {
 
 
 
-function initialiseRadio() {
+/*
+============================================================
+INITIALISE RADIO
+============================================================
+*/
+
+
+async function initialiseRadio() {
+
+
+  /*
+  Avant de lancer SoundCloud,
+  on construit la playlist
+  avec les priorités vendredi/samedi.
+  */
+
+
+  radioPlaylist =
+    await buildRadioPlaylist();
+
 
   if (!radioPlaylist.length) {
+
+    nowArtist.textContent =
+      'Danceteria Radio';
+
+
+    nowTitle.textContent =
+      'Playlist indisponible';
+
+
     return;
+
   }
+
 
   const firstTrack =
     radioPlaylist[0];
+
 
   updateNowPlaying();
 
@@ -1492,116 +2251,176 @@ function initialiseRadio() {
     );
 
 
+
+  /*
+  READY
+  */
+
+
   widget.bind(
     SC.Widget.Events.READY,
     function () {
 
+
       widgetReady =
         true;
+
 
       playButton.disabled =
         false;
 
+
       previousButton.disabled =
         false;
 
+
       nextButton.disabled =
         false;
+
 
       updateNowPlaying();
 
       renderQueue();
 
+
       widget.getDuration(
         value => {
 
+
           duration =
             value || 0;
+
 
           durationLabel.textContent =
             formatTime(
               duration
             );
 
+
         }
       );
 
+
     }
   );
+
+
+
+  /*
+  PLAY
+  */
 
 
   widget.bind(
     SC.Widget.Events.PLAY,
     function () {
 
+
       consecutiveErrors = 0;
+
 
       isPlaying =
         true;
 
+
       hasStarted =
         true;
 
+
       playAttempt++;
+
 
       playButton.textContent =
         'PAUSE';
+
 
       radioHelp.classList.remove(
         'is-visible'
       );
 
+
       radioError.classList.remove(
         'is-visible'
       );
 
+
     }
   );
+
+
+
+  /*
+  PAUSE
+  */
 
 
   widget.bind(
     SC.Widget.Events.PAUSE,
     function () {
 
+
       isPlaying =
         false;
+
 
       playButton.textContent =
         'PLAY';
 
+
     }
   );
+
+
+
+  /*
+  FINISH
+  */
 
 
   widget.bind(
     SC.Widget.Events.FINISH,
     function () {
 
+
       nextTrack();
+
 
     }
   );
+
+
+
+  /*
+  PLAY PROGRESS
+  */
 
 
   widget.bind(
     SC.Widget.Events.PLAY_PROGRESS,
     function (event) {
 
+
       if (!event) {
+
         return;
+
       }
+
 
       const position =
         event.currentPosition || 0;
+
 
       currentTime.textContent =
         formatTime(
           position
         );
 
+
       if (
         duration > 0
       ) {
+
 
         const percentage =
           Math.min(
@@ -1615,26 +2434,38 @@ function initialiseRadio() {
             100
           );
 
+
         progressBar.style.width =
           percentage
           +
           '%';
 
+
       }
+
 
     }
   );
+
+
+
+  /*
+  ERROR
+  */
 
 
   widget.bind(
     SC.Widget.Events.ERROR,
     function () {
 
+
       consecutiveErrors++;
+
 
       radioError.classList.add(
         'is-visible'
       );
+
 
       if (
         consecutiveErrors
@@ -1642,97 +2473,152 @@ function initialiseRadio() {
         radioPlaylist.length
       ) {
 
+
         setTimeout(
           function () {
 
+
             nextTrack();
+
 
           },
           1400
         );
 
+
       }
 
       else {
 
+
         isPlaying =
           false;
+
 
         playButton.textContent =
           'PLAY';
 
+
       }
+
 
     }
   );
 
+
 }
 
+
+
+/*
+============================================================
+BUTTON PLAY
+============================================================
+*/
 
 
 playButton.addEventListener(
   'click',
   function () {
 
+
     if (
       !widget
       ||
       !widgetReady
     ) {
+
       return;
+
     }
+
 
     if (!hasStarted) {
 
+
       startRadio();
+
 
       return;
 
+
     }
+
 
     if (isPlaying) {
 
+
       widget.pause();
+
 
     }
 
     else {
 
+
       widget.play();
 
+
     }
+
 
   }
 );
 
+
+
+/*
+============================================================
+NEXT
+============================================================
+*/
 
 
 nextButton.addEventListener(
   'click',
   function () {
 
+
     nextTrack();
+
 
   }
 );
 
+
+
+/*
+============================================================
+PREVIOUS
+============================================================
+*/
 
 
 previousButton.addEventListener(
   'click',
   function () {
 
+
     previousTrack();
+
 
   }
 );
 
 
 
+/*
+============================================================
+MOBILE MENU
+============================================================
+*/
+
+
 const menuButton =
   document.querySelector(
     '.menu-toggle'
   );
+
 
 const nav =
   document.querySelector(
@@ -1746,29 +2632,41 @@ if (
   nav
 ) {
 
+
   menuButton.addEventListener(
     'click',
     () => {
+
 
       const isOpen =
         nav.classList.toggle(
           'is-open'
         );
 
+
       menuButton.setAttribute(
         'aria-expanded',
-        isOpen ? 'true' : 'false'
+        isOpen
+          ?
+          'true'
+          :
+          'false'
       );
+
 
       menuButton.textContent =
         isOpen
-          ? 'FERMER'
-          : 'MENU';
+          ?
+          'FERMER'
+          :
+          'MENU';
+
 
       document.body.classList.toggle(
         'menu-open',
         isOpen
       );
+
 
     }
   );
@@ -1779,34 +2677,49 @@ if (
     .forEach(
       link => {
 
+
         link.addEventListener(
           'click',
           () => {
 
+
             nav.classList.remove(
               'is-open'
             );
+
 
             menuButton.setAttribute(
               'aria-expanded',
               'false'
             );
 
+
             menuButton.textContent =
               'MENU';
+
 
             document.body.classList.remove(
               'menu-open'
             );
 
+
           }
         );
+
 
       }
     );
 
+
 }
 
+
+
+/*
+============================================================
+GO
+============================================================
+*/
 
 
 initialiseRadio();
