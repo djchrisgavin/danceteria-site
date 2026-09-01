@@ -43,7 +43,6 @@
     href="logo-danceteria.png"
   >
 
-
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Danceteria">
   <meta property="og:title" content="Danceteria Marseille — More than a Club">
@@ -685,7 +684,6 @@
 
     @media(max-width:600px) {
 
-      .page,
       .section {
         width: calc(100% - 32px);
       }
@@ -795,9 +793,7 @@
     playsinline
   >
 
-    <source
-      src="hero.mp4.mov"
-    >
+    <source src="hero.mp4.mov">
 
   </video>
 
@@ -942,8 +938,6 @@
   <div class="event-grid">
 
 
-    <!-- THURSDAY -->
-
     <article
       class="event-card event-thursday"
       id="card-thursday"
@@ -958,7 +952,7 @@
           </span>
 
           <strong class="placeholder-title">
-            PROGRAMME À VENIR
+            LOADING
           </strong>
 
         </div>
@@ -987,7 +981,7 @@
         </div>
 
         <h3 class="event-title">
-          Programme à venir
+          Loading
         </h3>
 
         <p class="event-type">
@@ -998,9 +992,10 @@
 
         <a
           class="shotgun-button"
-          href="https://shotgun.live/fr/venues/danceteria"
+          href="#"
           target="_blank"
           rel="noopener"
+          hidden
         >
           SHOTGUN ↗
         </a>
@@ -1010,8 +1005,6 @@
     </article>
 
 
-
-    <!-- FRIDAY -->
 
     <article
       class="event-card event-friday"
@@ -1067,9 +1060,10 @@
 
         <a
           class="shotgun-button"
-          href="https://shotgun.live/fr/venues/danceteria"
+          href="#"
           target="_blank"
           rel="noopener"
+          hidden
         >
           SHOTGUN ↗
         </a>
@@ -1079,8 +1073,6 @@
     </article>
 
 
-
-    <!-- SATURDAY -->
 
     <article
       class="event-card event-saturday"
@@ -1136,9 +1128,10 @@
 
         <a
           class="shotgun-button"
-          href="https://shotgun.live/fr/venues/danceteria"
+          href="#"
           target="_blank"
           rel="noopener"
+          hidden
         >
           SHOTGUN ↗
         </a>
@@ -1272,6 +1265,7 @@
       <a
         href="https://shotgun.live/fr/venues/danceteria"
         target="_blank"
+        rel="noopener"
       >
         Shotgun ↗
       </a>
@@ -1293,6 +1287,7 @@
       <a
         href="https://www.instagram.com/danceteria_marseille/"
         target="_blank"
+        rel="noopener"
       >
         Instagram ↗
       </a>
@@ -1371,13 +1366,6 @@
 <script>
 
 
-/*
-============================================================
-GOOGLE SHEETS — PUBLIC SITE SOURCE
-============================================================
-*/
-
-
 const SITE_CSV_URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWtN0q_uI69iuWSoDrEJ3auxocK5C5i7HBgr1fVwOtBso3gPv4ZsrMpWm-bLwfp2cxailFKvxFSRBt/pub?gid=289963765&single=true&output=csv';
 
@@ -1390,10 +1378,14 @@ const SITE_GID =
   '289963765';
 
 
+const SHOTGUN_VENUE_URL =
+  'https://shotgun.live/fr/venues/danceteria';
+
+
 
 /*
 ============================================================
-CSV PARSER
+CSV
 ============================================================
 */
 
@@ -1413,8 +1405,7 @@ function parseCSV(text) {
     i++
   ) {
 
-    const char =
-      text[i];
+    const char = text[i];
 
 
     if (char === '"') {
@@ -1432,8 +1423,7 @@ function parseCSV(text) {
 
       else {
 
-        quoted =
-          !quoted;
+        quoted = !quoted;
 
       }
 
@@ -1500,7 +1490,6 @@ function parseCSV(text) {
   ) {
 
     row.push(value);
-
     rows.push(row);
 
   }
@@ -1555,7 +1544,7 @@ function rowsToObjects(rows) {
 
 /*
 ============================================================
-GVIZ FALLBACK
+GOOGLE FALLBACK
 ============================================================
 */
 
@@ -1565,14 +1554,11 @@ function loadViaGoogleVisualization() {
   return new Promise(
     (resolve,reject) => {
 
-
       window.google =
         window.google || {};
 
-
       google.visualization =
         google.visualization || {};
-
 
       google.visualization.Query =
         google.visualization.Query || {};
@@ -1585,9 +1571,7 @@ function loadViaGoogleVisualization() {
       google.visualization.Query.setResponse =
         function (response) {
 
-
           try {
-
 
             if (
               response.status !== 'ok'
@@ -1613,13 +1597,11 @@ function loadViaGoogleVisualization() {
               response.table.rows.map(
                 row => {
 
-
                   const object = {};
 
 
                   headers.forEach(
                     (header,index) => {
-
 
                       const cell =
                         row.c[index];
@@ -1636,13 +1618,11 @@ function loadViaGoogleVisualization() {
                           :
                           '';
 
-
                     }
                   );
 
 
                   return object;
-
 
                 }
               );
@@ -1650,19 +1630,15 @@ function loadViaGoogleVisualization() {
 
             resolve(objects);
 
-
           }
 
           catch(error) {
 
-
             reject(error);
-
 
           }
 
           finally {
-
 
             if (oldCallback) {
 
@@ -1671,12 +1647,9 @@ function loadViaGoogleVisualization() {
 
             }
 
-
             script.remove();
 
-
           }
-
 
         };
 
@@ -1703,7 +1676,6 @@ function loadViaGoogleVisualization() {
         script
       );
 
-
     }
   );
 
@@ -1713,16 +1685,14 @@ function loadViaGoogleVisualization() {
 
 /*
 ============================================================
-LOAD DATA
+LOAD SITE DATA
 ============================================================
 */
 
 
 async function loadSiteData() {
 
-
   try {
-
 
     const response =
       await fetch(
@@ -1750,11 +1720,9 @@ async function loadSiteData() {
       parseCSV(text)
     );
 
-
   }
 
   catch(error) {
-
 
     console.warn(
       'CSV direct impossible, utilisation du fallback Google.',
@@ -1764,9 +1732,7 @@ async function loadSiteData() {
 
     return await loadViaGoogleVisualization();
 
-
   }
-
 
 }
 
@@ -1781,7 +1747,6 @@ DATES
 
 function parseFrenchDate(value) {
 
-
   const parts =
     String(value)
       .split('/');
@@ -1790,19 +1755,15 @@ function parseFrenchDate(value) {
   if (
     parts.length !== 3
   ) {
-
     return null;
-
   }
 
 
   const day =
     Number(parts[0]);
 
-
   const month =
     Number(parts[1]);
-
 
   const year =
     Number(parts[2]);
@@ -1826,7 +1787,6 @@ function sameDate(
   second
 ) {
 
-
   return (
     first
     &&
@@ -1844,7 +1804,6 @@ function sameDate(
 
 
 function formatShortDate(date) {
-
 
   return (
     String(
@@ -1870,7 +1829,7 @@ function formatShortDate(date) {
 
 /*
 ============================================================
-UPCOMING DATE BY DAY
+UPCOMING EVENTS
 ============================================================
 */
 
@@ -1879,7 +1838,6 @@ function getUpcomingEntries(
   rows,
   dayName
 ) {
-
 
   const today =
     new Date();
@@ -1897,7 +1855,6 @@ function getUpcomingEntries(
     rows
       .filter(
         row => {
-
 
           const date =
             parseFrenchDate(
@@ -1922,7 +1879,6 @@ function getUpcomingEntries(
             &&
             date >= today
           );
-
 
         }
       )
@@ -1970,7 +1926,6 @@ DRIVE IMAGE
 
 function driveImageURL(url) {
 
-
   if (!url) {
     return '';
   }
@@ -2012,7 +1967,6 @@ STYLE
 
 function cleanStyle(value) {
 
-
   if (!value) {
     return 'DJ SET';
   }
@@ -2035,13 +1989,12 @@ function cleanStyle(value) {
 
 /*
 ============================================================
-LINKS
+ARTIST LINKS
 ============================================================
 */
 
 
 function artistLinks(row) {
-
 
   const links = [];
 
@@ -2081,7 +2034,7 @@ function artistLinks(row) {
 
 /*
 ============================================================
-RENDER CARD
+RENDER EVENT
 ============================================================
 */
 
@@ -2092,80 +2045,89 @@ function renderCard(
   dayName
 ) {
 
-
   const dateElement =
     card.querySelector(
       '.event-date'
     );
-
 
   const titleElement =
     card.querySelector(
       '.event-title'
     );
 
-
   const typeElement =
     card.querySelector(
       '.event-type'
     );
-
 
   const lineup =
     card.querySelector(
       '.lineup'
     );
 
-
   const placeholderDate =
     card.querySelector(
       '.placeholder-date'
     );
-
 
   const placeholderTitle =
     card.querySelector(
       '.placeholder-title'
     );
 
-
   const flyer =
     card.querySelector(
       '.event-flyer'
     );
 
+  const shotgunButton =
+    card.querySelector(
+      '.shotgun-button'
+    );
+
+
+
+  /*
+  NO EVENT
+  */
+
 
   if (!entries.length) {
-
 
     dateElement.textContent =
       '—';
 
-
     titleElement.textContent =
       'Programme à venir';
-
 
     typeElement.textContent =
       'À annoncer';
 
-
     placeholderTitle.textContent =
       'PROGRAMME À VENIR';
-
 
     lineup.innerHTML =
       '';
 
-
     flyer.hidden =
       true;
 
+    shotgunButton.hidden =
+      true;
+
+    shotgunButton.removeAttribute(
+      'href'
+    );
 
     return;
 
-
   }
+
+
+
+  /*
+  EVENT DATA
+  */
 
 
   const first =
@@ -2219,6 +2181,12 @@ function renderCard(
     );
 
 
+
+  /*
+  LINEUP
+  */
+
+
   lineup.innerHTML =
     entries
       .map(
@@ -2241,6 +2209,12 @@ function renderCard(
       .join('');
 
 
+
+  /*
+  VISUAL
+  */
+
+
   const visual =
     entries.find(
       item =>
@@ -2253,7 +2227,6 @@ function renderCard(
     &&
     visual['VISUEL FEED']
   ) {
-
 
     flyer.src =
       driveImageURL(
@@ -2272,25 +2245,59 @@ function renderCard(
     flyer.onerror =
       function () {
 
-
         this.hidden =
           true;
 
-
       };
-
 
   }
 
   else {
 
-
     flyer.hidden =
       true;
 
+  }
+
+
+
+  /*
+  ==========================================================
+  SHOTGUN
+  ==========================================================
+
+  Priority:
+  1. exact event URL from Google Sheets
+  2. Danceteria Shotgun venue page
+  */
+
+
+  const shotgunEntry =
+    entries.find(
+      item =>
+        String(
+          item.SHOTGUN || ''
+        ).trim() !== ''
+    );
+
+
+  if (shotgunEntry) {
+
+    shotgunButton.href =
+      shotgunEntry.SHOTGUN.trim();
 
   }
 
+  else {
+
+    shotgunButton.href =
+      SHOTGUN_VENUE_URL;
+
+  }
+
+
+  shotgunButton.hidden =
+    false;
 
 }
 
@@ -2298,16 +2305,14 @@ function renderCard(
 
 /*
 ============================================================
-INITIALISE PROGRAM
+INITIALISE PROGRAMME
 ============================================================
 */
 
 
 async function initialiseProgramme() {
 
-
   try {
-
 
     const rows =
       await loadSiteData();
@@ -2348,20 +2353,16 @@ async function initialiseProgramme() {
       'SAMEDI'
     );
 
-
   }
 
   catch(error) {
-
 
     console.error(
       'Impossible de charger la programmation.',
       error
     );
 
-
   }
-
 
 }
 
@@ -2369,7 +2370,7 @@ async function initialiseProgramme() {
 
 /*
 ============================================================
-MENU MOBILE
+MENU
 ============================================================
 */
 
@@ -2390,7 +2391,6 @@ menuButton.addEventListener(
   'click',
   () => {
 
-
     const opened =
       nav.classList.toggle(
         'is-open'
@@ -2410,7 +2410,6 @@ menuButton.addEventListener(
         :
         'MENU';
 
-
   }
 );
 
@@ -2420,11 +2419,9 @@ nav
   .forEach(
     link => {
 
-
       link.addEventListener(
         'click',
         () => {
-
 
           nav.classList.remove(
             'is-open'
@@ -2439,21 +2436,12 @@ nav
           menuButton.textContent =
             'MENU';
 
-
         }
       );
-
 
     }
   );
 
-
-
-/*
-============================================================
-GO
-============================================================
-*/
 
 
 initialiseProgramme();
