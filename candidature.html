@@ -839,8 +839,7 @@
 <div class="field">
 
   <label for="instagram-handle">
-    Instagram
-    <span class="required">*</span>
+    Instagram (facultatif / optional)
   </label>
 
   <div class="prefixed-input">
@@ -852,7 +851,6 @@
     <input
       id="instagram-handle"
       type="text"
-      required
       autocomplete="off"
       autocapitalize="none"
       spellcheck="false"
@@ -871,8 +869,7 @@
 <div class="field">
 
   <label for="soundcloud-handle">
-    SoundCloud / DJ Set
-    <span class="required">*</span>
+    SoundCloud / DJ Set (facultatif / optional)
   </label>
 
   <div class="prefixed-input">
@@ -884,7 +881,6 @@
     <input
       id="soundcloud-handle"
       type="text"
-      required
       autocomplete="off"
       autocapitalize="none"
       spellcheck="false"
@@ -894,7 +890,7 @@
   </div>
 
   <span class="field-help">
-    Indiquez le profil SoundCloud contenant un set représentatif de votre univers.
+    Si vous en avez un, indiquez un profil ou un set représentatif de votre univers.
   </span>
 
 </div>
@@ -1181,10 +1177,14 @@
 
 
         instagramUrl.value =
-          `https://www.instagram.com/${instagram}`;
+          instagram
+            ? `https://www.instagram.com/${instagram}`
+            : '';
 
         soundcloudUrl.value =
-          `https://soundcloud.com/${soundcloud}`;
+          soundcloud
+            ? `https://soundcloud.com/${soundcloud}`
+            : '';
 
 
         successMessage.classList.remove(
