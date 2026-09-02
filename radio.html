@@ -926,6 +926,132 @@ const permanentLibrary = [
     title: "Everybody Is Here",
     url: "https://soundcloud.com/stelios-vassiloudis/everybody-is-here-1",
     kind: "track"
+  },
+
+  {
+    artist: "RAFAEL CERATO",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/rafaelcerato",
+    kind: "set"
+  },
+
+  {
+    artist: "SPADA",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/spada",
+    kind: "set"
+  },
+
+  {
+    artist: "CURSES",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/cursesforever",
+    kind: "set"
+  },
+
+  {
+    artist: "STEPHANE POMPOUGNAC",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/stephanepompougnac",
+    kind: "set"
+  },
+
+  {
+    artist: "THEUS MAGO",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/theusmago",
+    kind: "set"
+  },
+
+  {
+    artist: "BLUTCH",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/blutch",
+    kind: "set"
+  },
+
+  {
+    artist: "MADBEN",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/madben",
+    kind: "set"
+  },
+
+  {
+    artist: "KAPOTE",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/thekapote",
+    kind: "set"
+  },
+
+  {
+    artist: "VOX LOW",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/voxlow",
+    kind: "set"
+  },
+
+  {
+    artist: "TOY TONICS",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/toytonics",
+    kind: "set"
+  },
+
+  {
+    artist: "MARIE PRUDE",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/marieprude",
+    kind: "set"
+  },
+
+  {
+    artist: "EFÍMERO",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/user-770463226",
+    kind: "set"
+  },
+
+  {
+    artist: "STELLA GALACTICA",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/stellagalactica",
+    kind: "set"
+  },
+
+  {
+    artist: "NICK STOYNOFF",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/nickstoynoff",
+    kind: "set"
+  },
+
+  {
+    artist: "LUCA BELLUCO",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/lucabelluco",
+    kind: "set"
+  },
+
+  {
+    artist: "GEM WILLOW",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/gemsekime",
+    kind: "set"
+  },
+
+  {
+    artist: "MORAVIE",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/moravie-458171212",
+    kind: "set"
+  },
+
+  {
+    artist: "LUX LA CROIX",
+    title: "Sélection SoundCloud",
+    url: "https://soundcloud.com/lux-mlk",
+    kind: "set"
   }
 
 
@@ -1363,6 +1489,17 @@ function shuffle(array) {
 
 
 
+function firstSoundCloudUrl(value) {
+
+
+  return String(value || '')
+    .split('|')[0]
+    .trim();
+
+
+}
+
+
 function findRadioItem(
   artist,
   soundcloud,
@@ -1392,7 +1529,13 @@ function findRadioItem(
   }
 
 
-  if (soundcloud) {
+  const url =
+    firstSoundCloudUrl(
+      soundcloud
+    );
+
+
+  if (url) {
 
 
     return {
@@ -1401,10 +1544,9 @@ function findRadioItem(
         artist.toUpperCase(),
 
       title:
-        'SoundCloud selection',
+        'Sélection SoundCloud',
 
-      url:
-        soundcloud,
+      url,
 
       kind:
         'set',
@@ -1424,14 +1566,116 @@ function findRadioItem(
 
 
 
+function upcomingWeekendEntries(rows) {
+
+
+  const today =
+    new Date();
+
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+
+  const upcoming =
+    rows
+      .map(
+        row => ({
+          ...row,
+          _date: parseDate(row.DATE)
+        })
+      )
+      .filter(
+        row =>
+          row._date
+          &&
+          row._date >= today
+          &&
+          [
+            'JEUDI',
+            'VENDREDI',
+            'SAMEDI'
+          ].includes(
+            String(row.JOUR)
+              .trim()
+              .toUpperCase()
+          )
+      )
+      .sort(
+        (a,b) =>
+          a._date - b._date
+      );
+
+
+  if (!upcoming.length) {
+    return [];
+  }
+
+
+  const firstDate =
+    new Date(
+      upcoming[0]._date
+    );
+
+
+  const day =
+    firstDate.getDay();
+
+
+  const daysSinceThursday =
+    day === 4
+      ? 0
+      : day === 5
+        ? 1
+        : 2;
+
+
+  const thursday =
+    new Date(
+      firstDate
+    );
+
+
+  thursday.setDate(
+    thursday.getDate()
+    -
+    daysSinceThursday
+  );
+
+
+  const sunday =
+    new Date(
+      thursday
+    );
+
+
+  sunday.setDate(
+    sunday.getDate() + 3
+  );
+
+
+  return upcoming.filter(
+    row =>
+      row._date >= thursday
+      &&
+      row._date < sunday
+  );
+
+}
+
+
+
 async function buildRadioPlaylist() {
 
 
   /*
-  The homepage hero skips Google Sheets
-  and starts with one short track.
-  This keeps the full dynamic priority
-  logic on the Radio page only.
+  On the homepage, load the programme quickly,
+  choose one upcoming-weekend artist at random,
+  and prefer a single lightweight track.
   */
 
 
@@ -1445,27 +1689,116 @@ async function buildRadioPlaylist() {
       );
 
 
-    const firstTrack =
-      lightweightTracks.find(
-        item =>
-          sameArtist(
-            item.artist,
-            'CHRIS GAVIN'
+    try {
+
+
+      const rows =
+        await Promise.race([
+
+          loadSiteRows(),
+
+          new Promise(
+            (_,reject) =>
+              setTimeout(
+                () =>
+                  reject(
+                    new Error(
+                      'Programme timeout'
+                    )
+                  ),
+                1200
+              )
           )
-      )
-      ||
-      lightweightTracks[0];
+
+        ]);
 
 
-    return [
-      firstTrack,
-      ...shuffle(
-        lightweightTracks.filter(
+      const weekendItems =
+        upcomingWeekendEntries(rows)
+          .map(
+            row =>
+              findRadioItem(
+                row.ARTISTE,
+                row.SOUNDCLOUD,
+                'Ce week-end'
+              )
+          )
+          .filter(Boolean)
+          .filter(
+            (item,index,array) =>
+              array.findIndex(
+                other =>
+                  sameArtist(
+                    other.artist,
+                    item.artist
+                  )
+              )
+              === index
+          );
+
+
+      const shortWeekendTracks =
+        weekendItems.filter(
           item =>
-            item !== firstTrack
-        )
-      )
-    ];
+            item.kind === 'track'
+        );
+
+
+      const firstPool =
+        shortWeekendTracks.length
+          ? shortWeekendTracks
+          : weekendItems;
+
+
+      if (firstPool.length) {
+
+
+        const firstTrack =
+          shuffle(
+            firstPool
+          )[0];
+
+
+        return [
+          firstTrack,
+          ...shuffle(
+            [
+              ...weekendItems.filter(
+                item =>
+                  item !== firstTrack
+              ),
+              ...lightweightTracks.filter(
+                item =>
+                  !sameArtist(
+                    item.artist,
+                    firstTrack.artist
+                  )
+              )
+            ]
+          )
+        ];
+
+
+      }
+
+
+    }
+
+    catch (error) {
+
+
+      console.info(
+        'Programme unavailable, using local radio library.',
+        error
+      );
+
+
+    }
+
+
+    return shuffle(
+      lightweightTracks
+    );
 
 
   }
@@ -1556,12 +1889,6 @@ async function buildRadioPlaylist() {
   }
 
 
-  /*
-  Add artists from SITE
-  when they have SoundCloud.
-  */
-
-
   const enriched =
     [...permanentLibrary];
 
@@ -1570,9 +1897,13 @@ async function buildRadioPlaylist() {
     row => {
 
 
-      if (
-        !row.SOUNDCLOUD
-      ) {
+      const url =
+        firstSoundCloudUrl(
+          row.SOUNDCLOUD
+        );
+
+
+      if (!url) {
         return;
       }
 
@@ -1596,10 +1927,9 @@ async function buildRadioPlaylist() {
             row.ARTISTE.toUpperCase(),
 
           title:
-            'SoundCloud selection',
+            'Sélection SoundCloud',
 
-          url:
-            row.SOUNDCLOUD,
+          url,
 
           kind:
             'set'
