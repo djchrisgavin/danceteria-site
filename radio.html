@@ -493,7 +493,6 @@
     body.embed-mode .soundcloud-link,
     body.embed-mode .progress-wrap,
     body.embed-mode #previous,
-    body.embed-mode #next,
     body.embed-mode .priority {
       display: none;
     }
@@ -521,12 +520,22 @@
 
     body.embed-mode .controls {
       margin-top: 13px;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 8px;
     }
 
     body.embed-mode .control-button.primary {
       width: 100%;
       min-width: 0;
       min-height: 38px;
+      grid-column: auto;
+    }
+
+    body.embed-mode #next {
+      min-height: 38px;
+      padding: 0 14px;
+      white-space: nowrap;
     }
 
     body.embed-mode .source-section {
@@ -707,6 +716,7 @@
     <button
       class="control-button"
       id="next"
+      aria-label="Morceau suivant"
       disabled
     >
       NEXT →
@@ -2299,7 +2309,7 @@ function nextTrack() {
 
 
   loadCurrent(
-    started
+    true
   );
 
 }
