@@ -3,6 +3,42 @@
 
 <head>
 
+  <!-- GOOGLE ANALYTICS — DANCETERIA.FR -->
+  <!-- Ne pas compter la radio lorsqu'elle est intégrée dans la homepage -->
+  <script>
+    (function () {
+
+      const isRadioEmbed =
+        new URLSearchParams(window.location.search).get('embed') === '1';
+
+      if (isRadioEmbed) {
+        return;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      window.gtag = gtag;
+
+      gtag('js', new Date());
+      gtag('config', 'G-4NT4JHW9YG');
+
+      const gaScript =
+        document.createElement('script');
+
+      gaScript.async = true;
+      gaScript.src =
+        'https://www.googletagmanager.com/gtag/js?id=G-4NT4JHW9YG';
+
+      document.head.appendChild(gaScript);
+
+    })();
+  </script>
+
+
   <meta charset="UTF-8">
 
   <meta
@@ -451,6 +487,7 @@
 
     }
 
+
     /* COMPACT PLAYER FOR THE HOMEPAGE HERO */
 
     body.embed-mode {
@@ -548,7 +585,6 @@
       opacity: 0;
       pointer-events: none;
     }
-
 
   </style>
 
@@ -966,12 +1002,14 @@ const permanentLibrary = [
     kind: "track"
   },
 
+
   {
     artist: "RAFAEL CERATO",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/rafaelcerato",
     kind: "set"
   },
+
 
   {
     artist: "SPADA",
@@ -980,12 +1018,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "CURSES",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/cursesforever",
     kind: "set"
   },
+
 
   {
     artist: "STEPHANE POMPOUGNAC",
@@ -994,12 +1034,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "THEUS MAGO",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/theusmago",
     kind: "set"
   },
+
 
   {
     artist: "BLUTCH",
@@ -1008,12 +1050,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "MADBEN",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/madben",
     kind: "set"
   },
+
 
   {
     artist: "KAPOTE",
@@ -1022,12 +1066,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "VOX LOW",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/voxlow",
     kind: "set"
   },
+
 
   {
     artist: "TOY TONICS",
@@ -1036,12 +1082,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "MARIE PRUDE",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/marieprude",
     kind: "set"
   },
+
 
   {
     artist: "EFÍMERO",
@@ -1050,12 +1098,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "STELLA GALACTICA",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/stellagalactica",
     kind: "set"
   },
+
 
   {
     artist: "NICK STOYNOFF",
@@ -1064,12 +1114,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "LUCA BELLUCO",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/lucabelluco",
     kind: "set"
   },
+
 
   {
     artist: "GEM WILLOW",
@@ -1078,12 +1130,14 @@ const permanentLibrary = [
     kind: "set"
   },
 
+
   {
     artist: "MORAVIE",
     title: "Sélection SoundCloud",
     url: "https://soundcloud.com/moravie-458171212",
     kind: "set"
   },
+
 
   {
     artist: "LUX LA CROIX",
