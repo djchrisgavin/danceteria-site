@@ -78,6 +78,8 @@
     const flyer = card.querySelector('.event-flyer');
     flyer.hidden = true;
     flyer.removeAttribute('src');
+    flyer.style.objectFit = '';
+    flyer.style.background = '';
 
     const button = card.querySelector('.shotgun-button');
     button.hidden = true;
@@ -101,15 +103,25 @@
     card.querySelector('.lineup').innerHTML = '';
 
     const flyer = card.querySelector('.event-flyer');
+    const hasPortrait = Boolean(event.portrait_url);
     const flyerUrl = event.portrait_url || event.cover_url;
 
     if (flyerUrl) {
       flyer.src = flyerUrl;
       flyer.alt = `${event.name} — Danceteria`;
       flyer.hidden = false;
+
+      // The Shotgun Events API currently exposes the 16:9 cover. Until the
+      // portrait asset is available, show the entire banner rather than
+      // brutally cropping titles inside the site's 4:5 card.
+      flyer.style.objectFit = hasPortrait ? 'cover' : 'contain';
+      flyer.style.background = '#050505';
+
       flyer.onerror = () => {
         if (event.portrait_url && event.cover_url && flyer.src !== event.cover_url) {
           flyer.src = event.cover_url;
+          flyer.style.objectFit = 'contain';
+          flyer.style.background = '#050505';
           return;
         }
         flyer.hidden = true;
@@ -117,6 +129,8 @@
     } else {
       flyer.hidden = true;
       flyer.removeAttribute('src');
+      flyer.style.objectFit = '';
+      flyer.style.background = '';
     }
 
     const button = card.querySelector('.shotgun-button');
@@ -144,7 +158,7 @@
       .filter(event => !Number.isNaN(event._start.getTime()))
       .filter(event => !Number.isNaN(event._end.getTime()))
       .filter(event => weekdayNumber(event._start) === weekday)
-      // Crucial: an event remains on the card until its actual end time.
+      // An event remains on the card until its actual Shotgun end time.
       // Only after that moment may the next event for this weekday replace it.
       .filter(event => event._end > now)
       .sort((a, b) => a._start - b._start)[0] || null;
