@@ -2,7 +2,6 @@ import json
 import os
 import re
 import shutil
-import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -21,6 +20,8 @@ if not ORGANIZER_ID or not TOKEN:
 API_URL = f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events"
 PARIS_TZ = ZoneInfo("Europe/Paris")
 VISIBLE_WEEKDAYS = {3, 4, 5}  # Thursday, Friday, Saturday (Python Monday=0)
+PORTRAIT_RATIO_MIN = 0.64
+PORTRAIT_RATIO_MAX = 0.86
 
 
 def parse_dt(value):
@@ -32,7 +33,7 @@ def parse_dt(value):
         return None
 
 
-def event_end(event):
+def event_end_from_api(event):
     end = parse_dt(event.get("endTime"))
     if end:
         return end
@@ -41,105 +42,8 @@ def event_end(event):
 
 
 def event_is_current_or_future(event, now):
-    end = event_end(event)
+    end = event_end_from_api(event)
     return bool(end and end > now)
-
-
-def extract_jsonld_image(rendered_html):
-    blocks = re.findall(
-        r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
-        rendered_html,
-        re.DOTALL | re.IGNORECASE,
-    )
-
-    def candidates_from(data):
-        if isinstance(data, list):
-            for item in data:
-                yield from candidates_from(item)
-        elif isinstance(data, dict):
-            yield data
-            graph = data.get("@graph")
-            if graph:
-                yield from candidates_from(graph)
-
-    for block in blocks:
-        try:
-            data = json.loads(block)
-        except json.JSONDecodeError:
-            continue
-
-        for item in candidates_from(data):
-            event_type = item.get("@type")
-            if isinstance(event_type, list):
-                is_event = any("Event" in str(value) for value in event_type)
-            else:
-                is_event = "Event" in str(event_type)
-            if not is_event:
-                continue
-
-            image = item.get("image")
-            if isinstance(image, str) and image:
-                return image
-            if isinstance(image, list) and image:
-                first = image[0]
-                if isinstance(first, str):
-                    return first
-                if isinstance(first, dict):
-                    return first.get("url") or first.get("contentUrl")
-            if isinstance(image, dict):
-                return image.get("url") or image.get("contentUrl")
-
-    return None
-
-
-def fetch_portrait_from_shotgun(slug):
-    if not slug:
-        return None
-
-    browser = (
-        shutil.which("google-chrome")
-        or shutil.which("google-chrome-stable")
-        or shutil.which("chromium")
-        or shutil.which("chromium-browser")
-    )
-    if not browser:
-        print("No Chrome/Chromium found; using Shotgun banner fallback", file=sys.stderr)
-        return None
-
-    url = f"https://shotgun.live/fr/events/{slug}"
-    command = [
-        browser,
-        "--headless=new",
-        "--no-sandbox",
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        "--virtual-time-budget=6000",
-        "--dump-dom",
-        url,
-    ]
-
-    try:
-        result = subprocess.run(
-            command,
-            capture_output=True,
-            text=True,
-            timeout=45,
-            check=False,
-        )
-    except Exception as exc:
-        print(f"Could not render Shotgun page for {slug}: {type(exc).__name__}", file=sys.stderr)
-        return None
-
-    if result.returncode != 0 or not result.stdout:
-        print(f"Shotgun page render failed for {slug}", file=sys.stderr)
-        return None
-
-    image = extract_jsonld_image(result.stdout)
-    if image:
-        print(f"Portrait artwork found for {slug}")
-    else:
-        print(f"No JSON-LD artwork found for {slug}; using banner fallback", file=sys.stderr)
-    return image
 
 
 def api_event_to_public(event):
@@ -155,7 +59,9 @@ def api_event_to_public(event):
         "end_time": event.get("endTime"),
         "url": url,
         "slug": slug,
+        # The organizer API exposes the 16:9 banner here.
         "cover_url": event.get("coverUrl") or event.get("coverThumbnailUrl"),
+        # Filled below from the rendered public Shotgun page when available.
         "portrait_url": None,
         "description": event.get("description"),
         "visibility": event.get("visibility"),
@@ -165,6 +71,11 @@ def api_event_to_public(event):
 
 
 def select_visible_events(events, now):
+    """Pick the event currently occupying each Thu/Fri/Sat homepage slot.
+
+    An event stays selected until its end_time. This prevents the site from
+    replacing tonight's event with next week's event before the night is over.
+    """
     visible = {}
     for event in events:
         start = parse_dt(event.get("start_time"))
@@ -179,6 +90,158 @@ def select_visible_events(events, now):
         if weekday not in visible:
             visible[weekday] = event
     return visible
+
+
+def normalise_url(value):
+    if not isinstance(value, str):
+        return None
+    value = value.strip()
+    if value.startswith("//"):
+        return "https:" + value
+    if value.startswith("http://") or value.startswith("https://"):
+        return value
+    return None
+
+
+def event_name_tokens(name):
+    return {
+        token.lower()
+        for token in re.findall(r"[A-Za-zÀ-ÿ0-9@]+", name or "")
+        if len(token) >= 4
+    }
+
+
+def choose_portrait_candidate(images, event_name):
+    tokens = event_name_tokens(event_name)
+    candidates = []
+
+    for image in images:
+        src = normalise_url(image.get("src"))
+        try:
+            width = int(image.get("width") or 0)
+            height = int(image.get("height") or 0)
+        except (TypeError, ValueError):
+            continue
+
+        if not src or width < 350 or height < 450:
+            continue
+
+        ratio = width / height if height else 0
+        if not (PORTRAIT_RATIO_MIN <= ratio <= PORTRAIT_RATIO_MAX):
+            continue
+
+        lower_src = src.lower()
+        alt = str(image.get("alt") or "").lower()
+
+        # Avoid obvious non-event imagery.
+        if any(word in lower_src for word in ("avatar", "logo", "icon", "profile")):
+            continue
+
+        score = width * height
+        if "shotgun" in lower_src:
+            score += 2_000_000
+        if "/artworks/" in lower_src or "artwork" in lower_src:
+            score += 4_000_000
+        if any(token in alt for token in tokens):
+            score += 2_000_000
+
+        # Prefer a 4:5 / 3:4 artwork over a very tall story-like asset.
+        score -= int(abs(ratio - 0.78) * 1_000_000)
+        candidates.append((score, src, width, height, alt))
+
+    if not candidates:
+        return None
+
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    _, src, width, height, _ = candidates[0]
+    print(f"Selected portrait artwork {width}x{height}: {src.split('?')[0]}")
+    return src
+
+
+def fetch_portraits_for_visible_events(events, now):
+    visible = list(select_visible_events(events, now).values())
+    if not visible:
+        return
+
+    browser_path = (
+        shutil.which("google-chrome")
+        or shutil.which("google-chrome-stable")
+        or shutil.which("chromium")
+        or shutil.which("chromium-browser")
+    )
+    if not browser_path:
+        print("No Chrome/Chromium found; using Shotgun banner fallback", file=sys.stderr)
+        return
+
+    try:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("Playwright is not installed; using Shotgun banner fallback", file=sys.stderr)
+        return
+
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(
+            headless=True,
+            executable_path=browser_path,
+            args=["--no-sandbox", "--disable-dev-shm-usage"],
+        )
+        context = browser.new_context(
+            viewport={"width": 1440, "height": 1800},
+            device_scale_factor=1,
+            user_agent=(
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+            ),
+            locale="fr-FR",
+        )
+
+        try:
+            for event in visible:
+                slug = event.get("slug")
+                if not slug:
+                    continue
+
+                page = context.new_page()
+                try:
+                    url = f"https://shotgun.live/fr/events/{slug}"
+                    page.goto(url, wait_until="domcontentloaded", timeout=60_000)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=15_000)
+                    except PlaywrightTimeoutError:
+                        pass
+                    page.wait_for_timeout(3_000)
+
+                    title = page.title()
+                    images = page.evaluate(
+                        """
+                        () => Array.from(document.images).map((img) => ({
+                          src: img.currentSrc || img.src || '',
+                          width: img.naturalWidth || 0,
+                          height: img.naturalHeight || 0,
+                          alt: img.alt || ''
+                        }))
+                        """
+                    )
+
+                    event["portrait_url"] = choose_portrait_candidate(images, event.get("name"))
+                    if event["portrait_url"]:
+                        print(f"Portrait found for {slug} ({title})")
+                    else:
+                        print(
+                            f"No vertical artwork found for {slug} ({title}); using banner fallback",
+                            file=sys.stderr,
+                        )
+                except Exception as exc:
+                    print(
+                        f"Could not render Shotgun page for {slug}: {type(exc).__name__}",
+                        file=sys.stderr,
+                    )
+                finally:
+                    page.close()
+        finally:
+            context.close()
+            browser.close()
 
 
 query = urllib.parse.urlencode({"key": TOKEN, "limit": 100})
@@ -218,11 +281,10 @@ for event in raw_events:
 
 events.sort(key=lambda event: parse_dt(event.get("start_time")) or datetime.max.replace(tzinfo=timezone.utc))
 
-# Only fetch portrait artwork for the three events that can actually appear on
-# the homepage. Future events stay in events.json so the browser can switch to
-# them immediately after the previous event's end_time, even between sync runs.
-for event in select_visible_events(events, now).values():
-    event["portrait_url"] = fetch_portrait_from_shotgun(event.get("slug"))
+# The API gives us titles/dates/links reliably, but only the banner image.
+# Render only the events that are actually visible on the homepage to recover
+# Shotgun's vertical artwork without making the hourly job unnecessarily heavy.
+fetch_portraits_for_visible_events(events, now)
 
 output = {
     "source": "Shotgun Events API",
