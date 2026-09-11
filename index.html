@@ -2558,6 +2558,81 @@ nav
 
 
 
+/*
+============================================================
+ANALYTICS — SHOTGUN CLICKS
+============================================================
+*/
+
+
+document.addEventListener(
+  'click',
+  event => {
+
+    const link =
+      event.target.closest(
+        'a[href]'
+      );
+
+
+    if (!link) {
+      return;
+    }
+
+
+    try {
+
+      const url =
+        new URL(
+          link.href,
+          window.location.href
+        );
+
+
+      const isShotgun =
+        url.hostname === 'shotgun.live'
+        ||
+        url.hostname.endsWith(
+          '.shotgun.live'
+        );
+
+
+      if (
+        isShotgun
+        &&
+        typeof window.gtag === 'function'
+      ) {
+
+        window.gtag(
+          'event',
+          'click_shotgun',
+          {
+            link_url: url.href,
+            link_domain: url.hostname,
+            link_text:
+              String(
+                link.textContent || ''
+              )
+                .trim()
+                .slice(0,100),
+            transport_type: 'beacon'
+          }
+        );
+
+      }
+
+    }
+
+    catch(error) {
+      // Invalid URL: ignore.
+    }
+
+  },
+  true
+);
+
+
+
 initialiseProgramme();
 
 
