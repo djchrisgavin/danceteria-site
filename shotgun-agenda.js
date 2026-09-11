@@ -56,6 +56,15 @@
     return `${startText} — ${endText}`;
   }
 
+  function eventEnd(event, start) {
+    if (event.end_time) {
+      const end = new Date(event.end_time);
+      if (!Number.isNaN(end.getTime())) return end;
+    }
+
+    return new Date(start.getTime() + 8 * 60 * 60 * 1000);
+  }
+
   function resetCard(card, label) {
     if (!card) return;
 
@@ -92,11 +101,17 @@
     card.querySelector('.lineup').innerHTML = '';
 
     const flyer = card.querySelector('.event-flyer');
-    if (event.cover_url) {
-      flyer.src = event.cover_url;
+    const flyerUrl = event.portrait_url || event.cover_url;
+
+    if (flyerUrl) {
+      flyer.src = flyerUrl;
       flyer.alt = `${event.name} — Danceteria`;
       flyer.hidden = false;
       flyer.onerror = () => {
+        if (event.portrait_url && event.cover_url && flyer.src !== event.cover_url) {
+          flyer.src = event.cover_url;
+          return;
+        }
         flyer.hidden = true;
       };
     } else {
@@ -114,11 +129,24 @@
     }
   }
 
-  function chooseNextByWeekday(events, weekday) {
+  function chooseCurrentThenNextByWeekday(events, weekday) {
+    const now = new Date();
+
     return events
-      .map(event => ({ ...event, _start: new Date(event.start_time) }))
+      .map(event => {
+        const start = new Date(event.start_time);
+        return {
+          ...event,
+          _start: start,
+          _end: eventEnd(event, start)
+        };
+      })
       .filter(event => !Number.isNaN(event._start.getTime()))
+      .filter(event => !Number.isNaN(event._end.getTime()))
       .filter(event => weekdayNumber(event._start) === weekday)
+      // Crucial: an event remains on the card until its actual end time.
+      // Only after that moment may the next event for this weekday replace it.
+      .filter(event => event._end > now)
       .sort((a, b) => a._start - b._start)[0] || null;
   }
 
@@ -138,7 +166,7 @@
       [4, 5, 6].forEach(weekday => {
         renderCard(
           cards[weekday],
-          chooseNextByWeekday(events, weekday),
+          chooseCurrentThenNextByWeekday(events, weekday),
           labels[weekday]
         );
       });
