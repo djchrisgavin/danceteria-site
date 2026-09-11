@@ -4,16 +4,12 @@
 <head>
 
   <!-- GOOGLE ANALYTICS — DANCETERIA.FR -->
-  <!-- Ne pas compter la radio lorsqu'elle est intégrée dans la homepage -->
+  <!-- En mode embed, on garde GA4 pour les interactions mais sans seconde page vue -->
   <script>
     (function () {
 
       const isRadioEmbed =
         new URLSearchParams(window.location.search).get('embed') === '1';
-
-      if (isRadioEmbed) {
-        return;
-      }
 
       window.dataLayer = window.dataLayer || [];
 
@@ -24,7 +20,13 @@
       window.gtag = gtag;
 
       gtag('js', new Date());
-      gtag('config', 'G-4NT4JHW9YG');
+      gtag(
+        'config',
+        'G-4NT4JHW9YG',
+        {
+          send_page_view: !isRadioEmbed
+        }
+      );
 
       const gaScript =
         document.createElement('script');
@@ -2157,6 +2159,8 @@ let started = false;
 
 let duration = 0;
 
+let playReportedForCurrentTrack = false;
+
 
 
 function formatTime(ms) {
@@ -2322,6 +2326,10 @@ function loadCurrent(
 
   const item =
     currentItem();
+
+
+  playReportedForCurrentTrack =
+    false;
 
 
   renderCurrent();
@@ -2512,6 +2520,38 @@ async function initialise() {
           'PAUSE';
 
 
+        if (
+          !playReportedForCurrentTrack
+          &&
+          typeof window.gtag === 'function'
+        ) {
+
+
+          const item =
+            currentItem();
+
+
+          window.gtag(
+            'event',
+            'radio_play',
+            {
+              radio_artist: item.artist,
+              radio_title: item.title,
+              radio_context:
+                embedMode
+                  ? 'homepage'
+                  : 'radio_page'
+            }
+          );
+
+
+          playReportedForCurrentTrack =
+            true;
+
+
+        }
+
+
       }
     );
 
@@ -2685,7 +2725,53 @@ playButton.addEventListener(
 
 nextButton.addEventListener(
   'click',
-  nextTrack
+  () => {
+
+
+    const fromItem =
+      currentItem();
+
+
+    const nextIndex =
+      (
+        currentIndex + 1
+      )
+      %
+      playlist.length;
+
+
+    const toItem =
+      playlist[nextIndex];
+
+
+    if (
+      typeof window.gtag === 'function'
+    ) {
+
+
+      window.gtag(
+        'event',
+        'radio_next',
+        {
+          from_artist: fromItem.artist,
+          from_title: fromItem.title,
+          to_artist: toItem.artist,
+          to_title: toItem.title,
+          radio_context:
+            embedMode
+              ? 'homepage'
+              : 'radio_page'
+        }
+      );
+
+
+    }
+
+
+    nextTrack();
+
+
+  }
 );
 
 
