@@ -1,12 +1,15 @@
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ORGANIZER_ID = os.environ.get("SHOTGUN_ORGANIZER_ID", "").strip()
 TOKEN = os.environ.get("SHOTGUN_API_TOKEN", "").strip()
@@ -16,6 +19,8 @@ if not ORGANIZER_ID or not TOKEN:
     sys.exit(1)
 
 API_URL = f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events"
+PARIS_TZ = ZoneInfo("Europe/Paris")
+VISIBLE_WEEKDAYS = {3, 4, 5}  # Thursday, Friday, Saturday (Python Monday=0)
 
 
 def parse_dt(value):
@@ -37,40 +42,41 @@ def event_end(event):
 
 def event_is_current_or_future(event, now):
     end = event_end(event)
-    return bool(end and end >= now)
+    return bool(end and end > now)
 
 
-def fetch_jsonld_image(slug):
-    if not slug:
-        return None
-    url = f"https://r.shotgun.live/fr/events/{slug}"
-    request = urllib.request.Request(
-        url,
-        headers={
-            "Accept": "text/html,application/xhtml+xml",
-            "User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
-        },
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=25) as response:
-            source = response.read().decode("utf-8", errors="ignore")
-    except Exception:
-        return None
-
+def extract_jsonld_image(rendered_html):
     blocks = re.findall(
         r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
-        source,
+        rendered_html,
         re.DOTALL | re.IGNORECASE,
     )
+
+    def candidates_from(data):
+        if isinstance(data, list):
+            for item in data:
+                yield from candidates_from(item)
+        elif isinstance(data, dict):
+            yield data
+            graph = data.get("@graph")
+            if graph:
+                yield from candidates_from(graph)
+
     for block in blocks:
         try:
             data = json.loads(block)
         except json.JSONDecodeError:
             continue
-        candidates = data if isinstance(data, list) else [data]
-        for item in candidates:
-            if not isinstance(item, dict):
+
+        for item in candidates_from(data):
+            event_type = item.get("@type")
+            if isinstance(event_type, list):
+                is_event = any("Event" in str(value) for value in event_type)
+            else:
+                is_event = "Event" in str(event_type)
+            if not is_event:
                 continue
+
             image = item.get("image")
             if isinstance(image, str) and image:
                 return image
@@ -82,15 +88,67 @@ def fetch_jsonld_image(slug):
                     return first.get("url") or first.get("contentUrl")
             if isinstance(image, dict):
                 return image.get("url") or image.get("contentUrl")
+
     return None
 
 
-def public_event(event, inspect=False):
+def fetch_portrait_from_shotgun(slug):
+    if not slug:
+        return None
+
+    browser = (
+        shutil.which("google-chrome")
+        or shutil.which("google-chrome-stable")
+        or shutil.which("chromium")
+        or shutil.which("chromium-browser")
+    )
+    if not browser:
+        print("No Chrome/Chromium found; using Shotgun banner fallback", file=sys.stderr)
+        return None
+
+    url = f"https://shotgun.live/fr/events/{slug}"
+    command = [
+        browser,
+        "--headless=new",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--virtual-time-budget=6000",
+        "--dump-dom",
+        url,
+    ]
+
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=45,
+            check=False,
+        )
+    except Exception as exc:
+        print(f"Could not render Shotgun page for {slug}: {type(exc).__name__}", file=sys.stderr)
+        return None
+
+    if result.returncode != 0 or not result.stdout:
+        print(f"Shotgun page render failed for {slug}", file=sys.stderr)
+        return None
+
+    image = extract_jsonld_image(result.stdout)
+    if image:
+        print(f"Portrait artwork found for {slug}")
+    else:
+        print(f"No JSON-LD artwork found for {slug}; using banner fallback", file=sys.stderr)
+    return image
+
+
+def api_event_to_public(event):
     slug = event.get("slug")
     url = event.get("url") or (f"https://shotgun.live/events/{slug}" if slug else None)
     organizer = event.get("organizer") or {}
     location = event.get("location") or event.get("venue") or {}
-    item = {
+
+    return {
         "id": event.get("id"),
         "name": event.get("name"),
         "start_time": event.get("startTime"),
@@ -104,9 +162,23 @@ def public_event(event, inspect=False):
         "organizer_name": organizer.get("name") if isinstance(organizer, dict) else None,
         "location_name": location.get("name") if isinstance(location, dict) else None,
     }
-    if inspect:
-        item["_jsonld_image_probe"] = fetch_jsonld_image(slug)
-    return item
+
+
+def select_visible_events(events, now):
+    visible = {}
+    for event in events:
+        start = parse_dt(event.get("start_time"))
+        if not start:
+            continue
+        end = parse_dt(event.get("end_time")) or (start + timedelta(hours=8))
+        if end <= now:
+            continue
+        weekday = start.astimezone(PARIS_TZ).weekday()
+        if weekday not in VISIBLE_WEEKDAYS:
+            continue
+        if weekday not in visible:
+            visible[weekday] = event
+    return visible
 
 
 query = urllib.parse.urlencode({"key": TOKEN, "limit": 100})
@@ -140,11 +212,17 @@ for event in raw_events:
         continue
     if not event_is_current_or_future(event, now):
         continue
-    item = public_event(event, inspect=len(events) == 0)
+    item = api_event_to_public(event)
     if item["name"] and item["start_time"]:
         events.append(item)
 
 events.sort(key=lambda event: parse_dt(event.get("start_time")) or datetime.max.replace(tzinfo=timezone.utc))
+
+# Only fetch portrait artwork for the three events that can actually appear on
+# the homepage. Future events stay in events.json so the browser can switch to
+# them immediately after the previous event's end_time, even between sync runs.
+for event in select_visible_events(events, now).values():
+    event["portrait_url"] = fetch_portrait_from_shotgun(event.get("slug"))
 
 output = {
     "source": "Shotgun Events API",
@@ -153,13 +231,9 @@ output = {
     "events": events,
 }
 
-Path("events.json").write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-index_path = Path("index.html")
-index = index_path.read_text(encoding="utf-8")
-if "shotgun-agenda.js" not in index:
-    index = index.replace("\ninitialiseProgramme();\n", "\n// Agenda public piloté par Shotgun.\n// initialiseProgramme();\n", 1)
-    index = index.replace("\n</body>", "\n<script src=\"shotgun-agenda.js?v=20260911-1\"></script>\n\n</body>", 1)
-    index_path.write_text(index, encoding="utf-8")
+Path("events.json").write_text(
+    json.dumps(output, ensure_ascii=False, indent=2) + "\n",
+    encoding="utf-8",
+)
 
 print(f"Wrote {len(events)} current/future Shotgun event(s) to events.json")
