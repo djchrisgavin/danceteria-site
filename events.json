@@ -1,7 +1,7 @@
 {
   "source": "Shotgun Events API",
   "organizer_id": "175441",
-  "updated_at": "2026-09-11T13:23:38.258626+00:00",
+  "updated_at": "2026-09-11T13:25:52.012941+00:00",
   "events": [
     {
       "id": 594164,
@@ -18,7 +18,8 @@
       "_image_fields": {
         "coverUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/EFIMERO_11_SEPT_SHOTGUN_1920x1080_xk7uh5?_a=BAMAROeE0",
         "coverThumbnailUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/EFIMERO_11_SEPT_SHOTGUN_1920x1080_xk7uh5?_a=BAMAROcg0"
-      }
+      },
+      "_page_images": []
     },
     {
       "id": 594167,
@@ -35,7 +36,8 @@
       "_image_fields": {
         "coverUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/DJ_F_B_12_SEPT_SHOTGUN_1920x1080_muukkr?_a=BAMAROeE0",
         "coverThumbnailUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/DJ_F_B_12_SEPT_SHOTGUN_1920x1080_muukkr?_a=BAMAROcg0"
-      }
+      },
+      "_page_images": []
     },
     {
       "id": 595034,
@@ -52,7 +54,8 @@
       "_image_fields": {
         "coverUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/banner_18_vgfvv9?_a=BAMAROeE0",
         "coverThumbnailUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/banner_18_vgfvv9?_a=BAMAROcg0"
-      }
+      },
+      "_page_images": []
     },
     {
       "id": 596101,
@@ -69,7 +72,8 @@
       "_image_fields": {
         "coverUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/banner_dnahkc?_a=BAMAROeE0",
         "coverThumbnailUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/banner_dnahkc?_a=BAMAROeE0"
-      }
+      },
+      "_page_images": []
     },
     {
       "id": 555226,
@@ -86,7 +90,8 @@
       "_image_fields": {
         "coverUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/production/artworks/05fe5d6c7cc5e6d9b22199606410c46ece9f1f0427ff6a72a1b55bb63bb32efa_zjbsff?_a=BAMAROeE0",
         "coverThumbnailUrl": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/production/artworks/05fe5d6c7cc5e6d9b22199606410c46ece9f1f0427ff6a72a1b55bb63bb32efa_zjbsff?_a=BAMAPqcg0"
-      }
+      },
+      "_page_images": []
     }
   ]
 }
