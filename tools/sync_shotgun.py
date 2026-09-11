@@ -40,7 +40,7 @@ def event_is_current_or_future(event, now):
 
 
 def extract_image_fields(value, prefix="", depth=0):
-    if depth > 4:
+    if depth > 5:
         return {}
     found = {}
     if isinstance(value, dict):
@@ -54,9 +54,46 @@ def extract_image_fields(value, prefix="", depth=0):
                     found[path] = child
             found.update(extract_image_fields(child, path, depth + 1))
     elif isinstance(value, list):
-        for index, child in enumerate(value[:10]):
+        for index, child in enumerate(value[:12]):
             found.update(extract_image_fields(child, f"{prefix}[{index}]", depth + 1))
     return found
+
+
+def fetch_json_probe(url):
+    sep = "&" if "?" in url else "?"
+    full_url = f"{url}{sep}{urllib.parse.urlencode({'key': TOKEN})}"
+    request = urllib.request.Request(
+        full_url,
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Accept": "application/json",
+            "User-Agent": "danceteria-site-shotgun-sync/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            payload = json.load(response)
+            return {
+                "status": response.status,
+                "image_fields": extract_image_fields(payload),
+                "top_level_keys": sorted(payload.keys()) if isinstance(payload, dict) else [],
+            }
+    except urllib.error.HTTPError as exc:
+        return {"status": exc.code, "image_fields": {}, "top_level_keys": []}
+    except Exception as exc:
+        return {"status": type(exc).__name__, "image_fields": {}, "top_level_keys": []}
+
+
+def detail_probes(event_id):
+    if not event_id:
+        return {}
+    candidates = {
+        "organizer_event": f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events/{event_id}",
+        "event": f"https://smartboard-api.shotgun.live/api/shotgun/events/{event_id}",
+        "organizer_event_detail": f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events/{event_id}/details",
+        "event_detail": f"https://smartboard-api.shotgun.live/api/shotgun/events/{event_id}/details",
+    }
+    return {name: fetch_json_probe(url) for name, url in candidates.items()}
 
 
 def fetch_public_page_images(url):
@@ -64,17 +101,13 @@ def fetch_public_page_images(url):
         return []
     request = urllib.request.Request(
         url,
-        headers={
-            "Accept": "text/html,application/xhtml+xml",
-            "User-Agent": "Mozilla/5.0 DanceteriaAgenda/1.0",
-        },
+        headers={"Accept": "text/html,application/xhtml+xml", "User-Agent": "Mozilla/5.0 DanceteriaAgenda/1.0"},
     )
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             source = response.read().decode("utf-8", errors="ignore")
     except Exception:
         return []
-
     source = html.unescape(source).replace("\\/", "/").replace("\\u0026", "&")
     matches = re.findall(r"https://res\.cloudinary\.com/shotgun/[^\"'<>\\s]+", source)
     cleaned = []
@@ -85,7 +118,7 @@ def fetch_public_page_images(url):
     return cleaned[:40]
 
 
-def public_event(event, inspect_page=False):
+def public_event(event, inspect=False):
     slug = event.get("slug")
     url = event.get("url") or (f"https://shotgun.live/events/{slug}" if slug else None)
     organizer = event.get("organizer") or {}
@@ -104,8 +137,9 @@ def public_event(event, inspect_page=False):
         "location_name": location.get("name") if isinstance(location, dict) else None,
         "_image_fields": extract_image_fields(event),
     }
-    if inspect_page:
+    if inspect:
         item["_page_images"] = fetch_public_page_images(url)
+        item["_detail_probes"] = detail_probes(event.get("id"))
     return item
 
 
@@ -140,7 +174,7 @@ for event in raw_events:
         continue
     if not event_is_current_or_future(event, now):
         continue
-    item = public_event(event, inspect_page=len(events) < 8)
+    item = public_event(event, inspect=len(events) == 0)
     if item["name"] and item["start_time"]:
         events.append(item)
 
