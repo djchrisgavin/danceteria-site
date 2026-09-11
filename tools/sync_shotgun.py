@@ -16,6 +16,7 @@ if not ORGANIZER_ID or not TOKEN:
     sys.exit(1)
 
 API_URL = f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events"
+IMAGE_KEYWORDS = ("image", "cover", "artwork", "poster", "thumbnail", "portrait", "square", "vertical")
 
 
 def parse_dt(value):
@@ -37,6 +38,28 @@ def event_is_current_or_future(event, now):
     return False
 
 
+def extract_image_fields(value, prefix="", depth=0):
+    if depth > 4:
+        return {}
+
+    found = {}
+    if isinstance(value, dict):
+        for key, child in value.items():
+            path = f"{prefix}.{key}" if prefix else str(key)
+            key_lower = str(key).lower()
+            if any(word in key_lower for word in IMAGE_KEYWORDS):
+                if isinstance(child, (str, int, float, bool)) or child is None:
+                    found[path] = child
+                elif isinstance(child, (list, dict)):
+                    found[path] = child
+            found.update(extract_image_fields(child, path, depth + 1))
+    elif isinstance(value, list):
+        for index, child in enumerate(value[:10]):
+            path = f"{prefix}[{index}]"
+            found.update(extract_image_fields(child, path, depth + 1))
+    return found
+
+
 def public_event(event):
     slug = event.get("slug")
     url = event.get("url") or (f"https://shotgun.live/events/{slug}" if slug else None)
@@ -55,6 +78,7 @@ def public_event(event):
         "visibility": event.get("visibility"),
         "organizer_name": organizer.get("name") if isinstance(organizer, dict) else None,
         "location_name": location.get("name") if isinstance(location, dict) else None,
+        "_image_fields": extract_image_fields(event),
     }
 
 
