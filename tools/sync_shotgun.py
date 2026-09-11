@@ -1,6 +1,7 @@
-# Triggered after fixing the organizer ID in the workflow.
+import html
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -41,7 +42,6 @@ def event_is_current_or_future(event, now):
 def extract_image_fields(value, prefix="", depth=0):
     if depth > 4:
         return {}
-
     found = {}
     if isinstance(value, dict):
         for key, child in value.items():
@@ -55,18 +55,42 @@ def extract_image_fields(value, prefix="", depth=0):
             found.update(extract_image_fields(child, path, depth + 1))
     elif isinstance(value, list):
         for index, child in enumerate(value[:10]):
-            path = f"{prefix}[{index}]"
-            found.update(extract_image_fields(child, path, depth + 1))
+            found.update(extract_image_fields(child, f"{prefix}[{index}]", depth + 1))
     return found
 
 
-def public_event(event):
+def fetch_public_page_images(url):
+    if not url:
+        return []
+    request = urllib.request.Request(
+        url,
+        headers={
+            "Accept": "text/html,application/xhtml+xml",
+            "User-Agent": "Mozilla/5.0 DanceteriaAgenda/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            source = response.read().decode("utf-8", errors="ignore")
+    except Exception:
+        return []
+
+    source = html.unescape(source).replace("\\/", "/").replace("\\u0026", "&")
+    matches = re.findall(r"https://res\.cloudinary\.com/shotgun/[^\"'<>\\s]+", source)
+    cleaned = []
+    for value in matches:
+        value = value.rstrip(")],}")
+        if value not in cleaned:
+            cleaned.append(value)
+    return cleaned[:40]
+
+
+def public_event(event, inspect_page=False):
     slug = event.get("slug")
     url = event.get("url") or (f"https://shotgun.live/events/{slug}" if slug else None)
     organizer = event.get("organizer") or {}
     location = event.get("location") or event.get("venue") or {}
-
-    return {
+    item = {
         "id": event.get("id"),
         "name": event.get("name"),
         "start_time": event.get("startTime"),
@@ -80,6 +104,9 @@ def public_event(event):
         "location_name": location.get("name") if isinstance(location, dict) else None,
         "_image_fields": extract_image_fields(event),
     }
+    if inspect_page:
+        item["_page_images"] = fetch_public_page_images(url)
+    return item
 
 
 query = urllib.parse.urlencode({"key": TOKEN, "limit": 100})
@@ -109,13 +136,11 @@ events = []
 for event in raw_events:
     if not isinstance(event, dict):
         continue
-    if event.get("cancelledAt"):
-        continue
-    if not event.get("publishedAt"):
+    if event.get("cancelledAt") or not event.get("publishedAt"):
         continue
     if not event_is_current_or_future(event, now):
         continue
-    item = public_event(event)
+    item = public_event(event, inspect_page=len(events) < 8)
     if item["name"] and item["start_time"]:
         events.append(item)
 
@@ -128,28 +153,13 @@ output = {
     "events": events,
 }
 
-Path("events.json").write_text(
-    json.dumps(output, ensure_ascii=False, indent=2) + "\n",
-    encoding="utf-8",
-)
+Path("events.json").write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-# One-time migration of the homepage agenda: stop the old Sheet renderer and
-# load the public Shotgun renderer instead. The rest of the Sheet code stays
-# in place so rollback is trivial.
 index_path = Path("index.html")
 index = index_path.read_text(encoding="utf-8")
-
 if "shotgun-agenda.js" not in index:
-    index = index.replace(
-        "\ninitialiseProgramme();\n",
-        "\n// Agenda public piloté par Shotgun.\n// initialiseProgramme();\n",
-        1,
-    )
-    index = index.replace(
-        "\n</body>",
-        "\n<script src=\"shotgun-agenda.js?v=20260911-1\"></script>\n\n</body>",
-        1,
-    )
+    index = index.replace("\ninitialiseProgramme();\n", "\n// Agenda public piloté par Shotgun.\n// initialiseProgramme();\n", 1)
+    index = index.replace("\n</body>", "\n<script src=\"shotgun-agenda.js?v=20260911-1\"></script>\n\n</body>", 1)
     index_path.write_text(index, encoding="utf-8")
 
 print(f"Wrote {len(events)} current/future Shotgun event(s) to events.json")
