@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17 * * * *'
+  push:
+    paths:
+      - '.github/workflows/update-shotgun-events.yml'
+      - 'tools/sync_shotgun.py'
 
 permissions:
   contents: write
@@ -23,7 +27,7 @@ jobs:
       - name: Sync Shotgun events
         env:
           SHOTGUN_API_TOKEN: ${{ secrets.SHOTGUN_API_TOKEN }}
-          SHOTGUN_ORGANIZER_ID: ${{ vars.SHOTGUN_ORGANIZER_ID }}
+          SHOTGUN_ORGANIZER_ID: '175441'
         run: python3 tools/sync_shotgun.py
 
       - name: Commit public agenda data
