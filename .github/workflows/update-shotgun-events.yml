@@ -20,31 +20,47 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      SHOTGUN_API_TOKEN: ${{ secrets.SHOTGUN_API_TOKEN }}
+      SHOTGUN_ORGANIZER_ID: '175441'
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Sync Shotgun events
-        env:
-          SHOTGUN_API_TOKEN: ${{ secrets.SHOTGUN_API_TOKEN }}
-          SHOTGUN_ORGANIZER_ID: '175441'
-        run: python3 tools/sync_shotgun.py
-
-      - name: Commit public agenda data
+      - name: Sync and publish Shotgun events
         run: |
+          git config user.name "Danceteria Bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          # Always regenerate from the latest main branch. This avoids conflicts
+          # if another workflow or manual commit lands while the job is running.
+          git fetch origin main
+          git reset --hard origin/main
+          python3 tools/sync_shotgun.py
+
           if git diff --quiet -- events.json; then
             echo "No Shotgun agenda changes."
             exit 0
           fi
 
-          git config user.name "Danceteria Bot"
-          git config user.email "actions@users.noreply.github.com"
           git add events.json
           git commit -m "Update agenda from Shotgun"
 
-          # Another commit may land while this workflow is running.
-          # Rebase our generated data before pushing instead of failing.
+          if git push origin HEAD:main; then
+            exit 0
+          fi
+
+          # One retry from the newest main in the unlikely event of a race.
           git fetch origin main
-          git rebase origin/main
+          git reset --hard origin/main
+          python3 tools/sync_shotgun.py
+
+          if git diff --quiet -- events.json; then
+            echo "Agenda already updated by another run."
+            exit 0
+          fi
+
+          git add events.json
+          git commit -m "Update agenda from Shotgun"
           git push origin HEAD:main
