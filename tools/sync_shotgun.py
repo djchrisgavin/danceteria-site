@@ -1,4 +1,3 @@
-import html
 import json
 import os
 import re
@@ -17,7 +16,6 @@ if not ORGANIZER_ID or not TOKEN:
     sys.exit(1)
 
 API_URL = f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events"
-IMAGE_KEYWORDS = ("image", "cover", "artwork", "poster", "thumbnail", "portrait", "square", "vertical")
 
 
 def parse_dt(value):
@@ -29,93 +27,62 @@ def parse_dt(value):
         return None
 
 
-def event_is_current_or_future(event, now):
+def event_end(event):
     end = parse_dt(event.get("endTime"))
-    start = parse_dt(event.get("startTime"))
     if end:
-        return end >= now
-    if start:
-        return start + timedelta(hours=8) >= now
-    return False
+        return end
+    start = parse_dt(event.get("startTime"))
+    return start + timedelta(hours=8) if start else None
 
 
-def extract_image_fields(value, prefix="", depth=0):
-    if depth > 5:
-        return {}
-    found = {}
-    if isinstance(value, dict):
-        for key, child in value.items():
-            path = f"{prefix}.{key}" if prefix else str(key)
-            key_lower = str(key).lower()
-            if any(word in key_lower for word in IMAGE_KEYWORDS):
-                if isinstance(child, (str, int, float, bool)) or child is None:
-                    found[path] = child
-                elif isinstance(child, (list, dict)):
-                    found[path] = child
-            found.update(extract_image_fields(child, path, depth + 1))
-    elif isinstance(value, list):
-        for index, child in enumerate(value[:12]):
-            found.update(extract_image_fields(child, f"{prefix}[{index}]", depth + 1))
-    return found
+def event_is_current_or_future(event, now):
+    end = event_end(event)
+    return bool(end and end >= now)
 
 
-def fetch_json_probe(url):
-    sep = "&" if "?" in url else "?"
-    full_url = f"{url}{sep}{urllib.parse.urlencode({'key': TOKEN})}"
+def fetch_jsonld_image(slug):
+    if not slug:
+        return None
+    url = f"https://r.shotgun.live/fr/events/{slug}"
     request = urllib.request.Request(
-        full_url,
+        url,
         headers={
-            "Authorization": f"Bearer {TOKEN}",
-            "Accept": "application/json",
-            "User-Agent": "danceteria-site-shotgun-sync/1.0",
+            "Accept": "text/html,application/xhtml+xml",
+            "User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
         },
     )
     try:
-        with urllib.request.urlopen(request, timeout=20) as response:
-            payload = json.load(response)
-            return {
-                "status": response.status,
-                "image_fields": extract_image_fields(payload),
-                "top_level_keys": sorted(payload.keys()) if isinstance(payload, dict) else [],
-            }
-    except urllib.error.HTTPError as exc:
-        return {"status": exc.code, "image_fields": {}, "top_level_keys": []}
-    except Exception as exc:
-        return {"status": type(exc).__name__, "image_fields": {}, "top_level_keys": []}
-
-
-def detail_probes(event_id):
-    if not event_id:
-        return {}
-    candidates = {
-        "organizer_event": f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events/{event_id}",
-        "event": f"https://smartboard-api.shotgun.live/api/shotgun/events/{event_id}",
-        "organizer_event_detail": f"https://smartboard-api.shotgun.live/api/shotgun/organizers/{ORGANIZER_ID}/events/{event_id}/details",
-        "event_detail": f"https://smartboard-api.shotgun.live/api/shotgun/events/{event_id}/details",
-    }
-    return {name: fetch_json_probe(url) for name, url in candidates.items()}
-
-
-def fetch_public_page_images(url):
-    if not url:
-        return []
-    request = urllib.request.Request(
-        url,
-        headers={"Accept": "text/html,application/xhtml+xml", "User-Agent": "Mozilla/5.0 DanceteriaAgenda/1.0"},
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=20) as response:
+        with urllib.request.urlopen(request, timeout=25) as response:
             source = response.read().decode("utf-8", errors="ignore")
     except Exception:
-        return []
-    source = html.unescape(source).replace("\\/", "/").replace("\\u0026", "&")
-    matches = re.findall(r"https://res\.cloudinary\.com/shotgun/[^\"'<>\\s]+", source)
-    cleaned = []
-    for value in matches:
-        value = value.rstrip(")],}")
-        if value not in cleaned:
-            cleaned.append(value)
-    return cleaned[:40]
+        return None
+
+    blocks = re.findall(
+        r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+        source,
+        re.DOTALL | re.IGNORECASE,
+    )
+    for block in blocks:
+        try:
+            data = json.loads(block)
+        except json.JSONDecodeError:
+            continue
+        candidates = data if isinstance(data, list) else [data]
+        for item in candidates:
+            if not isinstance(item, dict):
+                continue
+            image = item.get("image")
+            if isinstance(image, str) and image:
+                return image
+            if isinstance(image, list) and image:
+                first = image[0]
+                if isinstance(first, str):
+                    return first
+                if isinstance(first, dict):
+                    return first.get("url") or first.get("contentUrl")
+            if isinstance(image, dict):
+                return image.get("url") or image.get("contentUrl")
+    return None
 
 
 def public_event(event, inspect=False):
@@ -131,15 +98,14 @@ def public_event(event, inspect=False):
         "url": url,
         "slug": slug,
         "cover_url": event.get("coverUrl") or event.get("coverThumbnailUrl"),
+        "portrait_url": None,
         "description": event.get("description"),
         "visibility": event.get("visibility"),
         "organizer_name": organizer.get("name") if isinstance(organizer, dict) else None,
         "location_name": location.get("name") if isinstance(location, dict) else None,
-        "_image_fields": extract_image_fields(event),
     }
     if inspect:
-        item["_page_images"] = fetch_public_page_images(url)
-        item["_detail_probes"] = detail_probes(event.get("id"))
+        item["_jsonld_image_probe"] = fetch_jsonld_image(slug)
     return item
 
 
