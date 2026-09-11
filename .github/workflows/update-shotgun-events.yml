@@ -1,0 +1,40 @@
+name: Update Shotgun agenda
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shotgun-agenda-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync Shotgun events
+        env:
+          SHOTGUN_API_TOKEN: ${{ secrets.SHOTGUN_API_TOKEN }}
+          SHOTGUN_ORGANIZER_ID: ${{ vars.SHOTGUN_ORGANIZER_ID }}
+        run: python3 tools/sync_shotgun.py
+
+      - name: Commit public agenda data
+        run: |
+          if git diff --quiet -- events.json index.html; then
+            echo "No Shotgun agenda changes."
+            exit 0
+          fi
+
+          git config user.name "Danceteria Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add events.json index.html
+          git commit -m "Update agenda from Shotgun"
+          git push
