@@ -65,6 +65,87 @@
     return new Date(start.getTime() + 8 * 60 * 60 * 1000);
   }
 
+  function artistLinks(description = '') {
+    const links = new Map();
+    const excluded = [
+      'danceteria.fr',
+      'danceteria_marseille',
+      'danceteria.marseille',
+      'shotgun.live'
+    ];
+
+    const addLink = (rawUrl, fallbackLabel = '') => {
+      let value = String(rawUrl || '').trim().replace(/[),.;]+$/, '');
+      if (!value) return;
+      if (value.startsWith('www.')) value = `https://${value}`;
+
+      let url;
+      try {
+        url = new URL(value);
+      } catch (_) {
+        return;
+      }
+
+      const normalized = url.href.replace(/\/$/, '');
+      const lower = normalized.toLowerCase();
+      if (excluded.some(item => lower.includes(item))) return;
+      if (links.has(normalized)) return;
+
+      const pathName = decodeURIComponent(url.pathname)
+        .split('/')
+        .filter(Boolean)
+        .pop() || '';
+
+      let label = fallbackLabel || url.hostname.replace(/^www\./, '');
+      if (url.hostname.includes('instagram.com')) label = pathName ? `@${pathName}` : 'Instagram';
+      else if (url.hostname.includes('soundcloud.com')) label = pathName || 'SoundCloud';
+      else if (url.hostname.includes('spotify.com')) label = 'Spotify';
+      else if (url.hostname.includes('beatport.com')) label = 'Beatport';
+      else if (url.hostname.includes('facebook.com')) label = 'Facebook';
+
+      links.set(normalized, { url: normalized, label });
+    };
+
+    const urlMatches = String(description).match(/(?:https?:\/\/|www\.)[^\s<>]+/gi) || [];
+    urlMatches.forEach(url => addLink(url));
+
+    const handleMatches = String(description).match(/(^|\s)@[a-z0-9._]{2,30}\b/gi) || [];
+    handleMatches.forEach(match => {
+      const handle = match.trim().slice(1);
+      addLink(`https://www.instagram.com/${handle}/`, `@${handle}`);
+    });
+
+    return Array.from(links.values()).slice(0, 8);
+  }
+
+  function renderArtistLinks(container, event) {
+    container.innerHTML = '';
+    const links = artistLinks(event.description);
+    if (!links.length) return;
+
+    const row = document.createElement('div');
+    row.className = 'lineup-row';
+
+    const name = document.createElement('span');
+    name.className = 'lineup-name';
+    name.textContent = 'LIENS ARTISTES';
+
+    const list = document.createElement('div');
+    list.className = 'artist-links';
+
+    links.forEach(link => {
+      const anchor = document.createElement('a');
+      anchor.href = link.url;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener';
+      anchor.textContent = `${link.label} ↗`;
+      list.appendChild(anchor);
+    });
+
+    row.append(name, list);
+    container.appendChild(row);
+  }
+
   function resetCard(card, label) {
     if (!card) return;
 
@@ -100,7 +181,8 @@
     card.querySelector('.event-type').textContent = formatTimeRange(start, end);
     card.querySelector('.placeholder-date').textContent = `${label} ${formatDate(start)}`;
     card.querySelector('.placeholder-title').textContent = event.name;
-    card.querySelector('.lineup').innerHTML = '';
+    const lineup = card.querySelector('.lineup');
+    renderArtistLinks(lineup, event);
 
     const flyer = card.querySelector('.event-flyer');
     const hasPortrait = Boolean(event.portrait_url);
