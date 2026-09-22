@@ -160,6 +160,18 @@
       display: block;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
 
     /* HEADER */
 
@@ -720,6 +732,123 @@
     }
 
 
+    /* NEWSLETTER */
+
+    .newsletter {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 88% 20%, rgba(239,133,29,.28), transparent 28%),
+        linear-gradient(135deg, rgba(200,32,25,.2), transparent 52%);
+    }
+
+    .newsletter::after {
+      content: "NEWSLETTER";
+      position: absolute;
+      right: -18px;
+      bottom: -30px;
+      color: rgba(255,255,255,.035);
+      font-size: clamp(70px,14vw,210px);
+      font-weight: 900;
+      letter-spacing: -.08em;
+      line-height: .8;
+      pointer-events: none;
+    }
+
+    .newsletter-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr minmax(320px,520px);
+      gap: 8vw;
+      align-items: end;
+    }
+
+    .newsletter h2 { max-width: 760px; }
+
+    .newsletter-copy {
+      max-width: 38ch;
+      margin: 25px 0 0;
+      color: #c8c5bf;
+      font-size: clamp(17px,1.6vw,23px);
+      line-height: 1.4;
+    }
+
+    .newsletter-form { width: 100%; }
+
+    .newsletter-fields {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      border-bottom: 1px solid var(--text);
+    }
+
+    .newsletter-fields input {
+      min-width: 0;
+      min-height: 58px;
+      padding: 0 18px 0 0;
+      border: 0;
+      border-radius: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+    }
+
+    .newsletter-fields input::placeholder { color: var(--muted); }
+    .newsletter-fields input:focus { box-shadow: inset 0 -2px 0 var(--orange); }
+
+    .newsletter-submit {
+      min-height: 58px;
+      padding: 0 20px;
+      border: 0;
+      background: var(--text);
+      color: #080808;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .newsletter-submit:hover { background: var(--orange); }
+    .newsletter-submit.loading { display: none; }
+
+    .newsletter-legal {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .newsletter-success {
+      padding: 28px 0 0;
+      border-top: 1px solid var(--orange);
+    }
+
+    .newsletter-success h3 {
+      margin: 0 0 10px;
+      font-size: clamp(30px,3.5vw,54px);
+      letter-spacing: -.05em;
+    }
+
+    .newsletter-success p { margin: 0; color: #c8c5bf; }
+
+    .ml-form-embedSubmitLoad {
+      width: 18px;
+      height: 18px;
+      margin: auto;
+      border: 3px solid #080808;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: newsletter-spin .8s linear infinite;
+    }
+
+    @keyframes newsletter-spin { to { transform: rotate(360deg); } }
+
+
     /* FOOTER */
 
     .site-footer {
@@ -769,9 +898,12 @@
       }
 
       .section-head,
-      .club {
+      .club,
+      .newsletter-inner {
         grid-template-columns: 1fr;
       }
+
+      .newsletter-inner { gap: 50px; }
 
       .event-grid,
       .identity-grid {
@@ -810,6 +942,19 @@
       .lineup-row {
         grid-template-columns: 1fr;
       }
+
+      .newsletter-fields {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        border-bottom: 0;
+      }
+
+      .newsletter-fields input {
+        padding: 0 14px;
+        border: 1px solid var(--line);
+      }
+
+      .newsletter-submit { width: 100%; }
 
       .artist-links {
         justify-content: flex-start;
@@ -861,6 +1006,10 @@
 
     <a href="#infos">
       Infos
+    </a>
+
+    <a href="#newsletter">
+      Newsletter
     </a>
 
     <a
@@ -1415,6 +1564,89 @@
 
 
 <section
+  class="section newsletter"
+  id="newsletter"
+>
+
+  <div class="newsletter-inner ml-form-embedContainer ml-subscribe-form ml-subscribe-form-46212673" id="mlb2-46212673">
+
+    <div class="newsletter-heading">
+
+      <p class="kicker">Danceteria — Direct</p>
+
+      <h2>
+        Rejoins la<br>
+        newsletter.
+      </h2>
+
+      <p class="newsletter-copy">
+        Programmation, invitations et nouveautés du club directement dans ta boîte mail.
+      </p>
+
+    </div>
+
+    <div class="ml-form-embedWrapper embedForm">
+
+      <div class="ml-form-embedBody row-form">
+
+        <form
+          class="ml-block-form newsletter-form"
+          action="https://assets.mailerlite.com/jsonp/114943/forms/199307693974881984/subscribe"
+          method="post"
+          target="_blank"
+        >
+
+          <div class="newsletter-fields">
+
+            <label class="sr-only" for="newsletter-email">Adresse e-mail</label>
+
+            <input
+              id="newsletter-email"
+              aria-label="Adresse e-mail"
+              aria-required="true"
+              type="email"
+              name="fields[email]"
+              placeholder="TON ADRESSE E-MAIL"
+              autocomplete="email"
+              required
+            >
+
+            <button class="newsletter-submit primary" type="submit">
+              Je m’inscris
+            </button>
+
+            <button class="newsletter-submit loading" disabled type="button" aria-hidden="true">
+              <span class="ml-form-embedSubmitLoad"></span>
+              <span class="sr-only">Inscription en cours</span>
+            </button>
+
+          </div>
+
+          <p class="newsletter-legal">
+            En t’inscrivant, tu acceptes de recevoir les actualités de Danceteria. Désinscription possible à tout moment.
+          </p>
+
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+
+        </form>
+
+      </div>
+
+      <div class="newsletter-success ml-form-successBody row-success" style="display:none">
+        <h3>Bienvenue.</h3>
+        <p>Ton inscription est confirmée. Surveille ta boîte mail.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section
   class="section contact"
   id="contact"
 >
@@ -1478,6 +1710,14 @@
 
 
 <script>
+
+function ml_webform_success_46212673() {
+  const form = document.querySelector('.ml-subscribe-form-46212673 .row-form');
+  const success = document.querySelector('.ml-subscribe-form-46212673 .row-success');
+
+  if (form) form.style.display = 'none';
+  if (success) success.style.display = 'block';
+}
 
 
 const SITE_CSV_URL =
@@ -2641,6 +2881,12 @@ document.addEventListener(
 
 
 <script src="shotgun-agenda.js?v=20260911-1"></script>
+
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519"></script>
+
+<script>
+  fetch('https://assets.mailerlite.com/jsonp/114943/forms/199307693974881984/takel');
+</script>
 
 </body>
 </html>
