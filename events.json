@@ -1,22 +1,8 @@
 {
   "source": "Shotgun Events API",
   "organizer_id": "175441",
-  "updated_at": "2026-09-25T03:29:03.992334+00:00",
+  "updated_at": "2026-09-25T04:30:30.223371+00:00",
   "events": [
-    {
-      "id": 599835,
-      "name": "DANCETERIA CLASSICS",
-      "start_time": "2026-09-24T21:59:00.000Z",
-      "end_time": "2026-09-25T04:00:00.000Z",
-      "url": "https://shotgun.live/events/danceteria-classics-24-septembre",
-      "slug": "danceteria-classics-24-septembre",
-      "cover_url": "https://res.cloudinary.com/shotgun/image/upload/c_limit,f_auto,fl_lossy,q_auto,w_1080/v1/dev/artworks/banner_jeudi_pmo451?_a=BAMAROfo0",
-      "portrait_url": null,
-      "description": "DANCETERIA CLASSICS — JEUDI 24 SEPTEMBRE\n\nTu aimes les morceaux qui ont construit la culture électronique ?\n\nLine Up: Xavier Mas @xaviermaskonka + Nars @romain_tauroentum\n\nXavier Mas aka Konka, activiste des platines depuis la fin des 70s, croise disco, house et techno de Chicago/Detroit. \nÀ ses côtés, Nars, figure des nuits marseillaises passée par les raves, les afters et huit années de résidence au Club 83.\n\nPour cette édition de DANCETERIA CLASSICS, on remonte le temps à travers trois périodes essentielles : la house des années 90, la progressive house des années 2000 et la techno canal historique.\n\nDes premières heures de la house aux grandes envolées progressives, jusqu’aux sonorités techno qui ont marqué les fondations des clubs, la soirée propose un voyage musical sans nostalgie forcée : des titres qui ont traversé les époques, des classiques que l’on reconnaît dès les premières mesures et des morceaux qui continuent de faire vibrer les dancefloors.\n\nLa sélection sera construite comme un véritable parcours : house en début de soirée, progressive au fil des heures, puis techno directe et intemporelle jusqu’au matin.\n\nUne soirée pour celles et ceux qui aiment l’histoire de la musique électronique, les morceaux qui ont compté et les nuits où l’on vient autant pour danser que pour partager une culture musicale.\n\n---------------------------------------\n\n🌟 DANCETERIA: More than a Club 🌟\n\n⏰ Horaires : 12PM - 6AM\n🎧 4 salles - Dancing-Drinking-Speaking-Chilling\n\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping/light show\n\n📍 INFOS PRATIQUES :\n🚇 Proximité métro Vieux Port\nParkings à proximité :\n🅿️ Parking Charles de Gaulle\n🅿️ Parking Estienne d'Orves\n\n📞 Contact : www.danceteria.fr\n\nInstagram : https://instagram.com/danceteria_marseille\nFacebook : www.facebook.com/danceteria.marseille",
-      "visibility": "public",
-      "organizer_name": "danceteria",
-      "location_name": null
-    },
     {
       "id": 599799,
       "name": "Phred Noir (la dame noir) @ Danceteria",
