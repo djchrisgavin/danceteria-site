@@ -1,7 +1,7 @@
 {
   "source": "Shotgun Events API",
   "organizer_id": "175441",
-  "updated_at": "2026-11-03T15:14:30.397932+00:00",
+  "updated_at": "2026-11-03T21:05:46.301960+00:00",
   "events": [
     {
       "id": 615715,
@@ -20,8 +20,8 @@
     {
       "id": 615649,
       "name": "Stella Galactica @ Danceteria",
-      "start_time": "2026-11-05T22:59:00.000Z",
-      "end_time": "2026-11-06T05:00:00.000Z",
+      "start_time": "2026-11-06T22:59:00.000Z",
+      "end_time": "2026-11-07T05:00:00.000Z",
       "url": "https://shotgun.live/events/stella-galactica-nov2026",
       "slug": "stella-galactica-nov2026",
       "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto,w_1080/v1/production/artworks/banenr_vendredi_isj4lc",
