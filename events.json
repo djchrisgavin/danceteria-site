@@ -1,7 +1,7 @@
 {
   "source": "Shotgun Events API",
   "organizer_id": "175441",
-  "updated_at": "2026-11-12T12:48:42.138646+00:00",
+  "updated_at": "2026-11-12T20:51:30.656275+00:00",
   "events": [
     {
       "id": 619194,
@@ -41,6 +41,20 @@
       "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto,w_1080/v1/production/artworks/regal-shotgun_lujfuz",
       "portrait_url": null,
       "description": "Ce samedi 14 novembre, Danceteria invite RËGAL pour un label showcase entre Monterrey, Barcelone et Marseille.\n\nBasé à Monterrey et Barcelone, RËGAL est un collectif d’artistes, organisateur de soirées et label indépendant. Ses événements et ses sorties font circuler les artistes et la musique entre les scènes électroniques underground du Mexique et de l’Europe.\n\n### LINE-UP\n\nPOTRO & DE HOMBRE\nPOTRO revient à Danceteria et partage les platines avec De Hombre. Tous deux font partie du collectif RËGAL.\nhttps://www.instagram.com/potro.xx/\nhttps://www.instagram.com/_dehombre/\n\nSABALZA\nhttps://www.instagram.com/sabalza.za/\n\nPHRED NOIR (La Dame Noir)\nFigure de La Dame Noir à Marseille, Phred Noir joue entre dark disco, indie dance et italo.\nhttps://www.instagram.com/phred_noir/\n\n**RËGAL**\nhttps://www.instagram.com/regal.mx/\n\n---------------------------------------\n🌟 DANCETERIA: More than a Club 🌟\n\n🎧 4 salles — Dancing-Drinking-Speaking-Chilling\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping/light show\n\n📍 Métro Vieux-Port\n🅿️ Parkings Charles de Gaulle et Estienne d’Orves à proximité\n🌐 https://danceteria.fr\n\nTenue correcte exigée. La direction se réserve le droit d’entrée.",
+      "visibility": "public",
+      "organizer_name": "danceteria",
+      "location_name": null
+    },
+    {
+      "id": 619211,
+      "name": "BERNY (IN DARK WE TRUST, BERLIN) + CHRIS GAVIN",
+      "start_time": "2026-12-11T22:59:00.000Z",
+      "end_time": "2026-12-12T05:00:00.000Z",
+      "url": "https://shotgun.live/events/danceteria-berny-chris-gavin-11-decembre",
+      "slug": "danceteria-berny-chris-gavin-11-decembre",
+      "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto,w_1080/v1/production/artworks/WhatsApp_Image_2026-11-11_at_16.34.38_z4mcuv",
+      "portrait_url": null,
+      "description": "BERNY (IN DARK WE TRUST, BERLIN) + CHRIS GAVIN\n\nVENDREDI 11 DÉCEMBRE — 00H / 06H\nINDIE DANCE • DARK DISCO • UNDERGROUND HOUSE\n\nAprès deux passages remarqués en 2023 et 2024, BERNY fait son retour à Danceteria pour une nouvelle nuit placée sous le signe des sonorités sombres, du groove et de la culture club.\n\nBERNY — In Dark We Trust, Berlin\n\nDJ et producteur italien partageant son activité entre l'Italie et Berlin, Berny développe depuis le début des années 2000 un univers singulier, à la croisée de l'Indie Dance, de la Dark Disco, de la Deep House et des grooves Jackin'.\n\nFondateur d'IN DARK WE TRUST, projet lancé en 2020 sous la forme d'une série de podcasts devenue depuis un label et une marque d'événements, Berny s'est imposé comme un acteur reconnu de la scène Dark Disco internationale.\n\nSon approche du DJing repose sur une conviction : un mix doit raconter une histoire. Une introduction, une évolution, une tension et une conclusion. Une vision du dancefloor où chaque morceau trouve sa place dans une progression musicale.\n\nDes clubs berlinois comme Kater Blau, Ritter Butzke et Sisyphos aux scènes d'Asie et d'Europe, Berny a construit son parcours autour d'une même passion : faire découvrir une musique profonde, hypnotique et résolument underground.\n\nPour son retour à Marseille, attendez-vous à des basslines puissantes, des rythmiques incisives, des textures synthétiques sombres et une sélection sans compromis.\n\nInstagram : https://www.instagram.com/bernygardin/\nSoundCloud : https://soundcloud.com/berny\n\nCHRIS GAVIN — Danceteria, Marseille\n\nDJ, producteur et directeur artistique de Danceteria, Chris Gavin développe depuis plus de vingt ans une identité musicale entre Progressive House, Indie Dance, Dark Disco et Techno.\n\nAncien label manager de Garbage Records aux côtés de Rick Pier O'Neil, il a signé sur des labels tels que Renaissance, Desert Hearts Black, Lumière Noire et Bonzai Progressive.\n\nAvec une approche narrative du mix et une sélection qui privilégie le groove, la profondeur et les textures électroniques, il accompagnera Berny pour cette nouvelle rencontre musicale à Danceteria.\n\nInstagram : https://www.instagram.com/djchrisgavin/\nSoundCloud : https://soundcloud.com/djchrisgavin\n\n\n---------------------------------------\n🌟 DANCETERIA: More than a Club 🌟\n\n🎧 4 salles — Dancing-Drinking-Speaking-Chilling\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping/light show\n\n📍 Métro Vieux-Port\n🅿️ Parkings Charles de Gaulle et Estienne d’Orves à proximité\n🌐 https://danceteria.fr\n\nTenue correcte exigée. La direction se réserve le droit d’entrée.",
       "visibility": "public",
       "organizer_name": "danceteria",
       "location_name": null
