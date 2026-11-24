@@ -1,8 +1,22 @@
 {
   "source": "Shotgun Events API",
   "organizer_id": "175441",
-  "updated_at": "2026-11-23T12:57:26.310766+00:00",
+  "updated_at": "2026-11-24T00:57:09.061628+00:00",
   "events": [
+    {
+      "id": 623565,
+      "name": "DANCETERIA CLASSICS",
+      "start_time": "2026-11-26T22:59:00.000Z",
+      "end_time": "2026-11-27T05:00:00.000Z",
+      "url": "https://shotgun.live/events/danceteria-classics-23-11",
+      "slug": "danceteria-classics-23-11",
+      "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/banenr_Danceteria_affiche_techno_monochrome_%C3%A0_Marseille_imqc25",
+      "portrait_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/Flyer_Danceteria_%C3%A0_la_Cit%C3%A9_Radieuse_m5wkg6",
+      "description": "DANCETERIA CLASSICS \nJEUDI 26 NOVEMBRE\n\nTu aimes les morceaux qui ont construit la culture électronique?\n\nPour cette édition de DANCETERIA CLASSICS, on remonte le temps à travers trois périodes essentielles : la house des années 90, la progressive house des années 2000 et la techno canal historique.\n\nDes premières heures de la house aux grandes envolées progressives, jusqu’aux sonorités techno qui ont marqué les fondations des clubs, la soirée propose un voyage musical sans nostalgie forcée : des titres qui ont traversé les époques, des classiques que l’on reconnaît dès les premières mesures et des morceaux qui continuent de faire vibrer les dancefloors.\n\nLa sélection sera construite comme un véritable parcours, avec une progression pensée pour accompagner la nuit : house chaleureuse en début de soirée, progressive plus ample au fil des heures, puis techno directe et intemporelle jusqu’au matin.\n\nUne soirée pour celles et ceux qui aiment l’histoire de la musique électronique, les morceaux qui ont compté et les nuits où l’on vient autant pour danser que pour partager une culture musicale.\n\n---------------------------------------\n\n🌟 DANCETERIA: More than a Club 🌟\n\n⏰ Horaires : 00h–06h\n🎧 4 salles - Dancing-Drinking-Speaking-Chilling\n\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping/light show\n\n📍 INFOS PRATIQUES :\n🚇 Proximité métro Vieux Port\nParkings à proximité :\n🅿️ Parking Charles de Gaulle\n🅿️ Parking Estienne d'Orves\n\n📞 Contact : www.danceteria.fr\n\nInstagram : https://instagram.com/danceteria_marseille\nFacebook : www.facebook.com/danceteria.marseille",
+      "visibility": "public",
+      "organizer_name": "danceteria",
+      "location_name": null
+    },
     {
       "id": 620157,
       "name": "MAGI.K (KA-LABEL) + DRICK’S + CHRIS GAVIN @ DANCETERIA",
@@ -13,6 +27,20 @@
       "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/final_banner_qsth0m",
       "portrait_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/final_flyer_v1vqkz",
       "description": "MAGI.K (KA-LABEL) + DRICK’S + CHRIS GAVIN\nVENDREDI 27 NOVEMBRE — 22H–06H\nHOUSE • DEEP HOUSE • TECH HOUSE • DEEP TECHNO\n\nAprès leur passage de septembre, MAGI.K reprend gout aux platines et nous fait le plaisir de revenir nous compter le bon temps des soirées underground des années 2000, toujours accompagné de Drick’s. Chris Gavin les rejoint pour ce vendredi qui commence exceptionnellement à 22h.\n\nMAGI.K — KA-LABEL\nDJ et organisateur marseillais, MAGI.K a fondé KA-LABEL et défend depuis les premières années de la scène underground locale une sélection qui va de la deep house à la techno.\n\nSoundCloud · https://soundcloud.com/magi-k-official\nKA-LABEL · https://www.facebook.com/kalabeljfk\n\nDRICK’S\nPartenaire historique des soirées KA-LABEL et cofondateur de Global Conference, Drick’s joue à Marseille depuis les années 2000. Ses sets passent par la house, la tech house et les sonorités progressives.\nSoundCloud · https://on.soundcloud.com/FQWQKpqfrBDS2h56Wx\n\nCHRIS GAVIN\nDJ, producteur et directeur artistique de Danceteria, Chris Gavin joue entre progressive house, indie dance et techno mélodique.\nhttps://chrisgavin.com\n\n---------------------------------------\n🌟 DANCETERIA — More than a Club 🌟\n\n⏰ Horaires · 22h–06h\n🎧 4 salles · Dancing – Drinking – Speaking – Chilling\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping / light show\n\n📍 18 rue Saint-Saëns, 13001 Marseille\n🚇 Métro Vieux-Port\n🅿️ Parkings Charles de Gaulle et Estienne d’Orves\n🌐 https://danceteria.fr\nInstagram · https://instagram.com/danceteria_marseille\nFacebook · https://www.facebook.com/danceteria.marseille\n\nTenue correcte exigée. La direction se réserve le droit d’entrée.",
+      "visibility": "public",
+      "organizer_name": "danceteria",
+      "location_name": null
+    },
+    {
+      "id": 623278,
+      "name": "ALEX B (UNITED MUSIC CORSICA, BASTIA) @ DANCETERIA",
+      "start_time": "2026-11-28T22:59:00.000Z",
+      "end_time": "2026-11-29T05:00:00.000Z",
+      "url": "https://shotgun.live/events/alex-b-danceteria-28-novembre-2026",
+      "slug": "alex-b-danceteria-28-novembre-2026",
+      "cover_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/alex-b-1920x1080_rwgejt",
+      "portrait_url": "https://assets.shotgun.live/image/upload/c_limit,f_webp,fl_lossy,q_auto:good,w_1080/v1/production/artworks/alex-b-1080x1440_ezdmpr",
+      "description": "ALEX B (UNITED MUSIC CORSICA, BASTIA)\n\nSAMEDI 28 NOVEMBRE — 00H / 06H\n\nINDIE DANCE • TECHNO • ELECTRONIC MUSIC\n\nCe samedi, Danceteria accueille ALEX B, DJ originaire de Bastia et fondateur du collectif UNITED MUSIC CORSICA, pour une nuit entre Indie Dance, grooves hypnotiques et Techno.\n\nActeur engagé de la scène électronique corse, Alex B défend une vision de la culture club fondée sur la découverte musicale, le partage et l'énergie du dancefloor.\n\nALEX B — UNITED MUSIC CORSICA, BASTIA\n\nDJ passionné et fondateur du collectif UNITED MUSIC CORSICA, Alex B œuvre depuis plusieurs années au développement et au rayonnement de la musique électronique sur l'île de Beauté.\n\nÀ travers son collectif, il multiplie les initiatives pour rassembler les passionnés, créer des événements et faire vivre une scène électronique indépendante et accessible.\n\nDerrière les platines, son univers navigue entre Indie Dance et Techno, avec des sets évolutifs où se rencontrent grooves entraînants, mélodies envoûtantes et sonorités puissantes.\n\nDe la profondeur des premières sélections à l'intensité des rythmes les plus percutants, Alex B construit ses sets comme de véritables voyages musicaux, privilégiant la progression et la connexion avec le public.\n\nAu fil des années, il a partagé l'affiche avec de nombreux artistes, notamment Kiko, Markus Volker, Mila Dietrich, Wielki, Reig, Parus Major, Chris Gavin, Olffmann, Matt Dwellers et Camille Luciani.\n\nAvec UNITED MUSIC CORSICA, Alex B poursuit une ambition : faire grandir la scène électronique corse tout en préservant son identité, son indépendance et son esprit collectif.\n\nUne nouvelle rencontre musicale entre la Corse et Marseille, sur le dancefloor de Danceteria.\n\nLIENS ARTISTE & COLLECTIF\n\nAlex Blenet — Profil Shotgun\nhttps://shotgun.live/fr/artists/alex-blenet\n\nUnited Music Corsica — Shotgun\nhttps://r.shotgun.live/en/venues/united-music-corsica-umc\n\nAlex Blenet — Last Ritual\nhttps://shotgun.live/fr/events/united-music-corsica-last-ritual\n\nAlex B & Chris Gavin — United Music Corsica\nhttps://shotgun.live/fr/events/united-au-mille-et-une-nuits\n\nUnited Music Corsica — Association\nhttps://www.helloasso.com/associations/united-music-corsica-umc\n\n\n---------------------------------------\n🌟 DANCETERIA: More than a Club 🌟\n\n🎧 4 salles — Dancing-Drinking-Speaking-Chilling\n▶️ Club climatisé ❄️\n▶️ Funktion One sound system\n▶️ Mapping/light show\n\n📍 Métro Vieux-Port\n🅿️ Parkings Charles de Gaulle et Estienne d’Orves à proximité\n🌐 https://danceteria.fr\n\nTenue correcte exigée. La direction se réserve le droit d’entrée.\nSite : https://danceteria.fr\n\nBilletterie en ligne et sur place selon disponibilité.\nDANCETERIA — MORE THAN A CLUB",
       "visibility": "public",
       "organizer_name": "danceteria",
       "location_name": null
